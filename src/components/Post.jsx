@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Post() {
+function Post({ owner, content }) {
    return (
       <div>
-         <h2>Owner</h2>
-         <p>Post</p>
+         <h2>{owner}</h2>
+         <p>{content}</p>
       </div>
    );
 }

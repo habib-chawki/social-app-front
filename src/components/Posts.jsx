@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Post from './Post';
 
 function Posts() {
+   const [posts, setPosts] = useState([]);
+
    const addPost = () => {
-      console.log('post added');
+      setPosts([...posts, { owner: 'me', content: 'This is a new post' }]);
    };
 
    return (
       <div>
          <button onClick={addPost}>Add post</button>
-         <Post />
+         {posts.map(({ owner, content }) => (
+            <Post owner={owner} content={content} />
+         ))}
       </div>
    );
 }
