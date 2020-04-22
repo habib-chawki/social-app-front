@@ -11,8 +11,8 @@ function Posts() {
    return (
       <div>
          <button onClick={addPost}>Add post</button>
-         {posts.map(({ owner, content }) => (
-            <Post owner={owner} content={content} />
+         {posts.map(({ owner, content }, index) => (
+            <Post key={index} owner={owner} content={content} />
          ))}
       </div>
    );
