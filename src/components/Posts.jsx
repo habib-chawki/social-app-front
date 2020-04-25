@@ -10,7 +10,7 @@ function Posts() {
       setPosts([...posts, { owner: 'me', content }]);
    };
 
-   // handle post content
+   // handle post input change
    const handleChange = (event) => {
       setContent(event.target.value);
    };
