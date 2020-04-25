@@ -6,7 +6,8 @@ function Post({ owner, content }) {
 
    // handle adding new comment
    const addComment = () => {
-      setComments([...comments, { content: comment }]);
+      setComments([{ content: comment }, ...comments]);
+      setComment('');
    };
 
    // handle comment input change

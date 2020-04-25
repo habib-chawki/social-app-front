@@ -7,7 +7,8 @@ function Posts() {
 
    // handle adding new post
    const addPost = () => {
-      setPosts([...posts, { owner: 'me', content }]);
+      setPosts([{ owner: 'me', content }, ...posts]);
+      setContent('');
    };
 
    // handle post input change
