@@ -14,8 +14,13 @@ function LogIn() {
       console.log(password);
    };
 
+   const handleSubmit = (event) => {
+      event.preventDefault();
+      console.log('submitted');
+   };
+
    return (
-      <form>
+      <form onSubmit={handleSubmit}>
          <label htmlFor="email">Email:</label>
          <input
             type="text"
