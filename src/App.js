@@ -1,8 +1,8 @@
 import React from 'react';
-import Posts from './components/Posts';
+import LogIn from './components/LogIn';
 
 function App() {
-   return <Posts />;
+   return <LogIn />;
 }
 
 export default App;
