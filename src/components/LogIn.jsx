@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 
 function LogIn() {
+   // manage email and password state
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
 
+   // handle email input value
    const handleEmail = (event) => {
       setEmail(event.target.value);
-      console.log(email);
    };
 
+   // handle password input value
    const handlePassword = (event) => {
       setPassword(event.target.value);
-      console.log(password);
    };
 
+   // handle form submission
    const handleSubmit = (event) => {
+      // prevent default form submission behavior
       event.preventDefault();
-      console.log('submitted');
+      console.log(`Email: ${email}, Password: ${password}`);
    };
 
+   // return a form with email, password and a submit button
    return (
       <form onSubmit={handleSubmit}>
          <label htmlFor="email">Email:</label>
