@@ -16,7 +16,7 @@ function LogIn() {
    };
 
    // handle form submission
-   const handleSubmit = (event) => {
+   const handleLogIn = (event) => {
       // prevent default form submission behavior
       event.preventDefault();
       console.log(`Email: ${email}, Password: ${password}`);
@@ -24,7 +24,7 @@ function LogIn() {
 
    // return a form with email, password and a submit button
    return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogIn}>
          <label htmlFor="email">Email:</label>
          <input
             type="text"
