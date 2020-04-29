@@ -40,7 +40,7 @@ function LogIn() {
             id="password"
             placeholder="Password..."
          />
-         <input type="submit" />
+         <input type="submit" value="Log in" />
       </form>
    );
 }
