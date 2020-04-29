@@ -2,24 +2,20 @@ import React, { useState } from 'react';
 
 function LogIn() {
    // manage email and password state
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
+   const [credentials, setCredentials] = useState({ email: '', password: '' });
 
-   // handle email input value
-   const handleEmail = (event) => {
-      setEmail(event.target.value);
-   };
-
-   // handle password input value
-   const handlePassword = (event) => {
-      setPassword(event.target.value);
+   // handle email and password input
+   const handleCredentials = (event) => {
+      setCredentials({
+         ...credentials,
+         [event.target.name]: event.target.value,
+      });
    };
 
    // handle form submission
    const handleLogIn = (event) => {
-      // prevent default form submission behavior
+      // prevent default form submission behavior and clear input fields
       event.preventDefault();
-      console.log(`Email: ${email}, Password: ${password}`);
    };
 
    // return a form with email, password and a submit button
@@ -28,16 +24,18 @@ function LogIn() {
          <label htmlFor="email">Email:</label>
          <input
             type="text"
-            value={email}
-            onChange={handleEmail}
+            name="email"
+            value={credentials.email}
+            onChange={handleCredentials}
             id="email"
             placeholder="Email..."
          />
          <label htmlFor="password">Password:</label>
          <input
             type="password"
-            value={password}
-            onChange={handlePassword}
+            name="password"
+            value={credentials.password}
+            onChange={handleCredentials}
             id="password"
             placeholder="Password..."
          />
