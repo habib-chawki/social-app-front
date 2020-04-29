@@ -16,6 +16,7 @@ function LogIn() {
    const handleLogIn = (event) => {
       // prevent default form submission behavior and clear input fields
       event.preventDefault();
+      setCredentials({ email: '', password: '' });
    };
 
    // return a form with email, password and a submit button
