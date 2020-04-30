@@ -10,9 +10,12 @@ function LogIn() {
 
    // handle email and password input
    const handleCredentials = (event) => {
-      const errors = {};
+      // check validation errors
+      const errors = credentials.errors;
       if (event.target.value.length < 3) {
          errors[event.target.name] = `Invalid ${event.target.name}`;
+      } else {
+         errors[event.target.name] = '';
       }
 
       setCredentials({
