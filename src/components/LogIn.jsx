@@ -15,7 +15,7 @@ function LogIn() {
       if (event.target.value.length < 3) {
          errors[event.target.name] = `Invalid ${event.target.name}`;
       } else {
-         errors[event.target.name] = '';
+         delete errors[event.target.name];
       }
 
       setCredentials({
@@ -29,7 +29,15 @@ function LogIn() {
    const handleLogIn = (event) => {
       // prevent default form submission behavior and clear input fields
       event.preventDefault();
-      setCredentials({ email: '', password: '' });
+
+      // reject log in in case of invalid credentials
+      if (Object.keys(credentials.errors).length === 0) {
+         console.log('Logged in.');
+      } else {
+         console.log('Invalid credentials.');
+      }
+
+      setCredentials({ email: '', password: '', errors: {} });
    };
 
    // return a form with email, password and a submit button
