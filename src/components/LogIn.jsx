@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function LogIn() {
-   // manage email and password state
+   // manage email, password and validation errors state
    const [credentials, setCredentials] = useState({
       email: '',
       password: '',
@@ -10,11 +10,14 @@ function LogIn() {
 
    // handle email and password input
    const handleCredentials = (event) => {
-      // check validation errors
       const errors = credentials.errors;
+
+      // TODO: validate email and password properly
       if (event.target.value.length < 3) {
+         // add validation errors
          errors[event.target.name] = `Invalid ${event.target.name}`;
       } else {
+         // delete key (email or password) if no validation errors are present
          delete errors[event.target.name];
       }
 
@@ -27,20 +30,21 @@ function LogIn() {
 
    // handle form submission
    const handleLogIn = (event) => {
-      // prevent default form submission behavior and clear input fields
+      // prevent default form submission behavior
       event.preventDefault();
 
-      // reject log in in case of invalid credentials
+      // reject log in in case of invalid credentials (erros object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
          console.log('Logged in.');
       } else {
          console.log('Invalid credentials.');
       }
 
+      // clear input fields and errors object
       setCredentials({ email: '', password: '', errors: {} });
    };
 
-   // return a form with email, password and a submit button
+   // return a form with email, password inputs and a submit button (render validation errors conditionally)
    return (
       <form onSubmit={handleLogIn}>
          <label htmlFor="email">Email:</label>
@@ -52,6 +56,7 @@ function LogIn() {
             id="email"
             placeholder="Email..."
          />
+         {/* render validation error conditionally */}
          {credentials.errors.email && <p>{credentials.errors.email}</p>}
          <label htmlFor="password">Password:</label>
          <input
