@@ -35,7 +35,7 @@ function CredentialsForm() {
 
       // reject log in in case of invalid credentials (erros object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
-         console.log('Logged in.');
+         console.log('Calling server...');
       } else {
          console.log('Invalid credentials.');
       }

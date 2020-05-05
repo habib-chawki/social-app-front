@@ -3,7 +3,7 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 
 function App() {
-   return <SignUp />;
+   return <LogIn />;
 }
 
 export default App;
