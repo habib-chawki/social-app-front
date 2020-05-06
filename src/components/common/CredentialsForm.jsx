@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import isEmail from 'validator/lib/isEmail';
 
 function CredentialsForm() {
    // manage email, password and validation errors state
@@ -9,21 +10,26 @@ function CredentialsForm() {
    });
 
    // handle email and password input
-   const handleCredentials = (event) => {
-      const errors = credentials.errors;
+   const handleCredentials = ({ target }) => {
+      const errors = credentials.errors; // keep track of validation errors
+      const inputValue = target.value.trim();
 
-      // TODO: validate email and password properly
-      if (event.target.value.length < 3) {
-         // add validation errors
-         errors[event.target.name] = `Invalid ${event.target.name}`;
+      // validate email or password accordingly
+      const isValid =
+         target.name === 'email' ? isEmail(inputValue) : inputValue.length >= 5;
+
+      if (!isValid) {
+         // add validation error
+         errors[target.name] = `Invalid ${target.name}`;
       } else {
-         // delete key (email or password) if no validation errors are present
-         delete errors[event.target.name];
+         // delete key (email / password) from errors object if no validation errors are present
+         delete errors[target.name];
       }
 
+      // update credentials state
       setCredentials({
          ...credentials,
-         [event.target.name]: event.target.value,
+         [target.name]: inputValue,
          errors,
       });
    };
@@ -33,7 +39,7 @@ function CredentialsForm() {
       // prevent default form submission behavior
       event.preventDefault();
 
-      // reject log in in case of invalid credentials (erros object is not empty)
+      // reject login in case of invalid credentials (errors object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
          console.log('Calling server...');
       } else {
@@ -44,7 +50,7 @@ function CredentialsForm() {
       setCredentials({ email: '', password: '', errors: {} });
    };
 
-   // return a form with email, password inputs and a submit button (render validation errors conditionally)
+   // form with email, password inputs and a submit button
    return (
       <form onSubmit={handleSubmit}>
          <label htmlFor="email">Email:</label>
