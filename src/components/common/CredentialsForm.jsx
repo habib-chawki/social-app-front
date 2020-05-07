@@ -52,7 +52,7 @@ function CredentialsForm({ title }) {
 
    // form with email, password inputs and a submit button
    return (
-      <>
+      <div>
          <h1>{title}</h1>
          <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email:</label>
@@ -80,7 +80,7 @@ function CredentialsForm({ title }) {
             )}
             <input type="submit" value="Log in" />
          </form>
-      </>
+      </div>
    );
 }
 
