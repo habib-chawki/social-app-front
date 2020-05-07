@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import isEmail from 'validator/lib/isEmail';
 
-function CredentialsForm() {
+function CredentialsForm({ title }) {
    // manage email, password and validation errors state
    const [credentials, setCredentials] = useState({
       email: '',
@@ -52,30 +52,35 @@ function CredentialsForm() {
 
    // form with email, password inputs and a submit button
    return (
-      <form onSubmit={handleSubmit}>
-         <label htmlFor="email">Email:</label>
-         <input
-            type="text"
-            name="email"
-            value={credentials.email}
-            onChange={handleCredentials}
-            id="email"
-            placeholder="Email..."
-         />
-         {/* render validation error conditionally */}
-         {credentials.errors.email && <p>{credentials.errors.email}</p>}
-         <label htmlFor="password">Password:</label>
-         <input
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleCredentials}
-            id="password"
-            placeholder="Password..."
-         />
-         {credentials.errors.password && <p>{credentials.errors.password}</p>}
-         <input type="submit" value="Log in" />
-      </form>
+      <>
+         <h1>{title}</h1>
+         <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email:</label>
+            <input
+               type="text"
+               name="email"
+               value={credentials.email}
+               onChange={handleCredentials}
+               id="email"
+               placeholder="Email..."
+            />
+            {/* render validation error conditionally */}
+            {credentials.errors.email && <p>{credentials.errors.email}</p>}
+            <label htmlFor="password">Password:</label>
+            <input
+               type="password"
+               name="password"
+               value={credentials.password}
+               onChange={handleCredentials}
+               id="password"
+               placeholder="Password..."
+            />
+            {credentials.errors.password && (
+               <p>{credentials.errors.password}</p>
+            )}
+            <input type="submit" value="Log in" />
+         </form>
+      </>
    );
 }
 
