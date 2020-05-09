@@ -6,7 +6,9 @@ function SignUp() {
    return (
       <div>
          <CredentialsForm title="Sign up" />
-         <Link to="/login">LogIn</Link>
+         <p>
+            Already registered ? <Link to="/login">Log In</Link>
+         </p>
       </div>
    );
 }
