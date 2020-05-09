@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import isEmail from 'validator/lib/isEmail';
 
-function CredentialsForm({ title }) {
+function CredentialsForm({ title, handleFormSubmission }) {
    // manage email, password and validation errors state
    const [credentials, setCredentials] = useState({
       email: '',
@@ -41,7 +41,7 @@ function CredentialsForm({ title }) {
 
       // reject login in case of invalid credentials (errors object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
-         console.log('Calling server...');
+         handleFormSubmission();
       } else {
          console.log('Invalid credentials.');
       }

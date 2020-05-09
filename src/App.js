@@ -9,7 +9,7 @@ function App() {
       <div>
          <Switch>
             <Route exact path="/" component={SignUp} />
-            <Route exact path="/login" component={LogIn} />
+            <Route path="/login" component={LogIn} />
             <Route path="/not-found" component={NotFound} />
             <Redirect to="/not-found" />
          </Switch>
