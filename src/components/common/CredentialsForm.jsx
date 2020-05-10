@@ -6,7 +6,7 @@ function CredentialsForm({ title, handleFormSubmission }) {
    const [credentials, setCredentials] = useState({
       email: '',
       password: '',
-      errors: {},
+      errors: { email: '', password: '' },
    });
 
    // handle email and password input
@@ -41,13 +41,14 @@ function CredentialsForm({ title, handleFormSubmission }) {
 
       // reject login in case of invalid credentials (errors object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
+         // call appropriate backend service
          handleFormSubmission();
       } else {
          console.log('Invalid credentials.');
       }
 
       // clear input fields and errors object
-      setCredentials({ email: '', password: '', errors: {} });
+      // setCredentials({ email: '', password: '', errors: {} });
    };
 
    // form with email, password inputs and a submit button
