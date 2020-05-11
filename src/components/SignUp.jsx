@@ -18,7 +18,8 @@ function SignUp() {
             }
          );
 
-         console.log(response);
+         // persist auth token to localStorage
+         localStorage.setItem('Token', response.data.token);
       } catch (e) {
          // Error
          console.log(e.message);
