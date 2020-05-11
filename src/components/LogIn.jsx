@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import CredentialsForm from './common/CredentialsForm';
 
 function LogIn() {
-   const handleLogIn = () => {
-      console.log('Handle login...');
+   const handleLogIn = ({ email, password }) => {
+      console.log(`Handle login... Email: ${email}, Password: ${password}`);
    };
 
    return (

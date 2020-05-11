@@ -42,7 +42,7 @@ function CredentialsForm({ title, handleFormSubmission }) {
       // reject login in case of invalid credentials (errors object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
          // call appropriate backend service
-         handleFormSubmission();
+         handleFormSubmission(credentials);
       } else {
          console.log('Invalid credentials.');
       }
