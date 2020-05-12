@@ -79,7 +79,7 @@ function CredentialsForm({ title, handleFormSubmission }) {
             {credentials.errors.password && (
                <p>{credentials.errors.password}</p>
             )}
-            <input type="submit" value="Log in" />
+            <input type="submit" value={title} />
          </form>
       </div>
    );
