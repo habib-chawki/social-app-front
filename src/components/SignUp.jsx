@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CredentialsForm from './common/CredentialsForm';
 
-function SignUp() {
+function SignUp({ history }) {
    // handle sign up form submission
    const handleSignUp = async ({ email, password }) => {
       console.log(`Handling signup... Email: ${email} Password: ${password}`);
@@ -20,6 +20,9 @@ function SignUp() {
 
          // persist auth token to localStorage
          localStorage.setItem('Token', response.data.token);
+
+         // navigate user to posts
+         history.push('/posts');
       } catch (e) {
          // Error
          console.log(e.message);
