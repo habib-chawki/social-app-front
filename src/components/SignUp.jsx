@@ -18,7 +18,7 @@ function SignUp({ history }) {
          localStorage.setItem('Token', response.data.token);
 
          // navigate user to posts
-         history.push('/posts');
+         history.replace('/posts');
       } catch (e) {
          // Error
          console.log(e.message);
