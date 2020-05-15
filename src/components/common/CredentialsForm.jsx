@@ -9,10 +9,10 @@ function CredentialsForm({ title, handleFormSubmission }) {
       errors: { email: '', password: '' },
    });
 
-   // handle email and password input
+   // validate and update email and password input
    const handleCredentials = ({ target }) => {
       const errors = credentials.errors; // keep track of validation errors
-      const inputValue = target.value.trim();
+      const inputValue = target.value.trim(); // trim input value
 
       // validate email or password accordingly
       const isValid =
@@ -20,9 +20,9 @@ function CredentialsForm({ title, handleFormSubmission }) {
 
       if (!isValid) {
          // add validation error
-         errors[target.name] = `Invalid ${target.name}`;
+         errors[target.name] = `Invalid ${target.name}.`;
       } else {
-         // delete key (email / password) from errors object if no validation errors are present
+         // delete key (email / password) from errors object if no validation errors occurred
          delete errors[target.name];
       }
 
@@ -46,9 +46,6 @@ function CredentialsForm({ title, handleFormSubmission }) {
       } else {
          console.log('Invalid credentials.');
       }
-
-      // clear input fields and errors object
-      // setCredentials({ email: '', password: '', errors: {} });
    };
 
    // form with email, password inputs and a submit button

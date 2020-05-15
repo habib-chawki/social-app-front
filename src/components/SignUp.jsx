@@ -2,12 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import CredentialsForm from './common/CredentialsForm';
-import server from '../utils';
+import server from '../server';
 
 function SignUp({ history }) {
    // handle sign up form submission
    const handleSignUp = async ({ email, password }) => {
-      // user sign up
       try {
          const response = await server.post('user/signup/', {
             email,
