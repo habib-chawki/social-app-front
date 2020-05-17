@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import CredentialsForm from './common/CredentialsForm';
-import server from '../server';
+import server from '../utils/server';
 
 function LogIn({ history }) {
    // handle login form submission
