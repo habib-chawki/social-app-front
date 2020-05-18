@@ -23,8 +23,6 @@ function Posts() {
          // update posts list
          setPosts([{ id: response.data.id, owner: 'me', content }, ...posts]);
          setContent('');
-
-         console.log(response);
       } catch (e) {
          console.log(e.message);
       }
