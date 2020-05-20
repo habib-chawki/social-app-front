@@ -11,7 +11,7 @@ function Post({ owner, content }) {
    };
 
    // handle comment input change
-   const handleChange = (event) => {
+   const handleCommentInput = (event) => {
       setComment(event.target.value);
    };
 
@@ -20,7 +20,7 @@ function Post({ owner, content }) {
       <div>
          <h2>{owner}</h2>
          <p>{content}</p>
-         <input type="text" value={comment} onChange={handleChange} />
+         <input type="text" value={comment} onChange={handleCommentInput} />
          <button onClick={addComment}>comment</button>
          <ul>
             {comments.map((comment, index) => (
