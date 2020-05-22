@@ -43,7 +43,15 @@ function Posts() {
          });
 
          // update posts list
-         setPosts([{ _id: response.data.id, owner: 'me', content }, ...posts]);
+         console.log(response.data);
+         setPosts([
+            {
+               _id: response.data._id,
+               owner: response.data.owner,
+               content: response.data.content,
+            },
+            ...posts,
+         ]);
          setContent('');
       } catch (e) {
          console.log(e.message);
