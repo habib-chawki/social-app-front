@@ -9,9 +9,10 @@ function Posts() {
    // retrieve auth token from localStorage
    const token = 'Bearer ' + localStorage.getItem('Token');
 
-   // render posts list when component mounts
+   // render posts list when component first mounts
    useEffect(() => {
       console.log('useEffect triggered ...');
+      // fetch current user's posts list
       const fetchPosts = async () => {
          try {
             const response = await server({
@@ -19,14 +20,16 @@ function Posts() {
                method: 'get',
                headers: { authorization: token },
             });
-            console.log('response: ', response);
+
+            //populate posts list
+            setPosts(response.data);
          } catch (e) {
             console.log('Unable to fetch posts list.' + e.message);
          }
       };
 
       fetchPosts();
-   }, [posts, token]);
+   }, [token]);
 
    // handle adding new post
    const addPost = async () => {
@@ -40,7 +43,7 @@ function Posts() {
          });
 
          // update posts list
-         setPosts([{ id: response.data.id, owner: 'me', content }, ...posts]);
+         setPosts([{ _id: response.data.id, owner: 'me', content }, ...posts]);
          setContent('');
       } catch (e) {
          console.log(e.message);
@@ -56,8 +59,8 @@ function Posts() {
       <div>
          <input type="text" value={content} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
-         {posts.map(({ id, owner, content }) => (
-            <Post key={id} owner={owner} content={content} />
+         {posts.map(({ _id, owner, content }) => (
+            <Post key={_id} owner={owner} content={content} />
          ))}
       </div>
    );
