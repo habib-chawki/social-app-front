@@ -4,7 +4,7 @@ import server from '../utils/server';
 
 function Posts() {
    const [posts, setPosts] = useState([]); // list of posts
-   const [content, setContent] = useState(''); // post content
+   const [postContent, setPostContent] = useState(''); // post content
 
    // retrieve auth token from localStorage
    const token = 'Bearer ' + localStorage.getItem('Token');
@@ -38,34 +38,30 @@ function Posts() {
          const response = await server({
             url: '/post',
             method: 'post',
-            data: { content },
+            data: { postContent },
             headers: { authorization: token },
          });
 
+         console.log('response: ' + response.data);
+         // destructure data object
+         const { _id, owner, content } = response.data;
+
          // update posts list
-         console.log(response.data);
-         setPosts([
-            {
-               _id: response.data._id,
-               owner: response.data.owner,
-               content: response.data.content,
-            },
-            ...posts,
-         ]);
-         setContent('');
+         setPosts([{ _id, owner, content }, ...posts]);
+         setPostContent('');
       } catch (e) {
-         console.log(e.message);
+         console.log('Unable to add post ' + e.message);
       }
    };
 
    // handle post input change
    const handlePostInput = (event) => {
-      setContent(event.target.value);
+      setPostContent(event.target.value);
    };
 
    return (
       <div>
-         <input type="text" value={content} onChange={handlePostInput} />
+         <input type="text" value={postContent} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
          {posts.map(({ _id, owner, content }) => (
             <Post key={_id} owner={owner} content={content} />
