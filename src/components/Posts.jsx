@@ -23,6 +23,7 @@ function Posts() {
 
             //populate posts list
             setPosts(response.data);
+            console.log(response.data);
          } catch (e) {
             console.log('Unable to fetch posts list.' + e.message);
          }
@@ -38,7 +39,7 @@ function Posts() {
          const response = await server({
             url: '/post',
             method: 'post',
-            data: { postContent },
+            data: { content: postContent },
             headers: { authorization: token },
          });
 
