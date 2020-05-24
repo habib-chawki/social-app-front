@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
+import server from '../utils/server';
 
 function Post({ owner, content }) {
    const [comments, setComments] = useState([]); // list of comments
    const [comment, setComment] = useState(''); // comment content
 
    // handle adding new comment
-   const addComment = () => {
-      setComments([{ content: comment }, ...comments]);
-      setComment('');
+   const addComment = async () => {
+      // retrieve auth token from localStorage
+      const token = 'Bearer ' + localStorage.getItem('Token');
+
+      // send post request to add comment to post's comments list
+      try {
+         const response = await server({
+            url: '/comment',
+            method: 'post',
+            data: { comment },
+            headers: { authorization: token },
+         });
+
+         console.log(response.data);
+
+         setComments([{ content: comment }, ...comments]);
+         setComment('');
+      } catch (e) {
+         console.log(e.message);
+      }
    };
 
    // handle comment input change
