@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import server from '../utils/server';
 
-function Post({ owner, content }) {
+function Post({ id, owner, content }) {
    const [comments, setComments] = useState([]); // list of comments
    const [comment, setComment] = useState(''); // comment content
 
@@ -15,7 +15,7 @@ function Post({ owner, content }) {
          const response = await server({
             url: '/comment',
             method: 'post',
-            data: { comment },
+            data: { postId: id, comment },
             headers: { authorization: token },
          });
 
@@ -31,6 +31,7 @@ function Post({ owner, content }) {
    // handle comment input change
    const handleCommentInput = (event) => {
       setComment(event.target.value);
+      console.log(id);
    };
 
    return (
