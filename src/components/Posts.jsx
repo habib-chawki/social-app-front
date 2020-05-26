@@ -65,7 +65,7 @@ function Posts() {
          <input type="text" value={postContent} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
          {posts.map(({ _id, owner, content }) => (
-            <Post key={_id} owner={owner} content={content} />
+            <Post key={_id} id={_id} owner={owner} content={content} />
          ))}
       </div>
    );
