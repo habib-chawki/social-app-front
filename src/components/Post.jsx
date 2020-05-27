@@ -21,7 +21,7 @@ function Post({ id, owner, content }) {
          });
 
          // update comments list
-         setComments([{ content: comment }, ...comments]);
+         setComments([...comments, { content: comment }]);
          setComment('');
       } catch (e) {
          console.log(e.message);
