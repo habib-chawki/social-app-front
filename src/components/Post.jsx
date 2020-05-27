@@ -12,15 +12,15 @@ function Post({ id, owner, content }) {
 
       // send post request to add comment to post's comments list
       try {
-         const response = await server({
+         // send postId and comment content
+         await server({
             url: '/comment',
             method: 'post',
             data: { postId: id, comment },
             headers: { authorization: token },
          });
 
-         console.log(response.data);
-
+         // update comments list
          setComments([{ content: comment }, ...comments]);
          setComment('');
       } catch (e) {
@@ -31,7 +31,6 @@ function Post({ id, owner, content }) {
    // handle comment input change
    const handleCommentInput = (event) => {
       setComment(event.target.value);
-      console.log(id);
    };
 
    return (
