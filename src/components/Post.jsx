@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import server from '../utils/server';
 
-function Post({ id, owner, content }) {
-   const [comments, setComments] = useState([]); // list of comments
+function Post({ id, owner, content, commentsList }) {
+   const [comments, setComments] = useState(commentsList); // list of comments
    const [comment, setComment] = useState(''); // comment content
 
    // handle adding new comment
@@ -43,7 +43,9 @@ function Post({ id, owner, content }) {
          {/* render every post's comments as an unordered list */}
          <ul>
             {comments.map((comment, index) => (
-               <li key={index}>{comment.content}</li>
+               <li key={index}>
+                  {comment.owner}: {comment.comment}
+               </li>
             ))}
          </ul>
       </div>

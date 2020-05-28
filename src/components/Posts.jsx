@@ -11,7 +11,6 @@ function Posts() {
 
    // render posts list when component first mounts
    useEffect(() => {
-      console.log('useEffect triggered ...');
       // fetch current user's posts list
       const fetchPosts = async () => {
          try {
@@ -43,7 +42,6 @@ function Posts() {
             headers: { authorization: token },
          });
 
-         console.log('response: ' + response.data);
          // destructure data object
          const { _id, owner, content } = response.data;
 
@@ -64,8 +62,14 @@ function Posts() {
       <div>
          <input type="text" value={postContent} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
-         {posts.map(({ _id, owner, content }) => (
-            <Post key={_id} id={_id} owner={owner} content={content} />
+         {posts.map(({ _id, owner, content, comments }) => (
+            <Post
+               key={_id}
+               id={_id}
+               owner={owner}
+               content={content}
+               commentsList={comments}
+            />
          ))}
       </div>
    );
