@@ -10,9 +10,9 @@ function Post({ id, owner, content }) {
       // retrieve auth token from localStorage
       const token = 'Bearer ' + localStorage.getItem('Token');
 
-      // send post request to add comment to post's comments list
+      // send post request to add the new comment
       try {
-         // send postId and comment content
+         // send postId and comment content with auth token
          await server({
             url: '/comment',
             method: 'post',
@@ -20,7 +20,7 @@ function Post({ id, owner, content }) {
             headers: { authorization: token },
          });
 
-         // update comments list
+         // update comments list (push new comment)
          setComments([...comments, { content: comment }]);
          setComment('');
       } catch (e) {
@@ -40,6 +40,7 @@ function Post({ id, owner, content }) {
          <p>{content}</p>
          <input type="text" value={comment} onChange={handleCommentInput} />
          <button onClick={addComment}>comment</button>
+         {/* render every post's comments as an unordered list */}
          <ul>
             {comments.map((comment, index) => (
                <li key={index}>{comment.content}</li>
