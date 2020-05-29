@@ -3,8 +3,10 @@ import Post from './Post';
 import server from '../utils/server';
 
 function Posts() {
-   const [posts, setPosts] = useState([]); // list of posts
-   const [postInputContent, setPostInputContent] = useState(''); // post content
+   const [posts, setPosts] = useState([
+      { _id: '', owner: '', content: '', comments: [] },
+   ]); // list of posts
+   const [postInput, setPostInput] = useState(''); // post input field content
 
    // retrieve auth token from localStorage
    const token = 'Bearer ' + localStorage.getItem('Token');
@@ -38,16 +40,16 @@ function Posts() {
          const response = await server({
             url: '/post',
             method: 'post',
-            data: { content: postInputContent },
+            data: { content: postInput },
             headers: { authorization: token },
          });
 
          // destructure data object
-         const { _id, owner, content } = response.data;
+         const { _id, owner, content, comments } = response.data;
 
          // update posts list
-         setPosts([{ _id, owner, content }, ...posts]);
-         setPostInputContent('');
+         setPosts([{ _id, owner, content, comments }, ...posts]);
+         setPostInput('');
       } catch (e) {
          console.log('Unable to add post ' + e.message);
       }
@@ -55,16 +57,12 @@ function Posts() {
 
    // handle post input change
    const handlePostInput = (event) => {
-      setPostInputContent(event.target.value);
+      setPostInput(event.target.value);
    };
 
    return (
       <div>
-         <input
-            type="text"
-            value={postInputContent}
-            onChange={handlePostInput}
-         />
+         <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
          {posts.map(({ _id, owner, content, comments }) => (
             <Post
