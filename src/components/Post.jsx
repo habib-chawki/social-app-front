@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import server from '../utils/server';
 
-function Post({ id, owner, content, commentsList }) {
+function Post({ postId, owner, content, commentsList }) {
    const [comments, setComments] = useState(commentsList); // list of comments
-   const [comment, setComment] = useState(''); // comment content
+   const [commentInputContent, setCommentInputContent] = useState(''); // comment content
 
    // handle adding new comment
    const addComment = async () => {
@@ -13,16 +13,19 @@ function Post({ id, owner, content, commentsList }) {
       // send post request to add the new comment
       try {
          // send postId and comment content with auth token
-         await server({
+         const response = await server({
             url: '/comment',
             method: 'post',
-            data: { postId: id, comment },
+            data: { postId, comment: commentInputContent },
             headers: { authorization: token },
          });
 
+         // destructure data object
+         const { _id, owner, comment } = response.data;
+
          // update comments list (push new comment)
-         setComments([...comments, { content: comment }]);
-         setComment('');
+         setComments([...comments, { content: commentInputContent }]);
+         setCommentInputContent('');
       } catch (e) {
          console.log(e.message);
       }
@@ -30,7 +33,7 @@ function Post({ id, owner, content, commentsList }) {
 
    // handle comment input change
    const handleCommentInput = (event) => {
-      setComment(event.target.value);
+      setCommentInputContent(event.target.value);
    };
 
    return (
@@ -38,16 +41,22 @@ function Post({ id, owner, content, commentsList }) {
       <div>
          <h2>{owner}</h2>
          <p>{content}</p>
-         <input type="text" value={comment} onChange={handleCommentInput} />
+         <input
+            type="text"
+            value={commentInputContent}
+            onChange={handleCommentInput}
+         />
          <button onClick={addComment}>comment</button>
-         {/* render every post's comments as an unordered list */}
-         <ul>
-            {comments.map((comment, index) => (
-               <li key={index}>
-                  {comment.owner}: {comment.comment}
-               </li>
-            ))}
-         </ul>
+         {/* in case comments list is not empty, render every post's comments as an unordered list*/}
+         {comments && (
+            <ul>
+               {comments.map((comment, index) => (
+                  <li key={index}>
+                     {comment.owner}: {comment.comment}
+                  </li>
+               ))}
+            </ul>
+         )}
       </div>
    );
 }
