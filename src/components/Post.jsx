@@ -3,7 +3,7 @@ import server from '../utils/server';
 
 function Post({ postId, owner, content, commentsList }) {
    const [comments, setComments] = useState(commentsList); // list of comments
-   const [commentInputContent, setCommentInputContent] = useState(''); // comment content
+   const [commentInput, setCommentInput] = useState(''); // comment input field content
 
    // handle adding new comment
    const addComment = async () => {
@@ -16,17 +16,16 @@ function Post({ postId, owner, content, commentsList }) {
          const response = await server({
             url: '/comment',
             method: 'post',
-            data: { postId, comment: commentInputContent },
+            data: { postId, comment: commentInput },
             headers: { authorization: token },
          });
 
          // destructure data object
          const { _id, owner, comment } = response.data;
 
-         console.log(response.data);
          // update comments list (push new comment)
          setComments([...comments, { _id, owner, comment }]);
-         setCommentInputContent('');
+         setCommentInput('');
       } catch (e) {
          console.log(e.message);
       }
@@ -34,7 +33,7 @@ function Post({ postId, owner, content, commentsList }) {
 
    // handle comment input change
    const handleCommentInput = (event) => {
-      setCommentInputContent(event.target.value);
+      setCommentInput(event.target.value);
    };
 
    return (
@@ -44,20 +43,18 @@ function Post({ postId, owner, content, commentsList }) {
          <p>{content}</p>
          <input
             type="text"
-            value={commentInputContent}
+            value={commentInput}
             onChange={handleCommentInput}
          />
          <button onClick={addComment}>comment</button>
          {/* in case comments list is not empty, render every post's comments as an unordered list*/}
-         {comments && (
-            <ul>
-               {comments.map((comment) => (
-                  <li key={comment._id}>
-                     {comment.owner}: {comment.comment}
-                  </li>
-               ))}
-            </ul>
-         )}
+         <ul>
+            {comments.map((comment) => (
+               <li key={comment._id}>
+                  {comment.owner}: {comment.comment}
+               </li>
+            ))}
+         </ul>
       </div>
    );
 }
