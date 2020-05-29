@@ -23,8 +23,9 @@ function Post({ postId, owner, content, commentsList }) {
          // destructure data object
          const { _id, owner, comment } = response.data;
 
+         console.log(response.data);
          // update comments list (push new comment)
-         setComments([...comments, { content: commentInputContent }]);
+         setComments([...comments, { _id, owner, comment }]);
          setCommentInputContent('');
       } catch (e) {
          console.log(e.message);
@@ -50,8 +51,8 @@ function Post({ postId, owner, content, commentsList }) {
          {/* in case comments list is not empty, render every post's comments as an unordered list*/}
          {comments && (
             <ul>
-               {comments.map((comment, index) => (
-                  <li key={index}>
+               {comments.map((comment) => (
+                  <li key={comment._id}>
                      {comment.owner}: {comment.comment}
                   </li>
                ))}
