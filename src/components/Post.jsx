@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import server from '../utils/server';
+import { getToken } from '../utils/auth';
 
 function Post({ postId, owner, content, commentsList }) {
    const [comments, setComments] = useState(commentsList); // list of comments
@@ -7,9 +9,6 @@ function Post({ postId, owner, content, commentsList }) {
 
    // handle adding new comment
    const addComment = async () => {
-      // retrieve auth token from localStorage
-      const token = 'Bearer ' + localStorage.getItem('Token');
-
       // send post request to add the new comment
       try {
          // send postId and comment content with auth token
@@ -17,7 +16,7 @@ function Post({ postId, owner, content, commentsList }) {
             url: '/comment',
             method: 'post',
             data: { postId, comment: commentInput },
-            headers: { authorization: token },
+            headers: { authorization: getToken() },
          });
 
          // destructure data object

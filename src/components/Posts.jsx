@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
+
 import Post from './Post';
 import server from '../utils/server';
+import { getToken } from '../utils/auth';
 
 function Posts() {
    const [posts, setPosts] = useState([
       { _id: '', owner: '', content: '', comments: [] },
    ]); // list of posts
    const [postInput, setPostInput] = useState(''); // post input field content
-
-   // retrieve auth token from localStorage
-   const token = 'Bearer ' + localStorage.getItem('Token');
 
    // render posts list when component first mounts
    useEffect(() => {
@@ -19,7 +18,7 @@ function Posts() {
             const response = await server({
                url: '/post/all',
                method: 'get',
-               headers: { authorization: token },
+               headers: { authorization: getToken() },
             });
 
             //populate posts list
@@ -31,7 +30,7 @@ function Posts() {
       };
 
       fetchPosts();
-   }, [token]);
+   }, []);
 
    // handle adding new post
    const addPost = async () => {
@@ -41,7 +40,7 @@ function Posts() {
             url: '/post',
             method: 'post',
             data: { content: postInput },
-            headers: { authorization: token },
+            headers: { authorization: getToken() },
          });
 
          // destructure data object
