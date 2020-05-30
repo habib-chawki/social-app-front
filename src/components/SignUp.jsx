@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import CredentialsForm from './common/CredentialsForm';
 import server from '../utils/server';
+import { setToken } from '../utils/auth';
 
 function SignUp({ history }) {
    // handle sign up form submission
@@ -14,7 +15,7 @@ function SignUp({ history }) {
          });
 
          // persist auth token to localStorage
-         localStorage.setItem('Token', response.data.token);
+         setToken(response.data.token);
 
          // navigate user to posts
          history.replace('/posts');
