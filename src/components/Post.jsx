@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import server from '../utils/server';
-import { getToken } from '../utils/auth';
+import { getToken } from '../services/token';
 
 function Post({ postId, owner, content, commentsList }) {
    const [comments, setComments] = useState(commentsList); // list of comments

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import CredentialsForm from './common/CredentialsForm';
 import server from '../utils/server';
-import { setToken } from '../utils/auth';
+import { setToken } from '../services/token';
 
 function LogIn({ history }) {
    // handle login form submission

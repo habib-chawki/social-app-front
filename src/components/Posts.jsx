@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Post from './Post';
 import server from '../utils/server';
-import { getToken } from '../utils/auth';
+import { getToken } from '../services/token';
 
 function Posts() {
    const [posts, setPosts] = useState([
