@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Post from './Post';
 import server from '../utils/server';
 import { getToken } from '../services/token';
+import { getPosts } from '../servives/post';
 
 function Posts() {
    const [posts, setPosts] = useState([
@@ -14,19 +15,11 @@ function Posts() {
    useEffect(() => {
       // fetch current user's posts list
       const fetchPosts = async () => {
-         try {
-            const response = await server({
-               url: '/post/all',
-               method: 'get',
-               headers: { authorization: getToken() },
-            });
+         const data = await getPosts();
 
-            //populate posts list
-            setPosts(response.data);
-            console.log(response.data);
-         } catch (e) {
-            console.log('Unable to fetch posts list.' + e.message);
-         }
+         //populate posts list
+         setPosts(data);
+         console.log(data);
       };
 
       fetchPosts();
