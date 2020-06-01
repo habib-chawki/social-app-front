@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import server from '../utils/server';
-import { getToken } from '../services/token';
+import { createComment } from '../services/comment';
 
 function Post({ postId, owner, content, commentsList }) {
    const [comments, setComments] = useState(commentsList); // list of comments
@@ -9,25 +8,12 @@ function Post({ postId, owner, content, commentsList }) {
 
    // handle adding new comment
    const addComment = async () => {
-      // send post request to add the new comment
-      try {
-         // send postId and comment content with auth token
-         const response = await server({
-            url: '/comment',
-            method: 'post',
-            data: { postId, comment: commentInput },
-            headers: { authorization: getToken() },
-         });
+      // destructure data object
+      const { _id, owner, comment } = await createComment(postId, commentInput);
 
-         // destructure data object
-         const { _id, owner, comment } = response.data;
-
-         // update comments list (push new comment)
-         setComments([...comments, { _id, owner, comment }]);
-         setCommentInput('');
-      } catch (e) {
-         console.log(e.message);
-      }
+      // update comments list (push new comment)
+      setComments([...comments, { _id, owner, comment }]);
+      setCommentInput('');
    };
 
    // handle comment input change
