@@ -2,32 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import CredentialsForm from './common/CredentialsForm';
-import server from '../utils/server';
-import { setToken } from '../services/token';
 
-function SignUp({ history }) {
-   // handle sign up form submission
-   const handleSignUp = async ({ email, password }) => {
-      try {
-         const response = await server.post('user/signup/', {
-            email,
-            password,
-         });
-
-         // persist auth token to localStorage
-         setToken(response.data.token);
-
-         // navigate user to posts
-         history.replace('/posts');
-      } catch (e) {
-         // Error
-         console.log(e.message);
-      }
-   };
-
+function SignUp() {
    return (
       <div>
-         <CredentialsForm title="Sign up" handleFormSubmission={handleSignUp} />
+         <CredentialsForm type="signup" title="Sign up" />
          <p>
             Already registered ? <Link to="/login">Log In</Link>
          </p>
