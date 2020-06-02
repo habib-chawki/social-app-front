@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import isEmail from 'validator/lib/isEmail';
 
-function CredentialsForm({ title, handleFormSubmission }) {
+import { handleFormSubmission } from '../../services/user';
+
+function CredentialsForm({ type, title }) {
+   // history object
+   const history = useHistory();
+
    // manage email, password and validation errors state
    const [credentials, setCredentials] = useState({
       email: '',
@@ -35,14 +41,17 @@ function CredentialsForm({ title, handleFormSubmission }) {
    };
 
    // handle form submission
-   const handleSubmit = (event) => {
+   const handleSubmit = async (event) => {
       // prevent default form submission behavior
       event.preventDefault();
 
       // reject login in case of invalid credentials (errors object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
-         // call appropriate backend service
-         handleFormSubmission(credentials);
+         // handle user login / signup
+         await handleFormSubmission(type, credentials);
+
+         // navigate user to posts page
+         history.replace('/posts');
       } else {
          console.log('Invalid credentials.');
       }
