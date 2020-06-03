@@ -1,5 +1,4 @@
 import server from '../utils/server';
-import { getToken } from './token';
 
 // get the list of posts
 async function getPosts() {
@@ -7,10 +6,10 @@ async function getPosts() {
       const response = await server({
          url: '/post/all',
          method: 'get',
-         headers: { authorization: getToken() },
       });
 
       // return the list of posts
+      console.log('list of posts' + response.data);
       return response.data;
    } catch (e) {
       console.log('Unable to fetch list of posts: ' + e.message);
@@ -25,7 +24,6 @@ async function createPost(content) {
          url: '/post',
          method: 'post',
          data: { content },
-         headers: { authorization: getToken() },
       });
 
       // return newly created post
