@@ -2,11 +2,13 @@ import server from '../utils/server';
 import { setToken } from './token';
 
 // handle signup / login form submission
-async function handleFormSubmission(url, { email, password }) {
+async function handleFormSubmission(formType, { email, password }) {
    try {
-      const response = await server.post(`user/${url}/`, {
-         email,
-         password,
+      // formType => "signup" or "login"
+      const response = await server({
+         url: `/user/${formType}`,
+         method: 'post',
+         data: { email, password },
       });
 
       // persist auth token to localStorage
