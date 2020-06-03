@@ -1,5 +1,4 @@
 import server from '../utils/server';
-import { getToken } from './token';
 
 // add a new comment
 async function createComment(postId, comment) {
@@ -9,7 +8,6 @@ async function createComment(postId, comment) {
          url: '/comment',
          method: 'post',
          data: { postId, comment },
-         headers: { authorization: getToken() },
       });
 
       // return new comment
