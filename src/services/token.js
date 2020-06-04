@@ -1,8 +1,7 @@
 const key = 'Token';
 
 function getToken() {
-   const token = localStorage.getItem(key);
-   return token ? `Bearer ${token}` : null;
+   return 'Bearer ' + localStorage.getItem(key);
 }
 
 function setToken(data) {
