@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { getToken } from '../services/token';
 
-// setup base url and get auth token
-const baseURL = 'http://localhost:3001';
-const authToken = getToken();
-
 const server = axios.create({
-   baseURL,
-   headers: { authorization: authToken },
+   baseURL: 'http://localhost:3001',
+});
+
+// add auth token to request headers
+server.interceptors.request.use((config) => {
+   config.headers.authorization = getToken();
+   return config;
 });
 
 export default server;
