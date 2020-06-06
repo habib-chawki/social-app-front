@@ -3,13 +3,13 @@ import server from '../utils/server';
 // get the list of posts
 async function getPosts() {
    try {
+      // return the list of posts
       const response = await server({
          url: '/post/all',
          method: 'get',
       });
 
-      // return the list of posts
-      console.log('list of posts' + response.data);
+      console.log(response.data);
       return response.data;
    } catch (e) {
       console.log('Unable to fetch list of posts: ' + e.message);
