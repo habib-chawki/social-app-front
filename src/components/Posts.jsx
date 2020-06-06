@@ -38,15 +38,16 @@ function Posts() {
       <div>
          <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
-         {posts.map(({ _id, owner, content, comments }) => (
-            <Post
-               key={_id}
-               postId={_id}
-               owner={owner}
-               content={content}
-               commentsList={comments}
-            />
-         ))}
+         {posts &&
+            posts.map(({ _id, owner, content, comments }) => (
+               <Post
+                  key={_id}
+                  postId={_id}
+                  owner={owner}
+                  content={content}
+                  commentsList={comments}
+               />
+            ))}
       </div>
    );
 }
