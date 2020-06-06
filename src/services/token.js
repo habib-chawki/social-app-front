@@ -1,11 +1,13 @@
 const key = 'Token';
 
+// retrieve token from localStorage
 function getToken() {
    return 'Bearer ' + localStorage.getItem(key);
 }
 
-function setToken(data) {
-   localStorage.setItem(key, data);
+// save token in localStorage
+function setToken(token) {
+   localStorage.setItem(key, token);
 }
 
 export { setToken, getToken };
