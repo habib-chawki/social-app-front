@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import Header from './common/Header';
 import Post from './Post';
 import { getPosts, createPost } from '../services/post';
 
@@ -36,6 +37,7 @@ function Posts() {
 
    return (
       <div>
+         <Header />
          <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
          {posts.map(({ _id, owner, content, comments }) => (
