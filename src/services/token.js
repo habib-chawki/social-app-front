@@ -10,4 +10,9 @@ function setToken(token) {
    localStorage.setItem(key, token);
 }
 
-export { setToken, getToken };
+// remove token from localStorage
+function removeToken() {
+   localStorage.removeItem(key);
+}
+
+export { setToken, getToken, removeToken };
