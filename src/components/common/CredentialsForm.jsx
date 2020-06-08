@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import isEmail from 'validator/lib/isEmail';
 
-import { handleFormSubmission } from '../../services/user';
+import { loginUser } from '../../services/user';
 
 function CredentialsForm({ type, title }) {
    // history object
@@ -48,7 +48,7 @@ function CredentialsForm({ type, title }) {
       // reject login in case of invalid credentials (errors object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
          // handle user login / signup
-         await handleFormSubmission(type, credentials);
+         await loginUser(type, credentials);
 
          // navigate user to posts page
          history.replace('/posts');

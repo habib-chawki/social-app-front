@@ -2,7 +2,7 @@ import server from '../utils/server';
 import { setToken, removeToken } from './token';
 
 // handle signup / login form submission
-async function handleFormSubmission(formType, { email, password }) {
+async function loginUser(formType, { email, password }) {
    try {
       // formType => "signup" or "login"
       const response = await server({
@@ -33,4 +33,4 @@ async function logoutUser() {
    }
 }
 
-export { handleFormSubmission, logoutUser };
+export { loginUser, logoutUser };
