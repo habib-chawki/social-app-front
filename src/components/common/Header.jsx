@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { removeToken } from '../../services/token';
+import { logoutUser } from '../../services/user';
 
 function Header() {
    return (
-      <Link to="/" onClick={removeToken}>
+      <Link to="/login" onClick={logoutUser}>
          Log out
       </Link>
    );
