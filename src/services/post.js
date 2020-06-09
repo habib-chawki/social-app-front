@@ -3,13 +3,13 @@ import server from '../utils/server';
 // get the list of posts
 async function getPosts() {
    try {
-      // return the list of posts
+      // retrieve list of posts
       const response = await server({
          url: '/post/all',
          method: 'get',
       });
 
-      console.log(response.data);
+      // return list of posts
       return response.data;
    } catch (e) {
       console.log('Unable to fetch list of posts: ' + e.message);
@@ -33,4 +33,18 @@ async function createPost(content) {
    }
 }
 
-export { getPosts, createPost };
+// update post by id
+async function updatePost(id, content) {
+   try {
+      const response = await server({
+         url: `/post/${id}`,
+         method: 'patch',
+         data: { content },
+      });
+
+      return response.data;
+   } catch (e) {
+      console.log('Unable to update post: ' + e.message);
+   }
+}
+export { getPosts, createPost, updatePost };
