@@ -47,4 +47,18 @@ async function updatePost(id, content) {
       console.log('Unable to update post: ' + e.message);
    }
 }
+
+// delete post by id
+async function deletePost(id) {
+   try {
+      const response = await server({
+         url: `/post/${id}`,
+         method: 'delete',
+      });
+
+      return response.data;
+   } catch (e) {
+      console.log('Unable to delete post: ' + e.message);
+   }
+}
 export { getPosts, createPost, updatePost };
