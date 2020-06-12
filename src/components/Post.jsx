@@ -22,7 +22,7 @@ function Post({ postId, owner, content, commentsList }) {
    };
 
    return (
-      // a post is defined with an owner, content and a list of comments
+      // a post is defined with an id, owner, content and a list of comments
       <div>
          <h2>{owner}</h2>
          <p>{content}</p>
@@ -32,7 +32,7 @@ function Post({ postId, owner, content, commentsList }) {
             onChange={handleCommentInput}
          />
          <button onClick={addComment}>comment</button>
-         {/* in case comments list is not empty, render every post's comments as an unordered list*/}
+         {/* render comments as an unordered list*/}
          <ul>
             {comments.map((comment) => (
                <li key={comment._id}>

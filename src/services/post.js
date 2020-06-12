@@ -61,4 +61,5 @@ async function deletePost(id) {
       console.log('Unable to delete post: ' + e.message);
    }
 }
+
 export { getPosts, createPost, updatePost, deletePost };
