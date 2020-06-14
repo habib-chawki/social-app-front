@@ -40,13 +40,13 @@ function Posts() {
          <Header />
          <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={addPost}>Add post</button>
-         {posts.map(({ _id, owner, content, comments }) => (
+         {posts.map((post) => (
             <Post
-               key={_id}
-               postId={_id}
-               owner={owner}
-               content={content}
-               commentsList={comments}
+               key={post._id}
+               postId={post._id}
+               owner={post.owner}
+               content={post.content}
+               commentsList={post.comments}
             />
          ))}
       </div>
