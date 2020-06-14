@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
 import { createComment } from '../services/comment';
-import { deletePost } from '../services/post';
 
-function Post({ postId, owner, content, commentsList }) {
+function Post({ postId, owner, content, commentsList, handleDeletePost }) {
    const [comments, setComments] = useState(commentsList); // list of comments
    const [commentInput, setCommentInput] = useState(''); // comment input field content
 
@@ -27,7 +26,7 @@ function Post({ postId, owner, content, commentsList }) {
       <div>
          <h2>{owner}</h2>
          <p>{content}</p>
-         <button onClick={() => deletePost(postId)}>delete</button>
+         <button onClick={() => handleDeletePost(postId)}>delete</button>
          <input
             type="text"
             value={commentInput}
