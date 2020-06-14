@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { createComment } from '../services/comment';
+import { deletePost } from '../services/post';
 
 function Post({ postId, owner, content, commentsList }) {
    const [comments, setComments] = useState(commentsList); // list of comments
@@ -26,6 +27,7 @@ function Post({ postId, owner, content, commentsList }) {
       <div>
          <h2>{owner}</h2>
          <p>{content}</p>
+         <button onClick={() => deletePost(postId)}>delete</button>
          <input
             type="text"
             value={commentInput}
