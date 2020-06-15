@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 
 import { createComment } from '../services/comment';
 
-function Post({ postId, owner, content, commentsList, handleDeletePost }) {
+function Post({
+   postId,
+   owner,
+   content,
+   commentsList,
+   handleUpdatePost,
+   handleDeletePost,
+}) {
    const [comments, setComments] = useState(commentsList); // list of comments
    const [commentInput, setCommentInput] = useState(''); // comment input field content
+   const [edit, setEdit] = useState(false);
+   const [newPostInput, setNewPostInput] = useState(content);
 
    // handle adding new comment
    const addComment = async () => {
@@ -21,12 +30,33 @@ function Post({ postId, owner, content, commentsList, handleDeletePost }) {
       setCommentInput(event.target.value);
    };
 
+   const handleEditPost = () => {
+      if (edit) {
+         handleUpdatePost(postId, newPostInput);
+      }
+      setEdit(!edit);
+   };
+
+   const handleNewPostInput = (event) => {
+      setNewPostInput(event.target.value);
+   };
+
    return (
       // a post is defined with an id, owner, content and a list of comments
       <div>
          <h2>{owner}</h2>
-         <p>{content}</p>
+         {edit ? (
+            <input
+               type="text"
+               value={newPostInput}
+               onChange={handleNewPostInput}
+            />
+         ) : (
+            <p>{content}</p>
+         )}
+         {/* delete post upon button click */}
          <button onClick={() => handleDeletePost(postId)}>delete</button>
+         <button onClick={handleEditPost}>edit</button>
          <input
             type="text"
             value={commentInput}
