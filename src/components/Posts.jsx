@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Header from './common/Header';
 import Post from './Post';
-import { getPosts, createPost, deletePost } from '../services/post';
+import { getPosts, createPost, updatePost, deletePost } from '../services/post';
 
 function Posts() {
    const [posts, setPosts] = useState([
@@ -41,6 +41,11 @@ function Posts() {
       setPosts(posts.filter((post) => post._id !== postId));
    };
 
+   // handle post update
+   const handleUpdatePost = (postId, postContent) => {
+      updatePost(postId, postContent);
+   };
+
    return (
       <div>
          <Header />
@@ -54,6 +59,7 @@ function Posts() {
                content={post.content}
                commentsList={post.comments}
                handleDeletePost={handleDeletePost}
+               handleUpdatePost={handleUpdatePost}
             />
          ))}
       </div>
