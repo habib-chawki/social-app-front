@@ -35,15 +35,20 @@ function Posts() {
       setPostInput(event.target.value);
    };
 
-   // handle delete post
+   // delete post
    const handleDeletePost = (postId) => {
       deletePost(postId);
       setPosts(posts.filter((post) => post._id !== postId));
    };
 
-   // handle post update
-   const handleUpdatePost = (postId, postContent) => {
-      updatePost(postId, postContent);
+   // update post
+   const handleUpdatePost = (postId, content) => {
+      updatePost(postId, content);
+      setPosts(
+         posts.map((post) =>
+            post._id !== postId ? post : { ...post, content }
+         )
+      );
    };
 
    return (
