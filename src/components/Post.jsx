@@ -30,40 +30,46 @@ function Post({
       setCommentInput(event.target.value);
    };
 
-   const handleEditPost = () => {
-      if (edit) {
-         handleUpdatePost(postId, newPostInput);
-      }
-      setEdit(!edit);
-   };
-
-   const handleNewPostInput = (event) => {
-      setNewPostInput(event.target.value);
-   };
-
    return (
       // a post is defined with an id, owner, content and a list of comments
       <div>
          <h2>{owner}</h2>
+
          {edit ? (
             <input
                type="text"
                value={newPostInput}
-               onChange={handleNewPostInput}
+               onChange={(event) => {
+                  setNewPostInput(event.target.value);
+               }}
             />
          ) : (
             <p>{content}</p>
          )}
-         {/* delete post upon button click */}
+
+         {/* delete post */}
          <button onClick={() => handleDeletePost(postId)}>delete</button>
-         <button onClick={handleEditPost}>edit</button>
+
+         {/* edit post */}
+         <button
+            onClick={() => {
+               if (edit) {
+                  handleUpdatePost(postId, newPostInput);
+               }
+               setEdit(!edit);
+            }}
+         >
+            edit
+         </button>
+
          <input
             type="text"
             value={commentInput}
             onChange={handleCommentInput}
          />
          <button onClick={addComment}>comment</button>
-         {/* render comments as an unordered list*/}
+
+         {/* render list of comments */}
          <ul>
             {comments.map((comment) => (
                <li key={comment._id}>
