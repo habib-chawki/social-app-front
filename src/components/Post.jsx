@@ -2,61 +2,57 @@ import React, { useState } from 'react';
 
 import { createComment } from '../services/comment';
 
-function Post({
-   postId,
-   owner,
-   content,
-   commentsList,
-   handleUpdatePost,
-   handleDeletePost,
-}) {
-   const [comments, setComments] = useState(commentsList); // list of comments
-   const [commentInput, setCommentInput] = useState(''); // comment input field content
-   const [edit, setEdit] = useState(false);
-   const [newPostInput, setNewPostInput] = useState(content);
+function Post({ onUpdatePost, onDeletePost, ...post }) {
+   const [comments, setComments] = useState(post.commentsList);
+   const [commentInput, setCommentInput] = useState('');
 
-   // handle adding new comment
-   const addComment = async () => {
-      // destructure data object
-      const { _id, owner, comment } = await createComment(postId, commentInput);
-
-      // update comments list (push new comment)
-      setComments([...comments, { _id, owner, comment }]);
-      setCommentInput('');
-   };
+   const [editPost, setEditPost] = useState(false);
+   const [editedPostInput, setEditedPostInput] = useState(post.content);
 
    // handle comment input change
    const handleCommentInput = (event) => {
       setCommentInput(event.target.value);
    };
 
+   // add new comment
+   const addComment = async () => {
+      const { _id, owner, comment } = await createComment(
+         post.id,
+         commentInput
+      );
+
+      // update comments list (push new comment)
+      setComments([...comments, { _id, owner, comment }]);
+      setCommentInput('');
+   };
+
    return (
       // a post is defined with an id, owner, content and a list of comments
       <div>
-         <h2>{owner}</h2>
+         <h2>{post.owner}</h2>
 
-         {edit ? (
+         {editPost ? (
             <input
                type="text"
-               value={newPostInput}
+               value={editedPostInput}
                onChange={(event) => {
-                  setNewPostInput(event.target.value);
+                  setEditedPostInput(event.target.value);
                }}
             />
          ) : (
-            <p>{content}</p>
+            <p>{post.content}</p>
          )}
 
          {/* delete post */}
-         <button onClick={() => handleDeletePost(postId)}>delete</button>
+         <button onClick={() => onDeletePost(post.id)}>delete</button>
 
          {/* edit post */}
          <button
             onClick={() => {
-               if (edit) {
-                  handleUpdatePost(postId, newPostInput);
+               if (editPost) {
+                  onUpdatePost(post.id, editedPostInput);
                }
-               setEdit(!edit);
+               setEditPost(!editPost);
             }}
          >
             edit

@@ -59,12 +59,12 @@ function Posts() {
          {posts.map((post) => (
             <Post
                key={post._id}
-               postId={post._id}
+               id={post._id}
                owner={post.owner}
                content={post.content}
-               commentsList={post.comments}
-               handleDeletePost={handleDeletePost}
-               handleUpdatePost={handleUpdatePost}
+               comments={post.comments}
+               onDeletePost={handleDeletePost}
+               onUpdatePost={handleUpdatePost}
             />
          ))}
       </div>
