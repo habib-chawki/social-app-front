@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { createComment } from '../services/comment';
 
 function Post({ onUpdatePost, onDeletePost, ...post }) {
-   const [comments, setComments] = useState(post.commentsList);
+   const [comments, setComments] = useState(post.comments);
    const [commentInput, setCommentInput] = useState('');
 
    const [editPost, setEditPost] = useState(false);
@@ -26,22 +26,40 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
       setCommentInput('');
    };
 
+   // render post content
+   const renderPostContent = () => {
+      return editPost ? (
+         <input
+            type="text"
+            value={editedPostInput}
+            onChange={(event) => {
+               setEditedPostInput(event.target.value);
+            }}
+         />
+      ) : (
+         <p>{post.content}</p>
+      );
+   };
+
+   // render list of comments
+   const renderComments = () => {
+      return (
+         <ul>
+            {comments.map((comment) => (
+               <li key={comment._id}>
+                  {comment.owner}: {comment.comment}
+               </li>
+            ))}
+         </ul>
+      );
+   };
+
    return (
       // a post is defined with an id, owner, content and a list of comments
       <div>
          <h2>{post.owner}</h2>
-
-         {editPost ? (
-            <input
-               type="text"
-               value={editedPostInput}
-               onChange={(event) => {
-                  setEditedPostInput(event.target.value);
-               }}
-            />
-         ) : (
-            <p>{post.content}</p>
-         )}
+         {/* render post content in a <p> or <input> if post is to be edited */}
+         {renderPostContent()}
 
          {/* delete post */}
          <button onClick={() => onDeletePost(post.id)}>delete</button>
@@ -66,13 +84,7 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
          <button onClick={addComment}>comment</button>
 
          {/* render list of comments */}
-         <ul>
-            {comments.map((comment) => (
-               <li key={comment._id}>
-                  {comment.owner}: {comment.comment}
-               </li>
-            ))}
-         </ul>
+         {renderComments()}
       </div>
    );
 }
