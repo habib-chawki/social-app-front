@@ -1,7 +1,7 @@
 import server from '../utils/server';
 
 // get the list of posts
-async function getPosts() {
+async function fetchPosts() {
    try {
       // retrieve list of posts
       const response = await server({
@@ -62,4 +62,4 @@ async function deletePost(id) {
    }
 }
 
-export { getPosts, createPost, updatePost, deletePost };
+export { fetchPosts, createPost, updatePost, deletePost };
