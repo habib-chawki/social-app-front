@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import Header from './common/Header';
 import Post from './Post';
-import { getPosts, createPost, updatePost, deletePost } from '../services/post';
+import {
+   fetchPosts,
+   createPost,
+   updatePost,
+   deletePost,
+} from '../services/post';
 
 function Posts() {
    const [posts, setPosts] = useState([
@@ -12,17 +17,15 @@ function Posts() {
 
    // render posts list when component first mounts
    useEffect(() => {
-      const fetchPosts = async () => {
-         // fetch and set posts list
-         const data = await getPosts();
+      // fetch and set posts list
+      (async () => {
+         const data = await fetchPosts();
          setPosts(data);
-      };
-
-      fetchPosts();
+      })();
    }, []);
 
    // handle adding new post
-   const addPost = async () => {
+   const handleCreatePost = async () => {
       const { _id, owner, content, comments } = await createPost(postInput);
 
       // update posts list
@@ -36,18 +39,16 @@ function Posts() {
    };
 
    // delete post
-   const handleDeletePost = (postId) => {
-      deletePost(postId);
-      setPosts(posts.filter((post) => post._id !== postId));
+   const handleDeletePost = (id) => {
+      deletePost(id);
+      setPosts(posts.filter((post) => post._id !== id));
    };
 
    // update post
-   const handleUpdatePost = (postId, content) => {
-      updatePost(postId, content);
+   const handleUpdatePost = (id, content) => {
+      updatePost(id, content);
       setPosts(
-         posts.map((post) =>
-            post._id !== postId ? post : { ...post, content }
-         )
+         posts.map((post) => (post._id !== id ? post : { ...post, content }))
       );
    };
 
@@ -55,7 +56,7 @@ function Posts() {
       <div>
          <Header />
          <input type="text" value={postInput} onChange={handlePostInput} />
-         <button onClick={addPost}>Add post</button>
+         <button onClick={handleCreatePost}>Add post</button>
          {posts.map((post) => (
             <Post
                key={post._id}
