@@ -24,6 +24,11 @@ function Posts() {
       })();
    }, []);
 
+   // handle post input change
+   const handlePostInput = (event) => {
+      setPostInput(event.target.value);
+   };
+
    // handle adding new post
    const handleCreatePost = async () => {
       const { _id, owner, content, comments } = await createPost(postInput);
@@ -31,17 +36,6 @@ function Posts() {
       // update posts list
       setPosts([{ _id, owner, content, comments }, ...posts]);
       setPostInput('');
-   };
-
-   // handle post input change
-   const handlePostInput = (event) => {
-      setPostInput(event.target.value);
-   };
-
-   // delete post
-   const handleDeletePost = (id) => {
-      deletePost(id);
-      setPosts(posts.filter((post) => post._id !== id));
    };
 
    // update post
@@ -52,22 +46,33 @@ function Posts() {
       );
    };
 
+   // delete post
+   const handleDeletePost = (id) => {
+      deletePost(id);
+      setPosts(posts.filter((post) => post._id !== id));
+   };
+
+   // render list of posts
+   const renderPosts = () => {
+      return posts.map((post) => (
+         <Post
+            key={post._id}
+            id={post._id}
+            owner={post.owner}
+            content={post.content}
+            comments={post.comments}
+            onDeletePost={handleDeletePost}
+            onUpdatePost={handleUpdatePost}
+         />
+      ));
+   };
+
    return (
       <div>
          <Header />
          <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={handleCreatePost}>Add post</button>
-         {posts.map((post) => (
-            <Post
-               key={post._id}
-               id={post._id}
-               owner={post.owner}
-               content={post.content}
-               comments={post.comments}
-               onDeletePost={handleDeletePost}
-               onUpdatePost={handleUpdatePost}
-            />
-         ))}
+         {renderPosts()}
       </div>
    );
 }
