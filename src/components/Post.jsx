@@ -9,13 +9,13 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
    const [editPost, setEditPost] = useState(false);
    const [editedPostInput, setEditedPostInput] = useState(post.content);
 
-   // handle comment input change
+   // keep track of comment input change
    const handleCommentInput = (event) => {
       setCommentInput(event.target.value);
    };
 
    // add new comment
-   const addComment = async () => {
+   const handleAddComment = async () => {
       const { _id, owner, comment } = await createComment(
          post.id,
          commentInput
@@ -26,7 +26,20 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
       setCommentInput('');
    };
 
-   // render post content
+   // handle update post
+   const handleUpdatePost = () => {
+      if (editPost) {
+         onUpdatePost(post.id, editedPostInput);
+      }
+      setEditPost(!editPost);
+   };
+
+   // handle delete post
+   const handleDeletePost = () => {
+      onDeletePost(post.id);
+   };
+
+   // render post content in a text <input> when editing or <p> otherwise
    const renderPostContent = () => {
       return editPost ? (
          <input
@@ -55,35 +68,15 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
    };
 
    return (
-      // a post is defined with an id, owner, content and a list of comments
       <div>
          <h2>{post.owner}</h2>
-         {/* render post content in a <p> or <input> if post is to be edited */}
          {renderPostContent()}
 
-         {/* delete post */}
-         <button onClick={() => onDeletePost(post.id)}>delete</button>
+         <button onClick={handleDeletePost}>delete</button>
+         <button onClick={handleUpdatePost}>edit</button>
+         <input value={commentInput} onChange={handleCommentInput} />
+         <button onClick={handleAddComment}>comment</button>
 
-         {/* edit post */}
-         <button
-            onClick={() => {
-               if (editPost) {
-                  onUpdatePost(post.id, editedPostInput);
-               }
-               setEditPost(!editPost);
-            }}
-         >
-            edit
-         </button>
-
-         <input
-            type="text"
-            value={commentInput}
-            onChange={handleCommentInput}
-         />
-         <button onClick={addComment}>comment</button>
-
-         {/* render list of comments */}
          {renderComments()}
       </div>
    );
