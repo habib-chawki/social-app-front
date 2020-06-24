@@ -9,23 +9,6 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
    const [editPost, setEditPost] = useState(false);
    const [editedPostInput, setEditedPostInput] = useState(post.content);
 
-   // keep track of comment input change
-   const handleCommentInput = (event) => {
-      setCommentInput(event.target.value);
-   };
-
-   // add new comment
-   const handleAddComment = async () => {
-      const { _id, owner, comment } = await createComment(
-         post.id,
-         commentInput
-      );
-
-      // update comments list (push new comment)
-      setComments([...comments, { _id, owner, comment }]);
-      setCommentInput('');
-   };
-
    // handle update post
    const handleUpdatePost = () => {
       if (editPost) {
@@ -38,6 +21,29 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
    const handleDeletePost = () => {
       onDeletePost(post.id);
    };
+
+   // keep track of comment input change
+   const handleCommentInput = (event) => {
+      setCommentInput(event.target.value);
+   };
+
+   // add new comment
+   const handleCreateComment = async () => {
+      const { _id, owner, comment } = await createComment(
+         post.id,
+         commentInput
+      );
+
+      // update comments list (push new comment)
+      setComments([...comments, { _id, owner, comment }]);
+      setCommentInput('');
+   };
+
+   // handle delete comment
+   const handleDeleteComment = () => {};
+
+   // handle update comment
+   const handleUpdateComment = () => {};
 
    // render post content in a text <input> when editing or <p> otherwise
    const renderPostContent = () => {
@@ -61,6 +67,8 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
             {comments.map((comment) => (
                <li key={comment._id}>
                   {comment.owner}: {comment.comment}
+                  <button onClick={handleDeleteComment}>delete</button>
+                  <button onClick={handleUpdateComment}>update</button>
                </li>
             ))}
          </ul>
@@ -73,9 +81,10 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
          {renderPostContent()}
 
          <button onClick={handleDeletePost}>delete</button>
-         <button onClick={handleUpdatePost}>edit</button>
+         <button onClick={handleUpdatePost}>update</button>
+
          <input value={commentInput} onChange={handleCommentInput} />
-         <button onClick={handleAddComment}>comment</button>
+         <button onClick={handleCreateComment}>comment</button>
 
          {renderComments()}
       </div>
