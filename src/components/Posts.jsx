@@ -15,7 +15,7 @@ function Posts() {
    ]);
    const [postInput, setPostInput] = useState('');
 
-   // render posts list when component first mounts
+   // render posts when component first mounts
    useEffect(() => {
       // fetch and set posts list
       (async () => {
@@ -24,7 +24,7 @@ function Posts() {
       })();
    }, []);
 
-   // handle post input change
+   // keep track of post input change
    const handlePostInput = (event) => {
       setPostInput(event.target.value);
    };
@@ -71,7 +71,7 @@ function Posts() {
       <div>
          <Header />
          <input type="text" value={postInput} onChange={handlePostInput} />
-         <button onClick={handleCreatePost}>Add post</button>
+         <button onClick={handleCreatePost}>post</button>
          {renderPosts()}
       </div>
    );
