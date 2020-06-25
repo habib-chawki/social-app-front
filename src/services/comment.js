@@ -17,4 +17,19 @@ async function createComment(postId, comment) {
    }
 }
 
-export { createComment };
+// delete comment by id
+async function deleteComment(postId, commentId) {
+   try {
+      const response = await server({
+         url: '/comment',
+         method: 'delete',
+         data: { postId, commentId },
+      });
+
+      return response.data;
+   } catch (e) {
+      console.log('Unable to delete comment: ' + e.message);
+   }
+}
+
+export { createComment, deleteComment };
