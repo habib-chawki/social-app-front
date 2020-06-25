@@ -17,6 +17,21 @@ async function createComment(postId, comment) {
    }
 }
 
+// update comment by id
+async function updateComment(postId, commentId, newComment) {
+   try {
+      const response = await server({
+         url: '/comment',
+         method: 'put',
+         data: { postId, commentId, newComment },
+      });
+
+      return response.data;
+   } catch (e) {
+      console.log('Unable to update comment: ' + e.message);
+   }
+}
+
 // delete comment by id
 async function deleteComment(postId, commentId) {
    try {
@@ -32,4 +47,4 @@ async function deleteComment(postId, commentId) {
    }
 }
 
-export { createComment, deleteComment };
+export { createComment, deleteComment, updateComment };
