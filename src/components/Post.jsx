@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-import { createComment } from '../services/comment';
+import {
+   createComment,
+   updateComment,
+   deleteComment,
+} from '../services/comment';
 
 function Post({ onUpdatePost, onDeletePost, ...post }) {
    const [comments, setComments] = useState(post.comments);
@@ -40,7 +44,9 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
    };
 
    // handle delete comment
-   const handleDeleteComment = () => {};
+   const handleDeleteComment = (postId, commentId) => {
+      deleteComment(postId, commentId);
+   };
 
    // handle update comment
    const handleUpdateComment = () => {};
@@ -67,7 +73,11 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
             {comments.map((comment) => (
                <li key={comment._id}>
                   {comment.owner}: {comment.comment}
-                  <button onClick={handleDeleteComment}>delete</button>
+                  <button
+                     onClick={() => handleDeleteComment(post.id, comment._id)}
+                  >
+                     delete
+                  </button>
                   <button onClick={handleUpdateComment}>update</button>
                </li>
             ))}
