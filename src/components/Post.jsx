@@ -49,7 +49,9 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
    };
 
    // handle update comment
-   const handleUpdateComment = () => {};
+   const handleUpdateComment = (postId, commentId) => {
+      updateComment(postId, commentId);
+   };
 
    // render post content in a text <input> when editing or <p> otherwise
    const renderPostContent = () => {
@@ -78,7 +80,11 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
                   >
                      delete
                   </button>
-                  <button onClick={handleUpdateComment}>update</button>
+                  <button
+                     onClick={() => handleUpdateComment(post.id, comment._id)}
+                  >
+                     update
+                  </button>
                </li>
             ))}
          </ul>
