@@ -46,6 +46,7 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
    // handle delete comment
    const handleDeleteComment = (postId, commentId) => {
       deleteComment(postId, commentId);
+      setComments(comments.filter((comment) => comment._id !== commentId));
    };
 
    // handle update comment
