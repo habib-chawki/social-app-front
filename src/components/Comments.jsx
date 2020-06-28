@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Comment from './Comment';
 
 import {
    createComment,
@@ -28,34 +29,29 @@ function Comments(post) {
    };
 
    // handle delete comment
-   const handleDeleteComment = (postId, commentId) => {
-      deleteComment(postId, commentId);
+   const handleDeleteComment = (commentId) => {
+      deleteComment(post.id, commentId);
       setComments(comments.filter((comment) => comment._id !== commentId));
    };
 
    // handle update comment
-   const handleUpdateComment = (postId, commentId) => {
-      updateComment(postId, commentId);
+   const handleUpdateComment = (commentId) => {
+      updateComment(post.id, commentId);
    };
 
    // render list of comments
    const renderComments = () => {
       return (
          <ul>
-            {comments.map((comment) => (
-               <li key={comment._id}>
-                  {comment.owner}: {comment.comment}
-                  <button
-                     onClick={() => handleDeleteComment(post.id, comment._id)}
-                  >
-                     delete
-                  </button>
-                  <button
-                     onClick={() => handleUpdateComment(post.id, comment._id)}
-                  >
-                     update
-                  </button>
-               </li>
+            {comments.map(({ _id, owner, comment }) => (
+               <Comment
+                  key={_id}
+                  id={_id}
+                  owner={owner}
+                  content={comment}
+                  onDeleteComment={handleDeleteComment}
+                  onUpdateComment={handleUpdateComment}
+               />
             ))}
          </ul>
       );
