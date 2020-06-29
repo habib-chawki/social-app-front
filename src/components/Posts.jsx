@@ -10,9 +10,7 @@ import {
 } from '../services/post';
 
 function Posts() {
-   const [posts, setPosts] = useState([
-      { _id: '', owner: '', content: '', comments: [] },
-   ]);
+   const [posts, setPosts] = useState([]);
    const [postInput, setPostInput] = useState('');
 
    // render posts when component first mounts
