@@ -3,23 +3,19 @@ import React from 'react';
 function Comment({ onUpdateComment, onDeleteComment, ...comment }) {
    // handle deleting the comment
    const handleDeleteComment = () => {
-      comment.onDeleteComment(comment.id);
+      onDeleteComment(comment.id);
    };
 
    // handle updating the comment
    const handleUpdateComment = () => {
-      comment.onUpdateComment(comment.id);
+      onUpdateComment(comment.id);
    };
 
    return (
-      <li key={comment._id}>
+      <li key={comment.id}>
          {comment.owner}: {comment.content}
-         <button onClick={() => handleDeleteComment(comment._id)}>
-            delete
-         </button>
-         <button onClick={() => handleUpdateComment(comment._id)}>
-            update
-         </button>
+         <button onClick={handleDeleteComment}>delete</button>
+         <button onClick={handleUpdateComment}>update</button>
       </li>
    );
 }
