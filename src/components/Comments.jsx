@@ -28,15 +28,15 @@ function Comments(post) {
       setCommentInput('');
    };
 
+   // handle update comment
+   const handleUpdateComment = (id, newContent) => {
+      updateComment(post.id, id, newContent);
+   };
+
    // handle delete comment
    const handleDeleteComment = (commentId) => {
       deleteComment(post.id, commentId);
       setComments(comments.filter((comment) => comment._id !== commentId));
-   };
-
-   // handle update comment
-   const handleUpdateComment = (commentId) => {
-      updateComment(post.id, commentId);
    };
 
    // render list of comments
