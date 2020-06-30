@@ -37,10 +37,10 @@ function Posts() {
    };
 
    // update post
-   const handleUpdatePost = (id, content) => {
-      updatePost(id, content);
+   const handleUpdatePost = (id, newContent) => {
+      updatePost(id, newContent);
       setPosts(
-         posts.map((post) => (post._id !== id ? post : { ...post, content }))
+         posts.map((post) => (post._id !== id ? post : { ...post, newContent }))
       );
    };
 
