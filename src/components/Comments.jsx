@@ -31,6 +31,13 @@ function Comments(post) {
    // handle update comment
    const handleUpdateComment = (id, newContent) => {
       updateComment(post.id, id, newContent);
+
+      const index = comments.findIndex((comment) => comment._id === id);
+      const newComments = [...comments];
+      console.log(newComments[index].comment);
+      newComments[index].comment = newContent;
+
+      setComments(newComments);
    };
 
    // handle delete comment
