@@ -34,7 +34,6 @@ function Comments(post) {
 
       const index = comments.findIndex((comment) => comment._id === id);
       const newComments = [...comments];
-      console.log(newComments[index].comment);
       newComments[index].comment = newContent;
 
       setComments(newComments);
