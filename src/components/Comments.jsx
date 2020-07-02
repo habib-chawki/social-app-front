@@ -14,13 +14,13 @@ function Comments(post) {
 
    // add new comment
    const handleCreateComment = async () => {
-      const { _id, owner, comment } = await comment.create(
+      const { _id, owner, content } = await comment.create(
          post.id,
          commentInput
       );
 
       // update comments list (push new comment)
-      setComments([...comments, { _id, owner, comment }]);
+      setComments([...comments, { _id, owner, content }]);
       setCommentInput('');
    };
 
@@ -45,12 +45,12 @@ function Comments(post) {
    const renderComments = () => {
       return (
          <ul>
-            {comments.map(({ _id, owner, comment }) => (
+            {comments.map(({ _id, owner, content }) => (
                <Comment
                   key={_id}
                   id={_id}
                   owner={owner}
-                  content={comment}
+                  content={content}
                   onDeleteComment={handleDeleteComment}
                   onUpdateComment={handleUpdateComment}
                />
