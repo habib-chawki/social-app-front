@@ -1,7 +1,7 @@
 import server from '../utils/server';
 
 // add a new comment
-async function createComment(postId, comment) {
+async function create(postId, comment) {
    try {
       const response = await server({
          url: '/comment',
@@ -17,7 +17,7 @@ async function createComment(postId, comment) {
 }
 
 // update comment by id
-async function updateComment(postId, commentId, newComment) {
+async function update(postId, commentId, newComment) {
    try {
       await server({
          url: '/comment',
@@ -30,7 +30,7 @@ async function updateComment(postId, commentId, newComment) {
 }
 
 // delete comment by id
-async function deleteComment(postId, commentId) {
+async function remove(postId, commentId) {
    try {
       await server({
          url: '/comment',
@@ -42,4 +42,4 @@ async function deleteComment(postId, commentId) {
    }
 }
 
-export { createComment, deleteComment, updateComment };
+export { create, update, remove };
