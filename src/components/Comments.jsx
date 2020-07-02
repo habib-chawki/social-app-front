@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-import {
-   createComment,
-   updateComment,
-   deleteComment,
-} from '../services/comment';
+import * as comment from '../services/comment';
 
 function Comments(post) {
    const [comments, setComments] = useState(post.comments);
@@ -18,7 +14,7 @@ function Comments(post) {
 
    // add new comment
    const handleCreateComment = async () => {
-      const { _id, owner, comment } = await createComment(
+      const { _id, owner, comment } = await comment.create(
          post.id,
          commentInput
       );
@@ -30,7 +26,7 @@ function Comments(post) {
 
    // handle update comment
    const handleUpdateComment = (id, newContent) => {
-      updateComment(post.id, id, newContent);
+      comment.update(post.id, id, newContent);
 
       const index = comments.findIndex((comment) => comment._id === id);
       const newComments = [...comments];
@@ -41,7 +37,7 @@ function Comments(post) {
 
    // handle delete comment
    const handleDeleteComment = (commentId) => {
-      deleteComment(post.id, commentId);
+      comment.remove(post.id, commentId);
       setComments(comments.filter((comment) => comment._id !== commentId));
    };
 
