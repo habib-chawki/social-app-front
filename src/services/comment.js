@@ -1,12 +1,12 @@
 import server from '../utils/server';
 
 // add a new comment
-async function create(postId, comment) {
+async function create(postId, content) {
    try {
       const response = await server({
          url: '/comment',
          method: 'post',
-         data: { postId, comment },
+         data: { postId, content },
       });
 
       // return new comment
