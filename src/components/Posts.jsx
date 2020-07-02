@@ -2,12 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import Header from './common/Header';
 import Post from './Post';
-import {
-   fetchPosts,
-   createPost,
-   updatePost,
-   deletePost,
-} from '../services/post';
+
+import * as post from '../services/post';
 
 function Posts() {
    const [posts, setPosts] = useState([]);
@@ -17,7 +13,7 @@ function Posts() {
    useEffect(() => {
       // fetch and set posts list
       (async () => {
-         const data = await fetchPosts();
+         const data = await post.fetchAll();
          setPosts(data);
       })();
    }, []);
@@ -29,7 +25,7 @@ function Posts() {
 
    // handle adding new post
    const handleCreatePost = async () => {
-      const { _id, owner, content, comments } = await createPost(postInput);
+      const { _id, owner, content, comments } = await post.create(postInput);
 
       // update posts list
       setPosts([{ _id, owner, content, comments }, ...posts]);
@@ -38,7 +34,7 @@ function Posts() {
 
    // update post
    const handleUpdatePost = (id, newContent) => {
-      updatePost(id, newContent);
+      post.update(id, newContent);
       setPosts(
          posts.map((post) =>
             post._id !== id ? post : { ...post, content: newContent }
@@ -48,7 +44,7 @@ function Posts() {
 
    // delete post
    const handleDeletePost = (id) => {
-      deletePost(id);
+      post.remove(id);
       setPosts(posts.filter((post) => post._id !== id));
    };
 
