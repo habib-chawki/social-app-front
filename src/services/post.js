@@ -1,7 +1,7 @@
 import server from '../utils/server';
 
 // get the list of posts
-async function fetchPosts() {
+async function fetchAll() {
    try {
       // retrieve list of posts
       const response = await server({
@@ -17,7 +17,7 @@ async function fetchPosts() {
 }
 
 // create a new post
-async function createPost(content) {
+async function create(content) {
    try {
       // make api request to persist post in db
       const response = await server({
@@ -34,7 +34,7 @@ async function createPost(content) {
 }
 
 // update post by id
-async function updatePost(id, content) {
+async function update(id, content) {
    try {
       const response = await server({
          url: `/post/${id}`,
@@ -49,7 +49,7 @@ async function updatePost(id, content) {
 }
 
 // delete post by id
-async function deletePost(id) {
+async function remove(id) {
    try {
       const response = await server({
          url: `/post/${id}`,
@@ -62,4 +62,4 @@ async function deletePost(id) {
    }
 }
 
-export { fetchPosts, createPost, updatePost, deletePost };
+export { fetchAll, create, update, remove };
