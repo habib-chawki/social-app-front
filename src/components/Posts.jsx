@@ -43,7 +43,7 @@ function Posts() {
    };
 
    // delete post
-   const handleDeletePost = (id) => {
+   const handleRemovePost = (id) => {
       post.remove(id);
       setPosts(posts.filter((post) => post._id !== id));
    };
@@ -57,8 +57,8 @@ function Posts() {
             owner={post.owner}
             content={post.content}
             comments={post.comments}
-            onDeletePost={handleDeletePost}
-            onUpdatePost={handleUpdatePost}
+            onRemove={handleRemovePost}
+            onUpdate={handleUpdatePost}
          />
       ));
    };

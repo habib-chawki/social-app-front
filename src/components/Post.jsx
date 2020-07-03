@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import Comments from './Comments';
 
-function Post({ onUpdatePost, onDeletePost, ...post }) {
+function Post(post) {
    const [editPost, setEditPost] = useState(false);
    const [editedPostInput, setEditedPostInput] = useState(post.content);
 
    // handle update post
    const handleUpdatePost = () => {
       if (editPost) {
-         onUpdatePost(post.id, editedPostInput);
+         post.onUpdate(post.id, editedPostInput);
       }
       setEditPost(!editPost);
    };
 
    // handle delete post
-   const handleDeletePost = () => {
-      onDeletePost(post.id);
+   const handleRemovePost = () => {
+      post.onRemove(post.id);
    };
 
    // render post content in a text <input> when editing or <p> otherwise
@@ -38,7 +38,7 @@ function Post({ onUpdatePost, onDeletePost, ...post }) {
          <h2>{post.owner}</h2>
          {renderPostContent()}
 
-         <button onClick={handleDeletePost}>delete</button>
+         <button onClick={handleRemovePost}>delete</button>
          <button onClick={handleUpdatePost}>update</button>
 
          <Comments id={post.id} comments={post.comments} />
