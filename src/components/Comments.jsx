@@ -30,7 +30,7 @@ function Comments(post) {
 
       const index = comments.findIndex((comment) => comment._id === id);
       const newComments = [...comments];
-      newComments[index].comment = newContent;
+      newComments[index].content = newContent;
 
       setComments(newComments);
    };
