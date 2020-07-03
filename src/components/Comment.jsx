@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Comment({ onUpdateComment, onDeleteComment, ...comment }) {
+function Comment(comment) {
    const [editComment, setEditComment] = useState(false);
    const [editedCommentInput, setEditedCommentInput] = useState(
       comment.content
@@ -9,14 +9,14 @@ function Comment({ onUpdateComment, onDeleteComment, ...comment }) {
    // handle updating the comment
    const handleUpdateComment = () => {
       if (editComment) {
-         onUpdateComment(comment.id, editedCommentInput);
+         comment.onUpdate(comment.id, editedCommentInput);
       }
       setEditComment(!editComment);
    };
 
    // handle deleting the comment
-   const handleDeleteComment = () => {
-      onDeleteComment(comment.id);
+   const handleRemoveComment = () => {
+      comment.onRemove(comment.id);
    };
 
    const renderCommentContent = () => {
@@ -37,7 +37,7 @@ function Comment({ onUpdateComment, onDeleteComment, ...comment }) {
       <li key={comment.id}>
          <h4>{comment.owner}</h4>
          {renderCommentContent()}
-         <button onClick={handleDeleteComment}>delete</button>
+         <button onClick={handleRemoveComment}>delete</button>
          <button onClick={handleUpdateComment}>update</button>
       </li>
    );

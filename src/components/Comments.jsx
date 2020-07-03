@@ -36,7 +36,7 @@ function Comments(post) {
    };
 
    // handle delete comment
-   const handleDeleteComment = (commentId) => {
+   const handleRemoveComment = (commentId) => {
       comment.remove(post.id, commentId);
       setComments(comments.filter((comment) => comment._id !== commentId));
    };
@@ -51,8 +51,8 @@ function Comments(post) {
                   id={_id}
                   owner={owner}
                   content={content}
-                  onDeleteComment={handleDeleteComment}
-                  onUpdateComment={handleUpdateComment}
+                  onRemove={handleRemoveComment}
+                  onUpdate={handleUpdateComment}
                />
             ))}
          </ul>
