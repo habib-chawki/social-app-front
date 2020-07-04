@@ -1,21 +1,5 @@
 import server from '../utils/server';
 
-// get the list of posts
-async function fetchAll() {
-   try {
-      // retrieve list of posts
-      const response = await server({
-         url: '/post/all',
-         method: 'get',
-      });
-
-      // return list of posts
-      return response.data;
-   } catch (e) {
-      console.log('Unable to fetch list of posts: ' + e.message);
-   }
-}
-
 // create a new post
 async function create(content) {
    try {
@@ -29,7 +13,38 @@ async function create(content) {
       // return newly created post
       return response.data;
    } catch (e) {
-      console.log('Unable to add post: ' + e.message);
+      console.log('Unable to create post: ' + e.message);
+   }
+}
+
+// get a single post by id
+async function fetch(id) {
+   try {
+      const response = await server({
+         url: `/post/${id}`,
+         method: 'get',
+      });
+
+      // return post
+      return response.data;
+   } catch (e) {
+      console.log('Unable to fetch post: ' + e.message);
+   }
+}
+
+// get the list of posts
+async function fetchAll() {
+   try {
+      // retrieve list of posts
+      const response = await server({
+         url: '/post/all',
+         method: 'get',
+      });
+
+      // return list of posts
+      return response.data;
+   } catch (e) {
+      console.log('Unable to fetch list of posts: ' + e.message);
    }
 }
 
@@ -58,8 +73,8 @@ async function remove(id) {
 
       return response.data;
    } catch (e) {
-      console.log('Unable to delete post: ' + e.message);
+      console.log('Unable to remove post: ' + e.message);
    }
 }
 
-export { fetchAll, create, update, remove };
+export { create, fetch, fetchAll, update, remove };
