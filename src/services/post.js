@@ -77,4 +77,18 @@ async function remove(id) {
    }
 }
 
-export { create, fetch, fetchAll, update, remove };
+// delete all posts
+async function removeAll() {
+   try {
+      const response = await server({
+         url: '/post/all',
+         method: 'delete',
+      });
+
+      return response.data;
+   } catch (e) {
+      console.log('Unable to remove all posts ' + e.message);
+   }
+}
+
+export { create, fetch, fetchAll, update, remove, removeAll };
