@@ -32,6 +32,11 @@ function Posts() {
       setPostInput('');
    };
 
+   // get post
+   const handleFetchPost = async (id) => {
+      await post.fetch(id);
+   };
+
    // update post
    const handleUpdatePost = (id, newContent) => {
       post.update(id, newContent);
@@ -59,6 +64,7 @@ function Posts() {
             comments={post.comments}
             onRemove={handleRemovePost}
             onUpdate={handleUpdatePost}
+            onFetch={handleFetchPost}
          />
       ));
    };
