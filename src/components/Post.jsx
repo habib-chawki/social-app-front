@@ -5,6 +5,10 @@ function Post(post) {
    const [editPost, setEditPost] = useState(false);
    const [editedPostInput, setEditedPostInput] = useState(post.content);
 
+   const handleFetchPost = () => {
+      post.onFetch(post.id);
+   };
+
    // handle update post
    const handleUpdatePost = () => {
       if (editPost) {
@@ -34,7 +38,7 @@ function Post(post) {
    };
 
    return (
-      <div>
+      <div onClick={handleFetchPost}>
          <h2>{post.owner}</h2>
          {renderPostContent()}
 
