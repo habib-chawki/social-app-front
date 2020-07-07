@@ -5,8 +5,10 @@ function Post(post) {
    const [editPost, setEditPost] = useState(false);
    const [editedPostInput, setEditedPostInput] = useState(post.content);
 
-   const handleFetchPost = () => {
-      post.onFetch(post.id);
+   const handleFetchPost = (event) => {
+      if (event.target.getAttribute('name') === 'post') {
+         post.onFetch(post.id);
+      }
    };
 
    // handle update post
@@ -38,7 +40,7 @@ function Post(post) {
    };
 
    return (
-      <div onClick={handleFetchPost}>
+      <div name="post" onClick={handleFetchPost}>
          <h2>{post.owner}</h2>
          {renderPostContent()}
 
