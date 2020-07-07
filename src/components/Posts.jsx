@@ -34,7 +34,8 @@ function Posts() {
 
    // get post
    const handleFetchPost = async (id) => {
-      await post.fetch(id);
+      const data = await post.fetch(id);
+      console.log(data);
    };
 
    // update post
