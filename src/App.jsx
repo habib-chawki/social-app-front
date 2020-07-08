@@ -11,11 +11,22 @@ function App() {
    return (
       <div>
          <Switch>
-            <Route exact path="/" component={SignUp} />
-            <Route path="/login" component={LogIn} />
-            <Route exact path="/posts/:id" component={Post} />
-            <Route path="/posts" component={Posts} />
-            <Route path="/not-found" component={NotFound} />
+            <Route exact path="/">
+               <SignUp />
+            </Route>
+
+            <Route path="/login">
+               <LogIn />
+            </Route>
+            <Route exact path="/posts/:id">
+               <Post />
+            </Route>
+            <Route path="/posts">
+               <Posts />
+            </Route>
+            <Route path="/not-found">
+               <NotFound />
+            </Route>
             <Redirect to="/not-found" />
          </Switch>
       </div>
