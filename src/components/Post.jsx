@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import Comments from './Comments';
 
 function Post(post) {
    const [editPost, setEditPost] = useState(false);
    const [editedPostInput, setEditedPostInput] = useState(post.content);
 
+   const history = useHistory();
+
    const handleFetchPost = (event) => {
-      if (event.target.getAttribute('name') === 'post') {
-         post.onFetch(post.id);
-      }
+      console.log(history);
+      history.push({ pathname: `/posts/${post.id}`, state: post });
+      // if (event.target.getAttribute('name') === 'post') {
+      //    post.onFetch(post.id);
+      // }
    };
 
    // handle update post
