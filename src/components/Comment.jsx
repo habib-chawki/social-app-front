@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import withEdit from './higher-order/withEdit';
 
 function Comment(comment) {
    const [editComment, setEditComment] = useState(false);
@@ -43,4 +44,4 @@ function Comment(comment) {
    );
 }
 
-export default Comment;
+export default withEdit(Comment);
