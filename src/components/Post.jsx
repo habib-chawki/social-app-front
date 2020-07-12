@@ -1,29 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import withEdit from './higher-order/withEdit';
-// import { useHistory } from 'react-router-dom';
 
 import Comments from './Comments';
 
 function Post(post) {
-   const [editPost, setEditPost] = useState(false);
-   const [editedPostInput, setEditedPostInput] = useState(post.content);
-
-   // const history = useHistory();
-
    const handleFetchPost = (event) => {
-      // console.log(history);
-      // history.push({ pathname: `/posts/${post.id}`, state: post });
       if (event.target.getAttribute('name') === 'post') {
          post.onFetch(post.id);
       }
-   };
-
-   // handle update post
-   const handleUpdatePost = () => {
-      if (editPost) {
-         post.onUpdate(post.id, editedPostInput);
-      }
-      setEditPost(!editPost);
    };
 
    // handle delete post
@@ -31,28 +15,14 @@ function Post(post) {
       post.onRemove(post.id);
    };
 
-   // render post content in a text <input> when editing or <p> otherwise
-   const renderPostContent = () => {
-      return editPost ? (
-         <input
-            type="text"
-            value={editedPostInput}
-            onChange={(event) => {
-               setEditedPostInput(event.target.value);
-            }}
-         />
-      ) : (
-         <p>{post.content}</p>
-      );
-   };
-
    return (
       <div name="post" onClick={handleFetchPost}>
          <h2>{post.owner}</h2>
-         {renderPostContent()}
+
+         {post.renderContent()}
 
          <button onClick={handleRemovePost}>delete</button>
-         <button onClick={handleUpdatePost}>update</button>
+         <button onClick={() => post.handleUpdate()}>update</button>
 
          <Comments id={post.id} comments={post.comments} />
       </div>
