@@ -1,14 +1,39 @@
 import React, { useState } from 'react';
 
-function withEdit(Component, content = '') {
+function withEdit(Component) {
    return (props) => {
-      // const [editContent, setEditContent] = useState(false);
-      // const [editedContent, setEditedContent] = useState(content);
+      const [editContent, setEditContent] = useState(false);
+      const [editedContent, setEditedContent] = useState(props.content);
+
+      // handle component update
+      const handleUpdate = () => {
+         if (editContent) {
+            props.onUpdate(props.id, editedContent);
+         }
+         setEditContent(!editContent);
+      };
+
+      // render component content
+      const renderContent = () => {
+         return editContent ? (
+            <input
+               type="text"
+               value={editedContent}
+               onChange={(event) => {
+                  setEditedContent(event.target.value);
+               }}
+            />
+         ) : (
+            <p>{props.content}</p>
+         );
+      };
 
       return (
-         <div>
-            <Component {...props} /> <p>hi commnet</p>
-         </div>
+         <Component
+            {...props}
+            renderContent={renderContent}
+            handleUpdate={handleUpdate}
+         />
       );
    };
 }
