@@ -57,31 +57,33 @@ function CredentialsForm({ type, title }) {
       }
    };
 
+   const renderInput = (type, name) => {
+      return (
+         <div>
+            <label htmlFor={name}>{name + ': '}</label>
+            <input
+               type={type}
+               id={name}
+               name={name}
+               value={credentials[name]}
+               onChange={handleCredentials}
+               placeholder={`${name} ...`}
+            />
+         </div>
+      );
+   };
    // form with email, password inputs and a submit button
    return (
       <div>
          <h1>{title}</h1>
          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input
-               type="text"
-               name="email"
-               value={credentials.email}
-               onChange={handleCredentials}
-               id="email"
-               placeholder="Email..."
-            />
+            {renderInput('text', 'email')}
+
             {/* render validation error conditionally */}
             {credentials.errors.email && <p>{credentials.errors.email}</p>}
-            <label htmlFor="password">Password:</label>
-            <input
-               type="password"
-               name="password"
-               value={credentials.password}
-               onChange={handleCredentials}
-               id="password"
-               placeholder="Password..."
-            />
+
+            {renderInput('password', 'password')}
+
             {credentials.errors.password && (
                <p>{credentials.errors.password}</p>
             )}
