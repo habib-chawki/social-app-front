@@ -57,6 +57,7 @@ function CredentialsForm({ type, title }) {
       }
    };
 
+   // render input (email / password)
    const renderInput = (type, name) => {
       return (
          <div>
@@ -72,21 +73,23 @@ function CredentialsForm({ type, title }) {
          </div>
       );
    };
+
+   // render validation error conditionally
+   const renderError = (input) => {
+      return credentials.errors[input] && <p>{credentials.errors[input]}</p>;
+   };
+
    // form with email, password inputs and a submit button
    return (
       <div>
          <h1>{title}</h1>
          <form onSubmit={handleSubmit}>
             {renderInput('text', 'email')}
-
-            {/* render validation error conditionally */}
-            {credentials.errors.email && <p>{credentials.errors.email}</p>}
+            {renderError('email')}
 
             {renderInput('password', 'password')}
+            {renderError('password')}
 
-            {credentials.errors.password && (
-               <p>{credentials.errors.password}</p>
-            )}
             <input type="submit" value={title} />
          </form>
       </div>
