@@ -6,7 +6,7 @@ import CredentialsForm from './common/CredentialsForm';
 function SignUp() {
    return (
       <div>
-         <CredentialsForm type="signup" title="Sign up" />
+         <CredentialsForm submissionType="signup" title="Sign up" />
          <p>
             Already registered ? <Link to="/login">Log In</Link>
          </p>
