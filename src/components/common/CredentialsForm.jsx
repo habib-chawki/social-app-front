@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import isEmail from 'validator/lib/isEmail';
 
+import isInputValid from '../../utils/validation';
 import { loginUser } from '../../services/user';
 
-function CredentialsForm({ type, title }) {
+function CredentialsForm({ submissionType, title }) {
    // history object
    const history = useHistory();
 
@@ -18,24 +18,19 @@ function CredentialsForm({ type, title }) {
    // validate and update email and password input
    const handleCredentials = ({ target }) => {
       const errors = credentials.errors; // keep track of validation errors
+
       const inputValue = target.value.trim(); // trim input value
+      const inputType = target.name;
 
-      // validate email or password accordingly
-      const isValid =
-         target.name === 'email' ? isEmail(inputValue) : inputValue.length >= 5;
-
-      if (!isValid) {
-         // add validation error
-         errors[target.name] = `Invalid ${target.name}.`;
-      } else {
-         // delete key (email / password) from errors object if no validation errors occurred
-         delete errors[target.name];
-      }
+      // add validation error if any, otherwise delete key (email or password) from errors object
+      !isInputValid(inputType, inputValue)
+         ? (errors[inputType] = `Invalid ${inputType}.`)
+         : delete errors[inputType];
 
       // update credentials state
       setCredentials({
          ...credentials,
-         [target.name]: inputValue,
+         [inputType]: inputValue,
          errors,
       });
    };
@@ -48,7 +43,7 @@ function CredentialsForm({ type, title }) {
       // reject login in case of invalid credentials (errors object is not empty)
       if (Object.keys(credentials.errors).length === 0) {
          // handle user login / signup
-         await loginUser(type, credentials);
+         await loginUser(submissionType, credentials);
 
          // navigate user to posts page
          history.replace('/posts');
@@ -57,7 +52,7 @@ function CredentialsForm({ type, title }) {
       }
    };
 
-   // render input (email / password)
+   // render input (email or password)
    const renderInput = (type, name) => {
       return (
          <div>
@@ -74,7 +69,7 @@ function CredentialsForm({ type, title }) {
       );
    };
 
-   // render validation error conditionally
+   // render validation errors if any
    const renderError = (input) => {
       return credentials.errors[input] && <p>{credentials.errors[input]}</p>;
    };
