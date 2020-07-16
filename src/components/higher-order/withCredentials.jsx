@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import isInputValid from '../../utils/validation';
 import { loginUser } from '../../services/user';
 
-function withCredentials(Component) {
+function withCredentials(Component, link) {
    return (props) => {
       // history object
       const history = useHistory();
@@ -80,9 +80,18 @@ function withCredentials(Component) {
       };
 
       // render input with validation errors
-      const renderInputWithValidation = ({ type, name }) => {
+      const render = ({ type, name }) => {
          renderInput(type, name);
          renderError(name);
+      };
+
+      // render link
+      const renderLink = () => {
+         return (
+            <p>
+               {link.message} <Link to={link.to}>{link.label}</Link>
+            </p>
+         );
       };
 
       // form with email, password inputs and a submit button
@@ -90,13 +99,11 @@ function withCredentials(Component) {
          <div>
             <h1>{title}</h1>
             <form onSubmit={handleSubmit}>
-               {renderInputWithValidation({ type: 'text', name: 'email' })}
-               {renderInputWithValidation({
-                  type: 'password',
-                  name: 'password',
-               })}
+               {render({ type: 'text', name: 'email' })}
+               {render({ type: 'password', name: 'password' })}
                <input type="submit" value={title} />
             </form>
+            {renderLink()}
          </div>
       );
 
