@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CredentialsForm from './common/CredentialsForm';
+import { signupUser } from '../../services/user';
+import withValidation from '../higher-order/withValidation';
 
-function SignUp() {
+function SignUp({ renderInput, handleSubmit }) {
    return (
       <div>
-         <CredentialsForm submissionType="signup" title="Sign up" />
+         <h1>Sign Up</h1>
+         <form onSubmit={handleSubmit}>
+            {renderInput({ type: 'text', name: 'email' })}
+            {renderInput({ type: 'password', name: 'password' })}
+            <input type="submit" />
+         </form>
          <p>
             Already registered ? <Link to="/login">Log In</Link>
          </p>
@@ -14,4 +20,4 @@ function SignUp() {
    );
 }
 
-export default SignUp;
+export default withValidation(SignUp, signupUser);
