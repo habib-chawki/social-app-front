@@ -1,5 +1,5 @@
 import React from 'react';
-import withEdit from './higher-order/withEdit';
+import withEdit from '../higher-order/withEdit';
 
 import Comments from './Comments';
 
