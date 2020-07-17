@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import SignUp from './components/SignUp';
-import LogIn from './components/LogIn';
-import Posts from './components/Posts';
-import Post from './components/Post';
-import NotFound from './components/NotFound';
+import SignUp from './components/custom/SignUp';
+import LogIn from './components/custom/LogIn';
+import Posts from './components/custom/Posts';
+import Post from './components/custom/Post';
+import NotFound from './components/common/NotFound';
 
 function App() {
    return (
