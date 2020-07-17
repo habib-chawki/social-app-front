@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import Header from './common/Header';
+import Header from '../common/Header';
 import Post from './Post';
 
-import * as post from '../services/post';
+import * as post from '../../services/post';
 
 function Posts() {
    const [posts, setPosts] = useState([]);
