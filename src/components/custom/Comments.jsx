@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-import * as comment from '../services/comment';
+import * as comment from '../../services/comment';
 
 function Comments(post) {
    const [comments, setComments] = useState(post.comments);
