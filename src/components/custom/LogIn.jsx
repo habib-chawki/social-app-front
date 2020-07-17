@@ -1,17 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CredentialsForm from './common/CredentialsForm';
+import { loginUser } from '../../services/user';
+import withValidation from '../higher-order/withValidation';
 
-function LogIn() {
+function LogIn({ renderInput, handleSubmit }) {
    return (
       <div>
-         <CredentialsForm submissionType="login" title="Log in" />
+         <h1>Log In</h1>
+         <form onSubmit={handleSubmit}>
+            {renderInput({ type: 'text', name: 'email' })}
+            {renderInput({ type: 'password', name: 'password' })}
+            <input type="submit" onClick={handleSubmit} />
+         </form>
          <p>
-            Not registered yet ? <Link to="/">Sign Up</Link>
+            Not registered yet ? <Link to="/">Sign Up</Link>{' '}
          </p>
       </div>
    );
 }
 
-export default LogIn;
+export default withValidation(LogIn, loginUser);
