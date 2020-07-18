@@ -1,22 +1,16 @@
 import React from 'react';
-import withEdit from '../higher-order/withEdit';
 
 import Comments from './Comments';
+import withEdit from '../higher-order/withEdit';
 
 function Post(post) {
-   const handleFetchPost = (event) => {
-      if (event.target.getAttribute('name') === 'post') {
-         post.onFetch(post.id);
-      }
-   };
-
-   // handle delete post
+   // delete post
    const handleRemovePost = () => {
       post.onRemove(post.id);
    };
 
    return (
-      <div name="post" onClick={handleFetchPost}>
+      <div>
          <h2>{post.owner}</h2>
 
          {post.renderContent()}
