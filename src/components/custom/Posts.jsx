@@ -9,9 +9,9 @@ function Posts() {
    const [posts, setPosts] = useState([]);
    const [postInput, setPostInput] = useState('');
 
-   // render posts when component first mounts
+   // render posts list when component first mounts
    useEffect(() => {
-      // fetch and set posts list
+      // call backend service to fetch list of posts, then update UI
       (async () => {
          const data = await post.fetchAll();
          setPosts(data);
@@ -25,9 +25,10 @@ function Posts() {
 
    // handle adding new post
    const handleCreatePost = async () => {
+      // call backend service to create post
       const { _id, owner, content, comments } = await post.create(postInput);
 
-      // update posts list
+      // update posts list and UI
       setPosts([{ _id, owner, content, comments }, ...posts]);
       setPostInput('');
    };
@@ -38,9 +39,12 @@ function Posts() {
       console.log(data);
    };
 
-   // update post
+   // update post content
    const handleUpdatePost = (id, newContent) => {
+      // call backend service to update post
       post.update(id, newContent);
+
+      // update UI
       setPosts(
          posts.map((post) =>
             post._id !== id ? post : { ...post, content: newContent }
@@ -50,7 +54,10 @@ function Posts() {
 
    // delete post
    const handleRemovePost = (id) => {
+      // call backend service to delete post
       post.remove(id);
+
+      // update UI
       setPosts(posts.filter((post) => post._id !== id));
    };
 
