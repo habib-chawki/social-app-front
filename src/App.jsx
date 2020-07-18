@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SignUp from './components/custom/SignUp';
 import LogIn from './components/custom/LogIn';
 import Posts from './components/custom/Posts';
-import Post from './components/custom/Post';
 import NotFound from './components/common/NotFound';
 
 function App() {
@@ -18,12 +17,6 @@ function App() {
             <Route path="/login">
                <LogIn />
             </Route>
-
-            <Route
-               exact
-               path="/posts/:id"
-               render={(props) => <Post {...props} />}
-            ></Route>
 
             <Route path="/posts">
                <Posts />
