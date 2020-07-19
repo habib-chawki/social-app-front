@@ -5,12 +5,17 @@ function withEdit(Component) {
       const [editContent, setEditContent] = useState(false);
       const [editedContent, setEditedContent] = useState(props.content);
 
-      // handle component update
+      // update component
       const handleUpdate = () => {
          if (editContent) {
             props.onUpdate(props.id, editedContent);
          }
          setEditContent(!editContent);
+      };
+
+      // delete component
+      const handleRemove = () => {
+         props.onRemove(props.id);
       };
 
       // render component content
@@ -33,6 +38,7 @@ function withEdit(Component) {
             {...props}
             renderContent={renderContent}
             handleUpdate={handleUpdate}
+            handleRemove={handleRemove}
          />
       );
    };
