@@ -33,12 +33,6 @@ function Posts() {
       setPostInput('');
    };
 
-   // get post
-   const handleFetchPost = async (id) => {
-      const data = await post.fetch(id);
-      console.log(data);
-   };
-
    // update post content
    const handleUpdatePost = (id, newContent) => {
       // call backend service to update post
@@ -72,7 +66,6 @@ function Posts() {
             comments={post.comments}
             onRemove={handleRemovePost}
             onUpdate={handleUpdatePost}
-            onFetch={handleFetchPost}
          />
       ));
    };
