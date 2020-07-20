@@ -11,7 +11,7 @@ function LogIn({ renderInput, handleSubmit }) {
          <form onSubmit={handleSubmit}>
             {renderInput({ type: 'text', name: 'email' })}
             {renderInput({ type: 'password', name: 'password' })}
-            <input type="submit" onClick={handleSubmit} />
+            <input type="submit" value="Log in" />
          </form>
          <p>
             Not registered yet ? <Link to="/">Sign Up</Link>{' '}
