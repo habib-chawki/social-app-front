@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import SignUp from './components/custom/SignUp';
 import LogIn from './components/custom/LogIn';
+import Profile from './components/custom/Profile';
 import Posts from './components/custom/Posts';
 import NotFound from './components/common/NotFound';
 
@@ -16,6 +17,10 @@ function App() {
 
             <Route path="/login">
                <LogIn />
+            </Route>
+
+            <Route path="/profile">
+               <Profile />
             </Route>
 
             <Route path="/posts">
