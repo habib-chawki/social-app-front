@@ -32,6 +32,42 @@ function Profile() {
                </ul>
             ))}
          </div>
+         <div>
+            <p>Education: </p>
+            {profile.education.map((item) => (
+               <ul>
+                  {item.startDate} - {item.endDate}
+                  <li>major: {item.major}</li>
+                  <li>school: {item.school} </li>
+                  <li>description: {item.description} </li>
+               </ul>
+            ))}
+         </div>
+         <div>
+            <p>Skills</p>
+            <ul>
+               <li>Technical</li>
+               <ul>
+                  {profile.skills.technical.map((item) => (
+                     <li>{item}</li>
+                  ))}
+               </ul>
+               <li>organizational</li>
+               <ul>
+                  {profile.skills.organizational.map((item) => (
+                     <li>{item}</li>
+                  ))}
+               </ul>
+            </ul>
+         </div>
+         <div>
+            <p>Languages</p>
+            <ul>
+               {profile.languages.map((item) => (
+                  <li>{item}</li>
+               ))}
+            </ul>
+         </div>
       </div>
    );
    //    <div>
