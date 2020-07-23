@@ -5,12 +5,18 @@ import { logoutUser } from '../../services/user';
 
 function Header() {
    return (
-      <div>
-         <Link to="/login" onClick={logoutUser}>
-            Log out
-         </Link>
-         <Link to="/profile">View profile</Link>
-      </div>
+      <nav>
+         <ul>
+            <li>
+               <Link to="/login" onClick={logoutUser}>
+                  Log out
+               </Link>
+            </li>
+            <li>
+               <Link to="/profile">View profile</Link>
+            </li>
+         </ul>
+      </nav>
    );
 }
 
