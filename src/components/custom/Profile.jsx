@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { fetchProfile } from '../../services/profile';
+import { fetchProfile, updateProfile } from '../../services/profile';
 
 function Profile() {
    const [profile, setProfile] = useState({});
 
+   // fetch user profile
    useEffect(() => {
       (async () => {
          const userProfile = await fetchProfile();
-         console.log(userProfile);
          setProfile(userProfile);
       })();
    }, []);
+
+   // update profile
+   const handleProfileUpdate = () => {
+      updateProfile(profile);
+   };
 
    return (
       <div>
@@ -68,6 +73,7 @@ function Profile() {
                ))}
             </ul>
          </div>
+         <button onClick={handleProfileUpdate}>Save</button>
       </div>
    );
    //    <div>
