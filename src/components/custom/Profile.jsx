@@ -1,26 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProfile, updateProfile } from '../../services/profile';
 
-function Profile() {
-   const [profile, setProfile] = useState({});
+const useEdit = () => {
+   const [edit, setEdit] = useState(false);
+   const [content, setContent] = useState('');
 
-   // fetch user profile
-   useEffect(() => {
-      (async () => {
-         const userProfile = await fetchProfile();
-         setProfile(userProfile);
-      })();
-   }, []);
+   const handleEdit = () => {
+      setEdit(!edit);
+   };
 
-   // update profile
-   const handleProfileUpdate = () => {
-      updateProfile(profile);
+   const handleContent = (event) => {
+      setContent(event.target.value);
    };
 
    return (
       <div>
-         <p>First name: {profile.firstName} </p>
-         <p>Middle name: {profile.middleName} </p>
+         {edit ? (
+            <input type="text" value={content} onChange={handleContent} />
+         ) : (
+            <p>First name: {content} </p>
+         )}
+         <button onClick={handleEdit}>{!edit ? 'edit' : 'save'}</button>
+      </div>
+   );
+};
+
+function Profile() {
+   // const [profile, setProfile] = useState({
+   //    firstName: 'habib',
+   //    middleName: 'chawki',
+   // });
+
+   // // fetch user profile
+   // useEffect(() => {
+   //    (async () => {
+   //       const userProfile = await fetchProfile();
+   //       setProfile(userProfile);
+   //    })();
+   // }, []);
+
+   return (
+      <div>
+         {useEdit()}
+         {useEdit()}
+         {useEdit()}
+         {/*{isEditFirstName ? (
+            <input type="text" value={firstName} onChange={handleFirstName} />
+         ) : (
+            <p>First name: {firstName} </p>
+         )}
+         <button onClick={handleEditFirstName}>
+            {!isEditFirstName ? 'edit' : 'save'}
+         </button>
+
+         {isEditMiddleName ? (
+            <input type="text" value={middleName} onChange={handleMiddleName} />
+         ) : (
+            <p>Middle name: {middleName} </p>
+         )}
+         <button onClick={handleEditMiddleName}>
+            {!isEditMiddleName ? 'edit' : 'save'}
+         </button>
+
          <p>Last name: {profile.lastName} </p>
          <p>Address: {profile.address} </p>
          <p>Birthday: {profile.birthday} </p>
@@ -72,8 +113,8 @@ function Profile() {
                   <li>{item}</li>
                ))}
             </ul>
-         </div>
-         <button onClick={handleProfileUpdate}>Save</button>
+         </div> */}
+         {/* <button onClick={handleProfileUpdate}>Save</button> */}
       </div>
    );
    //    <div>
