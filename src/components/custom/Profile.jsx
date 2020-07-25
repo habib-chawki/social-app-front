@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-// import { fetchProfile, updateProfile } from '../../services/profile';
+import React, { useState, useEffect } from 'react';
+import { fetchProfile, updateProfile } from '../../services/profile';
 
 const useEdit = (label) => {
    const [edit, setEdit] = useState(false);
@@ -28,18 +28,22 @@ const useEdit = (label) => {
 };
 
 function Profile() {
-   // const [profile, setProfile] = useState({
-   //    firstName: 'habib',
-   //    middleName: 'chawki',
-   // });
+   const [profile, setProfile] = useState({
+      firstName: 'habib',
+      middleName: 'chawki',
+   });
 
-   // // fetch user profile
-   // useEffect(() => {
-   //    (async () => {
-   //       const userProfile = await fetchProfile();
-   //       setProfile(userProfile);
-   //    })();
-   // }, []);
+   // fetch user profile
+   useEffect(() => {
+      (async () => {
+         const userProfile = await fetchProfile();
+         setProfile(userProfile);
+      })();
+   }, []);
+
+   const handleProfileUpdate = () => {
+      updateProfile(profile);
+   };
 
    return (
       <div>
@@ -115,7 +119,7 @@ function Profile() {
                ))}
             </ul>
          </div> */}
-         {/* <button onClick={handleProfileUpdate}>Save</button> */}
+         <button onClick={handleProfileUpdate}>Save</button>
       </div>
    );
    //    <div>
