@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { fetchProfile, updateProfile } from '../../services/profile';
+import React, { useState } from 'react';
+// import { fetchProfile, updateProfile } from '../../services/profile';
 
-const useEdit = () => {
+const useEdit = (label) => {
    const [edit, setEdit] = useState(false);
-   const [content, setContent] = useState('');
+   const [content, setContent] = useState('habib');
 
    const handleEdit = () => {
       setEdit(!edit);
@@ -18,7 +18,9 @@ const useEdit = () => {
          {edit ? (
             <input type="text" value={content} onChange={handleContent} />
          ) : (
-            <p>First name: {content} </p>
+            <p>
+               {label}: {content}
+            </p>
          )}
          <button onClick={handleEdit}>{!edit ? 'edit' : 'save'}</button>
       </div>
@@ -41,9 +43,8 @@ function Profile() {
 
    return (
       <div>
-         {useEdit()}
-         {useEdit()}
-         {useEdit()}
+         {useEdit('First name')}
+         {useEdit('Last name')}
          {/*{isEditFirstName ? (
             <input type="text" value={firstName} onChange={handleFirstName} />
          ) : (
