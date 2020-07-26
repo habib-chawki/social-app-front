@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { fetchProfile, updateProfile } from '../../services/profile';
+// import { fetchProfile, updateProfile } from '../../services/profile';
 
-const useEdit = (label) => {
+const useEdit = ({ type, label, options = [] }) => {
    const [edit, setEdit] = useState(false);
-   const [content, setContent] = useState('habib');
+   const [content, setContent] = useState();
 
    const handleEdit = () => {
       setEdit(!edit);
@@ -13,10 +13,25 @@ const useEdit = (label) => {
       setContent(event.target.value);
    };
 
+   const defaultProps = { value: content, onChange: handleContent };
+   const input = {
+      text: <input type="text" {...defaultProps} />,
+      textarea: <textarea cols="50" rows="10" {...defaultProps} />,
+      select: (
+         <select {...defaultProps}>
+            {options.map((value) => (
+               <option key={value} value={value}>
+                  {value}
+               </option>
+            ))}
+         </select>
+      ),
+   };
+
    return (
       <div>
          {edit ? (
-            <input type="text" value={content} onChange={handleContent} />
+            input[type]
          ) : (
             <p>
                {label}: {content}
@@ -28,27 +43,32 @@ const useEdit = (label) => {
 };
 
 function Profile() {
-   const [profile, setProfile] = useState({
-      firstName: 'habib',
-      middleName: 'chawki',
-   });
+   // const [profile, setProfile] = useState({
+   //    firstName: 'habib',
+   //    middleName: 'chawki',
+   // });
 
    // fetch user profile
-   useEffect(() => {
-      (async () => {
-         const userProfile = await fetchProfile();
-         setProfile(userProfile);
-      })();
-   }, []);
+   // useEffect(() => {
+   //    (async () => {
+   //       const userProfile = await fetchProfile();
+   //       setProfile(userProfile);
+   //    })();
+   // }, []);
 
-   const handleProfileUpdate = () => {
-      updateProfile(profile);
-   };
+   // const handleProfileUpdate = () => {
+   //    updateProfile(profile);
+   // };
 
    return (
       <div>
-         {useEdit('First name')}
-         {useEdit('Last name')}
+         {useEdit({ type: 'text', label: 'First name' })}
+         {useEdit({ type: 'textarea', label: 'Bio' })}
+         {useEdit({
+            type: 'select',
+            label: 'Gender',
+            options: ['Male', 'Female', 'Other'],
+         })}
          {/*{isEditFirstName ? (
             <input type="text" value={firstName} onChange={handleFirstName} />
          ) : (
@@ -119,7 +139,7 @@ function Profile() {
                ))}
             </ul>
          </div> */}
-         <button onClick={handleProfileUpdate}>Save</button>
+         {/* <button onClick={handleProfileUpdate}>Save</button> */}
       </div>
    );
    //    <div>
