@@ -5,17 +5,23 @@ const useEdit = ({ type, label, options = [] }) => {
    const [edit, setEdit] = useState(false);
    const [content, setContent] = useState();
 
+   // keep track of edit requests
    const handleEdit = () => {
       setEdit(!edit);
    };
 
+   // keep track of input content
    const handleContent = (event) => {
       setContent(event.target.value);
    };
 
+   // setup default props for all inputs
    const defaultProps = { value: content, onChange: handleContent };
+
+   // setup list of possible inputs
    const input = {
       text: <input type="text" {...defaultProps} />,
+      date: <input type="date" {...defaultProps} />,
       textarea: <textarea cols="50" rows="10" {...defaultProps} />,
       select: (
          <select {...defaultProps}>
@@ -28,13 +34,14 @@ const useEdit = ({ type, label, options = [] }) => {
       ),
    };
 
+   // display content and enable editing if required
    return (
       <div>
          {edit ? (
             input[type]
          ) : (
             <p>
-               {label}: {content}
+               <label>{label}</label> : {content}
             </p>
          )}
          <button onClick={handleEdit}>{!edit ? 'edit' : 'save'}</button>
@@ -63,35 +70,18 @@ function Profile() {
    return (
       <div>
          {useEdit({ type: 'text', label: 'First name' })}
-         {useEdit({ type: 'textarea', label: 'Bio' })}
+         {useEdit({ type: 'text', label: 'Last name' })}
+         {useEdit({ type: 'text', label: 'Address' })}
+         {useEdit({ type: 'date', label: 'Birthday' })}
+
          {useEdit({
             type: 'select',
             label: 'Gender',
             options: ['Male', 'Female', 'Other'],
          })}
-         {/*{isEditFirstName ? (
-            <input type="text" value={firstName} onChange={handleFirstName} />
-         ) : (
-            <p>First name: {firstName} </p>
-         )}
-         <button onClick={handleEditFirstName}>
-            {!isEditFirstName ? 'edit' : 'save'}
-         </button>
+         {useEdit({ type: 'textarea', label: 'Bio' })}
 
-         {isEditMiddleName ? (
-            <input type="text" value={middleName} onChange={handleMiddleName} />
-         ) : (
-            <p>Middle name: {middleName} </p>
-         )}
-         <button onClick={handleEditMiddleName}>
-            {!isEditMiddleName ? 'edit' : 'save'}
-         </button>
-
-         <p>Last name: {profile.lastName} </p>
-         <p>Address: {profile.address} </p>
-         <p>Birthday: {profile.birthday} </p>
-         <p>Gender: {profile.gender} </p>
-         <p>Bio: {profile.bio} </p>
+         {/*
          <div>
             <p>Experience: </p>
             {profile.experience.map((item) => (
