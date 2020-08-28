@@ -1,12 +1,14 @@
 import server from '../utils/server';
 import { setToken, removeToken } from './token';
 
+const baseUrl = '/users';
+
 // handle signup
 async function signupUser({ email, password }) {
    try {
       // formType => "signup" or "login"
       const response = await server({
-         url: '/user/signup',
+         url: `${baseUrl}/signup`,
          method: 'post',
          data: { email, password },
       });
@@ -23,7 +25,7 @@ async function loginUser({ email, password }) {
    try {
       // formType => "signup" or "login"
       const response = await server({
-         url: '/user/login',
+         url: `${baseUrl}/login`,
          method: 'post',
          data: { email, password },
       });
@@ -39,7 +41,7 @@ async function loginUser({ email, password }) {
 async function logoutUser() {
    try {
       await server({
-         url: 'user/logout',
+         url: `${baseUrl}/logout`,
          method: 'post',
       });
 
