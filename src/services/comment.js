@@ -1,12 +1,14 @@
 import server from '../utils/server';
 
+const baseUrl = '/comments';
+
 // add a new comment
 async function create(postId, content) {
    try {
       const response = await server({
-         url: '/comment',
+         url: `${baseUrl}?post=${postId}`,
          method: 'post',
-         data: { postId, content },
+         data: { content },
       });
 
       // return new comment
@@ -20,9 +22,9 @@ async function create(postId, content) {
 async function update(postId, commentId, newComment) {
    try {
       await server({
-         url: '/comment',
+         url: `${baseUrl}/${commentId}?post=${postId}`,
          method: 'put',
-         data: { postId, commentId, newComment },
+         data: { newComment },
       });
    } catch (e) {
       console.log('Unable to update comment: ' + e.message);
@@ -33,9 +35,8 @@ async function update(postId, commentId, newComment) {
 async function remove(postId, commentId) {
    try {
       await server({
-         url: '/comment',
+         url: `${baseUrl}/${commentId}?post=${postId}`,
          method: 'delete',
-         data: { postId, commentId },
       });
    } catch (e) {
       console.log('Unable to delete comment: ' + e.message);
