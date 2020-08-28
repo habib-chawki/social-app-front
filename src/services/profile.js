@@ -1,9 +1,11 @@
 import server from '../utils/server';
 
-async function fetchProfile() {
+const baseUrl = '/users';
+
+async function fetchProfile(userId) {
    try {
       const response = await server({
-         url: '/profile',
+         url: `${baseUrl}/${userId}/profile`,
          method: 'get',
       });
 
@@ -14,10 +16,10 @@ async function fetchProfile() {
    }
 }
 
-async function updateProfile(profile) {
+async function updateProfile(profile, userId) {
    try {
       const response = await server({
-         url: '/profile',
+         url: `${baseUrl}/${userId}/profile`,
          method: 'put',
          data: profile,
       });
