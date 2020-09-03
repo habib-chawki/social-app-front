@@ -70,12 +70,18 @@ function Posts() {
       ));
    };
 
+   // load more posts
+   const loadMorePosts = async () => {
+      const data = await post.fetchAll();
+   };
+
    return (
       <div>
          <Header />
          <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={handleCreatePost}>post</button>
          {renderPosts()}
+         <button onClick={loadMorePosts}>Load more posts</button>
       </div>
    );
 }
