@@ -35,11 +35,11 @@ async function fetch(id) {
 }
 
 // get the list of posts
-async function fetchAll() {
+async function fetchAll(limit = 10, skip = 0) {
    try {
       // retrieve list of posts
       const response = await server({
-         url: baseUrl,
+         url: `${baseUrl}?limit=${limit}&skip=${skip}`,
          method: 'get',
       });
 
