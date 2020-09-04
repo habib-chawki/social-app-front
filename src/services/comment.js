@@ -6,9 +6,10 @@ const baseUrl = '/comments';
 async function create(postId, content) {
    try {
       const response = await server({
-         url: `${baseUrl}?post=${postId}`,
+         url: baseUrl,
          method: 'post',
          data: { content },
+         params: { post: postId },
       });
 
       // return new comment
