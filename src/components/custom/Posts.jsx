@@ -5,16 +5,20 @@ import Post from './Post';
 
 import * as post from '../../services/post';
 
+// set pagination parameters
+const LIMIT = 2,
+   SKIP = 0;
+
 function Posts() {
    const [posts, setPosts] = useState([]);
    const [postInput, setPostInput] = useState('');
-   const [pagination, setPagination] = useState({ limit: 10, skip: 0 });
+   const [pagination, setPagination] = useState({ limit: LIMIT, skip: SKIP });
 
    // render posts list when component first mounts
    useEffect(() => {
       // call backend service to fetch list of posts, then update UI
       (async () => {
-         const data = await post.fetchAll();
+         const data = await post.fetchAll({ limit: LIMIT, skip: SKIP });
          setPosts(data);
       })();
    }, []);
@@ -79,10 +83,13 @@ function Posts() {
       skip += limit;
 
       // fetch the next batch of posts
-      const data = await post.fetchAll(limit, skip);
+      const data = await post.fetchAll({ limit, skip });
 
       // update pagination parameters
       setPagination({ limit, skip });
+
+      // update list of posts
+      setPosts([...posts, ...data]);
       console.log(data);
    };
 
