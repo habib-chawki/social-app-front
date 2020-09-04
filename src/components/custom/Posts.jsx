@@ -8,6 +8,7 @@ import * as post from '../../services/post';
 function Posts() {
    const [posts, setPosts] = useState([]);
    const [postInput, setPostInput] = useState('');
+   const [pagination, setPagination] = useState({ limit: 10, skip: 0 });
 
    // render posts list when component first mounts
    useEffect(() => {
@@ -72,7 +73,17 @@ function Posts() {
 
    // load more posts
    const loadMorePosts = async () => {
-      const data = await post.fetchAll();
+      let { limit, skip } = pagination;
+
+      // skip the already loaded posts
+      skip += limit;
+
+      // fetch the next batch of posts
+      const data = await post.fetchAll(limit, skip);
+
+      // update pagination parameters
+      setPagination({ limit, skip });
+      console.log(data);
    };
 
    return (
