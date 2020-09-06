@@ -6,7 +6,7 @@ import Post from './Post';
 import * as post from '../../services/post';
 
 // set pagination parameters
-const LIMIT = 2,
+const LIMIT = 5,
    SKIP = 0;
 
 function Posts() {
