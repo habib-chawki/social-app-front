@@ -19,6 +19,21 @@ async function create(postId, content) {
    }
 }
 
+// get list of comments
+async function fetchAll(postId, limit, skip) {
+   try {
+      const response = await server({
+         url: `${baseUrl}/?post=${postId}&limit=${limit}&skip=${skip}`,
+         method: 'get',
+      });
+
+      // return list of comments
+      return response.data;
+   } catch (e) {
+      console.log('Unable to fetch list of comments: ' + e.message);
+   }
+}
+
 // update comment by id
 async function update(postId, commentId, newComment) {
    try {
@@ -44,4 +59,4 @@ async function remove(postId, commentId) {
    }
 }
 
-export { create, update, remove };
+export { create, update, remove, fetchAll };
