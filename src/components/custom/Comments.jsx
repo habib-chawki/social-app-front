@@ -59,11 +59,15 @@ function Comments(post) {
       );
    };
 
+   // load more comments
+   const loadMoreComments = () => {};
+
    return (
       <div>
          <input value={commentInput} onChange={handleCommentInput} />
          <button onClick={handleCreateComment}>comment</button>
          {renderComments()}
+         <button onClick={loadMoreComments}>Load more comments</button>
       </div>
    );
 }
