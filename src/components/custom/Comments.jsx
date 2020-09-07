@@ -60,7 +60,10 @@ function Comments(post) {
    };
 
    // load more comments
-   const loadMoreComments = () => {};
+   const loadMoreComments = async () => {
+      const data = await comment.fetchAll(post.id, 3);
+      console.log(data);
+   };
 
    return (
       <div>
