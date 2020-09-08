@@ -20,7 +20,7 @@ async function create(postId, content) {
 }
 
 // get list of comments
-async function fetchAll(postId, limit, skip) {
+async function fetchAll(postId, { limit, skip }) {
    try {
       const response = await server({
          url: `${baseUrl}/?post=${postId}&limit=${limit}&skip=${skip}`,
