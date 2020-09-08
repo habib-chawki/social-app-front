@@ -3,9 +3,14 @@ import Comment from './Comment';
 
 import * as comment from '../../services/comment';
 
+// set pagination parameters
+const LIMIT = 5,
+   SKIP = 0;
+
 function Comments(post) {
    const [comments, setComments] = useState(post.comments);
    const [commentInput, setCommentInput] = useState('');
+   const [pagination, setPagination] = useState({ limit: LIMIT, skip: SKIP });
 
    // keep track of comment input change
    const handleCommentInput = (event) => {
@@ -61,8 +66,19 @@ function Comments(post) {
 
    // load more comments
    const loadMoreComments = async () => {
-      const data = await comment.fetchAll(post.id, 3);
-      console.log(data);
+      let { limit, skip } = pagination;
+
+      // skip already loaded comments
+      skip += limit;
+
+      // fetch next batch of comments
+      const data = await comment.fetchAll(post.id, { limit, skip });
+
+      // update pagination params
+      setPagination({ limit, skip });
+
+      //update list of comments
+      setComments({ ...comments, ...data });
    };
 
    return (
