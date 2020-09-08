@@ -85,12 +85,11 @@ function Posts() {
       // fetch the next batch of posts
       const data = await post.fetchAll({ limit, skip });
 
-      // update pagination parameters
+      // update pagination params
       setPagination({ limit, skip });
 
       // update list of posts
       setPosts([...posts, ...data]);
-      console.log(data);
    };
 
    return (
