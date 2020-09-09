@@ -78,7 +78,9 @@ function Comments(post) {
       setPagination({ limit, skip });
 
       //update list of comments
-      setComments({ ...comments, ...data });
+      setComments([...comments, ...data]);
+
+      console.log(data);
    };
 
    return (
