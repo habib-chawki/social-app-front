@@ -31,12 +31,15 @@ function Comments(post) {
 
    // handle update comment
    const handleUpdateComment = (id, newContent) => {
+      // call update comment service
       comment.update(post.id, id, newContent);
 
+      // update comment content
       const index = comments.findIndex((comment) => comment._id === id);
       const newComments = [...comments];
       newComments[index].content = newContent;
 
+      // update list of comments
       setComments(newComments);
    };
 
@@ -79,8 +82,6 @@ function Comments(post) {
 
       //update list of comments
       setComments([...comments, ...data]);
-
-      console.log(data);
    };
 
    return (
