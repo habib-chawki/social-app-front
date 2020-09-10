@@ -89,7 +89,9 @@ function Comments(post) {
          <input value={commentInput} onChange={handleCommentInput} />
          <button onClick={handleCreateComment}>comment</button>
          {renderComments()}
-         <button onClick={loadMoreComments}>Load more comments</button>
+         {comments.length !== 0 && (
+            <button onClick={loadMoreComments}>Load more comments</button>
+         )}
       </div>
    );
 }
