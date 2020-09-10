@@ -6,7 +6,7 @@ import Post from './Post';
 import * as post from '../../services/post';
 
 // set pagination parameters
-const LIMIT = 5,
+const LIMIT = 10,
    SKIP = 0;
 
 function Posts() {
@@ -98,7 +98,9 @@ function Posts() {
          <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={handleCreatePost}>post</button>
          {renderPosts()}
-         <button onClick={loadMorePosts}>Load more posts</button>
+         {posts.length !== 0 && (
+            <button onClick={loadMorePosts}>Load more posts</button>
+         )}
       </div>
    );
 }
