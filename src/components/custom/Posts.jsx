@@ -12,7 +12,9 @@ const LIMIT = 10,
 function Posts() {
    const [posts, setPosts] = useState([]);
    const [postInput, setPostInput] = useState('');
+
    const [pagination, setPagination] = useState({ limit: LIMIT, skip: SKIP });
+   const [loadMore, setLoadMore] = useState(posts !== 0);
 
    // render posts list when component first mounts
    useEffect(() => {
@@ -87,7 +89,9 @@ function Posts() {
 
       // update pagination params
       setPagination({ limit, skip });
-
+      if (data.length === 0) {
+         setLoadMore(false);
+      }
       // update list of posts
       setPosts([...posts, ...data]);
    };
@@ -98,9 +102,7 @@ function Posts() {
          <input type="text" value={postInput} onChange={handlePostInput} />
          <button onClick={handleCreatePost}>post</button>
          {renderPosts()}
-         {posts.length !== 0 && (
-            <button onClick={loadMorePosts}>Load more posts</button>
-         )}
+         {loadMore && <button onClick={loadMorePosts}>Load more posts</button>}
       </div>
    );
 }
