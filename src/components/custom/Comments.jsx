@@ -10,7 +10,9 @@ const LIMIT = 5,
 function Comments(post) {
    const [comments, setComments] = useState(post.comments);
    const [commentInput, setCommentInput] = useState('');
+
    const [pagination, setPagination] = useState({ limit: LIMIT, skip: SKIP });
+   const [loadMore, setLoadMore] = useState(comments.length !== 0);
 
    // keep track of comment input change
    const handleCommentInput = (event) => {
@@ -79,6 +81,9 @@ function Comments(post) {
 
       // update pagination params
       setPagination({ limit, skip });
+      if (data.length === 0) {
+         setLoadMore(false);
+      }
 
       //update list of comments
       setComments([...comments, ...data]);
@@ -89,7 +94,7 @@ function Comments(post) {
          <input value={commentInput} onChange={handleCommentInput} />
          <button onClick={handleCreateComment}>comment</button>
          {renderComments()}
-         {comments.length !== 0 && (
+         {loadMore && (
             <button onClick={loadMoreComments}>Load more comments</button>
          )}
       </div>
