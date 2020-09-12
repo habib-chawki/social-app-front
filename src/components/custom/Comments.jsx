@@ -81,6 +81,8 @@ function Comments(post) {
 
       // update pagination params
       setPagination({ limit, skip });
+
+      // disable load more button when no more comments are available
       if (data.length === 0) {
          setLoadMore(false);
       }
