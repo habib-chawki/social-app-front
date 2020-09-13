@@ -77,7 +77,7 @@ function Comments(post) {
       skip += limit;
 
       // fetch next batch of comments
-      const data = await comment.fetchAll(post.id, { limit, skip });
+      const data = await comment.fetchAll({ postId: post.id, limit, skip });
 
       // update pagination params
       setPagination({ limit, skip });
