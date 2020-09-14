@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-import * as comment from '../../services/comment';
+import * as commentService from '../../services/comment';
 
 // set pagination parameters
 const LIMIT = 5,
@@ -21,7 +21,7 @@ function Comments(post) {
 
    // add new comment
    const handleCreateComment = async () => {
-      const { _id, owner, content } = await comment.create(
+      const { _id, owner, content } = await commentService.createComment(
          post.id,
          commentInput
       );
@@ -34,7 +34,7 @@ function Comments(post) {
    // handle update comment
    const handleUpdateComment = (id, newContent) => {
       // call update comment service
-      comment.update(post.id, id, newContent);
+      commentService.updateComment(post.id, id, newContent);
 
       // update comment content
       const index = comments.findIndex((comment) => comment._id === id);
@@ -47,7 +47,7 @@ function Comments(post) {
 
    // handle delete comment
    const handleRemoveComment = (commentId) => {
-      comment.remove(post.id, commentId);
+      commentService.removeComment(post.id, commentId);
       setComments(comments.filter((comment) => comment._id !== commentId));
    };
 
@@ -77,7 +77,11 @@ function Comments(post) {
       skip += limit;
 
       // fetch next batch of comments
-      const data = await comment.fetchAll({ postId: post.id, limit, skip });
+      const data = await commentService.fetchComments({
+         postId: post.id,
+         limit,
+         skip,
+      });
 
       // update pagination params
       setPagination({ limit, skip });
