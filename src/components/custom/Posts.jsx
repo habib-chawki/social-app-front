@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../common/Header';
 import Post from './Post';
 
-import * as post from '../../services/post';
+import * as postService from '../../services/post';
 
 // set pagination parameters
 const LIMIT = 10,
@@ -20,7 +20,10 @@ function Posts() {
    useEffect(() => {
       // call backend service to fetch list of posts, then update UI
       (async () => {
-         const data = await post.fetchAll({ limit: LIMIT, skip: SKIP });
+         const data = await postService.fetchPosts({
+            limit: LIMIT,
+            skip: SKIP,
+         });
          setPosts(data);
       })();
    }, []);
@@ -33,7 +36,9 @@ function Posts() {
    // handle adding new post
    const handleCreatePost = async () => {
       // call backend service to create post
-      const { _id, owner, content, comments } = await post.create(postInput);
+      const { _id, owner, content, comments } = await postService.createPost(
+         postInput
+      );
 
       // update posts list and UI
       setPosts([{ _id, owner, content, comments }, ...posts]);
@@ -43,7 +48,7 @@ function Posts() {
    // update post content
    const handleUpdatePost = (id, newContent) => {
       // call backend service to update post
-      post.update(id, newContent);
+      postService.updatePost(id, newContent);
 
       // update UI
       setPosts(
@@ -56,7 +61,7 @@ function Posts() {
    // delete post
    const handleRemovePost = (id) => {
       // call backend service to delete post
-      post.remove(id);
+      postService.removePost(id);
 
       // update UI
       setPosts(posts.filter((post) => post._id !== id));
@@ -85,7 +90,7 @@ function Posts() {
       skip += limit;
 
       // fetch the next batch of posts
-      const data = await post.fetchAll({ limit, skip });
+      const data = await postService.fetchPosts({ limit, skip });
 
       // update pagination params
       setPagination({ limit, skip });
