@@ -3,7 +3,7 @@ import server from '../utils/server';
 const baseUrl = '/comments';
 
 // add a new comment
-async function create(postId, content) {
+async function createComment(postId, content) {
    try {
       const response = await server({
          url: baseUrl,
@@ -20,7 +20,7 @@ async function create(postId, content) {
 }
 
 // get list of comments
-async function fetchAll({ postId, limit, skip }) {
+async function fetchComments({ postId, limit, skip }) {
    try {
       const response = await server({
          url: `${baseUrl}/?post=${postId}&limit=${limit}&skip=${skip}`,
@@ -35,7 +35,7 @@ async function fetchAll({ postId, limit, skip }) {
 }
 
 // update comment by id
-async function update(postId, commentId, newComment) {
+async function updateComment(postId, commentId, newComment) {
    try {
       await server({
          url: `${baseUrl}/${commentId}?post=${postId}`,
@@ -48,7 +48,7 @@ async function update(postId, commentId, newComment) {
 }
 
 // delete comment by id
-async function remove(postId, commentId) {
+async function removeComment(postId, commentId) {
    try {
       await server({
          url: `${baseUrl}/${commentId}?post=${postId}`,
@@ -59,4 +59,4 @@ async function remove(postId, commentId) {
    }
 }
 
-export { create, update, remove, fetchAll };
+export { createComment, updateComment, removeComment, fetchComments };
