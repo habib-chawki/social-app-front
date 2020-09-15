@@ -3,7 +3,7 @@ import server from '../utils/server';
 const baseUrl = '/posts';
 
 // create a new post
-async function create(content) {
+async function createPost(content) {
    try {
       // make api request to persist post in db
       const response = await server({
@@ -20,7 +20,7 @@ async function create(content) {
 }
 
 // get a single post by id
-async function fetch(id) {
+async function fetchPost(id) {
    try {
       const response = await server({
          url: `${baseUrl}/${id}`,
@@ -35,7 +35,7 @@ async function fetch(id) {
 }
 
 // get the list of posts
-async function fetchAll({ limit, skip }) {
+async function fetchPosts({ limit, skip }) {
    try {
       // retrieve list of posts
       const response = await server({
@@ -51,7 +51,7 @@ async function fetchAll({ limit, skip }) {
 }
 
 // update post by id
-async function update(id, content) {
+async function updatePost(id, content) {
    try {
       const response = await server({
          url: `${baseUrl}/${id}`,
@@ -66,7 +66,7 @@ async function update(id, content) {
 }
 
 // delete post by id
-async function remove(id) {
+async function removePost(id) {
    try {
       const response = await server({
          url: `${baseUrl}/${id}`,
@@ -80,7 +80,7 @@ async function remove(id) {
 }
 
 // delete all posts
-async function removeAll() {
+async function removePosts() {
    try {
       const response = await server({
          url: baseUrl,
@@ -93,4 +93,11 @@ async function removeAll() {
    }
 }
 
-export { create, fetch, fetchAll, update, remove, removeAll };
+export {
+   createPost,
+   fetchPost,
+   fetchPosts,
+   updatePost,
+   removePost,
+   removePosts,
+};
