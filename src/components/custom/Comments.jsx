@@ -32,17 +32,22 @@ function Comments(post) {
    };
 
    // handle update comment
-   const handleUpdateComment = (id, newContent) => {
-      // call update comment service
-      commentService.updateComment(post.id, id, newContent);
+   const handleUpdateComment = async (id, newContent) => {
+      try {
+         // call update comment service
+         await commentService.updateComment(post.id, id, newContent);
 
-      // update comment content
-      const index = comments.findIndex((comment) => comment._id === id);
-      const newComments = [...comments];
-      newComments[index].content = newContent;
-
-      // update list of comments
-      setComments(newComments);
+         // update list of comments
+         setComments(
+            comments.map((comment) =>
+               comment._id !== id
+                  ? comment
+                  : { ...comment, content: newContent }
+            )
+         );
+      } catch (e) {
+         console.log(e.message);
+      }
    };
 
    // handle delete comment
