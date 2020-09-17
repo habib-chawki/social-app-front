@@ -35,15 +35,16 @@ async function fetchComments({ postId, limit, skip }) {
 }
 
 // update comment by id
-async function updateComment(postId, commentId, newComment) {
+async function updateComment(postId, commentId, content) {
    try {
       await server({
          url: `${baseUrl}/${commentId}?post=${postId}`,
          method: 'put',
-         data: { newComment },
+         data: { content },
       });
    } catch (e) {
-      console.log('Unable to update comment: ' + e.message);
+      // console.log('Unable to update comment: ' + e.message);
+      throw new Error('Error: ' + e.message);
    }
 }
 
