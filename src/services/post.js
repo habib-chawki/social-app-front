@@ -55,13 +55,14 @@ async function updatePost(id, content) {
    try {
       const response = await server({
          url: `${baseUrl}/${id}`,
-         method: 'patch',
+         method: 'put',
          data: { content },
       });
 
       return response.data;
    } catch (e) {
-      console.log('Unable to update post: ' + e.message);
+      // console.log('Unable to update post: ' + e.message);
+      throw new Error('Error: ' + e.message);
    }
 }
 
