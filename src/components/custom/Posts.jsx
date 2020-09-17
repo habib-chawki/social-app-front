@@ -46,16 +46,20 @@ function Posts() {
    };
 
    // update post content
-   const handleUpdatePost = (id, newContent) => {
-      // call backend service to update post
-      postService.updatePost(id, newContent);
+   const handleUpdatePost = async (id, newContent) => {
+      try {
+         // call backend service to update post
+         await postService.updatePost(id, newContent);
 
-      // update UI
-      setPosts(
-         posts.map((post) =>
-            post._id !== id ? post : { ...post, content: newContent }
-         )
-      );
+         // update UI
+         setPosts(
+            posts.map((post) =>
+               post._id !== id ? post : { ...post, content: newContent }
+            )
+         );
+      } catch (e) {
+         console.log(e.message);
+      }
    };
 
    // delete post
