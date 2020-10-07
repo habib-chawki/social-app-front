@@ -7,6 +7,8 @@ import Profile from './components/custom/Profile';
 import Posts from './components/custom/Posts';
 import NotFound from './components/common/NotFound';
 
+import './index.css';
+
 function App() {
    return (
       <div>
