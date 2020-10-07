@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import TextField from '@material-ui/core/TextField';
+
 import isEmail from 'validator/lib/isEmail';
 
 function withValidation(Component, submitForm) {
@@ -49,16 +51,16 @@ function withValidation(Component, submitForm) {
       const renderInput = ({ type, name }) => {
          return (
             <div>
-               <label htmlFor={name}>{name + ': '}</label>
-               <input
+               <TextField
                   type={type}
                   id={name}
                   name={name}
                   value={credentials[name]}
                   onChange={validate}
-                  placeholder={`${name} ...`}
+                  label={name}
+                  error={credentials.errors[name]}
+                  helperText={credentials.errors[name]}
                />
-               {credentials.errors[name] && <p>{credentials.errors[name]}</p>}
             </div>
          );
       };
