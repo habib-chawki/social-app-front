@@ -13,8 +13,14 @@ function SignUp({ renderInput, handleSubmit }) {
          flexDirection="row"
          justifyContent="center"
          bgcolor="lightblue"
+         flexGrow={1}
       >
-         <Box display="flex" flexDirection="column">
+         <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            bgcolor="lightgreen"
+         >
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                {renderInput({ type: 'text', name: 'email' })}
