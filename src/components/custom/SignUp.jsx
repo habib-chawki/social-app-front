@@ -10,16 +10,19 @@ function SignUp({ renderInput, handleSubmit }) {
    return (
       <Box
          display="flex"
-         flexDirection="row"
          justifyContent="center"
+         alignItems="center"
          bgcolor="lightblue"
-         flexGrow={1}
+         height="100vh"
       >
          <Box
             display="flex"
             flexDirection="column"
+            justifyContent="center"
             alignItems="center"
             bgcolor="lightgreen"
+            width="50%"
+            height="50%"
          >
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
