@@ -56,6 +56,7 @@ function withValidation(Component, submitForm) {
                   id={name}
                   name={name}
                   value={credentials[name]}
+                  variant="filled"
                   onChange={validate}
                   label={name}
                   error={credentials.errors[name]}
