@@ -13,7 +13,7 @@ function SignUp({ renderInput, handleSubmit }) {
          justifyContent="center"
          alignItems="center"
          bgcolor="lightblue"
-         height="100vh"
+         height="80vh"
       >
          <Box
             display="flex"
@@ -21,17 +21,27 @@ function SignUp({ renderInput, handleSubmit }) {
             justifyContent="center"
             alignItems="center"
             bgcolor="lightgreen"
-            width="50%"
-            height="50%"
+            width="40%"
+            height="75%"
          >
             <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit}>
+            <Box
+               display="flex"
+               flexDirection="column"
+               justifyContent="space-between"
+               height="40%"
+            >
                {renderInput({ type: 'text', name: 'email' })}
                {renderInput({ type: 'password', name: 'password' })}
-               <Button type="submit" variant="contained" color="primary">
+               <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSubmit}
+               >
                   Sign up
                </Button>
-            </form>
+            </Box>
             <p>
                Already registered ? <Link to="/login">Log In</Link>
             </p>
