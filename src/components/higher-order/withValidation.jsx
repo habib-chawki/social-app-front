@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import TextField from '@material-ui/core/TextField';
-
 import isEmail from 'validator/lib/isEmail';
 
 function withValidation(Component, submitForm) {
@@ -47,25 +45,6 @@ function withValidation(Component, submitForm) {
          });
       };
 
-      // render input (email or password)
-      const renderInput = ({ type, name }) => {
-         return (
-            <div>
-               <TextField
-                  type={type}
-                  id={name}
-                  name={name}
-                  value={credentials[name]}
-                  variant="filled"
-                  onChange={validate}
-                  label={name}
-                  error={credentials.errors[name]}
-                  helperText={credentials.errors[name]}
-               />
-            </div>
-         );
-      };
-
       // handle form submission
       const handleSubmit = async (event) => {
          // prevent default form submission behavior
@@ -86,7 +65,8 @@ function withValidation(Component, submitForm) {
       return (
          <Component
             {...props}
-            renderInput={renderInput}
+            credentials={credentials}
+            validate={validate}
             handleSubmit={handleSubmit}
          />
       );
