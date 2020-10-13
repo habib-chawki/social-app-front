@@ -1,12 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { TextField } from '@material-ui/core';
 
 import { loginUser } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
 
-function LogIn({ credentials, validate, handleSubmit }) {
+function LogIn({ credentials, validate }) {
+   // history object
+   const history = useHistory();
+
+   // handle form submission
+   const handleSubmit = async (event) => {
+      // prevent default form submission behavior
+      event.preventDefault();
+
+      // reject login in case of invalid credentials (errors object is not empty)
+      if (Object.keys(credentials.errors).length === 0) {
+         // handle user login / signup
+         await loginUser(credentials);
+
+         // navigate user to posts page
+         history.replace('/posts');
+      } else {
+         console.log('Invalid credentials.');
+      }
+   };
+
    // render input (email or password)
    const renderInput = ({ type, name }) => {
       return (
