@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link as RouterLink, useHistory } from 'react-router-dom';
 
-import { Button, Box, TextField } from '@material-ui/core';
+import { Button, Box, TextField, Link } from '@material-ui/core';
 
 import { signupUser } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
@@ -32,6 +32,7 @@ function SignUp({ credentials, validate }) {
       return (
          <div>
             <TextField
+               fullWidth
                type={type}
                id={name}
                name={name}
@@ -60,14 +61,21 @@ function SignUp({ credentials, validate }) {
             justifyContent="center"
             alignItems="center"
             bgcolor="lightgreen"
-            width="40%"
+            width="30%"
             height="75%"
          >
             <h1>Sign Up</h1>
-            <Box display="flex" flexDirection="row">
+            <Box
+               display="flex"
+               flexDirection="column"
+               width="75%"
+               justifyContent="space-between"
+               bgcolor="lightgrey"
+            >
                {renderInput({ type: 'text', name: 'email' })}
                {renderInput({ type: 'password', name: 'password' })}
                <Button
+                  fullWidth
                   type="submit"
                   variant="contained"
                   color="primary"
@@ -78,7 +86,10 @@ function SignUp({ credentials, validate }) {
             </Box>
 
             <p>
-               Already registered ? <Link to="/login">Log In</Link>
+               Already registered ?
+               <Button component={RouterLink} to="/login" color="primary">
+                  Log In
+               </Button>
             </p>
          </Box>
       </Box>
