@@ -29,18 +29,20 @@ function SignUp({ credentials, validate }) {
 
    // render input (email or password)
    const renderInput = ({ type, name }) => {
-      return <TextField
-               fullWidth
-               type={type}
-               id={name}
-               name={name}
-               value={credentials[name]}
-               variant="filled"
-               onChange={validate}
-               label={name}
-               error={credentials.errors[name]}
-               helperText={credentials.errors[name]}
-               />
+      return (
+         <TextField
+            fullWidth
+            type={type}
+            id={name}
+            name={name}
+            value={credentials[name]}
+            variant="filled"
+            onChange={validate}
+            label={name}
+            error={credentials.errors[name]}
+            helperText={credentials.errors[name]}
+         />
+      );
    };
 
    return (
@@ -57,30 +59,30 @@ function SignUp({ credentials, validate }) {
             justifyContent="space-around"
             alignItems="center"
             bgcolor="lightgray"
-            width="30%"
-            height="75%"
-         >  
+            width="25%"
+            height="70%"
+            padding={5}
+         >
             <h1>Sign Up</h1>
-               {renderInput({ type: 'text', name: 'email' })}
-               {renderInput({ type: 'password', name: 'password' })}
-               <Button
-                  fullWidth
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  onClick={handleSubmit}
-               >
-                  Sign up
-               </Button>
-               <p>
+            {renderInput({ type: 'text', name: 'email' })}
+            {renderInput({ type: 'password', name: 'password' })}
+            <Button
+               fullWidth
+               type="submit"
+               variant="contained"
+               color="primary"
+               onClick={handleSubmit}
+            >
+               Sign up
+            </Button>
+            <p>
                Already registered ?
                <Button component={RouterLink} to="/login" color="primary">
                   Log In
                </Button>
             </p>
-            </Box>
          </Box>
-      
+      </Box>
    );
 }
 
