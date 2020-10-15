@@ -29,9 +29,7 @@ function SignUp({ credentials, validate }) {
 
    // render input (email or password)
    const renderInput = ({ type, name }) => {
-      return (
-         <div>
-            <TextField
+      return <TextField
                fullWidth
                type={type}
                id={name}
@@ -42,36 +40,27 @@ function SignUp({ credentials, validate }) {
                label={name}
                error={credentials.errors[name]}
                helperText={credentials.errors[name]}
-            />
-         </div>
-      );
+               />
    };
 
    return (
       <Box
          display="flex"
+         flexDirection="row"
          justifyContent="center"
          alignItems="center"
-         bgcolor="lightblue"
          height="80vh"
       >
          <Box
             display="flex"
             flexDirection="column"
-            justifyContent="center"
+            justifyContent="space-around"
             alignItems="center"
-            bgcolor="lightgreen"
+            bgcolor="lightgray"
             width="30%"
             height="75%"
-         >
+         >  
             <h1>Sign Up</h1>
-            <Box
-               display="flex"
-               flexDirection="column"
-               height="50%"
-               width="75%"
-               justifyContent="space-around"
-            >
                {renderInput({ type: 'text', name: 'email' })}
                {renderInput({ type: 'password', name: 'password' })}
                <Button
@@ -83,16 +72,15 @@ function SignUp({ credentials, validate }) {
                >
                   Sign up
                </Button>
-            </Box>
-
-            <p>
+               <p>
                Already registered ?
                <Button component={RouterLink} to="/login" color="primary">
                   Log In
                </Button>
             </p>
+            </Box>
          </Box>
-      </Box>
+      
    );
 }
 
