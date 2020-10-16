@@ -1,46 +1,27 @@
 import React from 'react';
-import { Link as RouterLink, useHistory } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import { Button, Box, TextField } from '@material-ui/core';
 
 import { signupUser } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
+import withSubmission from '../higher-order/withSubmission';
 
-function SignUp({ credentials, validate }) {
-   // history object
-   const history = useHistory();
-
-   // handle form submission
-   const handleSubmit = async (event) => {
-      // prevent default form submission behavior
-      event.preventDefault();
-
-      // reject login in case of invalid credentials (errors object is not empty)
-      if (Object.keys(credentials.errors).length === 0) {
-         // handle user login / signup
-         await signupUser(credentials);
-
-         // navigate user to posts page
-         history.replace('/posts');
-      } else {
-         console.log('Invalid credentials.');
-      }
-   };
-
-   // render input (email or password)
+function SignUp({ credentials, handleValidation, handleSubmission }) {
+   // render input field
    const renderInput = ({ type, name }) => {
       return (
          <TextField
-            fullWidth
             type={type}
             id={name}
             name={name}
             value={credentials[name]}
+            onChange={handleValidation}
             variant="filled"
-            onChange={validate}
             label={name}
             error={credentials.errors[name]}
             helperText={credentials.errors[name]}
+            fullWidth
          />
       );
    };
@@ -71,7 +52,7 @@ function SignUp({ credentials, validate }) {
                type="submit"
                variant="contained"
                color="primary"
-               onClick={handleSubmit}
+               onClick={handleSubmission}
             >
                Sign up
             </Button>
@@ -86,4 +67,4 @@ function SignUp({ credentials, validate }) {
    );
 }
 
-export default withValidation(SignUp, signupUser);
+export default withSubmission(withValidation(SignUp), signupUser);
