@@ -22,7 +22,7 @@ function withValidation(Component) {
       };
 
       // validate and update input
-      const validate = ({ target }) => {
+      const handleValidation = ({ target }) => {
          const errors = credentials.errors; // keep track of validation errors
 
          const inputValue = target.value.trim(); // trim input value
@@ -42,7 +42,11 @@ function withValidation(Component) {
       };
 
       return (
-         <Component {...props} credentials={credentials} validate={validate} />
+         <Component
+            {...props}
+            credentials={credentials}
+            onValidate={handleValidation}
+         />
       );
    };
 }
