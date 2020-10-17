@@ -1,21 +1,23 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-function withSubmission(Component) {
+function withSubmission(Component, submit) {
    return (props) => {
-      const { credentials, signupUser } = props;
       // history object
       const history = useHistory();
 
+      // extract credentials from component props
+      const { credentials } = props;
+
       // handle form submission
-      const handleSubmit = async (event) => {
+      const handleSubmission = async (event) => {
          // prevent default form submission behavior
          event.preventDefault();
 
          // reject login in case of invalid credentials (errors object is not empty)
          if (Object.keys(credentials.errors).length === 0) {
             // handle user login / signup
-            await signupUser(credentials);
+            await submit(credentials);
 
             // navigate user to posts page
             history.replace('/posts');
@@ -24,7 +26,7 @@ function withSubmission(Component) {
          }
       };
 
-      return <Component {...props} handleSubmit={handleSubmit} />;
+      return <Component {...props} onSubmit={handleSubmission} />;
    };
 }
 
