@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Button, Box, TextField } from '@material-ui/core';
 
 import { signupUser } from '../../services/user';
+
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
-function SignUp({ credentials, handleValidation, handleSubmission }) {
+function SignUp({ credentials, onValidate, onSubmit }) {
    // render input field
    const renderInput = ({ type, name }) => {
       return (
@@ -16,7 +17,7 @@ function SignUp({ credentials, handleValidation, handleSubmission }) {
             id={name}
             name={name}
             value={credentials[name]}
-            onChange={handleValidation}
+            onChange={onValidate}
             variant="filled"
             label={name}
             error={credentials.errors[name]}
@@ -52,13 +53,13 @@ function SignUp({ credentials, handleValidation, handleSubmission }) {
                type="submit"
                variant="contained"
                color="primary"
-               onClick={handleSubmission}
+               onClick={onSubmit}
             >
                Sign up
             </Button>
             <p>
                Already registered ?
-               <Button component={RouterLink} to="/login" color="primary">
+               <Button component={Link} to="/login" color="primary">
                   Log In
                </Button>
             </p>
