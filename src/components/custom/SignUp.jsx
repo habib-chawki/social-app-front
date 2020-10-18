@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, Box, TextField } from '@material-ui/core';
+import { Button, Box } from '@material-ui/core';
+import Input from '../common/Input';
 
 import { signupUser } from '../../services/user';
 
@@ -9,24 +10,6 @@ import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
 function SignUp({ credentials, onValidate, onSubmit }) {
-   // render input field
-   const renderInput = ({ type, name }) => {
-      return (
-         <TextField
-            type={type}
-            id={name}
-            name={name}
-            value={credentials[name]}
-            onChange={onValidate}
-            variant="filled"
-            label={name}
-            error={credentials.errors[name]}
-            helperText={credentials.errors[name]}
-            fullWidth
-         />
-      );
-   };
-
    return (
       <Box
          display="flex"
@@ -46,8 +29,18 @@ function SignUp({ credentials, onValidate, onSubmit }) {
             padding={5}
          >
             <h1>Sign Up</h1>
-            {renderInput({ type: 'text', name: 'email' })}
-            {renderInput({ type: 'password', name: 'password' })}
+            <Input
+               type="text"
+               name="email"
+               credentials={credentials}
+               onValidate={onValidate}
+            />
+            <Input
+               type="password"
+               name="password"
+               credentials={credentials}
+               onValidate={onValidate}
+            />
             <Button
                fullWidth
                type="submit"
