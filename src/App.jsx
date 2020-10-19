@@ -11,31 +11,29 @@ import './index.css';
 
 function App() {
    return (
-      <div>
-         <Switch>
-            <Route exact path="/">
-               <SignUp />
-            </Route>
+      <Switch>
+         <Route exact path="/">
+            <SignUp />
+         </Route>
 
-            <Route path="/login">
-               <LogIn />
-            </Route>
+         <Route path="/login">
+            <LogIn />
+         </Route>
 
-            <Route path="/profile">
-               <Profile />
-            </Route>
+         <Route path="/profile">
+            <Profile />
+         </Route>
 
-            <Route path="/posts">
-               <Posts />
-            </Route>
+         <Route path="/posts">
+            <Posts />
+         </Route>
 
-            <Route path="/not-found">
-               <NotFound />
-            </Route>
+         <Route path="/not-found">
+            <NotFound />
+         </Route>
 
-            <Redirect to="/not-found" />
-         </Switch>
-      </div>
+         <Redirect to="/not-found" />
+      </Switch>
    );
 }
 
