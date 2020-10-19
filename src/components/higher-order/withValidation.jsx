@@ -22,8 +22,12 @@ function withValidation(Component) {
       };
 
       // validate and update input
-      const handleValidation = ({ target }) => {
-         const errors = credentials.errors; // keep track of validation errors
+      const handleValidation = (event) => {
+         // extract the input target
+         const { target } = event;
+
+         // keep track of validation errors
+         const { errors } = credentials;
 
          const inputValue = target.value.trim(); // trim input value
          const inputType = target.name;
