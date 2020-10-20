@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { Button } from '@material-ui/core';
+
 import Input from '../common/Input';
+import Form from '../common/Form';
 
 import { loginUser } from '../../services/user';
 
@@ -10,27 +13,37 @@ import withSubmission from '../higher-order/withSubmission';
 
 function LogIn({ credentials, onValidate, onSubmit }) {
    return (
-      <div>
+      <Form>
          <h1>Log In</h1>
-         <form onSubmit={onSubmit}>
-            <Input
-               type="text"
-               name="email"
-               credentials={credentials}
-               onValidate={onValidate}
-            />
-            <Input
-               type="password"
-               name="password"
-               credentials={credentials}
-               onValidate={onValidate}
-            />
-            <input type="submit" value="Log in" />
-         </form>
+
+         <Input
+            type="text"
+            name="email"
+            credentials={credentials}
+            onValidate={onValidate}
+         />
+         <Input
+            type="password"
+            name="password"
+            credentials={credentials}
+            onValidate={onValidate}
+         />
+         <Button
+            fullWidth
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={onSubmit}
+         >
+            Log in
+         </Button>
          <p>
-            Not registered yet ? <Link to="/">Sign Up</Link>{' '}
+            Not registered yet ?
+            <Button component={Link} to="/" color="primary">
+               Sign Up
+            </Button>
          </p>
-      </div>
+      </Form>
    );
 }
 
