@@ -11,7 +11,7 @@ import { loginUser } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
-function LogIn({ credentials, onValidate, onSubmit }) {
+function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
          <h1>Log In</h1>
@@ -20,12 +20,14 @@ function LogIn({ credentials, onValidate, onSubmit }) {
             type="text"
             name="email"
             credentials={credentials}
+            onChange={onChange}
             onValidate={onValidate}
          />
          <Input
             type="password"
             name="password"
             credentials={credentials}
+            onChange={onChange}
             onValidate={onValidate}
          />
          <Button
