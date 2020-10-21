@@ -11,7 +11,7 @@ import { signupUser } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
-function SignUp({ credentials, onValidate, onSubmit }) {
+function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
          <h1>Sign Up</h1>
@@ -19,12 +19,14 @@ function SignUp({ credentials, onValidate, onSubmit }) {
             type="text"
             name="email"
             credentials={credentials}
+            onChange={onChange}
             onValidate={onValidate}
          />
          <Input
             type="password"
             name="password"
             credentials={credentials}
+            onChange={onChange}
             onValidate={onValidate}
          />
          <Button
