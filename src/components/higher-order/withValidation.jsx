@@ -22,25 +22,38 @@ function withValidation(Component) {
       };
 
       // validate and update input
-      const handleValidation = (event) => {
+      const handleChange = (event) => {
          // extract the input target
          const { target } = event;
-
-         // keep track of validation errors
-         const { errors } = credentials;
 
          const inputValue = target.value.trim(); // trim input value
          const inputType = target.name;
 
+         // update credentials state
+         setCredentials({
+            ...credentials,
+            [inputType]: inputValue,
+         });
+      };
+
+      const handleValidation = (event) => {
+         // extract the input target
+         const { target } = event;
+
+         //const inputValue = target.value.trim(); // trim input value
+         const inputType = target.name;
+
+         // keep track of validation errors
+         const { errors } = credentials;
+
          // add validation error if any, otherwise delete key (email or password) from errors object
-         !isInputValid(inputType, inputValue)
+         !isInputValid(inputType, credentials[inputType])
             ? (errors[inputType] = `Invalid ${inputType}.`)
             : delete errors[inputType];
 
          // update credentials state
          setCredentials({
             ...credentials,
-            [inputType]: inputValue,
             errors,
          });
       };
@@ -50,6 +63,7 @@ function withValidation(Component) {
             {...props}
             credentials={credentials}
             onValidate={handleValidation}
+            onChange={handleChange}
          />
       );
    };
