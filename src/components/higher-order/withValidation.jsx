@@ -29,6 +29,11 @@ function withValidation(Component) {
          const inputValue = target.value.trim(); // trim input value
          const inputType = target.name;
 
+         // remove error when input is valid
+         if (isInputValid(inputType, inputValue)) {
+            delete credentials.errors[inputType];
+         }
+
          // update credentials state
          setCredentials({
             ...credentials,

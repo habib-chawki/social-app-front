@@ -15,7 +15,6 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
          <h1>Log In</h1>
-
          <Input
             type="text"
             name="email"
