@@ -49,7 +49,7 @@ function withValidation(Component) {
          const inputType = target.name;
 
          // keep track of validation errors
-         const { errors } = credentials;
+         const errors = { ...credentials.errors };
 
          // add validation error if any, otherwise delete key (email or password) from errors object
          !isInputValid(inputType, credentials[inputType])
