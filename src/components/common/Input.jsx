@@ -1,19 +1,19 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 
-function Input({ credentials, onChange, onValidate, type, name }) {
+function Input({ credentials, onChange, onValidate, id, type, name }) {
    return (
       <TextField
+         id={id}
          type={type}
-         id={name}
          name={name}
-         value={credentials[name]}
+         value={credentials[id]}
          onChange={onChange}
          onBlur={onValidate}
          variant="filled"
          label={name}
-         error={credentials.errors[name] ? true : false}
-         helperText={credentials.errors[name]}
+         error={credentials.errors[id] ? true : false}
+         helperText={credentials.errors[id]}
          fullWidth
       />
    );
