@@ -16,15 +16,17 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
       <Form>
          <h1>Log In</h1>
          <Input
+            id="email"
             type="text"
-            name="email"
+            name="Email"
             credentials={credentials}
             onChange={onChange}
             onValidate={onValidate}
          />
          <Input
+            id="password"
             type="password"
-            name="password"
+            name="Password"
             credentials={credentials}
             onChange={onChange}
             onValidate={onValidate}
