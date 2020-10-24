@@ -27,7 +27,7 @@ function withValidation(Component) {
          const { target } = event;
 
          const inputValue = target.value.trim(); // trim input value
-         const inputType = target.name;
+         const inputType = target.id;
 
          // remove error when input is valid
          if (isInputValid(inputType, inputValue)) {
@@ -46,7 +46,7 @@ function withValidation(Component) {
          const { target } = event;
 
          //const inputValue = target.value.trim(); // trim input value
-         const inputType = target.name;
+         const inputType = target.id;
 
          // keep track of validation errors
          const errors = { ...credentials.errors };
