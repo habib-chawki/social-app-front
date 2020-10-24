@@ -12,7 +12,7 @@ function Input({ credentials, onChange, onValidate, type, name }) {
          onBlur={onValidate}
          variant="filled"
          label={name}
-         error={credentials.errors[name]}
+         error={credentials.errors[name] ? true : false}
          helperText={credentials.errors[name]}
          fullWidth
       />
