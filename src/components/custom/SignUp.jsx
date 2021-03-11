@@ -13,10 +13,10 @@ import withSubmission from '../higher-order/withSubmission';
 
 /**
  *
- * @param {Object} credentials - the email and password credentials, part of withValidation
- * @param {Function} onChange - handles input change, part of withValidation
- * @param {Function} onValidate - validates the input, part of withValidation
- * @param {Function} onSubmit - handles form submission, part of withSubmission
+ * @param {Object} props.credentials - user credentials, part of "withValidation" component
+ * @param {Function} props.onChange - handles input change, part of "withValidation" component
+ * @param {Function} props.onValidate - validates the input, part of "withValidation" component
+ * @param {Function} props.onSubmit - handles form submission, part of "withSubmission" component
  * @returns signup component with validation and submission
  */
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
