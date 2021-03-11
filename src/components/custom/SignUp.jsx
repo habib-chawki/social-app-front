@@ -11,6 +11,14 @@ import { signupUser } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
+/**
+ *
+ * @param {Object} credentials - the email and password credentials, part of withValidation
+ * @param {Function} onChange - handles input change, part of withValidation
+ * @param {Function} onValidate - validates the input, part of withValidation
+ * @param {Function} onSubmit - handles form submission, part of withSubmission
+ * @returns signup component with validation and submission
+ */
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
@@ -21,7 +29,7 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             name="Email"
             credentials={credentials}
             onChange={onChange}
-            onValidate={onValidate}
+            onValidate={onValidate} // invoked when the TextField is blurred
          />
          <Input
             id="password"
@@ -29,7 +37,7 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             name="Password"
             credentials={credentials}
             onChange={onChange}
-            onValidate={onValidate}
+            onValidate={onValidate} // invoked when the TextField is blurred
          />
          <Button
             fullWidth
