@@ -58,4 +58,4 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    );
 }
 
-export default withSubmission(withValidation(SignUp), signupUser);
+export default withValidation(withSubmission(SignUp, signupUser));
