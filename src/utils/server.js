@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from '../services/token';
+import { getToken } from '../services/storage';
 
 const server = axios.create({
    baseURL: 'http://localhost:3001',
