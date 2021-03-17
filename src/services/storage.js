@@ -6,6 +6,11 @@ function getToken() {
    return 'Bearer ' + localStorage.getItem(TOKEN_KEY);
 }
 
+// retrieve user id from localStorage
+function getUser() {
+   return localStorage.getItem(USER_KEY);
+}
+
 // store token in localStorage
 function storeToken(token) {
    localStorage.setItem(TOKEN_KEY, token);
@@ -21,4 +26,9 @@ function removeToken() {
    localStorage.removeItem(TOKEN_KEY);
 }
 
-export { storeToken, storeUser, getToken, removeToken };
+// remove user id from localStorage
+function removeUser() {
+   localStorage.removeUser(USER_KEY);
+}
+
+export { storeToken, storeUser, getToken, getUser, removeToken, removeUser };
