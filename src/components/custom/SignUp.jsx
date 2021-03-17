@@ -17,7 +17,7 @@ import withSubmission from '../higher-order/withSubmission';
  * @param {Function} props.onChange - handles input change, part of "withValidation" component
  * @param {Function} props.onValidate - validates the input, part of "withValidation" component
  * @param {Function} props.onSubmit - handles form submission, part of "withSubmission" component
- * @returns signup component with validation and submission
+ * @returns SignUp component with validation and submission
  */
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    return (

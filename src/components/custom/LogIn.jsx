@@ -11,6 +11,14 @@ import { loginUser } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
+/**
+ *
+ * @param {Object} props.credentials - user credentials, part of "withValidation" component
+ * @param {Function} props.onChange - handles input change, part of "withValidation" component
+ * @param {Function} props.onValidate - validates the input, part of "withValidation" component
+ * @param {Function} props.onSubmit - handles form submission, part of "withSubmission" component
+ * @returns LogIn component with validation and submission
+ */
 function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
