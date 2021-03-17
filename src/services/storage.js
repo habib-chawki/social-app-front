@@ -31,4 +31,17 @@ function removeUser() {
    localStorage.removeUser(USER_KEY);
 }
 
-export { storeToken, storeUser, getToken, getUser, removeToken, removeUser };
+// remove auth token and user id
+function endSession() {
+   localStorage.clear();
+}
+
+export {
+   storeToken,
+   storeUser,
+   getToken,
+   getUser,
+   removeToken,
+   removeUser,
+   endSession,
+};
