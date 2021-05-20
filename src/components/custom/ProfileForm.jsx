@@ -8,7 +8,12 @@ import {
    Box,
 } from '@material-ui/core';
 
-import { KeyboardDatePicker } from '@material-ui/pickers';
+import {
+   KeyboardDatePicker,
+   MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
+
+import DateFnsUtils from '@date-io/date-fns';
 
 function ProfileForm() {
    const [gender, setGender] = useState('');
@@ -33,6 +38,13 @@ function ProfileForm() {
                   <MenuItem value="Other">Other</MenuItem>
                </Select>
             </FormControl>
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+               <KeyboardDatePicker
+                  label="Birthday"
+                  format="MM/dd/yyyy"
+               ></KeyboardDatePicker>
+            </MuiPickersUtilsProvider>
          </Box>
       </form>
    );
