@@ -40,10 +40,7 @@ function ProfileForm() {
             </FormControl>
 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-               <KeyboardDatePicker
-                  label="Birthday"
-                  format="MM/dd/yyyy"
-               ></KeyboardDatePicker>
+               <KeyboardDatePicker label="Birthday" format="MM/dd/yyyy" />
             </MuiPickersUtilsProvider>
          </Box>
       </form>
