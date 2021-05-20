@@ -17,9 +17,14 @@ import DateFnsUtils from '@date-io/date-fns';
 
 function ProfileForm() {
    const [gender, setGender] = useState('');
+   const [birthday, setBirthday] = useState(Date.now());
 
    const handleGenderChange = (event) => {
       setGender(event.target.value);
+   };
+
+   const handleBirthdayChange = (date) => {
+      setBirthday(date);
    };
 
    return (
@@ -40,7 +45,12 @@ function ProfileForm() {
             </FormControl>
 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-               <KeyboardDatePicker label="Birthday" format="MM/dd/yyyy" />
+               <KeyboardDatePicker
+                  label="Birthday"
+                  format="dd/MM/yyyy"
+                  value={birthday}
+                  onChange={handleBirthdayChange}
+               />
             </MuiPickersUtilsProvider>
          </Box>
       </form>
