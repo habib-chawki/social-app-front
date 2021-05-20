@@ -1,5 +1,5 @@
 import server from '../utils/server';
-import { storeToken, removeToken } from './token';
+import { storeToken, removeToken } from './storage';
 
 const baseUrl = '/users';
 
