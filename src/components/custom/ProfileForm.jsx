@@ -1,10 +1,34 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import React, { useState } from 'react';
+import {
+   TextField,
+   Select,
+   MenuItem,
+   FormControl,
+   InputLabel,
+} from '@material-ui/core';
 
 function ProfileForm() {
+   const [gender, setGender] = useState('');
+
+   const handleGenderChange = (event) => {
+      setGender(event.target.value);
+   };
+
    return (
       <form>
-         <TextField label="First name" />
+         <TextField label="First name" variant="filled" />
+         <TextField label="Middle name" variant="filled" />
+         <TextField label="Last name" variant="filled" />
+         <TextField label="Address" variant="filled" />
+
+         <FormControl>
+            <InputLabel>Gender</InputLabel>
+            <Select value={gender} onChange={handleGenderChange}>
+               <MenuItem value="Male">Male</MenuItem>
+               <MenuItem value="Female">Female</MenuItem>
+               <MenuItem value="Other">Other</MenuItem>
+            </Select>
+         </FormControl>
       </form>
    );
 }
