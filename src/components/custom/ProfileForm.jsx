@@ -30,10 +30,10 @@ function ProfileForm() {
    return (
       <form>
          <Box display="flex" flexDirection="column">
-            <TextField label="First name" variant="filled" />
-            <TextField label="Middle name" variant="filled" />
-            <TextField label="Last name" variant="filled" />
-            <TextField label="Address" variant="filled" />
+            <TextField label="First name" variant="outlined" />
+            <TextField label="Middle name" variant="outlined" />
+            <TextField label="Last name" variant="outlined" />
+            <TextField label="Address" variant="outlined" />
 
             <FormControl>
                <InputLabel>Gender</InputLabel>
@@ -52,6 +52,8 @@ function ProfileForm() {
                   onChange={handleBirthdayChange}
                />
             </MuiPickersUtilsProvider>
+
+            <TextField label="Bio" variant="outlined" multiline rows={6} />
          </Box>
       </form>
    );
