@@ -1,10 +1,11 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
 function ProfileForm() {
    return (
-      <div>
-         <h1>Profile Form</h1>
-      </div>
+      <form>
+         <TextField label="First name" />
+      </form>
    );
 }
 
