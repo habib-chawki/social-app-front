@@ -8,6 +8,8 @@ import {
    Box,
 } from '@material-ui/core';
 
+import { KeyboardDatePicker } from '@material-ui/pickers';
+
 function ProfileForm() {
    const [gender, setGender] = useState('');
 
