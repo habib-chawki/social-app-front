@@ -5,6 +5,8 @@ import {
    MenuItem,
    FormControl,
    InputLabel,
+   Chip,
+   Paper,
    Box,
 } from '@material-ui/core';
 
@@ -17,7 +19,8 @@ import DateFnsUtils from '@date-io/date-fns';
 
 function ProfileForm() {
    const [gender, setGender] = useState('');
-   const [birthday, setBirthday] = useState(Date.now());
+   const [birthday, setBirthday] = useState();
+   const [languages, setLanguages] = useState(['English', 'French', 'German']);
 
    const handleGenderChange = (event) => {
       setGender(event.target.value);
@@ -25,6 +28,10 @@ function ProfileForm() {
 
    const handleBirthdayChange = (date) => {
       setBirthday(date);
+   };
+
+   const handleLanguageDelete = (langToDelete) => {
+      setLanguages(languages.filter((lang) => langToDelete !== lang));
    };
 
    return (
@@ -54,6 +61,17 @@ function ProfileForm() {
             </MuiPickersUtilsProvider>
 
             <TextField label="Bio" variant="outlined" multiline rows={6} />
+
+            <Paper component="ul">
+               {languages.map((language) => (
+                  <li>
+                     <Chip
+                        label={language}
+                        onDelete={handleLanguageDelete}
+                     ></Chip>
+                  </li>
+               ))}
+            </Paper>
          </Box>
       </form>
    );
