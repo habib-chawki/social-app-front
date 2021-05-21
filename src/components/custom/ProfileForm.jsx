@@ -107,6 +107,24 @@ function ProfileForm() {
             </Paper>
 
             <Box display="flex" flexDirection="column">
+               <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                     disableToolbar
+                     variant="inline"
+                     label="Start date"
+                     format="dd/MM/yyyy"
+                  />
+               </MuiPickersUtilsProvider>
+
+               <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                     disableToolbar
+                     variant="inline"
+                     label="End date"
+                     format="dd/MM/yyyy"
+                  />
+               </MuiPickersUtilsProvider>
+
                <TextField label="position" variant="outlined" />
                <TextField label="company" variant="outlined" />
                <TextField
@@ -118,6 +136,23 @@ function ProfileForm() {
             </Box>
 
             <Box display="flex" flexDirection="column">
+               <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                     disableToolbar
+                     variant="inline"
+                     label="Start date"
+                     format="dd/MM/yyyy"
+                  />
+               </MuiPickersUtilsProvider>
+
+               <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                     disableToolbar
+                     variant="inline"
+                     label="End date"
+                     format="dd/MM/yyyy"
+                  />
+               </MuiPickersUtilsProvider>
                <TextField label="major" variant="outlined" />
                <TextField label="school" variant="outlined" />
                <TextField
