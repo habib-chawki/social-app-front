@@ -20,7 +20,11 @@ import DateFnsUtils from '@date-io/date-fns';
 function ProfileForm() {
    const [gender, setGender] = useState('');
    const [birthday, setBirthday] = useState();
-   const [languages, setLanguages] = useState(['English', 'French', 'German']);
+   const [languages, setLanguages] = useState([
+      { key: 0, label: 'English' },
+      { key: 1, label: 'French' },
+      { key: 2, label: 'German' },
+   ]);
 
    const handleGenderChange = (event) => {
       setGender(event.target.value);
@@ -31,7 +35,8 @@ function ProfileForm() {
    };
 
    const handleLanguageDelete = (langToDelete) => {
-      setLanguages(languages.filter((lang) => langToDelete !== lang));
+      console.log(langToDelete);
+      setLanguages(languages.filter((lang) => langToDelete.key !== lang.key));
    };
 
    return (
@@ -66,8 +71,9 @@ function ProfileForm() {
                {languages.map((language) => (
                   <li>
                      <Chip
-                        label={language}
-                        onDelete={handleLanguageDelete}
+                        key={language.key}
+                        label={language.label}
+                        onDelete={() => handleLanguageDelete(language)}
                      ></Chip>
                   </li>
                ))}
