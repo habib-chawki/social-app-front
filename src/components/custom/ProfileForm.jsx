@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
    TextField,
+   Button,
    Select,
    MenuItem,
    FormControl,
@@ -20,11 +21,8 @@ import DateFnsUtils from '@date-io/date-fns';
 function ProfileForm() {
    const [gender, setGender] = useState('');
    const [birthday, setBirthday] = useState();
-   const [languages, setLanguages] = useState([
-      { key: 0, label: 'English' },
-      { key: 1, label: 'French' },
-      { key: 2, label: 'German' },
-   ]);
+   const [languages, setLanguages] = useState([]);
+   const [language, setLanguage] = useState('');
 
    const handleGenderChange = (event) => {
       setGender(event.target.value);
@@ -34,9 +32,16 @@ function ProfileForm() {
       setBirthday(date);
    };
 
-   const handleLanguageDelete = (langToDelete) => {
-      console.log(langToDelete);
+   const handleLanguageChange = (event) => {
+      setLanguage(event.target.value);
+   };
+
+   const handleDeleteLanguage = (langToDelete) => {
       setLanguages(languages.filter((lang) => langToDelete.key !== lang.key));
+   };
+
+   const handleAddLanguage = () => {
+      console.log(language);
    };
 
    return (
@@ -67,15 +72,22 @@ function ProfileForm() {
 
             <TextField label="Bio" variant="outlined" multiline rows={6} />
 
+            <TextField
+               onKeyPress={handleAddLanguage}
+               value={language}
+               onChange={handleLanguageChange}
+               label="Language"
+               variant="outlined"
+            />
+            <Button onClick={handleAddLanguage}>Add language</Button>
+
             <Paper component="ul">
                {languages.map((language) => (
-                  <li>
-                     <Chip
-                        key={language.key}
-                        label={language.label}
-                        onDelete={() => handleLanguageDelete(language)}
-                     ></Chip>
-                  </li>
+                  <Chip
+                     key={language.key}
+                     label={language.label}
+                     onDelete={() => handleDeleteLanguage(language)}
+                  ></Chip>
                ))}
             </Paper>
          </Box>
