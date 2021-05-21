@@ -40,8 +40,23 @@ function ProfileForm() {
       setLanguages(languages.filter((lang) => langToDelete.key !== lang.key));
    };
 
-   const handleAddLanguage = () => {
-      console.log(language);
+   /** Add the language chip only when the input field is not empty 
+       and the Add button or the Enter key is pressed */
+   const handleAddLanguage = (event) => {
+      if (
+         language !== '' &&
+         (event.type === 'click' ||
+            (event.type === 'keypress' && event.key === 'Enter'))
+      ) {
+         // add language to the chip list of languages
+         setLanguages([
+            ...languages,
+            { key: languages.length, label: language },
+         ]);
+
+         // delete language (clear text field)
+         setLanguage('');
+      }
    };
 
    return (
