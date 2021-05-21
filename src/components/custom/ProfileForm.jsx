@@ -105,6 +105,17 @@ function ProfileForm() {
                   ></Chip>
                ))}
             </Paper>
+
+            <Box display="flex" flexDirection="column">
+               <TextField label="position" variant="outlined" />
+               <TextField label="company" variant="outlined" />
+               <TextField
+                  label="description"
+                  multiline
+                  rows={6}
+                  variant="outlined"
+               />
+            </Box>
          </Box>
       </form>
    );
