@@ -116,6 +116,17 @@ function ProfileForm() {
                   variant="outlined"
                />
             </Box>
+
+            <Box display="flex" flexDirection="column">
+               <TextField label="major" variant="outlined" />
+               <TextField label="school" variant="outlined" />
+               <TextField
+                  label="description"
+                  multiline
+                  rows={6}
+                  variant="outlined"
+               />
+            </Box>
          </Box>
       </form>
    );
