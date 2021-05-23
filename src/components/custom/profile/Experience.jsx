@@ -10,6 +10,8 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 function Experience() {
+   const [experiences, setExperiences] = useState([]);
+
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [position, setPosition] = useState('');
@@ -34,6 +36,18 @@ function Experience() {
 
    const handleCompanyChange = (event) => {
       setCompany(event.target.value);
+   };
+
+   const addExperience = () => {
+      const experience = {
+         startDate,
+         endDate,
+         position,
+         company,
+         description,
+      };
+      console.log(`Experience added ${JSON.stringify(experience)}`);
+      setExperiences([...experiences, experience]);
    };
 
    return (
@@ -80,7 +94,7 @@ function Experience() {
             rows={6}
             variant="outlined"
          />
-         <Button>Add</Button>
+         <Button onClick={addExperience}>Add</Button>
       </Box>
    );
 }
