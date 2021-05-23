@@ -10,6 +10,12 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 function Experience() {
+   const [startDate, setStartDate] = useState();
+   const [endDate, setEndDate] = useState();
+   const [position, setPosition] = useState('');
+   const [company, setCompany] = useState('');
+   const [description, setDescription] = useState('');
+
    return (
       <Box display="flex" flexDirection="column">
          <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -30,9 +36,15 @@ function Experience() {
             />
          </MuiPickersUtilsProvider>
 
-         <TextField label="position" variant="outlined" />
-         <TextField label="company" variant="outlined" />
-         <TextField label="description" multiline rows={6} variant="outlined" />
+         <TextField value={position} label="position" variant="outlined" />
+         <TextField value={company} label="company" variant="outlined" />
+         <TextField
+            value={description}
+            label="description"
+            multiline
+            rows={6}
+            variant="outlined"
+         />
          <Button>Add</Button>
       </Box>
    );
