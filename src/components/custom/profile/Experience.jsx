@@ -19,11 +19,11 @@ function Experience() {
    const [description, setDescription] = useState('');
 
    const handleStartDateChange = (startDate) => {
-      setStartDate(startDate);
+      setStartDate(startDate.toString());
    };
 
    const handleEndDateChange = (endDate) => {
-      setEndDate(endDate);
+      setEndDate(endDate.toString());
    };
 
    const handlePositionChange = (event) => {
@@ -102,7 +102,8 @@ function Experience() {
             {experiences.map((experience) => (
                <Card key={experience.position}>
                   <h2>
-                     {experience.position} - {experience.company}
+                     {experience.position} - {experience.company} (
+                     {experience.startDate} - {experience.endDate})
                   </h2>
                   <h3>{experience.description}</h3>
                </Card>
