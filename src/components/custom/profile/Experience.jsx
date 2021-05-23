@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button, Box, Card } from '@material-ui/core';
 
 import {
    KeyboardDatePicker,
@@ -51,50 +51,63 @@ function Experience() {
    };
 
    return (
-      <Box display="flex" flexDirection="column">
-         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-               value={startDate}
-               onChange={handleStartDateChange}
-               disableToolbar
-               variant="inline"
-               label="Start date"
-               format="dd/MM/yyyy"
-            />
-         </MuiPickersUtilsProvider>
+      <Box>
+         <Box display="flex" flexDirection="column">
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+               <KeyboardDatePicker
+                  value={startDate}
+                  onChange={handleStartDateChange}
+                  disableToolbar
+                  variant="inline"
+                  label="Start date"
+                  format="dd/MM/yyyy"
+               />
+            </MuiPickersUtilsProvider>
 
-         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-               value={endDate}
-               onChange={handleEndDateChange}
-               disableToolbar
-               variant="inline"
-               label="End date"
-               format="dd/MM/yyyy"
-            />
-         </MuiPickersUtilsProvider>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+               <KeyboardDatePicker
+                  value={endDate}
+                  onChange={handleEndDateChange}
+                  disableToolbar
+                  variant="inline"
+                  label="End date"
+                  format="dd/MM/yyyy"
+               />
+            </MuiPickersUtilsProvider>
 
-         <TextField
-            value={position}
-            onChange={handlePositionChange}
-            label="position"
-            variant="outlined"
-         />
-         <TextField
-            value={company}
-            onChange={handleCompanyChange}
-            label="company"
-            variant="outlined"
-         />
-         <TextField
-            value={description}
-            onChange={handleDescriptionChange}
-            label="description"
-            multiline
-            rows={6}
-            variant="outlined"
-         />
-         <Button onClick={addExperience}>Add</Button>
+            <TextField
+               value={position}
+               onChange={handlePositionChange}
+               label="position"
+               variant="outlined"
+            />
+            <TextField
+               value={company}
+               onChange={handleCompanyChange}
+               label="company"
+               variant="outlined"
+            />
+            <TextField
+               value={description}
+               onChange={handleDescriptionChange}
+               label="description"
+               multiline
+               rows={6}
+               variant="outlined"
+            />
+            <Button onClick={addExperience}>Add</Button>
+         </Box>
+
+         <Box>
+            {experiences.map((experience) => (
+               <Card key={experience.position}>
+                  <h2>
+                     {experience.position} - {experience.company}
+                  </h2>
+                  <h3>{experience.description}</h3>
+               </Card>
+            ))}
+         </Box>
       </Box>
    );
 }
