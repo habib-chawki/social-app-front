@@ -16,9 +16,17 @@ function Experience() {
    const [company, setCompany] = useState('');
    const [description, setDescription] = useState('');
 
-   const handlePositionChange = () => {};
-   const handleDescriptionChange = () => {};
-   const handleCompanyChange = () => {};
+   const handlePositionChange = (event) => {
+      setPosition(event.target.value);
+   };
+
+   const handleDescriptionChange = (event) => {
+      setDescription(event.target.value);
+   };
+
+   const handleCompanyChange = (event) => {
+      setCompany(event.target.value);
+   };
 
    return (
       <Box display="flex" flexDirection="column">
