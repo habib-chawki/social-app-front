@@ -16,6 +16,14 @@ function Experience() {
    const [company, setCompany] = useState('');
    const [description, setDescription] = useState('');
 
+   const handleStartDateChange = (startDate) => {
+      setStartDate(startDate);
+   };
+
+   const handleEndDateChange = (endDate) => {
+      setEndDate(endDate);
+   };
+
    const handlePositionChange = (event) => {
       setPosition(event.target.value);
    };
@@ -32,6 +40,8 @@ function Experience() {
       <Box display="flex" flexDirection="column">
          <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
+               value={startDate}
+               onChange={handleStartDateChange}
                disableToolbar
                variant="inline"
                label="Start date"
@@ -41,6 +51,8 @@ function Experience() {
 
          <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
+               value={endDate}
+               onChange={handleEndDateChange}
                disableToolbar
                variant="inline"
                label="End date"
