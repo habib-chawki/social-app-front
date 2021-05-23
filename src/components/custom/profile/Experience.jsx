@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import moment from 'moment';
 
 import { TextField, Button, Box, Card } from '@material-ui/core';
 
@@ -19,11 +20,11 @@ function Experience() {
    const [description, setDescription] = useState('');
 
    const handleStartDateChange = (startDate) => {
-      setStartDate(startDate.toString());
+      setStartDate(startDate);
    };
 
    const handleEndDateChange = (endDate) => {
-      setEndDate(endDate.toString());
+      setEndDate(endDate);
    };
 
    const handlePositionChange = (event) => {
@@ -102,10 +103,13 @@ function Experience() {
             {experiences.map((experience) => (
                <Card key={experience.position}>
                   <h2>
-                     {experience.position} - {experience.company} (
-                     {experience.startDate} - {experience.endDate})
+                     {experience.position} - {experience.company}
                   </h2>
-                  <h3>{experience.description}</h3>
+                  <h4>
+                     {moment(experience.startDate).format('MMM YYYY')} -{' '}
+                     {moment(experience.endDate).format('MMM YYYY')}
+                  </h4>
+                  <p>{experience.description}</p>
                </Card>
             ))}
          </Box>
