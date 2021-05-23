@@ -133,6 +133,7 @@ function ProfileForm() {
                   rows={6}
                   variant="outlined"
                />
+               <Button>Add</Button>
             </Box>
 
             <Box display="flex" flexDirection="column">
