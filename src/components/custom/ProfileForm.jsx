@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Experience from './Experience';
 import {
    TextField,
    Button,
@@ -106,35 +107,7 @@ function ProfileForm() {
                ))}
             </Paper>
 
-            <Box display="flex" flexDirection="column">
-               <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <KeyboardDatePicker
-                     disableToolbar
-                     variant="inline"
-                     label="Start date"
-                     format="dd/MM/yyyy"
-                  />
-               </MuiPickersUtilsProvider>
-
-               <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <KeyboardDatePicker
-                     disableToolbar
-                     variant="inline"
-                     label="End date"
-                     format="dd/MM/yyyy"
-                  />
-               </MuiPickersUtilsProvider>
-
-               <TextField label="position" variant="outlined" />
-               <TextField label="company" variant="outlined" />
-               <TextField
-                  label="description"
-                  multiline
-                  rows={6}
-                  variant="outlined"
-               />
-               <Button>Add</Button>
-            </Box>
+            <Experience />
 
             <Box display="flex" flexDirection="column">
                <MuiPickersUtilsProvider utils={DateFnsUtils}>
