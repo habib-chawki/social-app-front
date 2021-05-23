@@ -16,6 +16,10 @@ function Experience() {
    const [company, setCompany] = useState('');
    const [description, setDescription] = useState('');
 
+   const handlePositionChange = () => {};
+   const handleDescriptionChange = () => {};
+   const handleCompanyChange = () => {};
+
    return (
       <Box display="flex" flexDirection="column">
          <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -36,10 +40,21 @@ function Experience() {
             />
          </MuiPickersUtilsProvider>
 
-         <TextField value={position} label="position" variant="outlined" />
-         <TextField value={company} label="company" variant="outlined" />
+         <TextField
+            value={position}
+            onChange={handlePositionChange}
+            label="position"
+            variant="outlined"
+         />
+         <TextField
+            value={company}
+            onChange={handleCompanyChange}
+            label="company"
+            variant="outlined"
+         />
          <TextField
             value={description}
+            onChange={handleDescriptionChange}
             label="description"
             multiline
             rows={6}
