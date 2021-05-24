@@ -23,10 +23,33 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 function ProfileForm() {
+   const [firstName, setFirstName] = useState('');
+   const [lastName, setLastName] = useState('');
+   const [middleName, setMiddleName] = useState('');
+
+   const [address, setAddress] = useState('');
+
    const [gender, setGender] = useState('');
    const [birthday, setBirthday] = useState();
+
    const [languages, setLanguages] = useState([]);
    const [language, setLanguage] = useState('');
+
+   const handleFirstNameChange = (event) => {
+      setFirstName(event.target.value);
+   };
+
+   const handleLastNameChange = (event) => {
+      setLastName(event.target.value);
+   };
+
+   const handleMiddleNameChange = (event) => {
+      setMiddleName(event.target.value);
+   };
+
+   const handleAddressChange = (event) => {
+      setAddress(event.target.value);
+   };
 
    const handleGenderChange = (event) => {
       setGender(event.target.value);
@@ -68,10 +91,30 @@ function ProfileForm() {
    return (
       <form>
          <Box display="flex" flexDirection="column">
-            <TextField label="First name" variant="outlined" />
-            <TextField label="Middle name" variant="outlined" />
-            <TextField label="Last name" variant="outlined" />
-            <TextField label="Address" variant="outlined" />
+            <TextField
+               value={firstName}
+               onChange={handleFirstNameChange}
+               label="First name"
+               variant="outlined"
+            />
+            <TextField
+               value={middleName}
+               onChange={handleMiddleNameChange}
+               label="Middle name"
+               variant="outlined"
+            />
+            <TextField
+               value={lastName}
+               onChange={handleLastNameChange}
+               label="Last name"
+               variant="outlined"
+            />
+            <TextField
+               value={address}
+               onChange={handleAddressChange}
+               label="Address"
+               variant="outlined"
+            />
 
             <FormControl>
                <InputLabel>Gender</InputLabel>
