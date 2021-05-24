@@ -36,6 +36,8 @@ function ProfileForm() {
    const [languages, setLanguages] = useState([]);
    const [language, setLanguage] = useState('');
 
+   const [experiences, setExperiences] = useState([]);
+
    const handleFirstNameChange = (event) => {
       setFirstName(event.target.value);
    };
@@ -89,6 +91,11 @@ function ProfileForm() {
          // delete language (clear text field)
          setLanguage('');
       }
+   };
+
+   const handleAddExperience = (experience) => {
+      console.log(`Experience added ${JSON.stringify(experience)}`);
+      setExperiences([...experiences, experience]);
    };
 
    const handleSaveProfile = () => {
@@ -179,7 +186,10 @@ function ProfileForm() {
             ))}
          </Paper>
 
-         <Experiences />
+         <Experiences
+            experiences={experiences}
+            onAddExperience={handleAddExperience}
+         />
          <Education />
 
          <Button onClick={handleSaveProfile}>Save Profile</Button>
