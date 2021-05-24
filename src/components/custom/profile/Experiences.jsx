@@ -10,9 +10,7 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
-function Experiences() {
-   const [experiences, setExperiences] = useState([]);
-
+function Experiences({ onAddExperience, experiences }) {
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [position, setPosition] = useState('');
@@ -40,6 +38,7 @@ function Experiences() {
    };
 
    const addExperience = () => {
+      // set up experience
       const experience = {
          startDate,
          endDate,
@@ -47,8 +46,9 @@ function Experiences() {
          company,
          description,
       };
-      console.log(`Experience added ${JSON.stringify(experience)}`);
-      setExperiences([...experiences, experience]);
+
+      // notify parent
+      onAddExperience(experience);
    };
 
    return (
