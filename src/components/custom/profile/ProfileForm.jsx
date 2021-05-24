@@ -63,6 +63,8 @@ function ProfileForm() {
       }
    };
 
+   const handleSaveProfile = () => {};
+
    return (
       <form>
          <Box display="flex" flexDirection="column">
@@ -112,6 +114,8 @@ function ProfileForm() {
 
             <Experience />
             <Education />
+
+            <Button onClick={handleSaveProfile}>Save Profile</Button>
          </Box>
       </form>
    );
