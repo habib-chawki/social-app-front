@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Experiences from './Experiences';
+import Experience from './Experience';
 import Education from './Education';
 
 import {
@@ -37,6 +37,7 @@ function ProfileForm() {
    const [language, setLanguage] = useState('');
 
    const [experiences, setExperiences] = useState([]);
+   const [educations, setEducations] = useState([]);
 
    const handleFirstNameChange = (event) => {
       setFirstName(event.target.value);
@@ -98,6 +99,11 @@ function ProfileForm() {
       setExperiences([...experiences, experience]);
    };
 
+   const handleAddEducation = (education) => {
+      console.log(`Education added ${JSON.stringify(education)}`);
+      setEducations([...educations, education]);
+   };
+
    const handleSaveProfile = () => {
       const profile = {
          firstName,
@@ -108,6 +114,8 @@ function ProfileForm() {
          bio,
          birthday,
          languages,
+         experiences,
+         educations,
       };
 
       console.log(JSON.stringify(profile));
@@ -186,11 +194,14 @@ function ProfileForm() {
             ))}
          </Paper>
 
-         <Experiences
+         <Experience
             experiences={experiences}
             onAddExperience={handleAddExperience}
          />
-         <Education />
+         <Education
+            educations={educations}
+            onAddEducation={handleAddEducation}
+         />
 
          <Button onClick={handleSaveProfile}>Save Profile</Button>
       </Box>
