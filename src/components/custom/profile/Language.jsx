@@ -26,7 +26,7 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
    };
 
    return (
-      <Box>
+      <Box display="flex" flexDirection="column">
          <TextField
             onKeyPress={handleAddLanguage}
             value={language}
