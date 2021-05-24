@@ -10,9 +10,7 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
-function Education() {
-   const [educationList, setEducationList] = useState([]);
-
+function Education({ onAddEducation, educations }) {
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [major, setMajor] = useState('');
@@ -40,6 +38,7 @@ function Education() {
    };
 
    const addEducation = () => {
+      // set up education
       const education = {
          startDate,
          endDate,
@@ -47,8 +46,9 @@ function Education() {
          school,
          description,
       };
-      console.log(`Experience added ${JSON.stringify(education)}`);
-      setEducationList([...educationList, education]);
+
+      // notify parent
+      onAddEducation(education);
    };
 
    return (
@@ -100,7 +100,7 @@ function Education() {
          </Box>
 
          <Box>
-            {educationList.map((education) => (
+            {educations.map((education) => (
                <Card key={education.major}>
                   <h2>
                      {education.major} - {education.school}
