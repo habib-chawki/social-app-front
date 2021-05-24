@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Experience from './Experience';
 import Education from './Education';
+import Language from './Language';
 
 import {
    TextField,
@@ -10,8 +11,6 @@ import {
    MenuItem,
    FormControl,
    InputLabel,
-   Chip,
-   Paper,
    Box,
 } from '@material-ui/core';
 
@@ -34,7 +33,6 @@ function ProfileForm() {
    const [birthday, setBirthday] = useState();
 
    const [languages, setLanguages] = useState([]);
-   const [language, setLanguage] = useState('');
 
    const [experiences, setExperiences] = useState([]);
    const [educations, setEducations] = useState([]);
@@ -67,31 +65,12 @@ function ProfileForm() {
       setBirthday(date);
    };
 
-   const handleLanguageChange = (event) => {
-      setLanguage(event.target.value);
+   const handleAddLanguage = (language) => {
+      setLanguages([...languages, language]);
    };
 
-   const handleDeleteLanguage = (langToDelete) => {
+   const handleRemoveLanguage = (langToDelete) => {
       setLanguages(languages.filter((lang) => langToDelete.key !== lang.key));
-   };
-
-   /** Add the language chip only when the input field is not empty 
-       and the Add button or the Enter key is pressed */
-   const handleAddLanguage = (event) => {
-      if (
-         language !== '' &&
-         (event.type === 'click' ||
-            (event.type === 'keypress' && event.key === 'Enter'))
-      ) {
-         // add language to the chip list of languages
-         setLanguages([
-            ...languages,
-            { key: languages.length, label: language },
-         ]);
-
-         // delete language (clear text field)
-         setLanguage('');
-      }
    };
 
    const handleAddExperience = (experience) => {
@@ -118,6 +97,7 @@ function ProfileForm() {
          educations,
       };
 
+      // TODO: call backend service, save user profile
       console.log(JSON.stringify(profile));
    };
 
@@ -175,24 +155,11 @@ function ProfileForm() {
             rows={6}
          />
 
-         <TextField
-            onKeyPress={handleAddLanguage}
-            value={language}
-            onChange={handleLanguageChange}
-            label="Language"
-            variant="outlined"
+         <Language
+            languages={languages}
+            onAddLanguage={handleAddLanguage}
+            onRemoveLanguage={handleRemoveLanguage}
          />
-         <Button onClick={handleAddLanguage}>Add language</Button>
-
-         <Paper component="ul">
-            {languages.map((language) => (
-               <Chip
-                  key={language.key}
-                  label={language.label}
-                  onDelete={() => handleDeleteLanguage(language)}
-               ></Chip>
-            ))}
-         </Paper>
 
          <Experience
             experiences={experiences}
