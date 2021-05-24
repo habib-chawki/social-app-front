@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Experience from './Experiences';
+import Experiences from './Experiences';
 import Education from './Education';
 
 import {
@@ -155,7 +155,7 @@ function ProfileForm() {
                ))}
             </Paper>
 
-            <Experience />
+            <Experiences />
             <Education />
 
             <Button onClick={handleSaveProfile}>Save Profile</Button>

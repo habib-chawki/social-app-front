@@ -10,7 +10,7 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
-function Experience() {
+function Experiences() {
    const [experiences, setExperiences] = useState([]);
 
    const [startDate, setStartDate] = useState();
@@ -117,4 +117,4 @@ function Experience() {
    );
 }
 
-export default Experience;
+export default Experiences;
