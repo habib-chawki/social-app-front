@@ -89,78 +89,76 @@ function ProfileForm() {
    const handleSaveProfile = () => {};
 
    return (
-      <form>
-         <Box display="flex" flexDirection="column">
-            <TextField
-               value={firstName}
-               onChange={handleFirstNameChange}
-               label="First name"
-               variant="outlined"
+      <Box display="flex" flexDirection="column" mx={20} my={5}>
+         <TextField
+            value={firstName}
+            onChange={handleFirstNameChange}
+            label="First name"
+            variant="outlined"
+         />
+         <TextField
+            value={middleName}
+            onChange={handleMiddleNameChange}
+            label="Middle name"
+            variant="outlined"
+         />
+         <TextField
+            value={lastName}
+            onChange={handleLastNameChange}
+            label="Last name"
+            variant="outlined"
+         />
+         <TextField
+            value={address}
+            onChange={handleAddressChange}
+            label="Address"
+            variant="outlined"
+         />
+
+         <FormControl>
+            <InputLabel>Gender</InputLabel>
+            <Select value={gender} onChange={handleGenderChange}>
+               <MenuItem value="Male">Male</MenuItem>
+               <MenuItem value="Female">Female</MenuItem>
+               <MenuItem value="Other">Other</MenuItem>
+            </Select>
+         </FormControl>
+
+         <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+               label="Birthday"
+               format="dd/MM/yyyy"
+               value={birthday}
+               onChange={handleBirthdayChange}
             />
-            <TextField
-               value={middleName}
-               onChange={handleMiddleNameChange}
-               label="Middle name"
-               variant="outlined"
-            />
-            <TextField
-               value={lastName}
-               onChange={handleLastNameChange}
-               label="Last name"
-               variant="outlined"
-            />
-            <TextField
-               value={address}
-               onChange={handleAddressChange}
-               label="Address"
-               variant="outlined"
-            />
+         </MuiPickersUtilsProvider>
 
-            <FormControl>
-               <InputLabel>Gender</InputLabel>
-               <Select value={gender} onChange={handleGenderChange}>
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-               </Select>
-            </FormControl>
+         <TextField label="Bio" variant="outlined" multiline rows={6} />
 
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-               <KeyboardDatePicker
-                  label="Birthday"
-                  format="dd/MM/yyyy"
-                  value={birthday}
-                  onChange={handleBirthdayChange}
-               />
-            </MuiPickersUtilsProvider>
+         <TextField
+            onKeyPress={handleAddLanguage}
+            value={language}
+            onChange={handleLanguageChange}
+            label="Language"
+            variant="outlined"
+         />
+         <Button onClick={handleAddLanguage}>Add language</Button>
 
-            <TextField label="Bio" variant="outlined" multiline rows={6} />
+         <Paper component="ul">
+            {languages.map((language) => (
+               <Chip
+                  key={language.key}
+                  label={language.label}
+                  onDelete={() => handleDeleteLanguage(language)}
+               ></Chip>
+            ))}
+         </Paper>
 
-            <TextField
-               onKeyPress={handleAddLanguage}
-               value={language}
-               onChange={handleLanguageChange}
-               label="Language"
-               variant="outlined"
-            />
-            <Button onClick={handleAddLanguage}>Add language</Button>
+         <Experiences />
+         <Education />
 
-            <Paper component="ul">
-               {languages.map((language) => (
-                  <Chip
-                     key={language.key}
-                     label={language.label}
-                     onDelete={() => handleDeleteLanguage(language)}
-                  ></Chip>
-               ))}
-            </Paper>
-
-            <Experiences />
-            <Education />
-
-            <Button onClick={handleSaveProfile}>Save Profile</Button>
-         </Box>
-      </form>
+         <Button onClick={handleSaveProfile}>Save Profile</Button>
+      </Box>
    );
 }
 
