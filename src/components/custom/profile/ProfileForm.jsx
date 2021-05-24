@@ -28,6 +28,7 @@ function ProfileForm() {
    const [middleName, setMiddleName] = useState('');
 
    const [address, setAddress] = useState('');
+   const [bio, setBio] = useState('');
 
    const [gender, setGender] = useState('');
    const [birthday, setBirthday] = useState();
@@ -49,6 +50,10 @@ function ProfileForm() {
 
    const handleAddressChange = (event) => {
       setAddress(event.target.value);
+   };
+
+   const handleBioChange = (event) => {
+      setBio(event.target.value);
    };
 
    const handleGenderChange = (event) => {
@@ -86,7 +91,20 @@ function ProfileForm() {
       }
    };
 
-   const handleSaveProfile = () => {};
+   const handleSaveProfile = () => {
+      const profile = {
+         firstName,
+         lastName,
+         middleName,
+         address,
+         gender,
+         bio,
+         birthday,
+         languages,
+      };
+
+      console.log(JSON.stringify(profile));
+   };
 
    return (
       <Box display="flex" flexDirection="column" mx={20} my={5}>
@@ -133,7 +151,14 @@ function ProfileForm() {
             />
          </MuiPickersUtilsProvider>
 
-         <TextField label="Bio" variant="outlined" multiline rows={6} />
+         <TextField
+            value={bio}
+            onChange={handleBioChange}
+            label="Bio"
+            variant="outlined"
+            multiline
+            rows={6}
+         />
 
          <TextField
             onKeyPress={handleAddLanguage}
