@@ -13,7 +13,7 @@ import {
 
 import DeleteIcon from '@material-ui/icons/Delete';
 
-function Skills({ onAddSkill, skills }) {
+function Skills({ onAddSkill, onRemoveSkill, skills }) {
    const [skill, setSkill] = useState('');
 
    const handleSkillChange = (event) => {
@@ -22,6 +22,9 @@ function Skills({ onAddSkill, skills }) {
 
    const addSkill = () => {
       onAddSkill(skill);
+
+      // clear input
+      setSkill('');
    };
 
    return (
@@ -40,7 +43,11 @@ function Skills({ onAddSkill, skills }) {
                   <ListItem key={index}>
                      <ListItemText primary={skill} />
                      <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete">
+                        <IconButton
+                           onClick={() => onRemoveSkill(index)}
+                           edge="end"
+                           aria-label="delete"
+                        >
                            <DeleteIcon />
                         </IconButton>
                      </ListItemSecondaryAction>
