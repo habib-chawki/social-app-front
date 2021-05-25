@@ -178,7 +178,7 @@ function ProfileForm() {
             onAddEducation={handleAddEducation}
          />
 
-         <Skills onAddSkill={handleAddSkill} />
+         <Skills skills={skills} onAddSkill={handleAddSkill} />
 
          <Button onClick={handleSaveProfile}>Save Profile</Button>
       </Box>
