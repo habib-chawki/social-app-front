@@ -88,7 +88,12 @@ function ProfileForm() {
 
    const handleAddSkill = (skill) => {
       console.log(`Skill added ${JSON.stringify(skill)}`);
-      setSkills([...skills, skill]);
+      setSkills([skill, ...skills]);
+   };
+
+   const handleRemoveSkill = (skillIndex) => {
+      console.log(`Skill removed ${JSON.stringify(skills[skillIndex])}`);
+      setSkills(skills.filter((skill, index) => skillIndex !== index));
    };
 
    const handleSaveProfile = () => {
@@ -178,7 +183,11 @@ function ProfileForm() {
             onAddEducation={handleAddEducation}
          />
 
-         <Skills skills={skills} onAddSkill={handleAddSkill} />
+         <Skills
+            skills={skills}
+            onAddSkill={handleAddSkill}
+            onRemoveSkill={handleRemoveSkill}
+         />
 
          <Button onClick={handleSaveProfile}>Save Profile</Button>
       </Box>
