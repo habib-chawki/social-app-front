@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 
-import { Box, TextField, Button, List, ListItem } from '@material-ui/core';
+import {
+   Box,
+   TextField,
+   Button,
+   List,
+   ListItem,
+   ListItemText,
+} from '@material-ui/core';
 
 function Skills({ onAddSkill, skills }) {
    const [skill, setSkill] = useState('');
@@ -14,20 +21,24 @@ function Skills({ onAddSkill, skills }) {
    };
 
    return (
-      <Box display="flex" flexDirection="row">
-         <TextField
-            value={skill}
-            onChange={handleSkillChange}
-            label="Skill"
-            flex="1"
-         />
-         <Button onClick={addSkill}>Add skill</Button>
-
-         <List>
-            {skills.map((skill) => (
-               <ListItem>skill</ListItem>
-            ))}
-         </List>
+      <Box display="flex" flexDirection="column">
+         <Box display="flex" flexDirection="row">
+            <TextField
+               value={skill}
+               onChange={handleSkillChange}
+               label="Skill"
+            />
+            <Button onClick={addSkill}>Add skill</Button>
+         </Box>
+         <Box>
+            <List component="div">
+               {skills.map((skill, index) => (
+                  <ListItem key={index}>
+                     <ListItemText primary={skill} />
+                  </ListItem>
+               ))}
+            </List>
+         </Box>
       </Box>
    );
 }
