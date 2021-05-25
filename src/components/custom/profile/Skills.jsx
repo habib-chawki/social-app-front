@@ -7,7 +7,11 @@ import {
    List,
    ListItem,
    ListItemText,
+   ListItemSecondaryAction,
+   IconButton,
 } from '@material-ui/core';
+
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function Skills({ onAddSkill, skills }) {
    const [skill, setSkill] = useState('');
@@ -31,10 +35,15 @@ function Skills({ onAddSkill, skills }) {
             <Button onClick={addSkill}>Add skill</Button>
          </Box>
          <Box>
-            <List component="div">
+            <List>
                {skills.map((skill, index) => (
                   <ListItem key={index}>
                      <ListItemText primary={skill} />
+                     <ListItemSecondaryAction>
+                        <IconButton edge="end" aria-label="delete">
+                           <DeleteIcon />
+                        </IconButton>
+                     </ListItemSecondaryAction>
                   </ListItem>
                ))}
             </List>
