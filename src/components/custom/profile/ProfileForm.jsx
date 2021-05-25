@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Experience from './Experience';
 import Education from './Education';
 import Language from './Language';
+import Skills from './Skills';
 
 import {
    TextField,
@@ -169,6 +170,8 @@ function ProfileForm() {
             educations={educations}
             onAddEducation={handleAddEducation}
          />
+
+         <Skills />
 
          <Button onClick={handleSaveProfile}>Save Profile</Button>
       </Box>
