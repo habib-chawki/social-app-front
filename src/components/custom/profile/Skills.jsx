@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { Box, TextField, Button } from '@material-ui/core';
+import { Box, TextField, Button, List, ListItem } from '@material-ui/core';
 
-function Skills({ onAddSkill }) {
+function Skills({ onAddSkill, skills }) {
    const [skill, setSkill] = useState('');
 
    const handleSkillChange = (event) => {
@@ -22,6 +22,12 @@ function Skills({ onAddSkill }) {
             flex="1"
          />
          <Button onClick={addSkill}>Add skill</Button>
+
+         <List>
+            {skills.map((skill) => (
+               <ListItem>skill</ListItem>
+            ))}
+         </List>
       </Box>
    );
 }
