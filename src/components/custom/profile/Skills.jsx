@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 
 import { Box, TextField, Button } from '@material-ui/core';
 
-function Skills() {
+function Skills({ onAddSkill }) {
    const [skill, setSkill] = useState('');
 
    const handleSkillChange = (event) => {
       setSkill(event.target.value);
+   };
+
+   const addSkill = () => {
+      onAddSkill(skill);
    };
 
    return (
@@ -17,7 +21,7 @@ function Skills() {
             label="Skill"
             flex="1"
          />
-         <Button>Add skill</Button>
+         <Button onClick={addSkill}>Add skill</Button>
       </Box>
    );
 }
