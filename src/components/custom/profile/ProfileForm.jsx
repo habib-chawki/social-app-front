@@ -38,6 +38,8 @@ function ProfileForm() {
    const [experiences, setExperiences] = useState([]);
    const [educations, setEducations] = useState([]);
 
+   const [skills, setSkills] = useState([]);
+
    const handleFirstNameChange = (event) => {
       setFirstName(event.target.value);
    };
@@ -82,6 +84,11 @@ function ProfileForm() {
    const handleAddEducation = (education) => {
       console.log(`Education added ${JSON.stringify(education)}`);
       setEducations([...educations, education]);
+   };
+
+   const handleAddSkill = (skill) => {
+      console.log(`Skill added ${JSON.stringify(skill)}`);
+      setSkills([...skills, skill]);
    };
 
    const handleSaveProfile = () => {
@@ -171,7 +178,7 @@ function ProfileForm() {
             onAddEducation={handleAddEducation}
          />
 
-         <Skills />
+         <Skills onAddSkill={handleAddSkill} />
 
          <Button onClick={handleSaveProfile}>Save Profile</Button>
       </Box>
