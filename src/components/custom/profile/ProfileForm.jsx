@@ -5,6 +5,9 @@ import Education from './Education';
 import Language from './Language';
 import Skills from './Skills';
 
+import { updateProfile } from '../../../services/profile';
+import { getUser } from '../../../services/storage';
+
 import {
    TextField,
    Button,
@@ -111,8 +114,15 @@ function ProfileForm() {
          skills,
       };
 
+      // extract user id
+      const userId = getUser();
+
       // TODO: call backend service, save user profile
       console.log(JSON.stringify(profile));
+      console.log('user = ' + userId);
+
+      // update user profile
+      updateProfile(profile, userId);
    };
 
    return (
