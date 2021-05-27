@@ -13,12 +13,12 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
              and the Add button or the Enter key is pressed */
    const handleAddLanguage = (event) => {
       if (
-         language !== '' &&
+         language.trim() !== '' &&
          (event.type === 'click' ||
             (event.type === 'keypress' && event.key === 'Enter'))
       ) {
          // add language to the list of languages, notify parent
-         onAddLanguage({ key: languages.length, label: language });
+         onAddLanguage({ key: languages.length, label: language.trim() });
 
          // clear text field
          setLanguage('');
