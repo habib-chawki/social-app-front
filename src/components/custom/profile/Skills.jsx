@@ -20,11 +20,17 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
       setSkill(event.target.value);
    };
 
-   const addSkill = () => {
-      onAddSkill(skill);
+   const addSkill = (event) => {
+      if (
+         skill !== '' &&
+         (event.type === 'click' ||
+            (event.type === 'keypress' && event.key === 'Enter'))
+      ) {
+         onAddSkill(skill);
 
-      // clear input
-      setSkill('');
+         // clear input
+         setSkill('');
+      }
    };
 
    return (
@@ -33,6 +39,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
             <TextField
                value={skill}
                onChange={handleSkillChange}
+               onKeyPress={addSkill}
                label="Skill"
             />
             <Button onClick={addSkill}>Add skill</Button>
