@@ -49,6 +49,11 @@ function Experiences({ onAddExperience, experiences }) {
 
       // notify parent
       onAddExperience(experience);
+
+      // clear inputs
+      setPosition('');
+      setCompany('');
+      setDescription('');
    };
 
    return (
