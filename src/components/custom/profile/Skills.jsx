@@ -22,11 +22,11 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
 
    const addSkill = (event) => {
       if (
-         skill !== '' &&
+         skill.trim() !== '' &&
          (event.type === 'click' ||
             (event.type === 'keypress' && event.key === 'Enter'))
       ) {
-         onAddSkill(skill);
+         onAddSkill(skill.trim());
 
          // clear input
          setSkill('');
