@@ -108,6 +108,7 @@ function ProfileForm() {
          languages,
          experiences,
          educations,
+         skills,
       };
 
       // TODO: call backend service, save user profile
