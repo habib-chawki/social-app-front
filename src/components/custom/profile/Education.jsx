@@ -49,6 +49,11 @@ function Education({ onAddEducation, educations }) {
 
       // notify parent
       onAddEducation(education);
+
+      // clear inputs
+      setMajor('');
+      setSchool('');
+      setDescription('');
    };
 
    return (
