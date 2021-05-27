@@ -105,9 +105,9 @@ function ProfileForm() {
          gender,
          bio,
          birthday,
-         languages,
-         experiences,
-         educations,
+         languages: languages.map((lang) => lang.label),
+         experience: experiences,
+         education: educations,
          skills,
       };
 
