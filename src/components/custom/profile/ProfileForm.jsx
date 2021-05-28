@@ -100,9 +100,16 @@ function ProfileForm() {
       setSkills(newSkills);
    };
 
-   const handleRemoveSkill = (skillIndex) => {
-      console.log(`Skill removed ${JSON.stringify(skills[skillIndex])}`);
-      setSkills(skills.filter((skill, index) => skillIndex !== index));
+   const handleRemoveSkill = (skillType, skillIndex) => {
+      console.log(`Skill object ${JSON.stringify(skills)}`);
+
+      // remove skill from the proper skillType array
+      const newSkills = { ...skills };
+      newSkills[skillType] = newSkills[skillType].filter(
+         (skill, index) => skillIndex !== index
+      );
+
+      setSkills(newSkills);
    };
 
    const handleSaveProfile = () => {
