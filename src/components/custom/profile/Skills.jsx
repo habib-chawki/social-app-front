@@ -48,7 +48,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
       // render list of skills
       for (const skillType in skills) {
          const temp = skills[skillType].map((skillContent, index) => (
-            <ListItem key={index}>
+            <ListItem key={`${skillType}${index}`}>
                <ListItemText primary={skillContent} />
                <ListItemSecondaryAction>
                   <IconButton
