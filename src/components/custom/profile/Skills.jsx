@@ -19,7 +19,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 function Skills({ onAddSkill, onRemoveSkill, skills }) {
    const [skill, setSkill] = useState('');
-   const [type, setType] = useState('Technical');
+   const [type, setType] = useState('technical');
 
    const handleSkillChange = (event) => {
       setSkill(event.target.value);
@@ -35,38 +35,37 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
          (event.type === 'click' ||
             (event.type === 'keypress' && event.key === 'Enter'))
       ) {
-         onAddSkill({ skill: skill.trim(), type });
+         onAddSkill({ content: skill.trim(), type });
 
          // clear input
          setSkill('');
       }
    };
 
-   const renderSkills = () =>
-      skills.map((item, index) => (
-         <ListItem key={index}>
-            <ListItemText primary={item.skill} />
-            <ListItemSecondaryAction>
-               <IconButton
-                  onClick={() => onRemoveSkill(index)}
-                  edge="end"
-                  aria-label="delete"
-               >
-                  <DeleteIcon />
-               </IconButton>
-            </ListItemSecondaryAction>
-         </ListItem>
-      ));
+   const renderSkills = () => {
+      let skillsList = [];
 
-   const groupSkillsByType = () => {
-      skills.reduce((acc, skill) => {
-         if (acc[skill.type]) {
-            acc[skill.type].push(skill);
-         } else {
-            acc[skill.type] = [];
-         }
-         return acc;
-      }, {});
+      // render list of skills
+      for (const skillType in skills) {
+         const temp = skills[skillType].map((skillContent, index) => (
+            <ListItem key={index}>
+               <ListItemText primary={skillContent} />
+               <ListItemSecondaryAction>
+                  <IconButton
+                     onClick={() => onRemoveSkill(index)}
+                     edge="end"
+                     aria-label="delete"
+                  >
+                     <DeleteIcon />
+                  </IconButton>
+               </ListItemSecondaryAction>
+            </ListItem>
+         ));
+
+         skillsList = [...skillsList, ...temp];
+      }
+
+      return skillsList;
    };
 
    return (
@@ -81,8 +80,8 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
             <FormControl>
                <InputLabel>Type</InputLabel>
                <Select value={type} onChange={handleTypeChange}>
-                  <MenuItem value="Technical">Technical</MenuItem>
-                  <MenuItem value="Orginizational">Orginizational</MenuItem>
+                  <MenuItem value="technical">Technical</MenuItem>
+                  <MenuItem value="organizational">Organizational</MenuItem>
                </Select>
             </FormControl>
             <Button onClick={addSkill}>Add skill</Button>
