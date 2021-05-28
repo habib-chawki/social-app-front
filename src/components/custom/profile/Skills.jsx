@@ -42,6 +42,22 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
       }
    };
 
+   const renderSkills = () =>
+      skills.map((item, index) => (
+         <ListItem key={index}>
+            <ListItemText primary={item.skill} />
+            <ListItemSecondaryAction>
+               <IconButton
+                  onClick={() => onRemoveSkill(index)}
+                  edge="end"
+                  aria-label="delete"
+               >
+                  <DeleteIcon />
+               </IconButton>
+            </ListItemSecondaryAction>
+         </ListItem>
+      ));
+
    return (
       <Box display="flex" flexDirection="column">
          <Box display="flex" flexDirection="row">
@@ -61,22 +77,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
             <Button onClick={addSkill}>Add skill</Button>
          </Box>
          <Box>
-            <List>
-               {skills.map((skill, index) => (
-                  <ListItem key={index}>
-                     <ListItemText primary={skill} />
-                     <ListItemSecondaryAction>
-                        <IconButton
-                           onClick={() => onRemoveSkill(index)}
-                           edge="end"
-                           aria-label="delete"
-                        >
-                           <DeleteIcon />
-                        </IconButton>
-                     </ListItemSecondaryAction>
-                  </ListItem>
-               ))}
-            </List>
+            <List>{renderSkills()}</List>
          </Box>
       </Box>
    );
