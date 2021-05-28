@@ -41,7 +41,7 @@ function ProfileForm() {
    const [experiences, setExperiences] = useState([]);
    const [educations, setEducations] = useState([]);
 
-   const [skills, setSkills] = useState([]);
+   const [skills, setSkills] = useState({ technical: [], organizational: [] });
 
    const handleFirstNameChange = (event) => {
       setFirstName(event.target.value);
@@ -90,8 +90,14 @@ function ProfileForm() {
    };
 
    const handleAddSkill = (skill) => {
-      console.log(`Skill added ${JSON.stringify(skill)}`);
-      setSkills([skill, ...skills]);
+      console.log(`Skill object ${JSON.stringify(skill)}`);
+
+      // add new skill content
+      const newSkills = { ...skills };
+      newSkills[skill.type].unshift(skill.content);
+
+      // update skills list
+      setSkills(newSkills);
    };
 
    const handleRemoveSkill = (skillIndex) => {
