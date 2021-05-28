@@ -9,15 +9,24 @@ import {
    ListItemText,
    ListItemSecondaryAction,
    IconButton,
+   Select,
+   MenuItem,
+   FormControl,
+   InputLabel,
 } from '@material-ui/core';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 
 function Skills({ onAddSkill, onRemoveSkill, skills }) {
    const [skill, setSkill] = useState('');
+   const [type, setType] = useState('Technical');
 
    const handleSkillChange = (event) => {
       setSkill(event.target.value);
+   };
+
+   const handleTypeChange = (event) => {
+      setType(event.target.value);
    };
 
    const addSkill = (event) => {
@@ -26,7 +35,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
          (event.type === 'click' ||
             (event.type === 'keypress' && event.key === 'Enter'))
       ) {
-         onAddSkill(skill.trim());
+         onAddSkill({ skill: skill.trim(), type });
 
          // clear input
          setSkill('');
@@ -42,6 +51,13 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                onKeyPress={addSkill}
                label="Skill"
             />
+            <FormControl>
+               <InputLabel>Type</InputLabel>
+               <Select value={type} onChange={handleTypeChange}>
+                  <MenuItem value="Technical">Technical</MenuItem>
+                  <MenuItem value="Orginizational">Orginizational</MenuItem>
+               </Select>
+            </FormControl>
             <Button onClick={addSkill}>Add skill</Button>
          </Box>
          <Box>
