@@ -1,5 +1,5 @@
 import server from '../utils/server';
-import { storeToken, removeToken } from './storage';
+import { storeToken, storeUser, removeToken } from './storage';
 
 const baseUrl = '/users';
 
@@ -13,8 +13,9 @@ async function signupUser({ email, password }) {
          data: { email, password },
       });
 
-      // persist auth token to localStorage
+      // persist auth token and user id to localStorage
       storeToken(response.data.token);
+      storeUser(response.data.id);
    } catch (e) {
       console.log('Unable to signup: ' + e.message);
    }
@@ -30,8 +31,9 @@ async function loginUser({ email, password }) {
          data: { email, password },
       });
 
-      // persist auth token to localStorage
+      // persist auth token and user id to localStorage
       storeToken(response.data.token);
+      storeUser(response.data.id);
    } catch (e) {
       console.log('Unable to login: ' + e.message);
    }
