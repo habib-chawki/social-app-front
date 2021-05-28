@@ -58,6 +58,17 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
          </ListItem>
       ));
 
+   const groupSkillsByType = () => {
+      skills.reduce((acc, skill) => {
+         if (acc[skill.type]) {
+            acc[skill.type].push(skill);
+         } else {
+            acc[skill.type] = [];
+         }
+         return acc;
+      }, {});
+   };
+
    return (
       <Box display="flex" flexDirection="column">
          <Box display="flex" flexDirection="row">
