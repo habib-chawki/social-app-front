@@ -52,7 +52,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                <ListItemText primary={skillContent} />
                <ListItemSecondaryAction>
                   <IconButton
-                     onClick={() => onRemoveSkill(index)}
+                     onClick={() => onRemoveSkill(skillType, index)}
                      edge="end"
                      aria-label="delete"
                   >
