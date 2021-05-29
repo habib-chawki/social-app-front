@@ -11,8 +11,6 @@ import {
    IconButton,
    Select,
    MenuItem,
-   FormControl,
-   InputLabel,
 } from '@material-ui/core';
 
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -72,21 +70,21 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
 
    return (
       <Box display="flex" flexDirection="column">
-         <Box
-            display="flex"
-            width="100%"
-            flexDirection="row"
-            justifyContent="space-between"
-            alignItems="stretch"
-         >
+         <Box display="flex" flexDirection="row" alignItems="stretch">
             <TextField
                value={skill}
                onChange={handleSkillChange}
                onKeyPress={addSkill}
                label="Skill"
-               flex={2}
+               fullWidth={true}
+               variant="outlined"
             />
-            <Select value={type} onChange={handleTypeChange}>
+            <Select
+               value={type}
+               onChange={handleTypeChange}
+               fullWidth={true}
+               variant="outlined"
+            >
                <MenuItem value="technical">
                   <Box
                      display="flex"
@@ -106,7 +104,9 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                   </Box>
                </MenuItem>
             </Select>
-            <Button onClick={addSkill}>Add skill</Button>
+            <Button onClick={addSkill} fullWidth={true}>
+               Add skill
+            </Button>
          </Box>
          <Box>
             <List>{renderSkills()}</List>
