@@ -70,43 +70,45 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
 
    return (
       <Box display="flex" flexDirection="column">
-         <Box display="flex" flexDirection="row" alignItems="stretch">
-            <TextField
-               value={skill}
-               onChange={handleSkillChange}
-               onKeyPress={addSkill}
-               label="Skill"
-               fullWidth={true}
-               variant="outlined"
-            />
-            <Select
-               value={type}
-               onChange={handleTypeChange}
-               fullWidth={true}
-               variant="outlined"
-            >
-               <MenuItem value="technical">
-                  <Box
-                     display="flex"
-                     justifyContent="space-between"
-                     alignItems="center"
-                  >
-                     Technical <TimerIcon></TimerIcon>
-                  </Box>
-               </MenuItem>
-               <MenuItem value="organizational">
-                  <Box
-                     display="flex"
-                     justifyContent="space-between"
-                     alignItems="center"
-                  >
-                     Organizational <WorkIcon></WorkIcon>
-                  </Box>
-               </MenuItem>
-            </Select>
-            <Button onClick={addSkill} fullWidth={true}>
-               Add skill
-            </Button>
+         <Box display="flex" flexDirection="row">
+            <Box flexGrow={1}>
+               <TextField
+                  value={skill}
+                  onChange={handleSkillChange}
+                  onKeyPress={addSkill}
+                  label="Skill"
+                  variant="outlined"
+                  fullWidth
+               />
+            </Box>
+            <Box flexGrow={1}>
+               <Select
+                  value={type}
+                  onChange={handleTypeChange}
+                  variant="outlined"
+                  fullWidth
+               >
+                  <MenuItem value="technical">
+                     <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                     >
+                        Technical <TimerIcon></TimerIcon>
+                     </Box>
+                  </MenuItem>
+                  <MenuItem value="organizational">
+                     <Box
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems="center"
+                     >
+                        Organizational <WorkIcon></WorkIcon>
+                     </Box>
+                  </MenuItem>
+               </Select>
+            </Box>
+            <Button onClick={addSkill}>Add skill</Button>
          </Box>
          <Box>
             <List>{renderSkills()}</List>
