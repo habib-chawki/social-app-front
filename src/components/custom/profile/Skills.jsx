@@ -16,6 +16,8 @@ import {
 } from '@material-ui/core';
 
 import DeleteIcon from '@material-ui/icons/Delete';
+import TimerIcon from '@material-ui/icons/Timer';
+import WorkIcon from '@material-ui/icons/Work';
 
 function Skills({ onAddSkill, onRemoveSkill, skills }) {
    const [skill, setSkill] = useState('');
@@ -70,20 +72,40 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
 
    return (
       <Box display="flex" flexDirection="column">
-         <Box display="flex" flexDirection="row">
+         <Box
+            display="flex"
+            width="100%"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="stretch"
+         >
             <TextField
                value={skill}
                onChange={handleSkillChange}
                onKeyPress={addSkill}
                label="Skill"
+               flex={2}
             />
-            <FormControl>
-               <InputLabel>Type</InputLabel>
-               <Select value={type} onChange={handleTypeChange}>
-                  <MenuItem value="technical">Technical</MenuItem>
-                  <MenuItem value="organizational">Organizational</MenuItem>
-               </Select>
-            </FormControl>
+            <Select value={type} onChange={handleTypeChange}>
+               <MenuItem value="technical">
+                  <Box
+                     display="flex"
+                     justifyContent="space-between"
+                     alignItems="center"
+                  >
+                     Technical <TimerIcon></TimerIcon>
+                  </Box>
+               </MenuItem>
+               <MenuItem value="organizational">
+                  <Box
+                     display="flex"
+                     justifyContent="space-between"
+                     alignItems="center"
+                  >
+                     Organizational <WorkIcon></WorkIcon>
+                  </Box>
+               </MenuItem>
+            </Select>
             <Button onClick={addSkill}>Add skill</Button>
          </Box>
          <Box>
