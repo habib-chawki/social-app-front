@@ -6,7 +6,7 @@ function Profile() {
    const [profile, setProfile] = useState({});
 
    //extract user id
-   let { userId } = useParams();
+   const { userId } = useParams();
 
    useEffect(() => {
       // fetch profile by user id
