@@ -25,7 +25,7 @@ function App() {
             <ProfileForm />
          </Route>
 
-         <Route path="/profile">
+         <Route path="/profile/:userId">
             <Profile />
          </Route>
 
