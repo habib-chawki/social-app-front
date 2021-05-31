@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { fetchProfile } from '../../../services/profile';
 
+import { Button } from '@material-ui/core';
+
 function Profile() {
+   const history = useHistory();
    const [profile, setProfile] = useState({});
 
    // extract user id
@@ -15,8 +18,13 @@ function Profile() {
       });
    }, [userId]);
 
+   const handleUpdateProfile = () => {
+      history.push('/profile-form');
+   };
+
    return (
       <div>
+         <Button onClick={handleUpdateProfile}>Update profile</Button>
          <h1>Profile</h1>
          {JSON.stringify(profile)}
       </div>
