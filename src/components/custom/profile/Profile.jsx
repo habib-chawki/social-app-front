@@ -5,7 +5,7 @@ import { fetchProfile } from '../../../services/profile';
 function Profile() {
    const [profile, setProfile] = useState({});
 
-   //extract user id
+   // extract user id
    const { userId } = useParams();
 
    useEffect(() => {
@@ -14,6 +14,7 @@ function Profile() {
          setProfile(profile);
       });
    }, [userId]);
+
    return (
       <div>
          <h1>Profile</h1>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Comments from './Comments';
 import withEdit from '../higher-order/withEdit';
@@ -6,7 +7,7 @@ import withEdit from '../higher-order/withEdit';
 function Post(post) {
    return (
       <div>
-         <h2>{post.owner}</h2>
+         <Link to={`profile/${post.owner}`}>{post.owner} </Link>
 
          {post.renderContent()}
 
