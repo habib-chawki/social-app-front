@@ -6,17 +6,18 @@ function Profile() {
    const [profile, setProfile] = useState({});
 
    //extract user id
-   const { userId } = useParams();
+   let { userId } = useParams();
 
    useEffect(() => {
-      // TODO: fetch profile by user id
+      // fetch profile by user id
       fetchProfile(userId).then((profile) => {
          setProfile(profile);
       });
-   }, []);
+   }, [userId]);
    return (
       <div>
-         <p>Profile</p>
+         <h1>Profile</h1>
+         {JSON.stringify(profile)}
       </div>
    );
 }
