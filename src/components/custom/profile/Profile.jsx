@@ -18,66 +18,18 @@ import TimerIcon from '@material-ui/icons/Timer';
 
 function Profile() {
    const history = useHistory();
-   const [profile, setProfile] = useState({
-      firstName: 'habib',
-      middleName: 'chawki',
-      lastName: 'touati',
-      address: '21 rue f bou',
-      birthday: '01 / 01 / 1992',
-      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias sunt voluptas officiis assumenda asperiores voluptate iure? Modi corporis fuga perspiciatis expedita similique dolores commodi dignissimos? Similique quasi architecto facilis ipsam asperiores, vitae saepe dolor, dignissimos explicabo nesciunt quis consequatur. Rerum quas amet consequatur inventore quisquam accusantium fugiat nemo, perferendis nesciunt iure autem modi doloremque culpa quos repudiandae aperiam sit ducimus. Praesentium deserunt nemo, aspernatur autem maiores explicabo est illum sed maxime dolorem perferendis laudantium unde numquam beatae. Facere voluptas eligendi natus tempore nulla, minus sint, harum rem, asperiores magni voluptatibus libero voluptate saepe vitae necessitatibus obcaecati odio amet temporibus optio',
-      experience: [
-         {
-            startDate: Date.now(),
-            endDate: Date.now(),
-            position: 'Senior software engineer',
-            company: 'google',
-            description:
-               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
-         },
-         {
-            startDate: Date.now(),
-            endDate: Date.now(),
-            position: 'Junior software engineer',
-            company: 'Microsoft',
-            description:
-               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
-         },
-      ],
-      education: [
-         {
-            startDate: Date.now(),
-            endDate: Date.now(),
-            major: 'Msc',
-            school: 'MIT',
-            description:
-               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
-         },
-         {
-            startDate: Date.now(),
-            endDate: Date.now(),
-            major: 'Bsc',
-            school: 'Harvard',
-            description:
-               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
-         },
-      ],
-      languages: ['French', 'English', 'Spanish', 'German'],
-      skills: {
-         organizational: ['skill org 1', 'skill org 2'],
-         technical: ['skill tech 1', 'skill tech 2', 'skill tech 3'],
-      },
-   });
+   const [profile, setProfile] = useState({});
 
    // extract user id
    const { userId } = useParams();
 
-   // useEffect(() => {
-   //    // fetch profile by user id
-   //    fetchProfile(userId).then((profile) => {
-   //       // set the user profile
-   //       setProfile(profile);
-   //    });
-   // }, [userId]);
+   useEffect(() => {
+      // fetch profile by user id
+      fetchProfile(userId).then((profile) => {
+         // set the user profile
+         setProfile(profile);
+      });
+   }, [userId]);
 
    const handleUpdateProfile = () => {
       history.push('/profile-form');
@@ -91,6 +43,8 @@ function Profile() {
                <Button onClick={handleUpdateProfile}>Update profile</Button>
             )
          }
+
+         {/* Basic info */}
          <Box>
             <h1>
                <AccountBoxIcon /> {profile.firstName} {profile.middleName}{' '}
@@ -104,12 +58,16 @@ function Profile() {
                <CakeIcon /> {profile.birthday}
             </h3>
          </Box>
+
+         {/* Bio */}
          <Box>
             <h2>
                <InfoIcon /> Bio
             </h2>
             <p>{profile.bio}</p>
          </Box>
+
+         {/* Experience */}
          <Box>
             <h2>
                <WorkIcon /> Exeperience
@@ -127,6 +85,8 @@ function Profile() {
                </Card>
             ))}
          </Box>
+
+         {/* Education */}
          <Box>
             <h2>
                <SchoolIcon /> Education
@@ -145,6 +105,7 @@ function Profile() {
             ))}
          </Box>
 
+         {/* Languages */}
          <Box>
             <h2>
                <LanguageIcon /> Languages
@@ -155,6 +116,7 @@ function Profile() {
             ))}
          </Box>
 
+         {/* Skills */}
          <Box>
             <h2>Skills</h2>
             <h3>
