@@ -25,10 +25,14 @@ function Profile() {
 
    useEffect(() => {
       // fetch profile by user id
-      fetchProfile(userId).then((profile) => {
-         // set the user profile
-         setProfile(profile);
-      });
+      fetchProfile(userId)
+         .then((profile) => {
+            // set the user profile
+            setProfile(profile);
+         })
+         .catch((err) => {
+            console.err('Could not fetch profile');
+         });
    }, [userId]);
 
    const handleUpdateProfile = () => {
