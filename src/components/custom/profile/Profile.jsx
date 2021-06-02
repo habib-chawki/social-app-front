@@ -32,7 +32,12 @@ function Profile() {
                <Button onClick={handleUpdateProfile}>Update profile</Button>
             )
          }
-         <h1>Profile</h1>
+         <h1>
+            {profile.firstName} {profile.middleName} {profile.lastName}
+         </h1>
+         <h2>{profile.address}</h2>
+         <h3>{profile.birthday}</h3>
+
          {JSON.stringify(profile)}
       </div>
    );
