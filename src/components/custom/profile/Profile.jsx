@@ -5,7 +5,7 @@ import { getUser } from '../../../services/storage';
 
 import moment from 'moment';
 
-import { Button, Box, Card } from '@material-ui/core';
+import { Button, Box, Card, Chip } from '@material-ui/core';
 
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
@@ -13,6 +13,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import CakeIcon from '@material-ui/icons/Cake';
 import WorkIcon from '@material-ui/icons/Work';
 import SchoolIcon from '@material-ui/icons/School';
+import LanguageIcon from '@material-ui/icons/Language';
 
 function Profile() {
    const history = useHistory();
@@ -59,6 +60,7 @@ function Profile() {
                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
          },
       ],
+      languages: ['French', 'English', 'Spanish', 'German'],
    });
 
    // extract user id
@@ -135,6 +137,16 @@ function Profile() {
                   </h4>
                   <p>{education.description}</p>
                </Card>
+            ))}
+         </Box>
+
+         <Box>
+            <h2>
+               <LanguageIcon /> Languages
+            </h2>
+
+            {profile.languages.map((language, index) => (
+               <Chip key={index} label={language}></Chip>
             ))}
          </Box>
       </Box>
