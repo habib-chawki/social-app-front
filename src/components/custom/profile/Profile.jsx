@@ -32,7 +32,8 @@ function Profile() {
    }, [userId]);
 
    const handleUpdateProfile = () => {
-      history.push('/profile-form');
+      // navigate to the update form and supply profile data to populate it
+      history.push({ pathname: '/profile-form', state: profile });
    };
 
    return (
