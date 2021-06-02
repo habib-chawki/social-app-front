@@ -39,6 +39,24 @@ function Profile() {
                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
          },
       ],
+      education: [
+         {
+            startDate: Date.now(),
+            endDate: Date.now(),
+            major: 'Msc',
+            school: 'MIT',
+            description:
+               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
+         },
+         {
+            startDate: Date.now(),
+            endDate: Date.now(),
+            major: 'Bsc',
+            school: 'Harvard',
+            description:
+               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
+         },
+      ],
    });
 
    // extract user id
@@ -94,6 +112,20 @@ function Profile() {
                      {moment(experience.endDate).format('MMM YYYY')}
                   </h4>
                   <p>{experience.description}</p>
+               </Card>
+            ))}
+         </Box>
+         <Box>
+            {profile.education.map((education) => (
+               <Card key={education.major}>
+                  <h2>
+                     {education.major} - {education.school}
+                  </h2>
+                  <h4>
+                     {moment(education.startDate).format('MMM YYYY')} -{' '}
+                     {moment(education.endDate).format('MMM YYYY')}
+                  </h4>
+                  <p>{education.description}</p>
                </Card>
             ))}
          </Box>
