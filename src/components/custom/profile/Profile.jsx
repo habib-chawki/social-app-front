@@ -11,6 +11,8 @@ import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import CakeIcon from '@material-ui/icons/Cake';
+import WorkIcon from '@material-ui/icons/Work';
+import SchoolIcon from '@material-ui/icons/School';
 
 function Profile() {
    const history = useHistory();
@@ -102,6 +104,9 @@ function Profile() {
             <p>{profile.bio}</p>
          </Box>
          <Box>
+            <h2>
+               <WorkIcon /> Exeperience
+            </h2>
             {profile.experience.map((experience) => (
                <Card key={experience.position}>
                   <h2>
@@ -116,6 +121,9 @@ function Profile() {
             ))}
          </Box>
          <Box>
+            <h2>
+               <SchoolIcon /> Education
+            </h2>
             {profile.education.map((education) => (
                <Card key={education.major}>
                   <h2>
