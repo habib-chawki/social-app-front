@@ -3,7 +3,9 @@ import { useParams, useHistory } from 'react-router-dom';
 import { fetchProfile } from '../../../services/profile';
 import { getUser } from '../../../services/storage';
 
-import { Button, Box } from '@material-ui/core';
+import moment from 'moment';
+
+import { Button, Box, Card } from '@material-ui/core';
 
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
@@ -18,7 +20,25 @@ function Profile() {
       lastName: 'touati',
       address: '21 rue f bou',
       birthday: '01 / 01 / 1992',
-      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laboriosam vero culpa similique voluptas laudantium blanditiis amet odit? Atque nesciunt fuga beatae, eum quaerat hic esse impedit consequuntur nulla soluta.',
+      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias sunt voluptas officiis assumenda asperiores voluptate iure? Modi corporis fuga perspiciatis expedita similique dolores commodi dignissimos? Similique quasi architecto facilis ipsam asperiores, vitae saepe dolor, dignissimos explicabo nesciunt quis consequatur. Rerum quas amet consequatur inventore quisquam accusantium fugiat nemo, perferendis nesciunt iure autem modi doloremque culpa quos repudiandae aperiam sit ducimus. Praesentium deserunt nemo, aspernatur autem maiores explicabo est illum sed maxime dolorem perferendis laudantium unde numquam beatae. Facere voluptas eligendi natus tempore nulla, minus sint, harum rem, asperiores magni voluptatibus libero voluptate saepe vitae necessitatibus obcaecati odio amet temporibus optio',
+      experience: [
+         {
+            startDate: Date.now(),
+            endDate: Date.now(),
+            position: 'Senior software engineer',
+            company: 'google',
+            description:
+               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
+         },
+         {
+            startDate: Date.now(),
+            endDate: Date.now(),
+            position: 'Junior software engineer',
+            company: 'Microsoft',
+            description:
+               'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusamus.',
+         },
+      ],
    });
 
    // extract user id
@@ -63,8 +83,20 @@ function Profile() {
             </h2>
             <p>{profile.bio}</p>
          </Box>
-
-         {JSON.stringify(profile)}
+         <Box>
+            {profile.experience.map((experience) => (
+               <Card key={experience.position}>
+                  <h2>
+                     {experience.position} - {experience.company}
+                  </h2>
+                  <h4>
+                     {moment(experience.startDate).format('MMM YYYY')} -{' '}
+                     {moment(experience.endDate).format('MMM YYYY')}
+                  </h4>
+                  <p>{experience.description}</p>
+               </Card>
+            ))}
+         </Box>
       </Box>
    );
 }
