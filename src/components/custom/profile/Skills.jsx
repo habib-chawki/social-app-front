@@ -94,7 +94,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                         justifyContent="space-between"
                         alignItems="center"
                      >
-                        Technical <TimerIcon></TimerIcon>
+                        Technical <TimerIcon />
                      </Box>
                   </MenuItem>
                   <MenuItem value="organizational">
@@ -103,7 +103,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                         justifyContent="space-between"
                         alignItems="center"
                      >
-                        Organizational <WorkIcon></WorkIcon>
+                        Organizational <WorkIcon />
                      </Box>
                   </MenuItem>
                </Select>

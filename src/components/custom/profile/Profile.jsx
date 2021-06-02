@@ -11,9 +11,10 @@ import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import CakeIcon from '@material-ui/icons/Cake';
-import WorkIcon from '@material-ui/icons/Work';
 import SchoolIcon from '@material-ui/icons/School';
 import LanguageIcon from '@material-ui/icons/Language';
+import WorkIcon from '@material-ui/icons/Work';
+import TimerIcon from '@material-ui/icons/Timer';
 
 function Profile() {
    const history = useHistory();
@@ -61,6 +62,10 @@ function Profile() {
          },
       ],
       languages: ['French', 'English', 'Spanish', 'German'],
+      skills: {
+         organizational: ['skill org 1', 'skill org 2'],
+         technical: ['skill tech 1', 'skill tech 2', 'skill tech 3'],
+      },
    });
 
    // extract user id
@@ -148,6 +153,26 @@ function Profile() {
             {profile.languages.map((language, index) => (
                <Chip key={index} label={language}></Chip>
             ))}
+         </Box>
+
+         <Box>
+            <h2>Skills</h2>
+            <h3>
+               <WorkIcon /> Organizational
+            </h3>
+            <ul>
+               {profile.skills.organizational.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+               ))}
+            </ul>
+            <h3>
+               <TimerIcon /> Technical
+            </h3>
+            <ul>
+               {profile.skills.technical.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+               ))}
+            </ul>
          </Box>
       </Box>
    );
