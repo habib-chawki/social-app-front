@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Experience from './Experience';
 import Education from './Education';
@@ -26,22 +27,26 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 function ProfileForm() {
-   const [firstName, setFirstName] = useState('');
-   const [lastName, setLastName] = useState('');
-   const [middleName, setMiddleName] = useState('');
+   const { state: profile } = useLocation();
 
-   const [address, setAddress] = useState('');
-   const [bio, setBio] = useState('');
+   const [firstName, setFirstName] = useState(profile.firstName || '');
+   const [lastName, setLastName] = useState(profile.lastName || '');
+   const [middleName, setMiddleName] = useState(profile.middleName || '');
 
-   const [gender, setGender] = useState('');
-   const [birthday, setBirthday] = useState();
+   const [address, setAddress] = useState(profile.address || '');
+   const [bio, setBio] = useState(profile.bio || '');
 
-   const [languages, setLanguages] = useState([]);
+   const [gender, setGender] = useState(profile.genre || '');
+   const [birthday, setBirthday] = useState(profile.birthday || null);
 
-   const [experiences, setExperiences] = useState([]);
-   const [educations, setEducations] = useState([]);
+   const [languages, setLanguages] = useState(profile.languages || []);
 
-   const [skills, setSkills] = useState({ technical: [], organizational: [] });
+   const [experiences, setExperiences] = useState(profile.experience || []);
+   const [educations, setEducations] = useState(profile.education || []);
+
+   const [skills, setSkills] = useState(
+      profile.skills || { technical: [], organizational: [] }
+   );
 
    const handleFirstNameChange = (event) => {
       setFirstName(event.target.value);
