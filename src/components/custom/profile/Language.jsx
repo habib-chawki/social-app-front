@@ -18,7 +18,7 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
             (event.type === 'keypress' && event.key === 'Enter'))
       ) {
          // add language to the list of languages, notify parent
-         onAddLanguage({ key: languages.length, label: language.trim() });
+         onAddLanguage(language.trim());
 
          // clear text field
          setLanguage('');
@@ -37,10 +37,10 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
          <Button onClick={handleAddLanguage}>Add language</Button>
 
          <Box>
-            {languages.map((language) => (
+            {languages.map((language, index) => (
                <Chip
-                  key={language.key}
-                  label={language.label}
+                  key={index}
+                  label={language}
                   onDelete={() => onRemoveLanguage(language)}
                ></Chip>
             ))}
