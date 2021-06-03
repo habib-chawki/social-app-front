@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TextField, Button, Chip, Paper, Box } from '@material-ui/core';
+import { TextField, Button, Chip, Box } from '@material-ui/core';
 
 function Language({ languages, onAddLanguage, onRemoveLanguage }) {
    const [language, setLanguage] = useState('');
@@ -36,7 +36,7 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
          />
          <Button onClick={handleAddLanguage}>Add language</Button>
 
-         <Paper component="ul">
+         <Box>
             {languages.map((language) => (
                <Chip
                   key={language.key}
@@ -44,7 +44,7 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
                   onDelete={() => onRemoveLanguage(language)}
                ></Chip>
             ))}
-         </Paper>
+         </Box>
       </Box>
    );
 }
