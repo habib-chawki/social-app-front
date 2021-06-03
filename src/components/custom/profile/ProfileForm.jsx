@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, useParams } from 'react-router-dom';
 
 import Experience from './Experience';
 import Education from './Education';
@@ -26,9 +26,9 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 function ProfileForm() {
-   const {
-      state: { profile, userId },
-   } = useLocation();
+   const { state: profile } = useLocation();
+   const { userId } = useParams();
+
    console.log('profile received => ' + JSON.stringify(profile));
    console.log('userId received => ' + JSON.stringify(userId));
 
@@ -145,7 +145,7 @@ function ProfileForm() {
             );
 
             // navigate back to '/profile' upon successful profile update
-            history.push(`/profile/${userId}`);
+            history.push(`/user/${userId}/profile`);
          })
          .catch((err) =>
             console.log(`Profile could not be updated: ${JSON.stringify(err)}`)
