@@ -17,7 +17,10 @@ import WorkIcon from '@material-ui/icons/Work';
 import TimerIcon from '@material-ui/icons/Timer';
 
 function Profile() {
+   // extract user id
+   const { userId } = useParams();
    const history = useHistory();
+
    const [profile, setProfile] = useState({
       firstName: '',
       middleName: '',
@@ -31,9 +34,6 @@ function Profile() {
       skills: { organizational: [], technical: [] },
       languages: [],
    });
-
-   // extract user id
-   const { userId } = useParams();
 
    useEffect(() => {
       // fetch profile by user id
@@ -50,7 +50,7 @@ function Profile() {
 
    const handleUpdateProfile = () => {
       // navigate to the update form and supply profile data to populate it
-      history.push({ pathname: '/profile-form', state: profile });
+      history.push({ pathname: '/profile-form', state: { profile, userId } });
    };
 
    return (
