@@ -21,11 +21,11 @@ function App() {
             <LogIn />
          </Route>
 
-         <Route path="/profile-form">
+         <Route path="/user/:userId/profile-form">
             <ProfileForm />
          </Route>
 
-         <Route path="/profile/:userId">
+         <Route path="/user/:userId/profile/">
             <Profile />
          </Route>
 
