@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import Experience from './Experience';
 import Education from './Education';
@@ -7,7 +7,6 @@ import Language from './Language';
 import Skills from './Skills';
 
 import { updateProfile } from '../../../services/profile';
-import { getUser } from '../../../services/storage';
 
 import {
    TextField,
@@ -27,7 +26,13 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 function ProfileForm() {
-   const { state: profile } = useLocation();
+   const {
+      state: { profile, userId },
+   } = useLocation();
+   console.log('profile received => ' + JSON.stringify(profile));
+   console.log('userId received => ' + JSON.stringify(userId));
+
+   const history = useHistory();
 
    const [firstName, setFirstName] = useState(profile.firstName || '');
    const [lastName, setLastName] = useState(profile.lastName || '');
@@ -126,26 +131,22 @@ function ProfileForm() {
          gender,
          bio,
          birthday,
-         languages: languages.map((lang) => lang.label),
+         languages,
          experience: experiences,
          education: educations,
          skills,
       };
 
-      // extract user id
-      const userId = getUser();
-
-      // TODO: call backend service, save user profile
-      console.log(JSON.stringify(profile));
-      console.log('user = ' + userId);
-
       // update user profile
       updateProfile(profile, userId)
-         .then((updatedProfile) =>
+         .then((updatedProfile) => {
             console.log(
                `Profile has been updated: ${JSON.stringify(updatedProfile)}`
-            )
-         )
+            );
+
+            // navigate back to '/profile' upon successful profile update
+            history.push(`/profile/${userId}`);
+         })
          .catch((err) =>
             console.log(`Profile could not be updated: ${JSON.stringify(err)}`)
          );
