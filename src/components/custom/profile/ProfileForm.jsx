@@ -81,7 +81,7 @@ function ProfileForm() {
    };
 
    const handleRemoveLanguage = (langToDelete) => {
-      setLanguages(languages.filter((lang) => langToDelete.key !== lang.key));
+      setLanguages(languages.filter((lang) => langToDelete !== lang));
    };
 
    const handleAddExperience = (experience) => {
