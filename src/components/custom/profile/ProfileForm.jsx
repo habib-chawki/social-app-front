@@ -140,7 +140,15 @@ function ProfileForm() {
       console.log('user = ' + userId);
 
       // update user profile
-      updateProfile(profile, userId);
+      updateProfile(profile, userId)
+         .then((updatedProfile) =>
+            console.log(
+               `Profile has been updated: ${JSON.stringify(updatedProfile)}`
+            )
+         )
+         .catch((err) =>
+            console.log(`Profile could not be updated: ${JSON.stringify(err)}`)
+         );
    };
 
    return (
