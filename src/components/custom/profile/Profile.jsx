@@ -18,7 +18,19 @@ import TimerIcon from '@material-ui/icons/Timer';
 
 function Profile() {
    const history = useHistory();
-   const [profile, setProfile] = useState({});
+   const [profile, setProfile] = useState({
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      birthday: Date.now(),
+      address: '',
+      gender: '',
+      bio: '',
+      experience: [],
+      education: [],
+      skills: { organizational: [], technical: [] },
+      languages: [],
+   });
 
    // extract user id
    const { userId } = useParams();
@@ -27,11 +39,12 @@ function Profile() {
       // fetch profile by user id
       fetchProfile(userId)
          .then((profile) => {
+            console.log('Fetched profile => ' + JSON.stringify(profile));
             // set the user profile
             setProfile(profile);
          })
          .catch((err) => {
-            console.err('Could not fetch profile');
+            console.err('Could not fetch profile' + JSON.stringify(err));
          });
    }, [userId]);
 
