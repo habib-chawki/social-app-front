@@ -44,13 +44,16 @@ function Profile() {
             setProfile(profile);
          })
          .catch((err) => {
-            console.err('Could not fetch profile' + JSON.stringify(err));
+            console.log('Could not fetch profile' + JSON.stringify(err));
          });
    }, [userId]);
 
    const handleUpdateProfile = () => {
       // navigate to the update form and supply profile data to populate it
-      history.push({ pathname: '/profile-form', state: { profile, userId } });
+      history.push({
+         pathname: `/user/${userId}/profile-form`,
+         state: profile,
+      });
    };
 
    return (
