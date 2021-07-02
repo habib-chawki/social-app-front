@@ -1,12 +1,11 @@
 import server from '../utils/server';
-import { storeToken, storeUser, endSession } from './storage';
+import { storeUserInfo, endSession } from './storage';
 
 const baseUrl = '/users';
 
 // handle signup
 async function signUserUp({ email, password }) {
    try {
-      // formType => "signup" or "login"
       const response = await server({
          url: `${baseUrl}/signup`,
          method: 'post',
@@ -14,8 +13,7 @@ async function signUserUp({ email, password }) {
       });
 
       // persist auth token and user id to localStorage
-      storeToken(response.data.token);
-      storeUser(response.data.id);
+      storeUserInfo(response.data.token, response.data.id);
    } catch (e) {
       console.log('Unable to signup: ' + e.message);
    }
@@ -24,7 +22,6 @@ async function signUserUp({ email, password }) {
 // handle login
 async function logUserIn({ email, password }) {
    try {
-      // formType => "signup" or "login"
       const response = await server({
          url: `${baseUrl}/login`,
          method: 'post',
@@ -32,8 +29,7 @@ async function logUserIn({ email, password }) {
       });
 
       // persist auth token and user id to localStorage
-      storeToken(response.data.token);
-      storeUser(response.data.id);
+      storeUserInfo(response.data.token, response.data.id);
    } catch (e) {
       console.log('Unable to login: ' + e.message);
    }
