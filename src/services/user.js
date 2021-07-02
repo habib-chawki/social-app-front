@@ -40,7 +40,7 @@ async function logUserIn({ email, password }) {
 }
 
 // handle user logout
-async function logoutUser() {
+async function logUserOut() {
    try {
       await server({
          url: `${baseUrl}/logout`,
@@ -54,4 +54,4 @@ async function logoutUser() {
    }
 }
 
-export { signUserUp, logUserIn, logoutUser };
+export { signUserUp, logUserIn, logUserOut as logoutUser };

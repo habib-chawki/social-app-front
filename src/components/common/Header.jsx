@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { logoutUser } from '../../services/user';
+import { logUserOut } from '../../services/user';
 import { getUser } from '../../services/storage';
 
 function Header() {
@@ -16,7 +16,7 @@ function Header() {
       <nav>
          <ul>
             <li>
-               <Link to="/login" onClick={logoutUser}>
+               <Link to="/login" onClick={logUserOut}>
                   Log out
                </Link>
             </li>
