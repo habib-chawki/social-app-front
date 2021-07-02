@@ -58,4 +58,4 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    );
 }
 
-export default withSubmission(withValidation(LogIn), logUserIn);
+export default withValidation(withSubmission(LogIn, logUserIn));
