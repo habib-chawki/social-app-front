@@ -4,7 +4,7 @@ import { storeToken, storeUser, removeToken } from './storage';
 const baseUrl = '/users';
 
 // handle signup
-async function signupUser({ email, password }) {
+async function signUserUp({ email, password }) {
    try {
       // formType => "signup" or "login"
       const response = await server({
@@ -22,7 +22,7 @@ async function signupUser({ email, password }) {
 }
 
 // handle login
-async function loginUser({ email, password }) {
+async function logUserIn({ email, password }) {
    try {
       // formType => "signup" or "login"
       const response = await server({
@@ -54,4 +54,4 @@ async function logoutUser() {
    }
 }
 
-export { signupUser, loginUser, logoutUser };
+export { signUserUp, logUserIn, logoutUser };
