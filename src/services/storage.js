@@ -27,27 +27,9 @@ function storeUserInfo(token, id) {
    storeUserId(id);
 }
 
-// remove token from localStorage
-function removeToken() {
-   localStorage.removeItem(TOKEN_KEY);
-}
-
-// remove user id from localStorage
-function removeUser() {
-   localStorage.removeUser(USER_KEY);
-}
-
 // remove auth token and user id
 function endSession() {
    localStorage.clear();
 }
 
-export {
-   storeToken,
-   storeUserId as storeUser,
-   getToken,
-   getUser,
-   removeToken,
-   removeUser,
-   endSession,
-};
+export { storeUserInfo, getToken, getUser, endSession };
