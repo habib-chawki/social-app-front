@@ -11,25 +11,15 @@ function getUser() {
    return localStorage.getItem(USER_KEY);
 }
 
-// store token in localStorage
-function storeToken(token) {
+// store use info
+function storeUserInfo(token, id) {
    localStorage.setItem(TOKEN_KEY, token);
-}
-
-// store user id in localStorage
-function storeUserId(id) {
    localStorage.setItem(USER_KEY, id);
 }
 
-// store use info
-function storeUserInfo(token, id) {
-   storeToken(token);
-   storeUserId(id);
-}
-
 // remove auth token and user id
-function endSession() {
+function removeUserInfo() {
    localStorage.clear();
 }
 
-export { storeUserInfo, getToken, getUser, endSession };
+export { storeUserInfo, getToken, getUser, removeUserInfo };
