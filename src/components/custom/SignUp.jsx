@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 import Input from '../common/Input';
 import Form from '../common/Form';
 
-import { signupUser } from '../../services/user';
+import { signUserUp } from '../../services/user';
 
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
@@ -58,4 +58,4 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    );
 }
 
-export default withValidation(withSubmission(SignUp, signupUser));
+export default withValidation(withSubmission(SignUp, signUserUp));
