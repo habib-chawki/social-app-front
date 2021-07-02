@@ -1,5 +1,5 @@
 import server from '../utils/server';
-import { storeUserInfo, endSession } from './storage';
+import { storeUserInfo, removeUserInfo } from './storage';
 
 const baseUrl = '/users';
 
@@ -44,7 +44,7 @@ async function logUserOut() {
       });
 
       // remove token and user id from localStorage
-      endSession();
+      removeUserInfo();
    } catch (e) {
       console.log('Unable to logout: ' + e.message);
    }
