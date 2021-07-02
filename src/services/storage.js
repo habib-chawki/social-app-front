@@ -17,8 +17,14 @@ function storeToken(token) {
 }
 
 // store user id in localStorage
-function storeUser(id) {
+function storeUserId(id) {
    localStorage.setItem(USER_KEY, id);
+}
+
+// store use info
+function storeUserInfo(token, id) {
+   storeToken(token);
+   storeUserId(id);
 }
 
 // remove token from localStorage
@@ -38,7 +44,7 @@ function endSession() {
 
 export {
    storeToken,
-   storeUser,
+   storeUserId as storeUser,
    getToken,
    getUser,
    removeToken,
