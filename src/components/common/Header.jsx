@@ -21,7 +21,7 @@ function Header() {
                </Link>
             </li>
             <li>
-               <Link to={`/profile/${userId.current}`}>View profile</Link>
+               <Link to={`/user/${userId.current}/profile`}>View profile</Link>
             </li>
          </ul>
       </nav>
