@@ -25,7 +25,7 @@ function Profile() {
       firstName: '',
       middleName: '',
       lastName: '',
-      birthday: Date.now(),
+      birthday: '',
       address: '',
       gender: '',
       bio: '',
@@ -39,7 +39,6 @@ function Profile() {
       // fetch profile by user id
       fetchProfile(userId)
          .then((profile) => {
-            console.log('Fetched profile => ' + JSON.stringify(profile));
             // set the user profile
             setProfile(profile);
          })
@@ -73,7 +72,7 @@ function Profile() {
             </h1>
 
             <h2>
-               <HomeIcon /> {profile.address}
+               <HomeIcon /> {profile.address ? profile.address : 'Undetermined'}
             </h2>
             <h3>
                <CakeIcon /> {profile.birthday}
