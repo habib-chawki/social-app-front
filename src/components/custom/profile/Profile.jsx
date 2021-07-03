@@ -72,7 +72,7 @@ function Profile() {
             </h1>
 
             <h2>
-               <HomeIcon /> {profile.address || 'Undetermined'}
+               <HomeIcon /> {profile.address || 'Undetermined address'}
             </h2>
             <h3>
                <CakeIcon /> {profile.birthday}
@@ -84,7 +84,7 @@ function Profile() {
             <h2>
                <InfoIcon /> Bio
             </h2>
-            <p>{profile.bio || 'Undetermined'}</p>
+            <p>{profile.bio || 'Undetermined bio'}</p>
          </Box>
 
          {/* Experience */}
@@ -94,7 +94,7 @@ function Profile() {
             </h2>
 
             {profile.experience.length === 0 ? (
-               <p>Undetermined</p>
+               <p>Undetermined experience</p>
             ) : (
                profile.experience.map((experience) => (
                   <Card key={experience.position}>
@@ -117,7 +117,7 @@ function Profile() {
                <SchoolIcon /> Education
             </h2>
             {profile.education.length === 0 ? (
-               <p>Undetermined</p>
+               <p>Undetermined education</p>
             ) : (
                profile.education.map((education) => (
                   <Card key={education.major}>
@@ -141,7 +141,7 @@ function Profile() {
             </h2>
 
             {profile.languages.length === 0 ? (
-               <p>Undetermined</p>
+               <p>Undetermined languages</p>
             ) : (
                profile.languages.map((language, index) => (
                   <Chip key={index} label={language}></Chip>
@@ -156,17 +156,25 @@ function Profile() {
                <WorkIcon /> Organizational
             </h3>
             <ul>
-               {profile.skills.organizational.map((skill, index) => (
-                  <li key={index}>{skill}</li>
-               ))}
+               {profile.skills.organizational.length === 0 ? (
+                  <p>Undetermined organizational skills</p>
+               ) : (
+                  profile.skills.organizational.map((skill, index) => (
+                     <li key={index}>{skill}</li>
+                  ))
+               )}
             </ul>
             <h3>
                <TimerIcon /> Technical
             </h3>
             <ul>
-               {profile.skills.technical.map((skill, index) => (
-                  <li key={index}>{skill}</li>
-               ))}
+               {profile.skills.technical.length === 0 ? (
+                  <p>Undetermined technical skills</p>
+               ) : (
+                  profile.skills.technical.map((skill, index) => (
+                     <li key={index}>{skill}</li>
+                  ))
+               )}
             </ul>
          </Box>
       </Box>
