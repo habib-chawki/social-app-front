@@ -72,7 +72,7 @@ function Profile() {
             </h1>
 
             <h2>
-               <HomeIcon /> {profile.address ? profile.address : 'Undetermined'}
+               <HomeIcon /> {profile.address || 'Undetermined'}
             </h2>
             <h3>
                <CakeIcon /> {profile.birthday}
@@ -84,7 +84,7 @@ function Profile() {
             <h2>
                <InfoIcon /> Bio
             </h2>
-            <p>{profile.bio}</p>
+            <p>{profile.bio || 'Undetermined'}</p>
          </Box>
 
          {/* Experience */}
@@ -92,6 +92,7 @@ function Profile() {
             <h2>
                <WorkIcon /> Exeperience
             </h2>
+
             {profile.experience.map((experience) => (
                <Card key={experience.position}>
                   <h2>
@@ -111,18 +112,22 @@ function Profile() {
             <h2>
                <SchoolIcon /> Education
             </h2>
-            {profile.education.map((education) => (
-               <Card key={education.major}>
-                  <h2>
-                     {education.major} - {education.school}
-                  </h2>
-                  <h4>
-                     {moment(education.startDate).format('MMM YYYY')} -{' '}
-                     {moment(education.endDate).format('MMM YYYY')}
-                  </h4>
-                  <p>{education.description}</p>
-               </Card>
-            ))}
+            {profile.education.length === 0 ? (
+               <p>Undetermined</p>
+            ) : (
+               profile.education.map((education) => (
+                  <Card key={education.major}>
+                     <h2>
+                        {education.major} - {education.school}
+                     </h2>
+                     <h4>
+                        {moment(education.startDate).format('MMM YYYY')} -{' '}
+                        {moment(education.endDate).format('MMM YYYY')}
+                     </h4>
+                     <p>{education.description}</p>
+                  </Card>
+               ))
+            )}
          </Box>
 
          {/* Languages */}
