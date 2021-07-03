@@ -67,8 +67,10 @@ function Profile() {
          {/* Basic info */}
          <Box>
             <h1>
-               <AccountBoxIcon /> {profile.firstName} {profile.middleName}{' '}
-               {profile.lastName}
+               <AccountBoxIcon />{' '}
+               {profile.firstName
+                  ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
+                  : 'Undetermined name'}
             </h1>
 
             <h2>
