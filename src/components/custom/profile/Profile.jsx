@@ -93,18 +93,22 @@ function Profile() {
                <WorkIcon /> Exeperience
             </h2>
 
-            {profile.experience.map((experience) => (
-               <Card key={experience.position}>
-                  <h2>
-                     {experience.position} - {experience.company}
-                  </h2>
-                  <h4>
-                     {moment(experience.startDate).format('MMM YYYY')} -{' '}
-                     {moment(experience.endDate).format('MMM YYYY')}
-                  </h4>
-                  <p>{experience.description}</p>
-               </Card>
-            ))}
+            {profile.experience.length === 0 ? (
+               <p>Undetermined</p>
+            ) : (
+               profile.experience.map((experience) => (
+                  <Card key={experience.position}>
+                     <h2>
+                        {experience.position} - {experience.company}
+                     </h2>
+                     <h4>
+                        {moment(experience.startDate).format('MMM YYYY')} -{' '}
+                        {moment(experience.endDate).format('MMM YYYY')}
+                     </h4>
+                     <p>{experience.description}</p>
+                  </Card>
+               ))
+            )}
          </Box>
 
          {/* Education */}
