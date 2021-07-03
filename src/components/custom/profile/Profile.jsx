@@ -136,9 +136,13 @@ function Profile() {
                <LanguageIcon /> Languages
             </h2>
 
-            {profile.languages.map((language, index) => (
-               <Chip key={index} label={language}></Chip>
-            ))}
+            {profile.languages.length === 0 ? (
+               <p>Undetermined</p>
+            ) : (
+               profile.languages.map((language, index) => (
+                  <Chip key={index} label={language}></Chip>
+               ))
+            )}
          </Box>
 
          {/* Skills */}
