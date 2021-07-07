@@ -18,14 +18,11 @@ function Posts() {
 
    // render posts list when component first mounts
    useEffect(() => {
-      // call backend service to fetch list of posts, then update UI
-      (async () => {
-         const data = await postService.fetchPosts({
-            limit: LIMIT,
-            skip: SKIP,
-         });
-         setPosts(data);
-      })();
+      // invoke backend service to fetch list of posts, then update UI
+      postService
+         .fetchPosts({ limit: LIMIT, skip: SKIP })
+         .then((posts) => setPosts(posts))
+         .catch((err) => console.log('Could not fetch posts ' + err));
    }, []);
 
    // keep track of post input change
