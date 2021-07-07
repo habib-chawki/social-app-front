@@ -5,11 +5,11 @@ import Comments from './Comments';
 import withEdit from '../higher-order/withEdit';
 
 function Post(post) {
+   const { firstName, middleName, lastName } = post.owner.profile;
+   const postOwnerFullName = `${firstName} ${middleName} ${lastName}`;
    return (
       <div>
-         <Link to={`profile/${post.owner._id}`}>
-            {post.owner.profile.firstName}
-         </Link>
+         <Link to={`profile/${post.owner._id}`}>{postOwnerFullName}</Link>
 
          {post.renderContent()}
 
