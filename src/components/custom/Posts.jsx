@@ -5,7 +5,7 @@ import Post from './Post';
 
 import * as postService from '../../services/post';
 
-// set pagination parameters
+// set pagination params
 const LIMIT = 10,
    SKIP = 0;
 
@@ -74,7 +74,7 @@ function Posts() {
          <Post
             key={post._id}
             id={post._id}
-            owner={post.owner}
+            owner={post.owner._id}
             content={post.content}
             comments={post.comments}
             onRemove={handleRemovePost}
