@@ -7,7 +7,9 @@ import withEdit from '../higher-order/withEdit';
 function Post(post) {
    return (
       <div>
-         <Link to={`profile/${post.owner}`}>{post.owner} </Link>
+         <Link to={`profile/${post.owner._id}`}>
+            {post.owner.profile.firstName}
+         </Link>
 
          {post.renderContent()}
 

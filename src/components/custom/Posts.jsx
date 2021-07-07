@@ -74,7 +74,7 @@ function Posts() {
          <Post
             key={post._id}
             id={post._id}
-            owner={post.owner._id}
+            owner={post.owner}
             content={post.content}
             comments={post.comments}
             onRemove={handleRemovePost}
