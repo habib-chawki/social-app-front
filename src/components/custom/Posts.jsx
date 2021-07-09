@@ -32,13 +32,11 @@ function Posts() {
 
    // handle adding new post
    const handleCreatePost = async () => {
-      // call backend service to create post
-      const { _id, owner, content, comments } = await postService.createPost(
-         postInput
-      );
+      // invoke backend service to create post
+      const post = await postService.createPost(postInput);
 
       // update posts list and UI
-      setPosts([{ _id, owner, content, comments }, ...posts]);
+      setPosts([post, ...posts]);
       setPostInput('');
    };
 
