@@ -8,7 +8,7 @@ const LIMIT = 5,
    SKIP = 0;
 
 function Comments(post) {
-   const [comments, setComments] = useState(post.comments);
+   const [comments, setComments] = useState(post.comments || []);
    const [commentInput, setCommentInput] = useState('');
 
    const [pagination, setPagination] = useState({ limit: LIMIT, skip: SKIP });
