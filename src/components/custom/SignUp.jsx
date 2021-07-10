@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { TextField } from '@material-ui/core';
@@ -21,6 +21,8 @@ import withSubmission from '../higher-order/withSubmission';
  * @returns SignUp component with validation and submission
  */
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
+   const [firstNameInput, setFirstNameInput] = useState('');
+
    return (
       <Form>
          <h1>Sign Up</h1>
@@ -29,6 +31,10 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             type="text"
             variant="filled"
             label="First name"
+            value={firstNameInput}
+            error={firstNameInput.length < 5 ? true : false}
+            onChange={(event) => setFirstNameInput(event.target.value)}
+            helperText="First name must be at least 5 characters long"
             fullWidth
          />
          <TextField
