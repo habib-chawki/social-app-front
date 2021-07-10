@@ -27,9 +27,15 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
          <TextField
             id="firstName"
             type="text"
-            name="Firstname"
             variant="filled"
             label="First name"
+            fullWidth
+         />
+         <TextField
+            id="lastName"
+            type="text"
+            variant="filled"
+            label="Last name"
             fullWidth
          />
          <Input
