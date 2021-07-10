@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
 import Input from '../common/Input';
@@ -23,6 +24,14 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
          <h1>Sign Up</h1>
+         <TextField
+            id="firstName"
+            type="text"
+            name="Firstname"
+            variant="filled"
+            label="First name"
+            fullWidth
+         />
          <Input
             id="email"
             type="text"
@@ -39,6 +48,8 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             onChange={onChange}
             onValidate={onValidate} // invoked when the TextField is blurred
          />
+
+         <TextField id="lastName" type="text" name="Firstname" />
          <Button
             fullWidth
             type="submit"
