@@ -48,14 +48,12 @@ function withValidation(Component) {
       const handleValidation = (event) => {
          // extract the input target
          const { target } = event;
-
-         //const inputValue = target.value.trim(); // trim input value
          const inputType = target.id;
 
          // keep track of validation errors
          const errors = { ...credentials.errors };
 
-         // add validation error if any, otherwise delete key (email or password) from errors object
+         // add validation error if any, otherwise delete key from errors object
          !isInputValid(inputType, credentials[inputType])
             ? (errors[inputType] = `Invalid ${inputType}.`)
             : delete errors[inputType];
