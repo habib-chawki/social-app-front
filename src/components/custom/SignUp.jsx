@@ -38,16 +38,13 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             helperText="First name must be at least 5 characters long"
             fullWidth
          />
-         <TextField
+         <Input
             id="lastName"
             type="text"
-            variant="filled"
-            label="Last name"
-            value={lastNameInput}
-            error={lastNameInput.length < 5 ? true : false}
-            onChange={(event) => setLastNameInput(event.target.value)}
-            helperText="Last name must be at least 5 characters long"
-            fullWidth
+            name="Last name"
+            credentials={credentials}
+            onChange={onChange}
+            onValidate={onValidate}
          />
          <Input
             id="email"
