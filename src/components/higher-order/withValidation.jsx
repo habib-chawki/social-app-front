@@ -19,7 +19,7 @@ function withValidation(Component) {
             email: isEmail(content),
             password: content.length >= 5,
             firstName: content.length >= 5,
-            lasttName: content.length >= 5,
+            lastName: content.length >= 5,
          };
 
          return validator[type];
