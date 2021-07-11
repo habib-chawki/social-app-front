@@ -8,7 +8,9 @@ function withValidation(Component) {
       const [credentials, setCredentials] = useState({
          email: '',
          password: '',
-         errors: { email: '', password: '' },
+         firstName: '',
+         lastName: '',
+         errors: { email: '', password: '', firstName: '', lastName: '' },
       });
 
       // validate input value
@@ -16,6 +18,8 @@ function withValidation(Component) {
          const validator = {
             email: isEmail(content),
             password: content.length >= 5,
+            firstName: content.length >= 5,
+            lasttName: content.length >= 5,
          };
 
          return validator[type];
