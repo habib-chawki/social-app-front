@@ -16,7 +16,10 @@ function withValidation(Component) {
       // validate input value
       const isInputValid = (type, content) => {
          const validator = {
-            email: isEmail(content),
+            email: {
+               isValid: isEmail(content),
+               validationError: 'Invalid Email',
+            },
             password: content.length >= 5,
             firstName: content.length >= 5,
             lastName: content.length >= 5,
@@ -53,9 +56,11 @@ function withValidation(Component) {
          // keep track of validation errors
          const errors = { ...credentials.errors };
 
+         const input = isInputValid(inputType, credentials[inputType]);
+
          // add validation error if any, otherwise delete key from errors object
-         !isInputValid(inputType, credentials[inputType])
-            ? (errors[inputType] = `Invalid ${inputType}.`)
+         !input.isValid
+            ? (errors[inputType] = input.validationError)
             : delete errors[inputType];
 
          // update credentials state
