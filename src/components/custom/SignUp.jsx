@@ -27,16 +27,13 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
          <h1>Sign Up</h1>
-         <TextField
+         <Input
             id="firstName"
             type="text"
-            variant="filled"
-            label="First name"
-            value={firstNameInput}
-            error={firstNameInput.length < 5 ? true : false}
-            onChange={(event) => setFirstNameInput(event.target.value)}
-            helperText="First name must be at least 5 characters long"
-            fullWidth
+            name="First name"
+            credentials={credentials}
+            onChange={onChange}
+            onValidate={onValidate}
          />
          <Input
             id="lastName"
