@@ -14,7 +14,7 @@ function withValidation(Component) {
       });
 
       // validate input value
-      const isInputValid = (type, content) => {
+      const validateInput = (type, content) => {
          const validator = {
             email: {
                isValid: isEmail(content),
@@ -37,7 +37,7 @@ function withValidation(Component) {
          const inputType = target.id;
 
          // validate input
-         const input = isInputValid(inputType, inputValue);
+         const input = validateInput(inputType, inputValue);
 
          // remove error when input is valid
          if (input.isValid) {
@@ -60,7 +60,7 @@ function withValidation(Component) {
          const errors = { ...credentials.errors };
 
          // validate input
-         const input = isInputValid(inputType, credentials[inputType]);
+         const input = validateInput(inputType, credentials[inputType]);
 
          // add validation error if any, otherwise delete key from errors object
          !input.isValid
