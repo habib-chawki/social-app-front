@@ -20,9 +20,20 @@ function withValidation(Component) {
                isValid: isEmail(content),
                validationError: 'Invalid Email',
             },
-            password: content.length >= 5,
-            firstName: content.length >= 5,
-            lastName: content.length >= 5,
+            password: {
+               isValid: content.length >= 5,
+               validationError: 'Password should be at least 5 characters long',
+            },
+            firstName: {
+               isValid: content.length >= 5,
+               validationError:
+                  'First name should be at least 5 characters long',
+            },
+            lastName: {
+               isValid: content.length >= 5,
+               validationError:
+                  'Last name should be at least 5 characters long',
+            },
          };
 
          return validator[type];
