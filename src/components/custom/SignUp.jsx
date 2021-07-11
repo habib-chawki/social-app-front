@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
 import Input from '../common/Input';
@@ -21,9 +20,6 @@ import withSubmission from '../higher-order/withSubmission';
  * @returns SignUp component with validation and submission
  */
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
-   const [firstNameInput, setFirstNameInput] = useState('');
-   const [lastNameInput, setLastNameInput] = useState('');
-
    return (
       <Form>
          <h1>Sign Up</h1>
