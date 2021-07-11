@@ -66,7 +66,6 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             onValidate={onValidate} // invoked when the TextField is blurred
          />
 
-         <TextField id="lastName" type="text" name="Firstname" />
          <Button
             fullWidth
             type="submit"
