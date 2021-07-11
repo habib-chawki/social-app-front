@@ -22,6 +22,7 @@ import withSubmission from '../higher-order/withSubmission';
  */
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    const [firstNameInput, setFirstNameInput] = useState('');
+   const [lastNameInput, setLastNameInput] = useState('');
 
    return (
       <Form>
@@ -42,6 +43,10 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             type="text"
             variant="filled"
             label="Last name"
+            value={lastNameInput}
+            error={lastNameInput.length < 5 ? true : false}
+            onChange={(event) => setLastNameInput(event.target.value)}
+            helperText="Last name must be at least 5 characters long"
             fullWidth
          />
          <Input
