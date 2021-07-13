@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Comments from './Comments';
@@ -7,6 +7,8 @@ import withEdit from '../higher-order/withEdit';
 import { getUser } from '../../services/storage';
 
 function Post(post) {
+   let canEdit = useRef(getUser() === post.owner._id);
+
    // extract post owner full name
    const { firstName, middleName, lastName } = post.owner.profile;
    const postOwnerFullName = `${firstName} ${middleName} ${lastName}`;
@@ -17,10 +19,12 @@ function Post(post) {
 
          {post.renderContent()}
 
-         {getUser() === post.owner._id && (
+         {canEdit.current && (
             <button onClick={() => post.handleRemove()}>delete</button>
          )}
-         <button onClick={() => post.handleUpdate()}>update</button>
+         {canEdit.current && (
+            <button onClick={() => post.handleUpdate()}>update</button>
+         )}
 
          <Comments id={post.id} comments={post.comments} />
       </div>
