@@ -7,8 +7,6 @@ import withEdit from '../higher-order/withEdit';
 import { getUser } from '../../services/storage';
 
 function Post(post) {
-   const canEdit = () => getUser() === post.owner._id;
-
    // extract post owner full name
    const { firstName, middleName, lastName } = post.owner.profile;
    const postOwnerFullName = `${firstName} ${middleName} ${lastName}`;
@@ -19,7 +17,7 @@ function Post(post) {
 
          {post.renderContent()}
 
-         {canEdit() && (
+         {getUser() === post.owner._id && (
             <button onClick={() => post.handleRemove()}>delete</button>
          )}
          <button onClick={() => post.handleUpdate()}>update</button>
