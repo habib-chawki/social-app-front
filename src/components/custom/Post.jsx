@@ -7,7 +7,7 @@ import withEdit from '../higher-order/withEdit';
 import { getUser } from '../../services/storage';
 
 function Post(post) {
-   let canEdit = useRef(getUser() === post.owner._id);
+   const canEdit = useRef(getUser() === post.owner._id);
 
    // extract post owner full name
    const { firstName, middleName, lastName } = post.owner.profile;

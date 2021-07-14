@@ -14,7 +14,9 @@ function Comment(comment) {
          {getUser() === comment.owner && (
             <button onClick={() => comment.handleRemove()}>delete</button>
          )}
-         <button onClick={() => comment.handleUpdate()}>update</button>
+         {getUser() === comment.owner && (
+            <button onClick={() => comment.handleUpdate()}>update</button>
+         )}
       </li>
    );
 }
