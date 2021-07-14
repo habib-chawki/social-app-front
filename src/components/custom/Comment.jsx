@@ -2,6 +2,8 @@ import React from 'react';
 
 import withEdit from '../higher-order/withEdit';
 
+import { getUser } from '../../services/storage';
+
 function Comment(comment) {
    return (
       <li key={comment.id}>
@@ -9,7 +11,9 @@ function Comment(comment) {
 
          {comment.renderContent()}
 
-         <button onClick={() => comment.handleRemove()}>delete</button>
+         {getUser() === comment.owner && (
+            <button onClick={() => comment.handleRemove()}>delete</button>
+         )}
          <button onClick={() => comment.handleUpdate()}>update</button>
       </li>
    );
