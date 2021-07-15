@@ -5,6 +5,8 @@ import Post from './Post';
 
 import * as postService from '../../services/post';
 
+import { TextField, Button } from '@material-ui/core';
+
 // set pagination params
 const LIMIT = 10,
    SKIP = 0;
@@ -105,8 +107,15 @@ function Posts() {
    return (
       <div>
          <Header />
-         <input type="text" value={postInput} onChange={handlePostInput} />
-         <button onClick={handleCreatePost}>post</button>
+         <TextField type="text" value={postInput} onChange={handlePostInput} />
+         <Button
+            variant="contained"
+            color="secondary"
+            disableElevation
+            onClick={handleCreatePost}
+         >
+            post
+         </Button>
          {renderPosts()}
          {loadMore && <button onClick={loadMorePosts}>Load more posts</button>}
       </div>
