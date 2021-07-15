@@ -107,7 +107,16 @@ function Posts() {
    return (
       <div>
          <Header />
-         <TextField type="text" value={postInput} onChange={handlePostInput} />
+         <TextField
+            variant="outlined"
+            color="secondary"
+            multiline
+            rows={5}
+            placeholder="What's on your mind..."
+            fullWidth
+            value={postInput}
+            onChange={handlePostInput}
+         />
          <Button
             variant="contained"
             color="secondary"
