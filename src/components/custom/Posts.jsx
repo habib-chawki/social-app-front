@@ -6,6 +6,7 @@ import Post from './Post';
 import * as postService from '../../services/post';
 
 import { TextField, Button } from '@material-ui/core';
+import DoneIcon from '@material-ui/icons/Done';
 
 // set pagination params
 const LIMIT = 10,
@@ -120,6 +121,7 @@ function Posts() {
          <Button
             variant="contained"
             color="secondary"
+            startIcon={<DoneIcon />}
             disableElevation
             onClick={handleCreatePost}
          >
