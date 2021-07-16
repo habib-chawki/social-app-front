@@ -21,9 +21,9 @@ function Header() {
                <Button color="white"> Log out </Button>
             </Link>
 
-            <Button color="primary">
-               <Link to={`/user/${userId.current}/profile`}>View profile</Link>
-            </Button>
+            <Link to={`/user/${userId.current}/profile`}>
+               <Button color="primary">View profile</Button>
+            </Link>
          </Toolbar>
       </AppBar>
    );
