@@ -15,14 +15,14 @@ function Header() {
    }, []);
 
    return (
-      <AppBar position="static">
+      <AppBar position="static" color="secondary">
          <Toolbar>
             <Link to="/login" onClick={logUserOut}>
-               <Button color="white"> Log out </Button>
+               <Button> Log out </Button>
             </Link>
 
             <Link to={`/user/${userId.current}/profile`}>
-               <Button color="primary">View profile</Button>
+               <Button> View profile </Button>
             </Link>
          </Toolbar>
       </AppBar>
