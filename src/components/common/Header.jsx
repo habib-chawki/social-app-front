@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { logUserOut } from '../../services/user';
 import { getUser } from '../../services/storage';
 
-import { TextField, Button, AppBar, Toolbar } from '@material-ui/core';
+import { Button, AppBar, Toolbar } from '@material-ui/core';
 
 function Header() {
    const userId = useRef();
@@ -17,20 +17,13 @@ function Header() {
    return (
       <AppBar position="static">
          <Toolbar>
-            <nav>
-               <ul>
-                  <li>
-                     <Link to="/login" onClick={logUserOut}>
-                        Log out
-                     </Link>
-                  </li>
-                  <li>
-                     <Link to={`/user/${userId.current}/profile`}>
-                        View profile
-                     </Link>
-                  </li>
-               </ul>
-            </nav>
+            <Link to="/login" onClick={logUserOut}>
+               <Button color="white"> Log out </Button>
+            </Link>
+
+            <Button color="primary">
+               <Link to={`/user/${userId.current}/profile`}>View profile</Link>
+            </Button>
          </Toolbar>
       </AppBar>
    );
