@@ -24,7 +24,8 @@ function Post(post) {
                   {postOwnerFullName}
                </Link>
             }
-         ></CardHeader>
+            subheader={post.createdAt}
+         />
 
          <CardContent>{post.renderContent()}</CardContent>
          {canEdit.current && (
