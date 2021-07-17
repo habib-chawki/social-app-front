@@ -6,7 +6,7 @@ import withEdit from '../higher-order/withEdit';
 
 import { getUser } from '../../services/storage';
 
-import { Card, CardContent } from '@material-ui/core';
+import { Card, CardContent, CardHeader, Avatar } from '@material-ui/core';
 
 function Post(post) {
    const canEdit = useRef(getUser() === post.owner._id);
@@ -17,7 +17,14 @@ function Post(post) {
 
    return (
       <Card>
-         <Link to={`user/${post.owner._id}/profile`}>{postOwnerFullName}</Link>
+         <CardHeader
+            avatar={<Avatar alt={postOwnerFullName} />}
+            title={
+               <Link to={`user/${post.owner._id}/profile`}>
+                  {postOwnerFullName}
+               </Link>
+            }
+         ></CardHeader>
 
          <CardContent>{post.renderContent()}</CardContent>
          {canEdit.current && (
