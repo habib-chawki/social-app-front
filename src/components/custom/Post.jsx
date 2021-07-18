@@ -6,7 +6,14 @@ import withEdit from '../higher-order/withEdit';
 
 import { getUser } from '../../services/storage';
 
-import { Card, CardContent, CardHeader, Avatar } from '@material-ui/core';
+import {
+   Card,
+   CardContent,
+   CardHeader,
+   Avatar,
+   IconButton,
+} from '@material-ui/core';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Post(post) {
    const canEdit = useRef(getUser() === post.owner._id);
@@ -25,6 +32,11 @@ function Post(post) {
                </Link>
             }
             subheader={post.createdAt}
+            action={
+               <IconButton aria-label="settings">
+                  <MoreVertIcon />
+               </IconButton>
+            }
          />
 
          <CardContent>{post.renderContent()}</CardContent>
