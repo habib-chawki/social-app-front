@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Comments from './Comments';
@@ -18,14 +18,16 @@ import {
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Post(post) {
-   const [anchorEl, setAnchorEl] = React.useState(null);
+   const [anchorEl, setAnchorEl] = useState(null);
    const canEdit = useRef(getUser() === post.owner._id);
 
    const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
    };
 
-   const handleRemove = () => {};
+   const handleRemove = () => {
+      post.handleRemove();
+   };
 
    const handleUpdate = () => {
       post.handleUpdate();
@@ -64,7 +66,7 @@ function Post(post) {
                         onClose={handleClose}
                      >
                         <MenuItem onClick={handleUpdate}>Edit</MenuItem>
-                        <MenuItem onClick={handleClose}>Delete</MenuItem>
+                        <MenuItem onClick={handleRemove}>Delete</MenuItem>
                      </Menu>
                   </div>
                )
@@ -72,10 +74,6 @@ function Post(post) {
          />
 
          <CardContent>{post.renderContent()}</CardContent>
-         {canEdit.current && (
-            <button onClick={() => post.handleRemove()}>delete</button>
-         )}
-         {canEdit.current && <button onClick={handleUpdate}>update</button>}
 
          <Comments id={post.id} comments={post.comments} />
       </Card>
