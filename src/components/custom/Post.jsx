@@ -25,6 +25,13 @@ function Post(post) {
       setAnchorEl(event.currentTarget);
    };
 
+   const handleRemove = () => {};
+
+   const handleUpdate = () => {
+      post.handleUpdate();
+      handleClose();
+   };
+
    const handleClose = () => {
       setAnchorEl(null);
    };
@@ -56,7 +63,7 @@ function Post(post) {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                      >
-                        <MenuItem onClick={handleClose}>Edit</MenuItem>
+                        <MenuItem onClick={handleUpdate}>Edit</MenuItem>
                         <MenuItem onClick={handleClose}>Delete</MenuItem>
                      </Menu>
                   </div>
@@ -68,9 +75,7 @@ function Post(post) {
          {canEdit.current && (
             <button onClick={() => post.handleRemove()}>delete</button>
          )}
-         {canEdit.current && (
-            <button onClick={() => post.handleUpdate()}>update</button>
-         )}
+         {canEdit.current && <button onClick={handleUpdate}>update</button>}
 
          <Comments id={post.id} comments={post.comments} />
       </Card>
