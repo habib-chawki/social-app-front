@@ -12,11 +12,22 @@ import {
    CardHeader,
    Avatar,
    IconButton,
+   Menu,
+   MenuItem,
 } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Post(post) {
+   const [anchorEl, setAnchorEl] = React.useState(null);
    const canEdit = useRef(getUser() === post.owner._id);
+
+   const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+   };
+
+   const handleClose = () => {
+      setAnchorEl(null);
+   };
 
    // extract post owner full name
    const { firstName, middleName, lastName } = post.owner.profile;
@@ -33,9 +44,23 @@ function Post(post) {
             }
             subheader={post.createdAt}
             action={
-               <IconButton aria-label="settings">
-                  <MoreVertIcon />
-               </IconButton>
+               canEdit.current && (
+                  <div>
+                     <IconButton onClick={handleClick}>
+                        <MoreVertIcon />
+                     </IconButton>
+                     <Menu
+                        id="menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                     >
+                        <MenuItem onClick={handleClose}>Edit</MenuItem>
+                        <MenuItem onClick={handleClose}>Delete</MenuItem>
+                     </Menu>
+                  </div>
+               )
             }
          />
 
