@@ -22,15 +22,19 @@ function Comments(post) {
    };
 
    // add new comment
-   const handleCreateComment = async () => {
-      const { _id, owner, content } = await commentService.createComment(
-         post.id,
-         commentInput
-      );
+   const handleCreateComment = async (event) => {
+      if (event.key !== 'Enter') {
+         console.log(event.key + ' was pressed');
+      } else {
+         const { _id, owner, content } = await commentService.createComment(
+            post.id,
+            commentInput
+         );
 
-      // update comments list (push new comment)
-      setComments([...comments, { _id, owner, content }]);
-      setCommentInput('');
+         // update comments list (push new comment)
+         setComments([...comments, { _id, owner, content }]);
+         setCommentInput('');
+      }
    };
 
    // handle update comment
@@ -104,8 +108,14 @@ function Comments(post) {
 
    return (
       <div>
-         <TextField value={commentInput} onChange={handleCommentInput} />
-         <Button onClick={handleCreateComment}>comment</Button>
+         <TextField
+            value={commentInput}
+            onChange={handleCommentInput}
+            onKeyUp={handleCreateComment}
+         />
+         <Button id="comment-button" onClick={handleCreateComment}>
+            comment
+         </Button>
          {renderComments()}
          {loadMore && (
             <button onClick={loadMoreComments}>Load more comments</button>
