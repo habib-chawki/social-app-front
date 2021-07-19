@@ -21,20 +21,20 @@ function Post(post) {
    const [anchorEl, setAnchorEl] = useState(null);
    const canEdit = useRef(getUser() === post.owner._id);
 
-   const handleClick = (event) => {
+   const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
    };
 
-   const handleRemove = () => {
+   const handleDeletePost = () => {
       post.handleRemove();
    };
 
-   const handleUpdate = () => {
+   const handleEditPost = () => {
       post.handleUpdate();
-      handleClose();
+      handleMenuClose();
    };
 
-   const handleClose = () => {
+   const handleMenuClose = () => {
       setAnchorEl(null);
    };
 
@@ -55,7 +55,7 @@ function Post(post) {
             action={
                canEdit.current && (
                   <div>
-                     <IconButton onClick={handleClick}>
+                     <IconButton onClick={handleMenuClick}>
                         <MoreVertIcon />
                      </IconButton>
                      <Menu
@@ -63,10 +63,10 @@ function Post(post) {
                         anchorEl={anchorEl}
                         keepMounted
                         open={Boolean(anchorEl)}
-                        onClose={handleClose}
+                        onClose={handleMenuClose}
                      >
-                        <MenuItem onClick={handleUpdate}>Edit</MenuItem>
-                        <MenuItem onClick={handleRemove}>Delete</MenuItem>
+                        <MenuItem onClick={handleEditPost}>Edit</MenuItem>
+                        <MenuItem onClick={handleDeletePost}>Delete</MenuItem>
                      </Menu>
                   </div>
                )
