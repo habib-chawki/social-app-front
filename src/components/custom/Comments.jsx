@@ -3,6 +3,8 @@ import Comment from './Comment';
 
 import * as commentService from '../../services/comment';
 
+import { TextField, Button } from '@material-ui/core';
+
 // set pagination parameters
 const LIMIT = 5,
    SKIP = 0;
@@ -102,8 +104,8 @@ function Comments(post) {
 
    return (
       <div>
-         <input value={commentInput} onChange={handleCommentInput} />
-         <button onClick={handleCreateComment}>comment</button>
+         <TextField value={commentInput} onChange={handleCommentInput} />
+         <Button onClick={handleCreateComment}>comment</Button>
          {renderComments()}
          {loadMore && (
             <button onClick={loadMoreComments}>Load more comments</button>
