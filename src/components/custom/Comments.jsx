@@ -21,11 +21,9 @@ function Comments(post) {
       setCommentInput(event.target.value);
    };
 
-   // add new comment
    const handleCreateComment = async (event) => {
-      if (event.key !== 'Enter') {
-         console.log(event.key + ' was pressed');
-      } else {
+      // add comment when either the enter key or the comment button are pressed
+      if (event.key === 'Enter' || event.target.id === 'comment-button') {
          const { _id, owner, content } = await commentService.createComment(
             post.id,
             commentInput
