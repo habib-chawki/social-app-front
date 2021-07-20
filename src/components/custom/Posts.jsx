@@ -96,17 +96,21 @@ function Posts() {
       skip += limit;
 
       // fetch the next batch of posts
-      const data = await postService.fetchPosts({ limit, skip });
+      postService
+         .fetchPosts({ limit, skip })
+         .then((data) => {
+            // update pagination params
+            setPagination({ limit, skip });
 
-      // update pagination params
-      setPagination({ limit, skip });
+            // disable load more button when no more posts are available
+            if (data.length === 0) {
+               setLoadMore(false);
+            }
 
-      // disable load more button when no more posts are available
-      if (data.length === 0) {
-         setLoadMore(false);
-      }
-      // update list of posts
-      setPosts([...posts, ...data]);
+            // update list of posts
+            setPosts([...posts, ...data]);
+         })
+         .catch((err) => console.log('Could not load more posts'));
    };
 
    return (
