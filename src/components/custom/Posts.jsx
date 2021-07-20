@@ -63,10 +63,15 @@ function Posts() {
    // delete post
    const handleRemovePost = (id) => {
       // call backend service to delete post
-      postService.removePost(id);
-
-      // update UI
-      setPosts(posts.filter((post) => post._id !== id));
+      postService
+         .removePost(id)
+         .then(() => {
+            // update UI
+            setPosts(posts.filter((post) => post._id !== id));
+         })
+         .catch(() => {
+            console.log('Could not remove post');
+         });
    };
 
    // render list of posts
