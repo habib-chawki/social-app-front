@@ -43,34 +43,31 @@ function Posts() {
       setPostInput('');
    };
 
-   // update post content
-   const handleUpdatePost = async (id, newContent) => {
-      try {
-         // call backend service to update post
-         await postService.updatePost(id, newContent);
-
-         // update UI
-         setPosts(
-            posts.map((post) =>
-               post._id !== id ? post : { ...post, content: newContent }
-            )
-         );
-      } catch (e) {
-         console.log(e.message);
-      }
+   const handleUpdatePost = (id, newContent) => {
+      // invoke backend service to update post content
+      postService
+         .updatePost(id, newContent)
+         .then(() => {
+            // update UI
+            setPosts(
+               posts.map((post) =>
+                  post._id !== id ? post : { ...post, content: newContent }
+               )
+            );
+         })
+         .catch((err) => console.log('Could not update post ' + err));
    };
 
-   // delete post
    const handleRemovePost = (id) => {
-      // call backend service to delete post
+      // invoke backend service to delete post by id
       postService
          .removePost(id)
          .then(() => {
             // update UI
             setPosts(posts.filter((post) => post._id !== id));
          })
-         .catch(() => {
-            console.log('Could not remove post');
+         .catch((err) => {
+            console.log('Could not remove post ' + err);
          });
    };
 
