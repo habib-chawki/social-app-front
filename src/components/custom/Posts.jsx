@@ -33,14 +33,16 @@ function Posts() {
       setPostInput(event.target.value);
    };
 
-   // handle adding new post
-   const handleCreatePost = async () => {
+   const handleCreatePost = () => {
       // invoke backend service to create post
-      const post = await postService.createPost(postInput);
-
-      // update posts list and UI
-      setPosts([post, ...posts]);
-      setPostInput('');
+      postService
+         .createPost(postInput)
+         .then((post) => {
+            // update posts list and UI
+            setPosts([post, ...posts]);
+            setPostInput('');
+         })
+         .catch((err) => console.log('Could not create post ' + err));
    };
 
    const handleUpdatePost = (id, newContent) => {
