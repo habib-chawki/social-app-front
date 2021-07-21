@@ -89,22 +89,25 @@ function Comments(post) {
       skip += limit;
 
       // fetch next batch of comments
-      const data = await commentService.fetchComments({
-         postId: post.id,
-         limit,
-         skip,
-      });
+      commentService
+         .fetchComments({
+            postId: post.id,
+            limit,
+            skip,
+         })
+         .then((data) => {
+            // update pagination params
+            setPagination({ limit, skip });
 
-      // update pagination params
-      setPagination({ limit, skip });
+            // disable load more button when no more comments are available
+            if (data.length === 0) {
+               setLoadMore(false);
+            }
 
-      // disable load more button when no more comments are available
-      if (data.length === 0) {
-         setLoadMore(false);
-      }
-
-      //update list of comments
-      setComments([...comments, ...data]);
+            //update list of comments
+            setComments([...comments, ...data]);
+         })
+         .catch((err) => console.log('Could not load more comments ' + err));
    };
 
    return (
