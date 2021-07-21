@@ -24,14 +24,14 @@ function Comments(post) {
    const handleCreateComment = async (event) => {
       // add comment when either the enter key or the comment button are pressed
       if (event.key === 'Enter' || event.target.id === 'comment-button') {
-         const { _id, owner, content } = await commentService.createComment(
-            post.id,
-            commentInput
-         );
-
-         // update comments list (push new comment)
-         setComments([...comments, { _id, owner, content }]);
-         setCommentInput('');
+         commentService
+            .createComment(post.id, commentInput)
+            .then((comment) => {
+               // update comments list (push new comment)
+               setComments([...comments, comment]);
+               setCommentInput('');
+            })
+            .catch((err) => console.log('Could not create comment ' + err));
       }
    };
 
