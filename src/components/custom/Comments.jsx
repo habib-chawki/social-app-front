@@ -21,7 +21,7 @@ function Comments(post) {
       setCommentInput(event.target.value);
    };
 
-   const handleCreateComment = async (event) => {
+   const handleCreateComment = (event) => {
       // add comment when either the enter key or the comment button are pressed
       if (event.key === 'Enter' || event.target.id === 'comment-button') {
          commentService
@@ -49,7 +49,7 @@ function Comments(post) {
                )
             );
          })
-         .catch((e) => console.log('Could not update comment ' + err));
+         .catch((err) => console.log('Could not update comment ' + err));
    };
 
    const handleRemoveComment = (commentId) => {
@@ -82,7 +82,7 @@ function Comments(post) {
    };
 
    // load more comments
-   const loadMoreComments = async () => {
+   const loadMoreComments = () => {
       let { limit, skip } = pagination;
 
       // skip already loaded comments
