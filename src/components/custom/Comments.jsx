@@ -56,8 +56,14 @@ function Comments(post) {
 
    // handle delete comment
    const handleRemoveComment = (commentId) => {
-      commentService.removeComment(post.id, commentId);
-      setComments(comments.filter((comment) => comment._id !== commentId));
+      commentService
+         .removeComment(post.id, commentId)
+         .then(() => {
+            setComments(
+               comments.filter((comment) => comment._id !== commentId)
+            );
+         })
+         .catch((err) => console.log('Could not remove comment ' + err));
    };
 
    // render list of comments
