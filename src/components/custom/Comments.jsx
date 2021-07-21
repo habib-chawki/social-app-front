@@ -35,26 +35,23 @@ function Comments(post) {
       }
    };
 
-   // handle update comment
-   const handleUpdateComment = async (id, newContent) => {
-      try {
-         // call update comment service
-         await commentService.updateComment(post.id, id, newContent);
-
-         // update list of comments
-         setComments(
-            comments.map((comment) =>
-               comment._id !== id
-                  ? comment
-                  : { ...comment, content: newContent }
-            )
-         );
-      } catch (e) {
-         console.log(e.message);
-      }
+   const handleUpdateComment = (id, newContent) => {
+      // invoke backend service, update comment
+      commentService
+         .updateComment(post.id, id, newContent)
+         .then(() => {
+            // update list of comments
+            setComments(
+               comments.map((comment) =>
+                  comment._id !== id
+                     ? comment
+                     : { ...comment, content: newContent }
+               )
+            );
+         })
+         .catch((e) => console.log('Could not update comment ' + err));
    };
 
-   // handle delete comment
    const handleRemoveComment = (commentId) => {
       commentService
          .removeComment(post.id, commentId)
