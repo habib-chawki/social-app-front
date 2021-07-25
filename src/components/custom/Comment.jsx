@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 
+import moment from 'moment';
+
 import withEdit from '../higher-order/withEdit';
 
 import { getUser } from '../../services/storage';
@@ -22,6 +24,7 @@ function Comment(comment) {
    return (
       <li key={comment.id}>
          <h4>{comment.owner}</h4>
+         <p>{moment(comment.creationTime).format('LLL')}</p>
 
          {comment.renderContent()}
 
