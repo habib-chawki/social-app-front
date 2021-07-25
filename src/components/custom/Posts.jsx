@@ -82,6 +82,7 @@ function Posts() {
             owner={post.owner}
             content={post.content}
             comments={post.comments}
+            creationTime={post.createdAt}
             onRemove={handleRemovePost}
             onUpdate={handleUpdatePost}
          />
