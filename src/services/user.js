@@ -4,12 +4,12 @@ import { storeUserInfo, removeUserInfo } from './storage';
 const baseUrl = '/users';
 
 // handle signup
-async function signUserUp({ email, password }) {
+async function signUserUp({ email, password, firstName, lastName }) {
    try {
       const response = await server({
          url: `${baseUrl}/signup`,
          method: 'post',
-         data: { email, password },
+         data: { email, password, firstName, lastName },
       });
 
       // persist auth token and user id to localStorage
