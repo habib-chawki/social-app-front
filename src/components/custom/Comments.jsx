@@ -113,15 +113,17 @@ function Comments(post) {
 
    return (
       <div>
+         {renderComments()}
+
          <TextField
             value={commentInput}
             onChange={handleCommentInput}
             onKeyUp={handleCreateComment}
+            fullWidth
          />
          <Button id="comment-button" onClick={handleCreateComment}>
             comment
          </Button>
-         {renderComments()}
          {loadMore && (
             <button onClick={loadMoreComments}>Load more comments</button>
          )}
