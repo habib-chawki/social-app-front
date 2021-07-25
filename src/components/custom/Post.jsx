@@ -53,7 +53,10 @@ function Post(post) {
                   {postOwnerFullName}
                </Link>
             }
-            subheader={moment(post.creationTime).format('LLL')}
+            subheader={
+               moment(post.creationTime).format('LLL') +
+               (post.creationTime !== post.updateTime ? ' (Edited)' : '')
+            }
             action={
                canEdit.current && (
                   <div>
