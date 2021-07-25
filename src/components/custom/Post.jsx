@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import moment from 'moment';
+
 import Comments from './Comments';
 import withEdit from '../higher-order/withEdit';
 
@@ -51,7 +53,7 @@ function Post(post) {
                   {postOwnerFullName}
                </Link>
             }
-            subheader={post.creationTime}
+            subheader={moment(post.creationTime).format('LLL')}
             action={
                canEdit.current && (
                   <div>
