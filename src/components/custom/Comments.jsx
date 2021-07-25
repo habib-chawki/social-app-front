@@ -67,12 +67,13 @@ function Comments(post) {
    const renderComments = () => {
       return (
          <ul>
-            {comments.map(({ _id, owner, content }) => (
+            {comments.map(({ _id, owner, content, createdAt }) => (
                <Comment
                   key={_id}
                   id={_id}
                   owner={owner}
                   content={content}
+                  creationTime={createdAt}
                   onRemove={handleRemoveComment}
                   onUpdate={handleUpdateComment}
                />
