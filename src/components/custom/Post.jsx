@@ -51,7 +51,7 @@ function Post(post) {
                   {postOwnerFullName}
                </Link>
             }
-            subheader={post.createdAt}
+            subheader={post.creationTime}
             action={
                canEdit.current && (
                   <div>
