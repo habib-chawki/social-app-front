@@ -23,7 +23,10 @@ function Comments(post) {
 
    const handleCreateComment = (event) => {
       // add comment when either the enter key or the comment button are pressed
-      if (event.key === 'Enter' || event.target.id === 'comment-button') {
+      if (
+         (event.target.name === 'comment-field' && event.key === 'Enter') ||
+         event.target.name === 'comment-button'
+      ) {
          commentService
             .createComment(post.id, commentInput)
             .then((comment) => {
@@ -116,12 +119,13 @@ function Comments(post) {
          {renderComments()}
 
          <TextField
+            name="comment-field"
             value={commentInput}
             onChange={handleCommentInput}
             onKeyUp={handleCreateComment}
             fullWidth
          />
-         <Button id="comment-button" onClick={handleCreateComment}>
+         <Button name="comment-button" onClick={handleCreateComment}>
             comment
          </Button>
          {loadMore && (
