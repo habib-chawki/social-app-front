@@ -83,6 +83,7 @@ function Posts() {
             content={post.content}
             comments={post.comments}
             creationTime={post.createdAt}
+            updateTime={post.updatedAt}
             onRemove={handleRemovePost}
             onUpdate={handleUpdatePost}
          />
