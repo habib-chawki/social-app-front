@@ -19,7 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Comment(comment) {
    const [anchorEl, setAnchorEl] = useState(null);
-   const canEdit = useRef(getUser() === comment.owner);
+   const canEdit = useRef(getUser() === comment.owner._id);
 
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
