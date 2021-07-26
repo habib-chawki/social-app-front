@@ -35,8 +35,10 @@ function Comment(comment) {
             <CardHeader
                avatar={<Avatar />}
                title={
-                  <Link to={`user/${comment.owner}/profile`}>
-                     {comment.owner}
+                  <Link to={`user/${comment.owner._id}/profile`}>
+                     {comment.owner.profile.firstName +
+                        ' ' +
+                        comment.owner.profile.lastName}
                   </Link>
                }
                subheader={moment(comment.creationTime).format('LLL')}
