@@ -23,7 +23,6 @@ function Comments(post) {
 
    const handleCreateComment = (event) => {
       // add comment when either the enter key or the comment button are pressed
-
       if (commentInput.trim()) {
          commentService
             .createComment(post.id, commentInput)
