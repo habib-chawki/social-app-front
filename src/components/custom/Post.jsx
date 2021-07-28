@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import moment from 'moment';
@@ -19,9 +19,8 @@ import {
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Post(post) {
-   const [anchorEl, setAnchorEl] = useState(null);
    const loggedInUser = useContext(UserContext);
-   const canEdit = useRef(loggedInUser === post.owner._id);
+   const [anchorEl, setAnchorEl] = useState(null);
 
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -55,7 +54,8 @@ function Post(post) {
             }
             subheader={moment(post.creationTime).format('LLL')}
             action={
-               canEdit.current && (
+               // Determine whether user can edit post
+               loggedInUser === post.owner._id && (
                   <div>
                      <IconButton onClick={handleMenuClick}>
                         <MoreVertIcon />
