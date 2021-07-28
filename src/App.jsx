@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import SignUp from './components/custom/SignUp';
@@ -15,8 +15,6 @@ import { getUser } from './services/storage';
 import './index.css';
 
 function App() {
-   const loggedInUser = useRef(getUser());
-
    return (
       <Switch>
          <Route exact path="/">
@@ -27,7 +25,7 @@ function App() {
             <LogIn />
          </Route>
 
-         <UserContext.Provider value={loggedInUser.current}>
+         <UserContext.Provider value={getUser()}>
             <Route path="/user/:userId/profile-form">
                <ProfileForm />
             </Route>
@@ -43,9 +41,9 @@ function App() {
             <Route path="/not-found">
                <NotFound />
             </Route>
-
-            <Redirect to="/not-found" />
          </UserContext.Provider>
+
+         <Redirect to="/not-found" />
       </Switch>
    );
 }
