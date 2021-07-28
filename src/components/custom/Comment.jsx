@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import moment from 'moment';
 
 import withEdit from '../higher-order/withEdit';
-import { getUser } from '../../services/storage';
+import UserContext from '../../context/user-context';
 
 import {
    Card,
@@ -18,8 +18,9 @@ import {
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Comment(comment) {
+   const loggedInUser = useContext(UserContext);
    const [anchorEl, setAnchorEl] = useState(null);
-   const canEdit = useRef(getUser() === comment.owner._id);
+   const canEdit = useRef(loggedInUser === comment.owner._id);
 
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
