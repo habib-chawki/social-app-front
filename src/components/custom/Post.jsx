@@ -1,12 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import moment from 'moment';
 
 import Comments from './Comments';
 import withEdit from '../higher-order/withEdit';
-
-import { getUser } from '../../services/storage';
+import UserContext from '../../context/user-context';
 
 import {
    Card,
@@ -21,7 +20,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Post(post) {
    const [anchorEl, setAnchorEl] = useState(null);
-   const canEdit = useRef(getUser() === post.owner._id);
+   const loggedInUser = useContext(UserContext);
+   const canEdit = useRef(loggedInUser === post.owner._id);
 
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
