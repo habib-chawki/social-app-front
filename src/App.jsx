@@ -8,6 +8,8 @@ import ProfileForm from './components/custom/profile/ProfileForm';
 import Posts from './components/custom/Posts';
 import NotFound from './components/common/NotFound';
 
+import UserContext from './context/user-context';
+
 import './index.css';
 
 function App() {
@@ -21,23 +23,25 @@ function App() {
             <LogIn />
          </Route>
 
-         <Route path="/user/:userId/profile-form">
-            <ProfileForm />
-         </Route>
+         <UserContext.Provider>
+            <Route path="/user/:userId/profile-form">
+               <ProfileForm />
+            </Route>
 
-         <Route path="/user/:userId/profile/">
-            <Profile />
-         </Route>
+            <Route path="/user/:userId/profile/">
+               <Profile />
+            </Route>
 
-         <Route path="/posts">
-            <Posts />
-         </Route>
+            <Route path="/posts">
+               <Posts />
+            </Route>
 
-         <Route path="/not-found">
-            <NotFound />
-         </Route>
+            <Route path="/not-found">
+               <NotFound />
+            </Route>
 
-         <Redirect to="/not-found" />
+            <Redirect to="/not-found" />
+         </UserContext.Provider>
       </Switch>
    );
 }
