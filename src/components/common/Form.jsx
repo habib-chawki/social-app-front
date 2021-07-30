@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box } from '@material-ui/core';
 
-function Form(props) {
+function Form({ children }) {
    return (
       <Box
          display="flex"
@@ -21,7 +21,7 @@ function Form(props) {
             height="70%"
             padding={5}
          >
-            {props.children}
+            {children}
          </Box>
       </Box>
    );
