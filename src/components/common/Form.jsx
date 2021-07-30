@@ -1,19 +1,19 @@
 import React from 'react';
 
-import { Box } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 
 function Form({ children }) {
    return (
-      <Box
-         display="flex"
-         flexDirection="row"
+      <Grid
+         container
+         direction="row"
          justifyContent="center"
          alignItems="center"
          height="80vh"
       >
-         <Box
-            display="flex"
-            flexDirection="column"
+         <Grid
+            container
+            direction="column"
             justifyContent="space-around"
             alignItems="center"
             bgcolor="lightgray"
@@ -22,8 +22,8 @@ function Form({ children }) {
             padding={5}
          >
             {children}
-         </Box>
-      </Box>
+         </Grid>
+      </Grid>
    );
 }
 
