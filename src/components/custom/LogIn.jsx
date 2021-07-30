@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 import Input from '../common/Input';
 import Form from '../common/Form';
@@ -22,7 +23,7 @@ import withSubmission from '../higher-order/withSubmission';
 function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
-         <h1>Log In</h1>
+         <Typography variant="h3">Log In</Typography>
          <Input
             id="email"
             type="text"
@@ -48,12 +49,12 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
          >
             Log in
          </Button>
-         <p>
+         <Typography>
             Not registered yet ?
             <Button component={Link} to="/" color="primary">
                Sign Up
             </Button>
-         </p>
+         </Typography>
       </Form>
    );
 }
