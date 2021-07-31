@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 function withSubmission(Component, submit) {
    return (props) => {
@@ -49,7 +51,12 @@ function withSubmission(Component, submit) {
                open={open}
                autoHideDuration={5000}
                onClose={handleClose}
-               message="Invalid credentials"
+               message="Invalid form credentials"
+               action={
+                  <IconButton color="inherit" onClick={handleClose}>
+                     <CloseIcon fontSize="small" />
+                  </IconButton>
+               }
             />
          </div>
       );
