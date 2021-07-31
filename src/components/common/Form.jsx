@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
    paper: {
       width: 400,
-      padding: 20,
+      padding: 40,
    },
 });
 
