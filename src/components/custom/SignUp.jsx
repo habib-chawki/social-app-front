@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Grid from '@material-ui/core/Grid';
 import { Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
@@ -23,55 +24,74 @@ import withSubmission from '../higher-order/withSubmission';
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
-         <Typography variant="h3">Sign Up</Typography>
-         <Input
-            id="firstName"
-            type="text"
-            name="First name"
-            credentials={credentials}
-            onChange={onChange}
-            onValidate={onValidate}
-         />
-         <Input
-            id="lastName"
-            type="text"
-            name="Last name"
-            credentials={credentials}
-            onChange={onChange}
-            onValidate={onValidate}
-         />
-         <Input
-            id="email"
-            type="text"
-            name="Email"
-            credentials={credentials}
-            onChange={onChange}
-            onValidate={onValidate} // invoked when the TextField is blurred
-         />
-         <Input
-            id="password"
-            type="password"
-            name="Password"
-            credentials={credentials}
-            onChange={onChange}
-            onValidate={onValidate} // invoked when the TextField is blurred
-         />
+         <Grid item>
+            <Typography variant="h3">Sign Up</Typography>
+         </Grid>
 
-         <Button
-            fullWidth
-            type="submit"
-            variant="contained"
-            color="primary"
-            onClick={onSubmit}
-         >
-            Sign up
-         </Button>
-         <Typography>
-            Already registered ?
-            <Button component={Link} to="/login" color="primary">
-               Log In
+         <Grid item>
+            <Input
+               id="firstName"
+               type="text"
+               name="First name"
+               credentials={credentials}
+               onChange={onChange}
+               onValidate={onValidate}
+            />
+         </Grid>
+
+         <Grid item>
+            <Input
+               id="lastName"
+               type="text"
+               name="Last name"
+               credentials={credentials}
+               onChange={onChange}
+               onValidate={onValidate}
+            />
+         </Grid>
+
+         <Grid item>
+            <Input
+               id="email"
+               type="text"
+               name="Email"
+               credentials={credentials}
+               onChange={onChange}
+               onValidate={onValidate} // invoked when the TextField is blurred
+            />
+         </Grid>
+
+         <Grid item>
+            <Input
+               id="password"
+               type="password"
+               name="Password"
+               credentials={credentials}
+               onChange={onChange}
+               onValidate={onValidate} // invoked when the TextField is blurred
+            />
+         </Grid>
+
+         <Grid item>
+            <Button
+               fullWidth
+               type="submit"
+               variant="contained"
+               color="primary"
+               onClick={onSubmit}
+            >
+               Sign up
             </Button>
-         </Typography>
+         </Grid>
+
+         <Grid item>
+            <Typography>
+               Already registered ?
+               <Button component={Link} to="/login" color="primary">
+                  Log In
+               </Button>
+            </Typography>
+         </Grid>
       </Form>
    );
 }
