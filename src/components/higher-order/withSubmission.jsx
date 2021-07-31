@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import Snackbar from '@material-ui/core/Snackbar';
 
 function withSubmission(Component, submit) {
    return (props) => {
+      const [open, setOpen] = useState(false);
       // history object
       const history = useHistory();
 
@@ -23,10 +26,33 @@ function withSubmission(Component, submit) {
             history.replace('/posts');
          } else {
             console.log('Invalid credentials.');
+            setOpen(true);
          }
       };
 
-      return <Component {...props} onSubmit={handleSubmission} />;
+      const handleClose = (event, reason) => {
+         if (reason === 'clickaway') {
+            return;
+         }
+
+         setOpen(false);
+      };
+
+      return (
+         <div>
+            <Component {...props} onSubmit={handleSubmission} />
+            <Snackbar
+               anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+               }}
+               open={open}
+               autoHideDuration={5000}
+               onClose={handleClose}
+               message="Invalid credentials"
+            />
+         </div>
+      );
    };
 }
 
