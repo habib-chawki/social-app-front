@@ -13,6 +13,14 @@ import { logUserIn } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+   item: {
+      width: '100%',
+   },
+});
+
 /**
  *
  * @param {Object} props.credentials - user credentials, part of "withValidation" component
@@ -22,13 +30,14 @@ import withSubmission from '../higher-order/withSubmission';
  * @returns LogIn component with validation and submission
  */
 function LogIn({ credentials, onChange, onValidate, onSubmit }) {
+   const classes = useStyles();
    return (
       <Form>
          <Grid item>
             <Typography variant="h3">Log In</Typography>
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Input
                id="email"
                type="text"
@@ -39,7 +48,7 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Input
                id="password"
                type="password"
@@ -50,7 +59,7 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Button
                fullWidth
                type="submit"
