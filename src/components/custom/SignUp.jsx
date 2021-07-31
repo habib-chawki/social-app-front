@@ -13,6 +13,14 @@ import { signUserUp } from '../../services/user';
 import withValidation from '../higher-order/withValidation';
 import withSubmission from '../higher-order/withSubmission';
 
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+   item: {
+      width: '100%',
+   },
+});
+
 /**
  *
  * @param {Object} props.credentials - user credentials, part of "withValidation" component
@@ -22,13 +30,15 @@ import withSubmission from '../higher-order/withSubmission';
  * @returns SignUp component with validation and submission
  */
 function SignUp({ credentials, onChange, onValidate, onSubmit }) {
+   const classes = useStyles();
+
    return (
       <Form>
          <Grid item>
             <Typography variant="h3">Sign Up</Typography>
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Input
                id="firstName"
                type="text"
@@ -39,7 +49,7 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Input
                id="lastName"
                type="text"
@@ -50,7 +60,7 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Input
                id="email"
                type="text"
@@ -61,7 +71,7 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Input
                id="password"
                type="password"
@@ -72,7 +82,7 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.item}>
             <Button
                fullWidth
                type="submit"
