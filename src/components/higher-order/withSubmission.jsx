@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Alert from '@material-ui/lab/Alert';
 
 function withSubmission(Component, submit) {
    return (props) => {
@@ -46,10 +47,10 @@ function withSubmission(Component, submit) {
             <Snackbar
                anchorOrigin={{
                   vertical: 'top',
-                  horizontal: 'right',
+                  horizontal: 'center',
                }}
                open={open}
-               autoHideDuration={5000}
+               autoHideDuration={6000}
                onClose={handleClose}
                message="Invalid form credentials"
                action={
@@ -57,7 +58,16 @@ function withSubmission(Component, submit) {
                      <CloseIcon fontSize="small" />
                   </IconButton>
                }
-            />
+            >
+               <Alert
+                  elevation={6}
+                  variant="filled"
+                  onClose={handleClose}
+                  severity="error"
+               >
+                  Invalid form credentials
+               </Alert>
+            </Snackbar>
          </div>
       );
    };
