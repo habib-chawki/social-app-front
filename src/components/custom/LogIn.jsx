@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Grid from '@material-ui/core/Grid';
 import { Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
@@ -23,38 +24,48 @@ import withSubmission from '../higher-order/withSubmission';
 function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    return (
       <Form>
-         <Typography variant="h3">Log In</Typography>
-         <Input
-            id="email"
-            type="text"
-            name="Email"
-            credentials={credentials}
-            onChange={onChange}
-            onValidate={onValidate}
-         />
-         <Input
-            id="password"
-            type="password"
-            name="Password"
-            credentials={credentials}
-            onChange={onChange}
-            onValidate={onValidate}
-         />
-         <Button
-            fullWidth
-            type="submit"
-            variant="contained"
-            color="primary"
-            onClick={onSubmit}
-         >
-            Log in
-         </Button>
-         <Typography>
-            Not registered yet ?
-            <Button component={Link} to="/" color="primary">
-               Sign Up
+         <Grid item>
+            <Typography variant="h3">Log In</Typography>
+         </Grid>
+         <Grid item>
+            <Input
+               id="email"
+               type="text"
+               name="Email"
+               credentials={credentials}
+               onChange={onChange}
+               onValidate={onValidate}
+            />
+         </Grid>
+         <Grid item>
+            <Input
+               id="password"
+               type="password"
+               name="Password"
+               credentials={credentials}
+               onChange={onChange}
+               onValidate={onValidate}
+            />
+         </Grid>
+         <Grid item>
+            <Button
+               fullWidth
+               type="submit"
+               variant="contained"
+               color="primary"
+               onClick={onSubmit}
+            >
+               Log in
             </Button>
-         </Typography>
+         </Grid>
+         <Grid item>
+            <Typography>
+               Not registered yet ?
+               <Button component={Link} to="/" color="primary">
+                  Sign Up
+               </Button>
+            </Typography>
+         </Grid>
       </Form>
    );
 }
