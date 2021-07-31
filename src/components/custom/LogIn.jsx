@@ -27,6 +27,7 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
          <Grid item>
             <Typography variant="h3">Log In</Typography>
          </Grid>
+
          <Grid item>
             <Input
                id="email"
@@ -37,6 +38,7 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
                onValidate={onValidate}
             />
          </Grid>
+
          <Grid item>
             <Input
                id="password"
@@ -47,6 +49,7 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
                onValidate={onValidate}
             />
          </Grid>
+
          <Grid item>
             <Button
                fullWidth
@@ -58,6 +61,7 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
                Log in
             </Button>
          </Grid>
+
          <Grid item>
             <Typography>
                Not registered yet ?
