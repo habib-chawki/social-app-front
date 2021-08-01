@@ -18,6 +18,7 @@ import {
    Box,
 } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 import {
    KeyboardDatePicker,
@@ -26,7 +27,15 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
+const useStyles = makeStyles({
+   formField: {
+      width: '100%',
+   },
+});
+
 function ProfileForm() {
+   const classes = useStyles();
+
    const { state: profile } = useLocation();
    const { userId } = useParams();
 
@@ -141,9 +150,10 @@ function ProfileForm() {
    };
 
    return (
-      <Grid container direction="column" spacing={3} alignItems="center">
+      <Grid container direction="column" spacing={3}>
          <Grid item>
             <TextField
+               className={classes.formField}
                value={firstName}
                onChange={handleFirstNameChange}
                label="First name"
@@ -153,6 +163,7 @@ function ProfileForm() {
 
          <Grid item>
             <TextField
+               className={classes.formField}
                value={middleName}
                onChange={handleMiddleNameChange}
                label="Middle name"
@@ -162,6 +173,7 @@ function ProfileForm() {
 
          <Grid item>
             <TextField
+               className={classes.formField}
                value={lastName}
                onChange={handleLastNameChange}
                label="Last name"
@@ -171,6 +183,7 @@ function ProfileForm() {
 
          <Grid item>
             <TextField
+               className={classes.formField}
                value={address}
                onChange={handleAddressChange}
                label="Address"
@@ -179,7 +192,7 @@ function ProfileForm() {
          </Grid>
 
          <Grid item>
-            <FormControl>
+            <FormControl className={classes.formField}>
                <InputLabel>Gender</InputLabel>
                <Select value={gender} onChange={handleGenderChange}>
                   <MenuItem value="Male">Male</MenuItem>
@@ -192,6 +205,7 @@ function ProfileForm() {
          <Grid item>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                <KeyboardDatePicker
+                  className={classes.formField}
                   label="Birthday"
                   format="dd/MM/yyyy"
                   value={birthday}
@@ -202,6 +216,7 @@ function ProfileForm() {
 
          <Grid item>
             <TextField
+               className={classes.formField}
                value={bio}
                onChange={handleBioChange}
                label="Bio"
@@ -242,7 +257,9 @@ function ProfileForm() {
          </Grid>
 
          <Grid item>
-            <Button onClick={handleSaveProfile}>Save Profile</Button>
+            <Button onClick={handleSaveProfile} className={classes.formField}>
+               Save Profile
+            </Button>
          </Grid>
       </Grid>
    );
