@@ -28,6 +28,9 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles({
+   rootContainer: {
+      width: '50%',
+   },
    formField: {
       width: '100%',
    },
@@ -150,7 +153,12 @@ function ProfileForm() {
    };
 
    return (
-      <Grid container direction="column" spacing={3}>
+      <Grid
+         container
+         direction="column"
+         spacing={3}
+         className={classes.rootContainer}
+      >
          <Grid item>
             <TextField
                className={classes.formField}
