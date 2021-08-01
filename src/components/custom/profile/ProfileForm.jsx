@@ -29,9 +29,6 @@ function ProfileForm() {
    const { state: profile } = useLocation();
    const { userId } = useParams();
 
-   console.log('profile received => ' + JSON.stringify(profile));
-   console.log('userId received => ' + JSON.stringify(userId));
-
    const history = useHistory();
 
    const [firstName, setFirstName] = useState(profile.firstName || '');
@@ -90,18 +87,14 @@ function ProfileForm() {
    };
 
    const handleAddExperience = (experience) => {
-      console.log(`Experience added ${JSON.stringify(experience)}`);
       setExperiences([...experiences, experience]);
    };
 
    const handleAddEducation = (education) => {
-      console.log(`Education added ${JSON.stringify(education)}`);
       setEducations([...educations, education]);
    };
 
    const handleAddSkill = (skill) => {
-      console.log(`Skill object ${JSON.stringify(skill)}`);
-
       // add new skill content
       const newSkills = { ...skills };
       newSkills[skill.type].unshift(skill.content);
@@ -111,8 +104,6 @@ function ProfileForm() {
    };
 
    const handleRemoveSkill = (skillType, skillIndex) => {
-      console.log(`Skill object ${JSON.stringify(skills)}`);
-
       // remove skill from the proper skillType array
       const newSkills = { ...skills };
       newSkills[skillType] = newSkills[skillType].filter(
@@ -140,10 +131,6 @@ function ProfileForm() {
       // update user profile
       updateProfile(profile, userId)
          .then((updatedProfile) => {
-            console.log(
-               `Profile has been updated: ${JSON.stringify(updatedProfile)}`
-            );
-
             // navigate back to '/profile' upon successful profile update
             history.push(`/user/${userId}/profile`);
          })
