@@ -12,6 +12,7 @@ import {
    Select,
    MenuItem,
 } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import TimerIcon from '@material-ui/icons/Timer';
@@ -69,51 +70,36 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
    };
 
    return (
-      <Box display="flex" flexDirection="column">
-         <Box display="flex" flexDirection="row">
-            <Box flexGrow={1}>
-               <TextField
-                  value={skill}
-                  onChange={handleSkillChange}
-                  onKeyPress={addSkill}
-                  label="Skill"
-                  variant="outlined"
-                  fullWidth
-               />
-            </Box>
-            <Box flexGrow={1}>
-               <Select
-                  value={type}
-                  onChange={handleTypeChange}
-                  variant="outlined"
-                  fullWidth
-               >
-                  <MenuItem value="technical">
-                     <Box
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems="center"
-                     >
-                        Technical <TimerIcon />
-                     </Box>
-                  </MenuItem>
-                  <MenuItem value="organizational">
-                     <Box
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems="center"
-                     >
-                        Organizational <WorkIcon />
-                     </Box>
-                  </MenuItem>
-               </Select>
-            </Box>
+      <Grid container direction="column">
+         <Grid item>
+            <TextField
+               value={skill}
+               onChange={handleSkillChange}
+               onKeyPress={addSkill}
+               label="Skill"
+               variant="outlined"
+               fullWidth
+            />
+
+            <Select
+               value={type}
+               onChange={handleTypeChange}
+               variant="outlined"
+               fullWidth
+            >
+               <MenuItem value="technical">
+                  Technical <TimerIcon />
+               </MenuItem>
+               <MenuItem value="organizational">
+                  Organizational <WorkIcon />
+               </MenuItem>
+            </Select>
+         </Grid>
+         <Grid item>
             <Button onClick={addSkill}>Add skill</Button>
-         </Box>
-         <Box>
             <List>{renderSkills()}</List>
-         </Box>
-      </Box>
+         </Grid>
+      </Grid>
    );
 }
 
