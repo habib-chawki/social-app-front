@@ -12,13 +12,23 @@ import {
    Select,
    MenuItem,
 } from '@material-ui/core';
+
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import TimerIcon from '@material-ui/icons/Timer';
 import WorkIcon from '@material-ui/icons/Work';
 
+const useStyles = makeStyles({
+   item: {
+      width: '100%',
+   },
+});
+
 function Skills({ onAddSkill, onRemoveSkill, skills }) {
+   const classes = useStyles();
+
    const [skill, setSkill] = useState('');
    const [type, setType] = useState('technical');
 
@@ -70,33 +80,39 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
    };
 
    return (
-      <Grid container direction="column">
-         <Grid item>
-            <TextField
-               value={skill}
-               onChange={handleSkillChange}
-               onKeyPress={addSkill}
-               label="Skill"
-               variant="outlined"
-               fullWidth
-            />
+      <Grid container>
+         <Grid item container direction="row">
+            <Grid item className={classes.item}>
+               <TextField
+                  value={skill}
+                  onChange={handleSkillChange}
+                  onKeyPress={addSkill}
+                  label="Skill"
+                  variant="outlined"
+                  fullWidth
+               />
+            </Grid>
 
-            <Select
-               value={type}
-               onChange={handleTypeChange}
-               variant="outlined"
-               fullWidth
-            >
-               <MenuItem value="technical">
-                  Technical <TimerIcon />
-               </MenuItem>
-               <MenuItem value="organizational">
-                  Organizational <WorkIcon />
-               </MenuItem>
-            </Select>
+            <Grid item className={classes.item}>
+               <Select
+                  value={type}
+                  onChange={handleTypeChange}
+                  variant="outlined"
+                  className={classes.item}
+               >
+                  <MenuItem value="technical">
+                     Technical <TimerIcon />
+                  </MenuItem>
+                  <MenuItem value="organizational">
+                     Organizational <WorkIcon />
+                  </MenuItem>
+               </Select>
+            </Grid>
          </Grid>
-         <Grid item>
-            <Button onClick={addSkill}>Add skill</Button>
+         <Grid item className={classes.item}>
+            <Button onClick={addSkill} fullWidth>
+               Add skill
+            </Button>
             <List>{renderSkills()}</List>
          </Grid>
       </Grid>
