@@ -8,6 +8,10 @@ import Skills from './Skills';
 
 import { updateProfile } from '../../../services/profile';
 
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
+
 import {
    TextField,
    Button,
@@ -15,10 +19,7 @@ import {
    MenuItem,
    FormControl,
    InputLabel,
-   Box,
 } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 
 import {
    KeyboardDatePicker,
@@ -28,8 +29,9 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles({
-   rootContainer: {
+   formContainer: {
       width: '50%',
+      margin: 16,
    },
    formField: {
       width: '100%',
@@ -153,123 +155,128 @@ function ProfileForm() {
    };
 
    return (
-      <Grid
-         container
-         direction="column"
-         spacing={3}
-         className={classes.rootContainer}
-      >
-         <Grid item>
-            <TextField
-               className={classes.formField}
-               value={firstName}
-               onChange={handleFirstNameChange}
-               label="First name"
-               variant="outlined"
-            />
-         </Grid>
-
-         <Grid item>
-            <TextField
-               className={classes.formField}
-               value={middleName}
-               onChange={handleMiddleNameChange}
-               label="Middle name"
-               variant="outlined"
-            />
-         </Grid>
-
-         <Grid item>
-            <TextField
-               className={classes.formField}
-               value={lastName}
-               onChange={handleLastNameChange}
-               label="Last name"
-               variant="outlined"
-            />
-         </Grid>
-
-         <Grid item>
-            <TextField
-               className={classes.formField}
-               value={address}
-               onChange={handleAddressChange}
-               label="Address"
-               variant="outlined"
-            />
-         </Grid>
-
-         <Grid item>
-            <FormControl className={classes.formField}>
-               <InputLabel>Gender</InputLabel>
-               <Select value={gender} onChange={handleGenderChange}>
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-               </Select>
-            </FormControl>
-         </Grid>
-
-         <Grid item>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-               <KeyboardDatePicker
+      <Box display="flex" justifyContent="center">
+         <Grid
+            container
+            direction="column"
+            spacing={3}
+            className={classes.formContainer}
+         >
+            <Grid item>
+               <TextField
                   className={classes.formField}
-                  label="Birthday"
-                  format="dd/MM/yyyy"
-                  value={birthday}
-                  onChange={handleBirthdayChange}
+                  value={firstName}
+                  onChange={handleFirstNameChange}
+                  label="First name"
+                  variant="outlined"
                />
-            </MuiPickersUtilsProvider>
-         </Grid>
+            </Grid>
 
-         <Grid item>
-            <TextField
-               className={classes.formField}
-               value={bio}
-               onChange={handleBioChange}
-               label="Bio"
-               variant="outlined"
-               multiline
-               rows={6}
-            />
-         </Grid>
+            <Grid item>
+               <TextField
+                  className={classes.formField}
+                  value={middleName}
+                  onChange={handleMiddleNameChange}
+                  label="Middle name"
+                  variant="outlined"
+               />
+            </Grid>
 
-         <Grid item>
-            <Language
-               languages={languages}
-               onAddLanguage={handleAddLanguage}
-               onRemoveLanguage={handleRemoveLanguage}
-            />
-         </Grid>
+            <Grid item>
+               <TextField
+                  className={classes.formField}
+                  value={lastName}
+                  onChange={handleLastNameChange}
+                  label="Last name"
+                  variant="outlined"
+               />
+            </Grid>
 
-         <Grid item>
-            <Experience
-               experiences={experiences}
-               onAddExperience={handleAddExperience}
-            />
-         </Grid>
+            <Grid item>
+               <TextField
+                  className={classes.formField}
+                  value={address}
+                  onChange={handleAddressChange}
+                  label="Address"
+                  variant="outlined"
+               />
+            </Grid>
 
-         <Grid item>
-            <Education
-               educations={educations}
-               onAddEducation={handleAddEducation}
-            />
-         </Grid>
+            <Grid item>
+               <FormControl className={classes.formField}>
+                  <InputLabel>Gender</InputLabel>
+                  <Select value={gender} onChange={handleGenderChange}>
+                     <MenuItem value="Male">Male</MenuItem>
+                     <MenuItem value="Female">Female</MenuItem>
+                     <MenuItem value="Other">Other</MenuItem>
+                  </Select>
+               </FormControl>
+            </Grid>
 
-         <Grid item>
-            <Skills
-               skills={skills}
-               onAddSkill={handleAddSkill}
-               onRemoveSkill={handleRemoveSkill}
-            />
-         </Grid>
+            <Grid item>
+               <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                     className={classes.formField}
+                     label="Birthday"
+                     format="dd/MM/yyyy"
+                     value={birthday}
+                     onChange={handleBirthdayChange}
+                  />
+               </MuiPickersUtilsProvider>
+            </Grid>
 
-         <Grid item>
-            <Button onClick={handleSaveProfile} className={classes.formField}>
-               Save Profile
-            </Button>
+            <Grid item>
+               <TextField
+                  className={classes.formField}
+                  value={bio}
+                  onChange={handleBioChange}
+                  label="Bio"
+                  variant="outlined"
+                  multiline
+                  rows={6}
+               />
+            </Grid>
+
+            <Grid item>
+               <Language
+                  languages={languages}
+                  onAddLanguage={handleAddLanguage}
+                  onRemoveLanguage={handleRemoveLanguage}
+               />
+            </Grid>
+
+            <Grid item>
+               <Experience
+                  experiences={experiences}
+                  onAddExperience={handleAddExperience}
+               />
+            </Grid>
+
+            <Grid item>
+               <Education
+                  educations={educations}
+                  onAddEducation={handleAddEducation}
+               />
+            </Grid>
+
+            <Grid item>
+               <Skills
+                  skills={skills}
+                  onAddSkill={handleAddSkill}
+                  onRemoveSkill={handleRemoveSkill}
+               />
+            </Grid>
+
+            <Grid item>
+               <Button
+                  onClick={handleSaveProfile}
+                  className={classes.formField}
+               >
+                  Save Profile
+               </Button>
+            </Grid>
          </Grid>
-      </Grid>
+      </Box>
    );
 }
 
