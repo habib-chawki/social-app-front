@@ -17,6 +17,7 @@ import {
    InputLabel,
    Box,
 } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 
 import {
    KeyboardDatePicker,
@@ -140,7 +141,7 @@ function ProfileForm() {
    };
 
    return (
-      <Box display="flex" flexDirection="column" mx={20} my={5}>
+      <Grid container direction="column">
          <TextField
             value={firstName}
             onChange={handleFirstNameChange}
@@ -215,7 +216,7 @@ function ProfileForm() {
          />
 
          <Button onClick={handleSaveProfile}>Save Profile</Button>
-      </Box>
+      </Grid>
    );
 }
 
