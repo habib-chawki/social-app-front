@@ -24,6 +24,9 @@ const useStyles = makeStyles({
    item: {
       width: '100%',
    },
+   subItem: {
+      flexGrow: 1,
+   },
 });
 
 function Skills({ onAddSkill, onRemoveSkill, skills }) {
@@ -80,25 +83,25 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
    };
 
    return (
-      <Grid container>
-         <Grid item container direction="row">
-            <Grid item className={classes.item}>
+      <Grid container direction="column">
+         <Grid container item>
+            <Grid item className={classes.subItem}>
                <TextField
+                  className={classes.item}
                   value={skill}
                   onChange={handleSkillChange}
                   onKeyPress={addSkill}
                   label="Skill"
                   variant="outlined"
-                  fullWidth
                />
             </Grid>
 
-            <Grid item className={classes.item}>
+            <Grid item className={classes.subItem}>
                <Select
+                  className={classes.item}
                   value={type}
                   onChange={handleTypeChange}
                   variant="outlined"
-                  className={classes.item}
                >
                   <MenuItem value="technical">
                      Technical <TimerIcon />
@@ -109,7 +112,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                </Select>
             </Grid>
          </Grid>
-         <Grid item className={classes.item}>
+         <Grid item>
             <Button onClick={addSkill} fullWidth>
                Add skill
             </Button>
