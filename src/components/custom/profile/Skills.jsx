@@ -85,7 +85,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
 
    return (
       <Grid container direction="column">
-         <Grid container item>
+         <Grid container item spacing={4} alignItems="stretch" direction="row">
             <Grid item className={classes.subItem}>
                <TextField
                   className={classes.item}
