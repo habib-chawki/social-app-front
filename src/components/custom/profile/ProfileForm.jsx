@@ -178,55 +178,72 @@ function ProfileForm() {
             />
          </Grid>
 
-         <FormControl>
-            <InputLabel>Gender</InputLabel>
-            <Select value={gender} onChange={handleGenderChange}>
-               <MenuItem value="Male">Male</MenuItem>
-               <MenuItem value="Female">Female</MenuItem>
-               <MenuItem value="Other">Other</MenuItem>
-            </Select>
-         </FormControl>
+         <Grid item>
+            <FormControl>
+               <InputLabel>Gender</InputLabel>
+               <Select value={gender} onChange={handleGenderChange}>
+                  <MenuItem value="Male">Male</MenuItem>
+                  <MenuItem value="Female">Female</MenuItem>
+                  <MenuItem value="Other">Other</MenuItem>
+               </Select>
+            </FormControl>
+         </Grid>
 
-         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-               label="Birthday"
-               format="dd/MM/yyyy"
-               value={birthday}
-               onChange={handleBirthdayChange}
+         <Grid item>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+               <KeyboardDatePicker
+                  label="Birthday"
+                  format="dd/MM/yyyy"
+                  value={birthday}
+                  onChange={handleBirthdayChange}
+               />
+            </MuiPickersUtilsProvider>
+         </Grid>
+
+         <Grid item>
+            <TextField
+               value={bio}
+               onChange={handleBioChange}
+               label="Bio"
+               variant="outlined"
+               multiline
+               rows={6}
             />
-         </MuiPickersUtilsProvider>
+         </Grid>
 
-         <TextField
-            value={bio}
-            onChange={handleBioChange}
-            label="Bio"
-            variant="outlined"
-            multiline
-            rows={6}
-         />
+         <Grid item>
+            <Language
+               languages={languages}
+               onAddLanguage={handleAddLanguage}
+               onRemoveLanguage={handleRemoveLanguage}
+            />
+         </Grid>
 
-         <Language
-            languages={languages}
-            onAddLanguage={handleAddLanguage}
-            onRemoveLanguage={handleRemoveLanguage}
-         />
+         <Grid item>
+            <Experience
+               experiences={experiences}
+               onAddExperience={handleAddExperience}
+            />
+         </Grid>
 
-         <Experience
-            experiences={experiences}
-            onAddExperience={handleAddExperience}
-         />
-         <Education
-            educations={educations}
-            onAddEducation={handleAddEducation}
-         />
+         <Grid item>
+            <Education
+               educations={educations}
+               onAddEducation={handleAddEducation}
+            />
+         </Grid>
 
-         <Skills
-            skills={skills}
-            onAddSkill={handleAddSkill}
-            onRemoveSkill={handleRemoveSkill}
-         />
+         <Grid item>
+            <Skills
+               skills={skills}
+               onAddSkill={handleAddSkill}
+               onRemoveSkill={handleRemoveSkill}
+            />
+         </Grid>
 
-         <Button onClick={handleSaveProfile}>Save Profile</Button>
+         <Grid item>
+            <Button onClick={handleSaveProfile}>Save Profile</Button>
+         </Grid>
       </Grid>
    );
 }
