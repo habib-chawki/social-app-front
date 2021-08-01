@@ -6,6 +6,7 @@ import {
    Button,
    List,
    ListItem,
+   ListItemIcon,
    ListItemText,
    ListItemSecondaryAction,
    IconButton,
@@ -104,10 +105,21 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                   variant="outlined"
                >
                   <MenuItem value="technical">
-                     Technical <TimerIcon />
+                     <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <ListItemIcon>
+                           <TimerIcon />
+                        </ListItemIcon>
+
+                        <ListItemText primary="Technical" />
+                     </div>
                   </MenuItem>
                   <MenuItem value="organizational">
-                     Organizational <WorkIcon />
+                     <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <ListItemIcon>
+                           <WorkIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Organizational" />
+                     </div>
                   </MenuItem>
                </Select>
             </Grid>
