@@ -141,31 +141,42 @@ function ProfileForm() {
    };
 
    return (
-      <Grid container direction="column">
-         <TextField
-            value={firstName}
-            onChange={handleFirstNameChange}
-            label="First name"
-            variant="outlined"
-         />
-         <TextField
-            value={middleName}
-            onChange={handleMiddleNameChange}
-            label="Middle name"
-            variant="outlined"
-         />
-         <TextField
-            value={lastName}
-            onChange={handleLastNameChange}
-            label="Last name"
-            variant="outlined"
-         />
-         <TextField
-            value={address}
-            onChange={handleAddressChange}
-            label="Address"
-            variant="outlined"
-         />
+      <Grid container direction="column" spacing={3} alignItems="center">
+         <Grid item>
+            <TextField
+               value={firstName}
+               onChange={handleFirstNameChange}
+               label="First name"
+               variant="outlined"
+            />
+         </Grid>
+
+         <Grid item>
+            <TextField
+               value={middleName}
+               onChange={handleMiddleNameChange}
+               label="Middle name"
+               variant="outlined"
+            />
+         </Grid>
+
+         <Grid item>
+            <TextField
+               value={lastName}
+               onChange={handleLastNameChange}
+               label="Last name"
+               variant="outlined"
+            />
+         </Grid>
+
+         <Grid item>
+            <TextField
+               value={address}
+               onChange={handleAddressChange}
+               label="Address"
+               variant="outlined"
+            />
+         </Grid>
 
          <FormControl>
             <InputLabel>Gender</InputLabel>
