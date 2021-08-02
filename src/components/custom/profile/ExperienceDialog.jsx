@@ -10,23 +10,32 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 
 function ExperienceDialog({ onAddExperience }) {
-   const [openExperienceDialog, setOpenExperienceDialog] = useState(false);
+   const [open, setOpen] = useState(false);
+
+   const handleOpenDialog = () => {
+      setOpen(true);
+   };
+
+   const handleCloseDialog = () => {
+      setOpen(false);
+   };
 
    return (
       <Box>
-         <Button fullWidth onClick={() => setOpenExperienceDialog(true)}>
+         <Button fullWidth onClick={handleOpenDialog}>
             Add experience
          </Button>
 
-         <Dialog
-            open={openExperienceDialog}
-            onClose={() => setOpenExperienceDialog(false)}
-            fullWidth
-         >
+         <Dialog open={open} onClose={handleCloseDialog} fullWidth>
             <DialogTitle>Experience</DialogTitle>
             <DialogContent>
                <ExperienceForm onAddExperience={onAddExperience} />
             </DialogContent>
+
+            <DialogActions>
+               <Button>Add</Button>
+               <Button>Cancel</Button>
+            </DialogActions>
          </Dialog>
       </Box>
    );
