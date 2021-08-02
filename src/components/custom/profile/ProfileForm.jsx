@@ -259,6 +259,7 @@ function ProfileForm() {
                <Dialog
                   open={openExperienceDialog}
                   onClose={() => setOpenExperienceDialog(false)}
+                  fullWidth
                >
                   <DialogTitle>Experience</DialogTitle>
                   <DialogContent>
