@@ -12,6 +12,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
+
 import {
    TextField,
    Button,
@@ -43,8 +48,9 @@ function ProfileForm() {
 
    const { state: profile } = useLocation();
    const { userId } = useParams();
-
    const history = useHistory();
+
+   const [openExperienceDialog, setOpenExperienceDialog] = useState(false);
 
    const [firstName, setFirstName] = useState(profile.firstName || '');
    const [lastName, setLastName] = useState(profile.lastName || '');
@@ -246,10 +252,22 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <Experience
-                  experiences={experiences}
-                  onAddExperience={handleAddExperience}
-               />
+               <Button fullWidth onClick={() => setOpenExperienceDialog(true)}>
+                  Add experience
+               </Button>
+
+               <Dialog
+                  open={openExperienceDialog}
+                  onClose={() => setOpenExperienceDialog(false)}
+               >
+                  <DialogTitle>Experience</DialogTitle>
+                  <DialogContent>
+                     <Experience
+                        experiences={experiences}
+                        onAddExperience={handleAddExperience}
+                     />
+                  </DialogContent>
+               </Dialog>
             </Grid>
 
             <Grid item>
