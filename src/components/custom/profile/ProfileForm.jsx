@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 
-import ExperienceForm from './ExperienceForm';
 import Experiences from './Experiences';
+import ExperienceDialog from './ExperienceDialog';
 import Education from './Education';
 import Language from './Language';
 import Skills from './Skills';
@@ -12,11 +12,6 @@ import { updateProfile } from '../../../services/profile';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
 
 import {
    TextField,
@@ -50,8 +45,6 @@ function ProfileForm() {
    const { state: profile } = useLocation();
    const { userId } = useParams();
    const history = useHistory();
-
-   const [openExperienceDialog, setOpenExperienceDialog] = useState(false);
 
    const [firstName, setFirstName] = useState(profile.firstName || '');
    const [lastName, setLastName] = useState(profile.lastName || '');
@@ -253,20 +246,7 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <Button fullWidth onClick={() => setOpenExperienceDialog(true)}>
-                  Add experience
-               </Button>
-
-               <Dialog
-                  open={openExperienceDialog}
-                  onClose={() => setOpenExperienceDialog(false)}
-                  fullWidth
-               >
-                  <DialogTitle>Experience</DialogTitle>
-                  <DialogContent>
-                     <ExperienceForm onAddExperience={handleAddExperience} />
-                  </DialogContent>
-               </Dialog>
+               <ExperienceDialog onAddExperience={handleAddExperience} />
             </Grid>
 
             <Grid item>
