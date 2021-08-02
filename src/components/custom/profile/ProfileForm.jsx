@@ -247,9 +247,6 @@ function ProfileForm() {
 
             <Grid item>
                <ExperienceDialog onAddExperience={handleAddExperience} />
-            </Grid>
-
-            <Grid item>
                <Experiences experiences={experiences}></Experiences>
             </Grid>
 
