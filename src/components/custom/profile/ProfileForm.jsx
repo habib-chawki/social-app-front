@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 
 import ExperienceForm from './ExperienceForm';
+import Experiences from './Experiences';
 import Education from './Education';
 import Language from './Language';
 import Skills from './Skills';
@@ -263,12 +264,13 @@ function ProfileForm() {
                >
                   <DialogTitle>Experience</DialogTitle>
                   <DialogContent>
-                     <ExperienceForm
-                        experiences={experiences}
-                        onAddExperience={handleAddExperience}
-                     />
+                     <ExperienceForm onAddExperience={handleAddExperience} />
                   </DialogContent>
                </Dialog>
+            </Grid>
+
+            <Grid item>
+               <Experiences experiences={experiences}></Experiences>
             </Grid>
 
             <Grid item>
