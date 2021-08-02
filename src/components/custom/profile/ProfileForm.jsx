@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 
-import Experience from './Experience';
+import ExperienceForm from './ExperienceForm';
 import Education from './Education';
 import Language from './Language';
 import Skills from './Skills';
@@ -263,7 +263,7 @@ function ProfileForm() {
                >
                   <DialogTitle>Experience</DialogTitle>
                   <DialogContent>
-                     <Experience
+                     <ExperienceForm
                         experiences={experiences}
                         onAddExperience={handleAddExperience}
                      />
