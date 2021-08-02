@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import moment from 'moment';
 
-import { TextField, Button, Box, Card } from '@material-ui/core';
+import { TextField, Button, Box } from '@material-ui/core';
 
 import {
    KeyboardDatePicker,
@@ -10,7 +9,7 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
-function ExperienceForm({ onAddExperience, experiences }) {
+function ExperienceForm({ onAddExperience }) {
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [position, setPosition] = useState('');
@@ -102,21 +101,6 @@ function ExperienceForm({ onAddExperience, experiences }) {
                variant="outlined"
             />
             <Button onClick={addExperience}>Add</Button>
-         </Box>
-
-         <Box>
-            {experiences.map((experience) => (
-               <Card key={experience.position}>
-                  <h2>
-                     {experience.position} - {experience.company}
-                  </h2>
-                  <h4>
-                     {moment(experience.startDate).format('MMM YYYY')} -{' '}
-                     {moment(experience.endDate).format('MMM YYYY')}
-                  </h4>
-                  <p>{experience.description}</p>
-               </Card>
-            ))}
          </Box>
       </Box>
    );
