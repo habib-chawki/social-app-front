@@ -33,7 +33,10 @@ function ExperienceDialog({ onAddExperience }) {
          <Dialog open={open} onClose={closeDialog} fullWidth>
             <DialogTitle>Experience</DialogTitle>
             <DialogContent dividers>
-               <ExperienceForm onAddExperience={onAddExperience} />
+               <ExperienceForm
+                  onAddExperience={onAddExperience}
+                  onCloseDialog={closeDialog}
+               />
             </DialogContent>
 
             <DialogActions>
