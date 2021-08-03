@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -9,7 +10,10 @@ import moment from 'moment';
 
 const useStyles = makeStyles({
    card: {
-      padding: 10,
+      padding: 20,
+   },
+   paperItem: {
+      marginTop: 20,
    },
 });
 
@@ -19,17 +23,30 @@ function Experiences({ experiences }) {
    return (
       <Box>
          {experiences.map((experience) => (
-            <Card key={experience.position} className={classes.card}>
-               <Typography variant="h4">
-                  {experience.position} - {experience.company}
-               </Typography>
-               <Typography variant="subtitle1" color="textSecondary">
-                  {moment(experience.startDate).format('MMMM YYYY')} -
-                  {moment(experience.endDate).format('MMMM YYYY')}
+            <Paper key={experience.position} className={classes.card}>
+               <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+               >
+                  <Typography variant="h4">{experience.company}</Typography>
+
+                  <Typography variant="subtitle1" color="textSecondary">
+                     {moment(experience.startDate).format('MMMM YYYY')} -{' '}
+                     {moment(experience.endDate).format('MMMM YYYY')}
+                  </Typography>
+               </Box>
+
+               <Typography variant="h5" className={classes.paperItem}>
+                  {experience.position}
                </Typography>
 
-               <Typography variant="body1">{experience.description}</Typography>
-            </Card>
+               <Divider className={classes.paperItem} />
+
+               <Typography variant="body1" className={classes.paperItem}>
+                  {experience.description}
+               </Typography>
+            </Paper>
          ))}
       </Box>
    );
