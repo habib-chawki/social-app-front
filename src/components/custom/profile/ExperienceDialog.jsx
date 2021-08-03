@@ -20,6 +20,10 @@ function ExperienceDialog({ onAddExperience }) {
       setOpen(false);
    };
 
+   const handleAddExperience = () => {
+      handleCloseDialog();
+   };
+
    return (
       <Box>
          <Button fullWidth onClick={handleOpenDialog}>
@@ -33,7 +37,7 @@ function ExperienceDialog({ onAddExperience }) {
             </DialogContent>
 
             <DialogActions>
-               <Button onClick={handleCloseDialog}>Add</Button>
+               <Button onClick={handleAddExperience}>Add</Button>
                <Button onClick={handleCloseDialog}>Cancel</Button>
             </DialogActions>
          </Dialog>
