@@ -7,7 +7,6 @@ import Box from '@material-ui/core/Box';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
 
 function ExperienceDialog({ onAddExperience }) {
    const [open, setOpen] = useState(false);
@@ -18,10 +17,6 @@ function ExperienceDialog({ onAddExperience }) {
 
    const closeDialog = () => {
       setOpen(false);
-   };
-
-   const handleAddExperience = () => {
-      closeDialog();
    };
 
    return (
@@ -38,11 +33,6 @@ function ExperienceDialog({ onAddExperience }) {
                   onCloseDialog={closeDialog}
                />
             </DialogContent>
-
-            <DialogActions>
-               <Button onClick={handleAddExperience}>Add</Button>
-               <Button onClick={closeDialog}>Cancel</Button>
-            </DialogActions>
          </Dialog>
       </Box>
    );
