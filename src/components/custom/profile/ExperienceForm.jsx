@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-import { TextField, Button, Box, Divider } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 import {
    KeyboardDatePicker,
@@ -59,55 +62,53 @@ function ExperienceForm({ onAddExperience, onCloseDialog }) {
    };
 
    return (
-      <Box>
-         <Box display="flex" flexDirection="column">
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-               <KeyboardDatePicker
-                  value={startDate}
-                  onChange={handleStartDateChange}
-                  disableToolbar
-                  variant="inline"
-                  label="Start date"
-                  format="dd/MM/yyyy"
-               />
-            </MuiPickersUtilsProvider>
-
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-               <KeyboardDatePicker
-                  value={endDate}
-                  onChange={handleEndDateChange}
-                  disableToolbar
-                  variant="inline"
-                  label="End date"
-                  format="dd/MM/yyyy"
-               />
-            </MuiPickersUtilsProvider>
-
-            <TextField
-               value={position}
-               onChange={handlePositionChange}
-               label="position"
-               variant="outlined"
+      <Grid container direction="column">
+         <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+               value={startDate}
+               onChange={handleStartDateChange}
+               disableToolbar
+               variant="inline"
+               label="Start date"
+               format="dd/MM/yyyy"
             />
-            <TextField
-               value={company}
-               onChange={handleCompanyChange}
-               label="company"
-               variant="outlined"
-            />
-            <TextField
-               value={description}
-               onChange={handleDescriptionChange}
-               label="description"
-               multiline
-               rows={6}
-               variant="outlined"
-            />
+         </MuiPickersUtilsProvider>
 
-            <Button onClick={addExperience}>Add</Button>
-            <Button onClick={onCloseDialog}>Cancel</Button>
-         </Box>
-      </Box>
+         <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+               value={endDate}
+               onChange={handleEndDateChange}
+               disableToolbar
+               variant="inline"
+               label="End date"
+               format="dd/MM/yyyy"
+            />
+         </MuiPickersUtilsProvider>
+
+         <TextField
+            value={position}
+            onChange={handlePositionChange}
+            label="position"
+            variant="outlined"
+         />
+         <TextField
+            value={company}
+            onChange={handleCompanyChange}
+            label="company"
+            variant="outlined"
+         />
+         <TextField
+            value={description}
+            onChange={handleDescriptionChange}
+            label="description"
+            multiline
+            rows={6}
+            variant="outlined"
+         />
+
+         <Button onClick={addExperience}>Add</Button>
+         <Button onClick={onCloseDialog}>Cancel</Button>
+      </Grid>
    );
 }
 
