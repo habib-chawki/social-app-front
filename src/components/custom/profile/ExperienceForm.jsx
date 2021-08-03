@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 import {
    KeyboardDatePicker,
@@ -12,12 +12,20 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
+const useStyles = makeStyles({
+   formField: {
+      width: '100%',
+   },
+});
+
 function ExperienceForm({ onAddExperience, onCloseDialog }) {
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [position, setPosition] = useState('');
    const [company, setCompany] = useState('');
    const [description, setDescription] = useState('');
+
+   const classes = useStyles();
 
    const handleStartDateChange = (startDate) => {
       setStartDate(startDate);
@@ -66,6 +74,7 @@ function ExperienceForm({ onAddExperience, onCloseDialog }) {
          <Grid item>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                <KeyboardDatePicker
+                  className={classes.formField}
                   value={startDate}
                   onChange={handleStartDateChange}
                   disableToolbar
@@ -75,9 +84,11 @@ function ExperienceForm({ onAddExperience, onCloseDialog }) {
                />
             </MuiPickersUtilsProvider>
          </Grid>
+
          <Grid item>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                <KeyboardDatePicker
+                  className={classes.formField}
                   value={endDate}
                   onChange={handleEndDateChange}
                   disableToolbar
@@ -88,25 +99,27 @@ function ExperienceForm({ onAddExperience, onCloseDialog }) {
             </MuiPickersUtilsProvider>
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.formField}>
             <TextField
                value={position}
                onChange={handlePositionChange}
                label="position"
                variant="outlined"
+               fullWidth
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.formField}>
             <TextField
                value={company}
                onChange={handleCompanyChange}
                label="company"
                variant="outlined"
+               fullWidth
             />
          </Grid>
 
-         <Grid item>
+         <Grid item className={classes.formField}>
             <TextField
                value={description}
                onChange={handleDescriptionChange}
@@ -114,6 +127,7 @@ function ExperienceForm({ onAddExperience, onCloseDialog }) {
                multiline
                rows={6}
                variant="outlined"
+               fullWidth
             />
          </Grid>
 
