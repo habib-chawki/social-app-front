@@ -62,52 +62,65 @@ function ExperienceForm({ onAddExperience, onCloseDialog }) {
    };
 
    return (
-      <Grid container direction="column">
-         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-               value={startDate}
-               onChange={handleStartDateChange}
-               disableToolbar
-               variant="inline"
-               label="Start date"
-               format="dd/MM/yyyy"
+      <Grid container direction="column" spacing={2}>
+         <Grid item>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+               <KeyboardDatePicker
+                  value={startDate}
+                  onChange={handleStartDateChange}
+                  disableToolbar
+                  variant="inline"
+                  label="Start date"
+                  format="dd/MM/yyyy"
+               />
+            </MuiPickersUtilsProvider>
+         </Grid>
+         <Grid item>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+               <KeyboardDatePicker
+                  value={endDate}
+                  onChange={handleEndDateChange}
+                  disableToolbar
+                  variant="inline"
+                  label="End date"
+                  format="dd/MM/yyyy"
+               />
+            </MuiPickersUtilsProvider>
+         </Grid>
+
+         <Grid item>
+            <TextField
+               value={position}
+               onChange={handlePositionChange}
+               label="position"
+               variant="outlined"
             />
-         </MuiPickersUtilsProvider>
+         </Grid>
 
-         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-               value={endDate}
-               onChange={handleEndDateChange}
-               disableToolbar
-               variant="inline"
-               label="End date"
-               format="dd/MM/yyyy"
+         <Grid item>
+            <TextField
+               value={company}
+               onChange={handleCompanyChange}
+               label="company"
+               variant="outlined"
             />
-         </MuiPickersUtilsProvider>
+         </Grid>
 
-         <TextField
-            value={position}
-            onChange={handlePositionChange}
-            label="position"
-            variant="outlined"
-         />
-         <TextField
-            value={company}
-            onChange={handleCompanyChange}
-            label="company"
-            variant="outlined"
-         />
-         <TextField
-            value={description}
-            onChange={handleDescriptionChange}
-            label="description"
-            multiline
-            rows={6}
-            variant="outlined"
-         />
+         <Grid item>
+            <TextField
+               value={description}
+               onChange={handleDescriptionChange}
+               label="description"
+               multiline
+               rows={6}
+               variant="outlined"
+            />
+         </Grid>
 
-         <Button onClick={addExperience}>Add</Button>
-         <Button onClick={onCloseDialog}>Cancel</Button>
+         <Grid item>
+            <Button onClick={addExperience}>Add</Button>
+            <Button onClick={onCloseDialog}>Cancel</Button>
+         </Grid>
       </Grid>
    );
 }
