@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button, Box, Divider } from '@material-ui/core';
 
 import {
    KeyboardDatePicker,
@@ -9,7 +9,7 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
-function ExperienceForm({ onAddExperience }) {
+function ExperienceForm({ onAddExperience, onCloseDialog }) {
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [position, setPosition] = useState('');
@@ -48,6 +48,9 @@ function ExperienceForm({ onAddExperience }) {
 
       // notify parent
       onAddExperience(experience);
+
+      // close dialog
+      onCloseDialog();
 
       // clear inputs
       setPosition('');
@@ -100,7 +103,9 @@ function ExperienceForm({ onAddExperience }) {
                rows={6}
                variant="outlined"
             />
+
             <Button onClick={addExperience}>Add</Button>
+            <Button onClick={onCloseDialog}>Cancel</Button>
          </Box>
       </Box>
    );
