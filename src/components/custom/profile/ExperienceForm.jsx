@@ -131,7 +131,7 @@ function ExperienceForm({ onAddExperience, onCloseDialog }) {
             />
          </Grid>
 
-         <Grid item>
+         <Grid item container justifyContent="flex-end">
             <Button onClick={addExperience}>Add</Button>
             <Button onClick={onCloseDialog}>Cancel</Button>
          </Grid>
