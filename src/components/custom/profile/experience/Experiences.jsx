@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
 
 const useStyles = makeStyles({
-   card: {
+   paper: {
       padding: 20,
    },
    paperItem: {
@@ -23,7 +23,7 @@ function Experiences({ experiences }) {
    return (
       <Box>
          {experiences.map((experience) => (
-            <Paper key={experience.position} className={classes.card}>
+            <Paper key={experience.position} className={classes.paper}>
                <Box
                   display="flex"
                   justifyContent="space-between"
