@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-import { TextField, Button, Box } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 import {
    KeyboardDatePicker,
@@ -9,12 +12,20 @@ import {
 
 import DateFnsUtils from '@date-io/date-fns';
 
-function Education({ onAddEducation, educations }) {
+const useStyles = makeStyles({
+   formField: {
+      width: '100%',
+   },
+});
+
+function Education({ onAddEducation, onCloseDialog }) {
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [major, setMajor] = useState('');
    const [school, setSchool] = useState('');
    const [description, setDescription] = useState('');
+
+   const classes = useStyles();
 
    const handleStartDateChange = (startDate) => {
       setStartDate(startDate);
@@ -56,8 +67,8 @@ function Education({ onAddEducation, educations }) {
    };
 
    return (
-      <Box>
-         <Box display="flex" flexDirection="column">
+      <Grid container direction="column" spacing={2}>
+         <Grid item>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                <KeyboardDatePicker
                   value={startDate}
@@ -68,7 +79,9 @@ function Education({ onAddEducation, educations }) {
                   format="dd/MM/yyyy"
                />
             </MuiPickersUtilsProvider>
+         </Grid>
 
+         <Grid item>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                <KeyboardDatePicker
                   value={endDate}
@@ -79,19 +92,27 @@ function Education({ onAddEducation, educations }) {
                   format="dd/MM/yyyy"
                />
             </MuiPickersUtilsProvider>
+         </Grid>
 
+         <Grid item className={classes.formField}>
             <TextField
                value={major}
                onChange={handleMajorChange}
                label="major"
                variant="outlined"
             />
+         </Grid>
+
+         <Grid item className={classes.formField}>
             <TextField
                value={school}
                onChange={handleSchoolChange}
                label="school"
                variant="outlined"
             />
+         </Grid>
+
+         <Grid item className={classes.formField}>
             <TextField
                value={description}
                onChange={handleDescriptionChange}
@@ -100,9 +121,14 @@ function Education({ onAddEducation, educations }) {
                rows={6}
                variant="outlined"
             />
+         </Grid>
+
+         <Grid item container justifyContent="flex-end">
             <Button onClick={addEducation}>Add</Button>
-         </Box>
-      </Box>
+
+            <Button onClick={onCloseDialog}>Cancel</Button>
+         </Grid>
+      </Grid>
    );
 }
 
