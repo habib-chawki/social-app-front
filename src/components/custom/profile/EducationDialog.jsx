@@ -8,7 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 
-function EducationDialog({ onAddExperience }) {
+function EducationDialog({ onAddEducation }) {
    const [open, setOpen] = useState(false);
 
    const openDialog = () => {
@@ -29,7 +29,7 @@ function EducationDialog({ onAddExperience }) {
             <DialogTitle>Education</DialogTitle>
             <DialogContent dividers>
                <EducationForm
-                  onAddExperience={onAddExperience}
+                  onAddEducation={onAddEducation}
                   onCloseDialog={closeDialog}
                />
             </DialogContent>
