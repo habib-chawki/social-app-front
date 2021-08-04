@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 
-import Experiences from './Experiences';
+import Experiences from './experience/Experiences';
 import ExperienceDialog from './experience/ExperienceDialog';
 import Education from './Education';
 import Language from './Language';
