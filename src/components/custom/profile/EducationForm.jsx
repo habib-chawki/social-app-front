@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import moment from 'moment';
 
-import { TextField, Button, Box, Card } from '@material-ui/core';
+import { TextField, Button, Box } from '@material-ui/core';
 
 import {
    KeyboardDatePicker,
@@ -102,21 +101,6 @@ function Education({ onAddEducation, educations }) {
                variant="outlined"
             />
             <Button onClick={addEducation}>Add</Button>
-         </Box>
-
-         <Box>
-            {educations.map((education) => (
-               <Card key={education.major}>
-                  <h2>
-                     {education.major} - {education.school}
-                  </h2>
-                  <h4>
-                     {moment(education.startDate).format('MMM YYYY')} -{' '}
-                     {moment(education.endDate).format('MMM YYYY')}
-                  </h4>
-                  <p>{education.description}</p>
-               </Card>
-            ))}
          </Box>
       </Box>
    );
