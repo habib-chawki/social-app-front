@@ -60,6 +60,9 @@ function Education({ onAddEducation, onCloseDialog }) {
       // notify parent
       onAddEducation(education);
 
+      // close dialog
+      onCloseDialog();
+
       // clear inputs
       setMajor('');
       setSchool('');
