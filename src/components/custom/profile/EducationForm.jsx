@@ -71,6 +71,7 @@ function Education({ onAddEducation, onCloseDialog }) {
          <Grid item>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                <KeyboardDatePicker
+                  className={classes.formField}
                   value={startDate}
                   onChange={handleStartDateChange}
                   disableToolbar
@@ -84,6 +85,7 @@ function Education({ onAddEducation, onCloseDialog }) {
          <Grid item>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                <KeyboardDatePicker
+                  className={classes.formField}
                   value={endDate}
                   onChange={handleEndDateChange}
                   disableToolbar
@@ -100,6 +102,7 @@ function Education({ onAddEducation, onCloseDialog }) {
                onChange={handleMajorChange}
                label="major"
                variant="outlined"
+               fullWidth
             />
          </Grid>
 
@@ -109,6 +112,7 @@ function Education({ onAddEducation, onCloseDialog }) {
                onChange={handleSchoolChange}
                label="school"
                variant="outlined"
+               fullWidth
             />
          </Grid>
 
@@ -120,12 +124,12 @@ function Education({ onAddEducation, onCloseDialog }) {
                multiline
                rows={6}
                variant="outlined"
+               fullWidth
             />
          </Grid>
 
          <Grid item container justifyContent="flex-end">
             <Button onClick={addEducation}>Add</Button>
-
             <Button onClick={onCloseDialog}>Cancel</Button>
          </Grid>
       </Grid>
