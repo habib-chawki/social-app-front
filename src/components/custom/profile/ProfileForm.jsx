@@ -3,7 +3,8 @@ import { useLocation, useHistory, useParams } from 'react-router-dom';
 
 import Experiences from './experience/Experiences';
 import ExperienceDialog from './experience/ExperienceDialog';
-import Education from './EducationForm';
+import Educations from './Educations';
+import EducationDialog from './EducationDialog';
 import Language from './Language';
 import Skills from './Skills';
 
@@ -251,10 +252,8 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <Education
-                  educations={educations}
-                  onAddEducation={handleAddEducation}
-               />
+               <EducationDialog onAddEducation={handleAddEducation} />
+               <Educations educations={educations} />
             </Grid>
 
             <Grid item>
