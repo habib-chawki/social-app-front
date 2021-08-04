@@ -3,8 +3,8 @@ import { useLocation, useHistory, useParams } from 'react-router-dom';
 
 import Experiences from './experience/Experiences';
 import ExperienceDialog from './experience/ExperienceDialog';
-import Educations from './Educations';
-import EducationDialog from './EducationDialog';
+import Educations from './education/Educations';
+import EducationDialog from './education/EducationDialog';
 import Language from './Language';
 import Skills from './Skills';
 
