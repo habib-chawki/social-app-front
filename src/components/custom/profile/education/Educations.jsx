@@ -29,8 +29,8 @@ function Educations({ educations, onRemoveEducation }) {
    return (
       <Grid container spacing={4} direction="column">
          {educations.map((education) => (
-            <Grid item>
-               <Paper key={education._id} className={classes.paper}>
+            <Grid item key={education._id}>
+               <Paper className={classes.paper}>
                   <Box
                      display="flex"
                      justifyContent="space-between"
