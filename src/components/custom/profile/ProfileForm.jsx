@@ -115,7 +115,8 @@ function ProfileForm() {
          educations.filter(
             (item) =>
                item.major !== education.major &&
-               item.school !== education.school
+               item.school !== education.school &&
+               item.startDate !== education.startDate
          )
       );
    };
