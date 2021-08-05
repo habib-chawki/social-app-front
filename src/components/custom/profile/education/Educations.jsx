@@ -19,14 +19,18 @@ const useStyles = makeStyles({
    },
 });
 
-function Educations({ educations }) {
+function Educations({ educations, onRemoveEducation }) {
    const classes = useStyles();
+
+   const handleRemoveEducation = (education) => {
+      onRemoveEducation(education);
+   };
 
    return (
       <Grid container spacing={4} direction="column">
          {educations.map((education) => (
             <Grid item>
-               <Paper key={education.major} className={classes.paper}>
+               <Paper key={education._id} className={classes.paper}>
                   <Box
                      display="flex"
                      justifyContent="space-between"
@@ -54,9 +58,10 @@ function Educations({ educations }) {
 
                   <Box display="flex" justifyContent="flex-end">
                      <Button
+                        className={classes.paperItem}
                         color="secondary"
                         variant="contained"
-                        className={classes.paperItem}
+                        onClick={() => handleRemoveEducation(education)}
                      >
                         Remove
                      </Button>
