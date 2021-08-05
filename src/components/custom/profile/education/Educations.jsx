@@ -23,7 +23,7 @@ function Educations({ educations }) {
    const classes = useStyles();
 
    return (
-      <Grid container spacing={5} direction="column">
+      <Grid container spacing={4} direction="column">
          {educations.map((education) => (
             <Grid item>
                <Paper key={education.major} className={classes.paper}>
@@ -50,9 +50,17 @@ function Educations({ educations }) {
                      {education.description}
                   </Typography>
 
-                  <Button color="secondary" variant="contained">
-                     Remove
-                  </Button>
+                  <Divider className={classes.paperItem} />
+
+                  <Box display="flex" justifyContent="flex-end">
+                     <Button
+                        color="secondary"
+                        variant="contained"
+                        className={classes.paperItem}
+                     >
+                        Remove
+                     </Button>
+                  </Box>
                </Paper>
             </Grid>
          ))}
