@@ -110,6 +110,10 @@ function ProfileForm() {
       setEducations([...educations, education]);
    };
 
+   const handleRemoveEducation = (education) => {
+      setEducations(educations.filter((item) => item._id !== education._id));
+   };
+
    const handleAddSkill = (skill) => {
       // add new skill content
       const newSkills = { ...skills };
@@ -253,7 +257,10 @@ function ProfileForm() {
 
             <Grid item>
                <EducationDialog onAddEducation={handleAddEducation} />
-               <Educations educations={educations} />
+               <Educations
+                  educations={educations}
+                  onRemoveEducation={handleRemoveEducation}
+               />
             </Grid>
 
             <Grid item>
