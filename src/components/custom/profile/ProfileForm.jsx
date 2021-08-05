@@ -111,7 +111,13 @@ function ProfileForm() {
    };
 
    const handleRemoveEducation = (education) => {
-      setEducations(educations.filter((item) => item._id !== education._id));
+      setEducations(
+         educations.filter(
+            (item) =>
+               item.major !== education.major &&
+               item.school !== education.school
+         )
+      );
    };
 
    const handleAddSkill = (skill) => {

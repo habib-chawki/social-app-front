@@ -29,14 +29,14 @@ function Educations({ educations, onRemoveEducation }) {
    return (
       <Grid container spacing={4} direction="column">
          {educations.map((education) => (
-            <Grid item key={education._id}>
+            <Grid item key={education.major}>
                <Paper className={classes.paper}>
                   <Box
                      display="flex"
                      justifyContent="space-between"
                      alignItems="center"
                   >
-                     <Typography variant="h4">{education.school}</Typography>
+                     <Typography variant="h5">{education.school}</Typography>
 
                      <Typography variant="subtitle1" color="textSecondary">
                         {moment(education.startDate).format('MMMM YYYY')} -{' '}
