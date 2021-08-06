@@ -18,12 +18,14 @@ const useStyles = makeStyles({
    },
 });
 
-function Education({ onAddEducation, onCloseDialog }) {
-   const [startDate, setStartDate] = useState();
-   const [endDate, setEndDate] = useState();
-   const [major, setMajor] = useState('');
-   const [school, setSchool] = useState('');
-   const [description, setDescription] = useState('');
+function Education({ onAddEducation, onCloseDialog, initialFormValues }) {
+   const [startDate, setStartDate] = useState(initialFormValues.startDate);
+   const [endDate, setEndDate] = useState(initialFormValues.endDate);
+   const [major, setMajor] = useState(initialFormValues.major);
+   const [school, setSchool] = useState(initialFormValues.school);
+   const [description, setDescription] = useState(
+      initialFormValues.description
+   );
 
    const classes = useStyles();
 
