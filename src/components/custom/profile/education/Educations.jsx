@@ -61,9 +61,9 @@ function Educations({ educations, onRemoveEducation }) {
                      className={classes.paperItem}
                   >
                      <Button
+                        className={classes.updateBtn}
                         color="primary"
                         variant="contained"
-                        className={classes.updateBtn}
                      >
                         Update
                      </Button>
