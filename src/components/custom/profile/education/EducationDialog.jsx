@@ -9,6 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 
 function EducationDialog({
    onAddEducation,
+   onUpdateEducation,
    open,
    closeDialog,
    initialFormValues,
@@ -20,6 +21,7 @@ function EducationDialog({
             <DialogContent dividers>
                <EducationForm
                   onAddEducation={onAddEducation}
+                  onUpdateEducation={onUpdateEducation}
                   onCloseDialog={closeDialog}
                   initialFormValues={initialFormValues}
                />
