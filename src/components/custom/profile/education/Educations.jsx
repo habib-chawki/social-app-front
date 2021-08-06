@@ -17,6 +17,9 @@ const useStyles = makeStyles({
    paperItem: {
       marginTop: 20,
    },
+   updateBtn: {
+      marginRight: 10,
+   },
 });
 
 function Educations({ educations, onRemoveEducation }) {
@@ -52,9 +55,20 @@ function Educations({ educations, onRemoveEducation }) {
 
                   <Divider className={classes.paperItem} />
 
-                  <Box display="flex" justifyContent="flex-end">
+                  <Box
+                     display="flex"
+                     justifyContent="flex-end"
+                     className={classes.paperItem}
+                  >
                      <Button
-                        className={classes.paperItem}
+                        color="primary"
+                        variant="contained"
+                        className={classes.updateBtn}
+                     >
+                        Update
+                     </Button>
+
+                     <Button
                         color="secondary"
                         variant="contained"
                         onClick={() => onRemoveEducation(education)}
