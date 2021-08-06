@@ -66,6 +66,16 @@ function ProfileForm() {
       profile.skills || { technical: [], organizational: [] }
    );
 
+   const [open, setOpen] = useState(false);
+
+   const openDialog = () => {
+      setOpen(true);
+   };
+
+   const closeDialog = () => {
+      setOpen(false);
+   };
+
    const handleFirstNameChange = (event) => {
       setFirstName(event.target.value);
    };
@@ -263,7 +273,14 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <EducationDialog onAddEducation={handleAddEducation} />
+               <Button onClick={openDialog} fullWidth>
+                  Add education
+               </Button>
+               <EducationDialog
+                  onAddEducation={handleAddEducation}
+                  open={open}
+                  closeDialog={closeDialog}
+               />
                <Educations
                   educations={educations}
                   onRemoveEducation={handleRemoveEducation}
