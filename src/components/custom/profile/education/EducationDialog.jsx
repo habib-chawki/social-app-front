@@ -7,7 +7,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 
-function EducationDialog({ onAddEducation, open, closeDialog }) {
+function EducationDialog({
+   onAddEducation,
+   open,
+   closeDialog,
+   initialFormValues,
+}) {
    return (
       <Box>
          <Dialog open={open} onClose={closeDialog} fullWidth>
@@ -16,6 +21,7 @@ function EducationDialog({ onAddEducation, open, closeDialog }) {
                <EducationForm
                   onAddEducation={onAddEducation}
                   onCloseDialog={closeDialog}
+                  initialFormValues={initialFormValues}
                />
             </DialogContent>
          </Dialog>
