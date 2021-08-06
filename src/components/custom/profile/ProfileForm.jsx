@@ -284,6 +284,7 @@ function ProfileForm() {
                <Educations
                   educations={educations}
                   onRemoveEducation={handleRemoveEducation}
+                  openDialog={openDialog}
                />
             </Grid>
 

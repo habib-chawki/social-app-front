@@ -22,7 +22,7 @@ const useStyles = makeStyles({
    },
 });
 
-function Educations({ educations, onRemoveEducation }) {
+function Educations({ educations, onRemoveEducation, openDialog }) {
    const classes = useStyles();
 
    return (
@@ -64,6 +64,7 @@ function Educations({ educations, onRemoveEducation }) {
                         className={classes.updateBtn}
                         color="primary"
                         variant="contained"
+                        onClick={() => openDialog()}
                      >
                         Update
                      </Button>
