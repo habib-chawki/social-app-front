@@ -64,7 +64,7 @@ function Educations({ educations, onRemoveEducation, openDialog }) {
                         className={classes.updateBtn}
                         color="primary"
                         variant="contained"
-                        onClick={() => openDialog()}
+                        onClick={() => openDialog(education)}
                      >
                         Update
                      </Button>
