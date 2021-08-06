@@ -43,10 +43,12 @@ const useStyles = makeStyles({
 function ProfileForm() {
    const classes = useStyles();
 
+   // routing params
    const { state: profile } = useLocation();
    const { userId } = useParams();
    const history = useHistory();
 
+   // form state
    const [firstName, setFirstName] = useState(profile.firstName || '');
    const [lastName, setLastName] = useState(profile.lastName || '');
    const [middleName, setMiddleName] = useState(profile.middleName || '');
@@ -66,13 +68,16 @@ function ProfileForm() {
       profile.skills || { technical: [], organizational: [] }
    );
 
+   // dialog state
    const [open, setOpen] = useState(false);
    const [initialFormValues, setInitialFormValues] = useState({});
 
    const openDialog = (initialValues = {}) => {
+      // set the initial form values in case of an update
       if (initialValues) {
          setInitialFormValues(initialValues);
       }
+
       setOpen(true);
    };
 
@@ -122,6 +127,18 @@ function ProfileForm() {
 
    const handleAddEducation = (education) => {
       setEducations([...educations, education]);
+   };
+
+   const handleUpdateEducation = (education, updatedEducation) => {
+      const updated = educations.map((item) =>
+         item.major === education.major &&
+         item.school === education.school &&
+         item.startDate === education.startDate
+            ? updatedEducation
+            : item
+      );
+
+      setEducations(updated);
    };
 
    const handleRemoveEducation = (education) => {
@@ -282,6 +299,7 @@ function ProfileForm() {
                </Button>
                <EducationDialog
                   onAddEducation={handleAddEducation}
+                  onUpdateEducation={handleUpdateEducation}
                   open={open}
                   closeDialog={closeDialog}
                   initialFormValues={initialFormValues}
