@@ -130,23 +130,23 @@ function ProfileForm() {
    };
 
    const handleUpdateEducation = (education, updatedEducation) => {
-      const updated = educations.map((item) =>
-         item.major === education.major &&
-         item.school === education.school &&
-         item.startDate === education.startDate
-            ? updatedEducation
-            : item
+      setEducations(
+         educations.map((item) =>
+            item.major === education.major &&
+            item.school === education.school &&
+            item.startDate === education.startDate
+               ? updatedEducation
+               : item
+         )
       );
-
-      setEducations(updated);
    };
 
    const handleRemoveEducation = (education) => {
       setEducations(
          educations.filter(
             (item) =>
-               item.major !== education.major &&
-               item.school !== education.school &&
+               item.major !== education.major ||
+               item.school !== education.school ||
                item.startDate !== education.startDate
          )
       );
