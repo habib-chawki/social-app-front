@@ -65,7 +65,7 @@ function Education({
       };
 
       // notify parent, add or update education based on initial form values
-      initialFormValues
+      initialFormValues.major
          ? onUpdateEducation(initialFormValues, education)
          : onAddEducation(education);
 
@@ -136,7 +136,9 @@ function Education({
          </Grid>
 
          <Grid item container justifyContent="flex-end">
-            <Button onClick={addEducation}>Add</Button>
+            <Button onClick={addEducation}>
+               {initialFormValues.major ? 'Update' : 'Add'}
+            </Button>
             <Button onClick={onCloseDialog}>Cancel</Button>
          </Grid>
       </Grid>
