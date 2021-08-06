@@ -18,7 +18,12 @@ const useStyles = makeStyles({
    },
 });
 
-function Education({ onAddEducation, onCloseDialog, initialFormValues }) {
+function Education({
+   onAddEducation,
+   onUpdateEducation,
+   onCloseDialog,
+   initialFormValues,
+}) {
    const [startDate, setStartDate] = useState(initialFormValues.startDate);
    const [endDate, setEndDate] = useState(initialFormValues.endDate);
    const [major, setMajor] = useState(initialFormValues.major);
@@ -59,16 +64,13 @@ function Education({ onAddEducation, onCloseDialog, initialFormValues }) {
          description,
       };
 
-      // notify parent
-      onAddEducation(education);
+      // notify parent, add or update education based on initial form values
+      initialFormValues
+         ? onUpdateEducation(initialFormValues, education)
+         : onAddEducation(education);
 
       // close dialog
       onCloseDialog();
-
-      // clear inputs
-      setMajor('');
-      setSchool('');
-      setDescription('');
    };
 
    return (
