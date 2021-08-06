@@ -22,10 +22,6 @@ const useStyles = makeStyles({
 function Educations({ educations, onRemoveEducation }) {
    const classes = useStyles();
 
-   const handleRemoveEducation = (education) => {
-      onRemoveEducation(education);
-   };
-
    return (
       <Grid container spacing={4} direction="column">
          {educations.map((education) => (
@@ -61,7 +57,7 @@ function Educations({ educations, onRemoveEducation }) {
                         className={classes.paperItem}
                         color="secondary"
                         variant="contained"
-                        onClick={() => handleRemoveEducation(education)}
+                        onClick={() => onRemoveEducation(education)}
                      >
                         Remove
                      </Button>
