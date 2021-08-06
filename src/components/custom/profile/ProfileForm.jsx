@@ -67,8 +67,12 @@ function ProfileForm() {
    );
 
    const [open, setOpen] = useState(false);
+   const [initialFormValues, setInitialFormValues] = useState({});
 
-   const openDialog = () => {
+   const openDialog = (initialValues = {}) => {
+      if (initialValues) {
+         setInitialFormValues(initialValues);
+      }
       setOpen(true);
    };
 
@@ -280,6 +284,7 @@ function ProfileForm() {
                   onAddEducation={handleAddEducation}
                   open={open}
                   closeDialog={closeDialog}
+                  initialFormValues={initialFormValues}
                />
                <Educations
                   educations={educations}
