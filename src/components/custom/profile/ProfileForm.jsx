@@ -69,20 +69,22 @@ function ProfileForm() {
    );
 
    // dialog state
-   const [open, setOpen] = useState(false);
-   const [initialFormValues, setInitialFormValues] = useState({});
+   const [openEducationDialog, setOpenEducationDialog] = useState(false);
+   const [initialEducationFormValues, setInitialEducationFormValues] = useState(
+      {}
+   );
 
    const openEducationFormDialog = (initialValues = {}) => {
       // set the initial form values in case of an update
       if (initialValues) {
-         setInitialFormValues(initialValues);
+         setInitialEducationFormValues(initialValues);
       }
 
-      setOpen(true);
+      setOpenEducationDialog(true);
    };
 
    const closeDialog = () => {
-      setOpen(false);
+      setOpenEducationDialog(false);
    };
 
    const handleFirstNameChange = (event) => {
@@ -314,9 +316,9 @@ function ProfileForm() {
                <EducationDialog
                   onAddEducation={handleAddEducation}
                   onUpdateEducation={handleUpdateEducation}
-                  open={open}
+                  open={openEducationDialog}
                   closeDialog={closeDialog}
-                  initialFormValues={initialFormValues}
+                  initialFormValues={initialEducationFormValues}
                />
                <Educations
                   educations={educations}
