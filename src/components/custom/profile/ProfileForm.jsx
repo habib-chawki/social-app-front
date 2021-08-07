@@ -74,7 +74,7 @@ function ProfileForm() {
       {}
    );
 
-   const openEducationFormDialog = (initialValues = {}) => {
+   const handleOpenEducationDialog = (initialValues = {}) => {
       // set the initial form values in case of an update
       if (initialValues) {
          setInitialEducationFormValues(initialValues);
@@ -310,7 +310,7 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <Button onClick={openEducationFormDialog} fullWidth>
+               <Button onClick={handleOpenEducationDialog} fullWidth>
                   Add education
                </Button>
                <EducationDialog
@@ -323,7 +323,7 @@ function ProfileForm() {
                <Educations
                   educations={educations}
                   onRemoveEducation={handleRemoveEducation}
-                  openEducationFormDialog={openEducationFormDialog}
+                  onOpenEducationDialog={handleOpenEducationDialog}
                />
             </Grid>
 
