@@ -18,7 +18,11 @@ const useStyles = makeStyles({
    },
 });
 
-function ExperienceForm({ onAddExperience, onCloseDialog }) {
+function ExperienceForm({
+   onAddExperience,
+   onUpdateExperience,
+   onCloseDialog,
+}) {
    const [startDate, setStartDate] = useState();
    const [endDate, setEndDate] = useState();
    const [position, setPosition] = useState('');
