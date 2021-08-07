@@ -22,12 +22,15 @@ function ExperienceForm({
    onAddExperience,
    onUpdateExperience,
    onCloseDialog,
+   initialFormValues,
 }) {
-   const [startDate, setStartDate] = useState();
-   const [endDate, setEndDate] = useState();
-   const [position, setPosition] = useState('');
-   const [company, setCompany] = useState('');
-   const [description, setDescription] = useState('');
+   const [startDate, setStartDate] = useState(initialFormValues.startDate);
+   const [endDate, setEndDate] = useState(initialFormValues.endDate);
+   const [position, setPosition] = useState(initialFormValues.position);
+   const [company, setCompany] = useState(initialFormValues.company);
+   const [description, setDescription] = useState(
+      initialFormValues.description
+   );
 
    const classes = useStyles();
 
@@ -61,8 +64,10 @@ function ExperienceForm({
          description,
       };
 
-      // notify parent
-      onAddExperience(experience);
+      // notify parent, add or update education based on initial form values
+      initialFormValues.position
+         ? onUpdateExperience(initialFormValues, experience)
+         : onAddExperience(experience);
 
       // close dialog
       onCloseDialog();
