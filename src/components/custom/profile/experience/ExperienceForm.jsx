@@ -141,7 +141,9 @@ function ExperienceForm({
          </Grid>
 
          <Grid item container justifyContent="flex-end">
-            <Button onClick={addExperience}>Add</Button>
+            <Button onClick={addExperience}>
+               {initialFormValues.position ? 'Update' : 'Add'}
+            </Button>
             <Button onClick={onCloseDialog}>Cancel</Button>
          </Grid>
       </Grid>
