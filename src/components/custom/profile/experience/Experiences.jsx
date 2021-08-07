@@ -17,7 +17,7 @@ const useStyles = makeStyles({
    },
 });
 
-function Experiences({ experiences }) {
+function Experiences({ experiences, onRemoveExperience }) {
    const classes = useStyles();
 
    return (
@@ -46,6 +46,22 @@ function Experiences({ experiences }) {
                <Typography variant="body1" className={classes.paperItem}>
                   {experience.description}
                </Typography>
+
+               <Divider className={classes.paperItem} />
+
+               <Box
+                  display="flex"
+                  justifyContent="flex-end"
+                  className={classes.paperItem}
+               >
+                  <Button
+                     color="secondary"
+                     variant="contained"
+                     onClick={() => onRemoveExperience(experience)}
+                  >
+                     Remove
+                  </Button>
+               </Box>
             </Paper>
          ))}
       </Box>
