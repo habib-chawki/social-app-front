@@ -16,9 +16,16 @@ const useStyles = makeStyles({
    paperItem: {
       marginTop: 20,
    },
+   updateBtn: {
+      marginRight: 10,
+   },
 });
 
-function Experiences({ experiences, onRemoveExperience }) {
+function Experiences({
+   experiences,
+   onRemoveExperience,
+   openExperienceFormDialog,
+}) {
    const classes = useStyles();
 
    return (
@@ -55,6 +62,14 @@ function Experiences({ experiences, onRemoveExperience }) {
                   justifyContent="flex-end"
                   className={classes.paperItem}
                >
+                  <Button
+                     className={classes.updateBtn}
+                     color="primary"
+                     variant="contained"
+                     onClick={() => openExperienceFormDialog(experience)}
+                  >
+                     Update
+                  </Button>
                   <Button
                      color="secondary"
                      variant="contained"
