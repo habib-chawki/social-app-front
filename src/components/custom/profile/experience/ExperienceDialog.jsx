@@ -7,7 +7,13 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 
-function ExperienceDialog({ onAddExperience, open, closeDialog }) {
+function ExperienceDialog({
+   onAddExperience,
+   onUpdateExperience,
+   open,
+   closeDialog,
+   initialFormValues,
+}) {
    return (
       <Box>
          <Dialog open={open} onClose={closeDialog} fullWidth>
@@ -15,7 +21,9 @@ function ExperienceDialog({ onAddExperience, open, closeDialog }) {
             <DialogContent dividers>
                <ExperienceForm
                   onAddExperience={onAddExperience}
+                  onUpdateExperience={onUpdateExperience}
                   onCloseDialog={closeDialog}
+                  initialFormValues={initialFormValues}
                />
             </DialogContent>
          </Dialog>
