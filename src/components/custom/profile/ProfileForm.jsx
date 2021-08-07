@@ -68,11 +68,22 @@ function ProfileForm() {
       profile.skills || { technical: [], organizational: [] }
    );
 
-   // dialog state
+   // education dialog state
    const [openEducationDialog, setOpenEducationDialog] = useState(false);
    const [initialEducationFormValues, setInitialEducationFormValues] = useState(
       {}
    );
+
+   // experience dialog state
+   const [openExperienceDialog, setOpenExperienceDialog] = useState(false);
+
+   const handleOpenExperienceDialog = () => {
+      setOpenExperienceDialog(true);
+   };
+
+   const closeExperienceDialog = () => {
+      setOpenExperienceDialog(false);
+   };
 
    const handleOpenEducationDialog = (initialValues = {}) => {
       // set the initial form values in case of an update
@@ -83,7 +94,7 @@ function ProfileForm() {
       setOpenEducationDialog(true);
    };
 
-   const closeDialog = () => {
+   const closeEducationDialog = () => {
       setOpenEducationDialog(false);
    };
 
@@ -302,7 +313,14 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <ExperienceDialog onAddExperience={handleAddExperience} />
+               <Button onClick={handleOpenExperienceDialog} fullWidth>
+                  Add experience
+               </Button>
+               <ExperienceDialog
+                  onAddExperience={handleAddExperience}
+                  open={openExperienceDialog}
+                  closeDialog={closeExperienceDialog}
+               />
                <Experiences
                   experiences={experiences}
                   onRemoveExperience={handleRemoveExperience}
@@ -317,7 +335,7 @@ function ProfileForm() {
                   onAddEducation={handleAddEducation}
                   onUpdateEducation={handleUpdateEducation}
                   open={openEducationDialog}
-                  closeDialog={closeDialog}
+                  closeDialog={closeEducationDialog}
                   initialFormValues={initialEducationFormValues}
                />
                <Educations
