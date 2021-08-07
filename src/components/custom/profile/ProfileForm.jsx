@@ -125,6 +125,17 @@ function ProfileForm() {
       setExperiences([...experiences, experience]);
    };
 
+   const handleRemoveExperience = (experience) => {
+      setExperiences(
+         experiences.filter(
+            (item) =>
+               item.position !== experience.position ||
+               item.company !== experience.company ||
+               item.startDate !== experience.startDate
+         )
+      );
+   };
+
    const handleAddEducation = (education) => {
       setEducations([...educations, education]);
    };
@@ -290,7 +301,10 @@ function ProfileForm() {
 
             <Grid item>
                <ExperienceDialog onAddExperience={handleAddExperience} />
-               <Experiences experiences={experiences}></Experiences>
+               <Experiences
+                  experiences={experiences}
+                  onRemoveExperience={handleRemoveExperience}
+               />
             </Grid>
 
             <Grid item>
