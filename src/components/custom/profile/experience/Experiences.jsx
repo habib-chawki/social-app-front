@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 function Experiences({
    experiences,
    onRemoveExperience,
-   openExperienceFormDialog,
+   onOpenExperienceDialog,
 }) {
    const classes = useStyles();
 
@@ -66,7 +66,7 @@ function Experiences({
                      className={classes.updateBtn}
                      color="primary"
                      variant="contained"
-                     onClick={() => openExperienceFormDialog(experience)}
+                     onClick={() => onOpenExperienceDialog(experience)}
                   >
                      Update
                   </Button>
