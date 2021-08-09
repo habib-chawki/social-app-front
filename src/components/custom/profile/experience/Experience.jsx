@@ -3,8 +3,7 @@ import React from 'react';
 import Experiences from './Experiences';
 import ExperienceDialog from './ExperienceDialog';
 
-function Experience() {
-   const [experiences, setExperiences] = useState(profile.experience || []);
+function Experience({ experiences, setExperiences }) {
    const [openExperienceDialog, setOpenExperienceDialog] = useState(false);
    const [initialExperienceFormValues, setInitialExperienceFormValues] =
       useState({});
