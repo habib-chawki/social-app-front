@@ -8,22 +8,20 @@ import Button from '@material-ui/core/Button';
 
 function Education({ educations, setEducations }) {
    // education dialog state
-   const [openEducationDialog, setOpenEducationDialog] = useState(false);
-   const [initialEducationFormValues, setInitialEducationFormValues] = useState(
-      {}
-   );
+   const [openDialog, setOpenDialog] = useState(false);
+   const [initialFormValues, setInitialFormValues] = useState({});
 
-   const handleOpenEducationDialog = (initialValues = {}) => {
+   const handleOpenEducationDialog = (values = {}) => {
       // set the initial form values in case of an update
-      if (initialValues) {
-         setInitialEducationFormValues(initialValues);
+      if (values) {
+         setInitialFormValues(values);
       }
 
-      setOpenEducationDialog(true);
+      setOpenDialog(true);
    };
 
-   const closeEducationDialog = () => {
-      setOpenEducationDialog(false);
+   const closeDialog = () => {
+      setOpenDialog(false);
    };
 
    const handleAddEducation = (education) => {
@@ -52,6 +50,7 @@ function Education({ educations, setEducations }) {
          )
       );
    };
+
    return (
       <Box>
          <Button onClick={handleOpenEducationDialog} fullWidth>
@@ -60,9 +59,9 @@ function Education({ educations, setEducations }) {
          <EducationDialog
             onAddEducation={handleAddEducation}
             onUpdateEducation={handleUpdateEducation}
-            open={openEducationDialog}
-            closeDialog={closeEducationDialog}
-            initialFormValues={initialEducationFormValues}
+            open={openDialog}
+            closeDialog={closeDialog}
+            initialFormValues={initialFormValues}
          />
          <Educations
             educations={educations}
