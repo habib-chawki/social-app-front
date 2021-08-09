@@ -293,20 +293,9 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <Button onClick={handleOpenEducationDialog} fullWidth>
-                  Add education
-               </Button>
-               <EducationDialog
-                  onAddEducation={handleAddEducation}
-                  onUpdateEducation={handleUpdateEducation}
-                  open={openEducationDialog}
-                  closeDialog={closeEducationDialog}
-                  initialFormValues={initialEducationFormValues}
-               />
-               <Educations
+               <Education
                   educations={educations}
-                  onRemoveEducation={handleRemoveEducation}
-                  onOpenEducationDialog={handleOpenEducationDialog}
+                  setEducations={setEducations}
                />
             </Grid>
 
