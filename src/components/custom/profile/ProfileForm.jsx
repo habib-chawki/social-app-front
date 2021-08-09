@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 
-import Experiences from './experience/Experiences';
-import ExperienceDialog from './experience/ExperienceDialog';
+import Experience from './experience/Experience';
 import Educations from './education/Educations';
 import EducationDialog from './education/EducationDialog';
 import Language from './Language';
@@ -332,21 +331,7 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <Button onClick={handleOpenExperienceDialog} fullWidth>
-                  Add experience
-               </Button>
-               <ExperienceDialog
-                  onAddExperience={handleAddExperience}
-                  onUpdateExperience={handleUpdateExperience}
-                  open={openExperienceDialog}
-                  closeDialog={closeExperienceDialog}
-                  initialFormValues={initialExperienceFormValues}
-               />
-               <Experiences
-                  experiences={experiences}
-                  onRemoveExperience={handleRemoveExperience}
-                  onOpenExperienceDialog={handleOpenExperienceDialog}
-               />
+               <Experience />
             </Grid>
 
             <Grid item>
