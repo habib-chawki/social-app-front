@@ -4,21 +4,20 @@ import Experiences from './Experiences';
 import ExperienceDialog from './ExperienceDialog';
 
 function Experience({ experiences, setExperiences }) {
-   const [openExperienceDialog, setOpenExperienceDialog] = useState(false);
-   const [initialExperienceFormValues, setInitialExperienceFormValues] =
-      useState({});
+   const [openDialog, setOpenDialog] = useState(false);
+   const [initialFormValues, setInitialFormValues] = useState({});
 
-   const handleOpenExperienceDialog = (initialValues = {}) => {
+   const handleOpenDialog = (values = {}) => {
       // set the initial form values in case of an update
-      if (initialValues) {
-         setInitialExperienceFormValues(initialValues);
+      if (values) {
+         setInitialFormValues(values);
       }
 
-      setOpenExperienceDialog(true);
+      setOpenDialog(true);
    };
 
-   const closeExperienceDialog = () => {
-      setOpenExperienceDialog(false);
+   const closeDialog = () => {
+      setOpenDialog(false);
    };
 
    const handleAddExperience = (experience) => {
@@ -50,21 +49,23 @@ function Experience({ experiences, setExperiences }) {
 
    return (
       <Box>
-         <Button onClick={handleOpenExperienceDialog} fullWidth>
+         <Button onClick={handleOpenDialog} fullWidth>
             Add experience
          </Button>
          <ExperienceDialog
             onAddExperience={handleAddExperience}
             onUpdateExperience={handleUpdateExperience}
-            open={openExperienceDialog}
-            closeDialog={closeExperienceDialog}
-            initialFormValues={initialExperienceFormValues}
+            open={openDialog}
+            closeDialog={closeDialog}
+            initialFormValues={initialFormValues}
          />
          <Experiences
             experiences={experiences}
             onRemoveExperience={handleRemoveExperience}
-            onOpenExperienceDialog={handleOpenExperienceDialog}
+            onOpenExperienceDialog={handleOpenDialog}
          />
       </Box>
    );
 }
+
+export default Experience;
