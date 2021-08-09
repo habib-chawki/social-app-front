@@ -61,6 +61,7 @@ function ProfileForm() {
    const [languages, setLanguages] = useState(profile.languages || []);
 
    const [educations, setEducations] = useState(profile.education || []);
+   const [experiences, setExperiences] = useState(profile.experience || []);
 
    const [skills, setSkills] = useState(
       profile.skills || { technical: [], organizational: [] }
@@ -285,7 +286,10 @@ function ProfileForm() {
             </Grid>
 
             <Grid item>
-               <Experience />
+               <Experience
+                  experiences={experiences}
+                  setExperiences={setExperiences}
+               />
             </Grid>
 
             <Grid item>
