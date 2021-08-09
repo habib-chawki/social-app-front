@@ -67,25 +67,6 @@ function ProfileForm() {
       profile.skills || { technical: [], organizational: [] }
    );
 
-   // education dialog state
-   const [openEducationDialog, setOpenEducationDialog] = useState(false);
-   const [initialEducationFormValues, setInitialEducationFormValues] = useState(
-      {}
-   );
-
-   const handleOpenEducationDialog = (initialValues = {}) => {
-      // set the initial form values in case of an update
-      if (initialValues) {
-         setInitialEducationFormValues(initialValues);
-      }
-
-      setOpenEducationDialog(true);
-   };
-
-   const closeEducationDialog = () => {
-      setOpenEducationDialog(false);
-   };
-
    const handleFirstNameChange = (event) => {
       setFirstName(event.target.value);
    };
@@ -120,33 +101,6 @@ function ProfileForm() {
 
    const handleRemoveLanguage = (langToDelete) => {
       setLanguages(languages.filter((lang) => langToDelete !== lang));
-   };
-
-   const handleAddEducation = (education) => {
-      setEducations([...educations, education]);
-   };
-
-   const handleUpdateEducation = (education, updatedEducation) => {
-      setEducations(
-         educations.map((item) =>
-            item.major === education.major &&
-            item.school === education.school &&
-            item.startDate === education.startDate
-               ? updatedEducation
-               : item
-         )
-      );
-   };
-
-   const handleRemoveEducation = (education) => {
-      setEducations(
-         educations.filter(
-            (item) =>
-               item.major !== education.major ||
-               item.school !== education.school ||
-               item.startDate !== education.startDate
-         )
-      );
    };
 
    const handleAddSkill = (skill) => {
