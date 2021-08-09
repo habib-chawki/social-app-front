@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 
+import Educations from './Educations';
+import EducationDialog from './EducationDialog';
+
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+
 function Education() {
    return (
       <Box>

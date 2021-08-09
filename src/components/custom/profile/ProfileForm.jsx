@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 
 import Experience from './experience/Experience';
-import Educations from './education/Educations';
-import EducationDialog from './education/EducationDialog';
+import Education from './education/Education';
+
 import Language from './Language';
 import Skills from './Skills';
 
