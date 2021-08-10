@@ -35,6 +35,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 // styles
 import { makeStyles } from '@material-ui/core/styles';
@@ -73,6 +76,9 @@ function Profile() {
    // styling
    const classes = useStyles();
 
+   // collapsable list
+   const [open, setOpen] = useState(true);
+
    const handleTabChange = (event, tabIndex) => {
       setSelectedTab(tabIndex);
    };
@@ -95,6 +101,10 @@ function Profile() {
          pathname: `/user/${userId}/profile-form`,
          state: profile,
       });
+   };
+
+   const handleClick = () => {
+      setOpen(!open);
    };
 
    return (
@@ -275,11 +285,12 @@ function Profile() {
             {/* Skills */}
             {selectedTab === 5 && (
                <List>
-                  <ListItem button>
+                  <ListItem button onClick={handleClick}>
                      <ListItemIcon>
                         <WorkIcon />
                      </ListItemIcon>
                      <ListItemText primary="Organizational" />
+                     {open ? <ExpandLess /> : <ExpandMore />}
                   </ListItem>
 
                   <ListItem button>
