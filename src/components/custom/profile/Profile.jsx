@@ -293,22 +293,26 @@ function Profile() {
                      {open ? <ExpandLess /> : <ExpandMore />}
                   </ListItem>
 
+                  <Collapse in={open}>
+                     <List>
+                        {profile.skills.organizational.length === 0 ? (
+                           <p>Undetermined organizational skills</p>
+                        ) : (
+                           profile.skills.organizational.map((skill, index) => (
+                              <ListItem key={index}>
+                                 <ListItemText primary={skill} />
+                              </ListItem>
+                           ))
+                        )}
+                     </List>
+                  </Collapse>
+
                   <ListItem button>
                      <ListItemIcon>
                         <TimerIcon />
                      </ListItemIcon>
                      <ListItemText primary="Technical" />
                   </ListItem>
-
-                  <ul>
-                     {profile.skills.organizational.length === 0 ? (
-                        <p>Undetermined organizational skills</p>
-                     ) : (
-                        profile.skills.organizational.map((skill, index) => (
-                           <li key={index}>{skill}</li>
-                        ))
-                     )}
-                  </ul>
 
                   <ul>
                      {profile.skills.technical.length === 0 ? (
