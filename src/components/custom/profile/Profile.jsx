@@ -103,7 +103,8 @@ function Profile() {
                   </Typography>
 
                   <Typography variant="h5" gutterBottom>
-                     <CakeIcon /> {profile.birthday}
+                     <CakeIcon />{' '}
+                     {moment(profile.birthday).format('MMMM Do YYYY')}
                   </Typography>
 
                   <Typography variant="h5" gutterBottom>
@@ -169,10 +170,12 @@ function Profile() {
             {selectedTab === 4 && (
                <Box>
                   {profile.languages.length === 0 ? (
-                     <p>Undetermined languages</p>
+                     <Typography variant="h4">
+                        Undetermined languages
+                     </Typography>
                   ) : (
                      profile.languages.map((language, index) => (
-                        <Chip key={index} label={language}></Chip>
+                        <Chip key={index} label={language} color="secondary" />
                      ))
                   )}
                </Box>
