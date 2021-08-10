@@ -10,6 +10,8 @@ import {
    Box,
    Card,
    Chip,
+   Divider,
+   Paper,
    Tabs,
    Tab,
    Typography,
@@ -25,6 +27,17 @@ import LanguageIcon from '@material-ui/icons/Language';
 import BuildIcon from '@material-ui/icons/Build';
 import WorkIcon from '@material-ui/icons/Work';
 import TimerIcon from '@material-ui/icons/Timer';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+   paper: {
+      padding: 20,
+   },
+   paperItem: {
+      marginTop: 20,
+   },
+});
 
 function Profile() {
    // extract user id
@@ -47,6 +60,9 @@ function Profile() {
 
    // tabs state
    const [selectedTab, setSelectedTab] = useState(0);
+
+   // styling
+   const classes = useStyles();
 
    const handleTabChange = (event, tabIndex) => {
       setSelectedTab(tabIndex);
@@ -129,16 +145,49 @@ function Profile() {
                      <p>Undetermined experience</p>
                   ) : (
                      profile.experience.map((experience) => (
-                        <Card key={experience.position}>
-                           <h2>
-                              {experience.position} - {experience.company}
-                           </h2>
-                           <h4>
-                              {moment(experience.startDate).format('MMM YYYY')}{' '}
-                              - {moment(experience.endDate).format('MMM YYYY')}
-                           </h4>
-                           <p>{experience.description}</p>
-                        </Card>
+                        <Paper
+                           key={experience.position}
+                           className={classes.paper}
+                        >
+                           <Box
+                              display="flex"
+                              justifyContent="space-between"
+                              alignItems="center"
+                           >
+                              <Typography variant="h4">
+                                 {experience.company}
+                              </Typography>
+
+                              <Typography
+                                 variant="subtitle1"
+                                 color="textSecondary"
+                              >
+                                 {moment(experience.startDate).format(
+                                    'MMMM YYYY'
+                                 )}{' '}
+                                 -{' '}
+                                 {moment(experience.endDate).format(
+                                    'MMMM YYYY'
+                                 )}
+                              </Typography>
+                           </Box>
+
+                           <Typography
+                              variant="h5"
+                              className={classes.paperItem}
+                           >
+                              {experience.position}
+                           </Typography>
+
+                           <Divider className={classes.paperItem} />
+
+                           <Typography
+                              variant="body1"
+                              className={classes.paperItem}
+                           >
+                              {experience.description}
+                           </Typography>
+                        </Paper>
                      ))
                   )}
                </Box>
