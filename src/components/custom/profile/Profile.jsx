@@ -92,21 +92,21 @@ function Profile() {
             {/* Basic info */}
             {selectedTab === 0 && (
                <Box>
-                  <Typography variant="h4">
+                  <Typography variant="h4" gutterBottom>
                      {profile.firstName
                         ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
                         : 'Undetermined name'}
                   </Typography>
 
-                  <Typography variant="h5">
+                  <Typography variant="h5" gutterBottom>
                      <HomeIcon /> {profile.address || 'Undetermined address'}
                   </Typography>
 
-                  <Typography variant="h5">
+                  <Typography variant="h5" gutterBottom>
                      <CakeIcon /> {profile.birthday}
                   </Typography>
 
-                  <Typography variant="h5">
+                  <Typography variant="h5" gutterBottom>
                      <WcIcon /> {profile.gender}
                   </Typography>
                </Box>
@@ -115,7 +115,9 @@ function Profile() {
             {/* Bio */}
             {selectedTab === 1 && (
                <Box>
-                  <p>{profile.bio || 'Undetermined bio'}</p>
+                  <Typography variant="body1">
+                     {profile.bio || 'Undetermined bio'}
+                  </Typography>
                </Box>
             )}
 
