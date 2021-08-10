@@ -71,6 +71,7 @@ function Profile() {
             indicatorColor="secondary"
             textColor="secondary"
          >
+            <Tab label="General" />
             <Tab label="Bio" />
             <Tab label="Experience" />
             <Tab label="Education" />
@@ -86,120 +87,132 @@ function Profile() {
             }
 
             {/* Basic info */}
-            <Box>
-               <h1>
-                  <AccountBoxIcon />{' '}
-                  {profile.firstName
-                     ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
-                     : 'Undetermined name'}
-               </h1>
+            {selectedTab === 0 && (
+               <Box>
+                  <h1>
+                     <AccountBoxIcon />{' '}
+                     {profile.firstName
+                        ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
+                        : 'Undetermined name'}
+                  </h1>
 
-               <h2>
-                  <HomeIcon /> {profile.address || 'Undetermined address'}
-               </h2>
-               <h3>
-                  <CakeIcon /> {profile.birthday}
-               </h3>
-            </Box>
+                  <h2>
+                     <HomeIcon /> {profile.address || 'Undetermined address'}
+                  </h2>
+                  <h3>
+                     <CakeIcon /> {profile.birthday}
+                  </h3>
+               </Box>
+            )}
 
             {/* Bio */}
-            <Box>
-               <h2>
-                  <InfoIcon /> Bio
-               </h2>
-               <p>{profile.bio || 'Undetermined bio'}</p>
-            </Box>
+            {selectedTab === 1 && (
+               <Box>
+                  <h2>
+                     <InfoIcon /> Bio
+                  </h2>
+                  <p>{profile.bio || 'Undetermined bio'}</p>
+               </Box>
+            )}
 
             {/* Experience */}
-            <Box>
-               <h2>
-                  <WorkIcon /> Exeperience
-               </h2>
+            {selectedTab === 2 && (
+               <Box>
+                  <h2>
+                     <WorkIcon /> Exeperience
+                  </h2>
 
-               {profile.experience.length === 0 ? (
-                  <p>Undetermined experience</p>
-               ) : (
-                  profile.experience.map((experience) => (
-                     <Card key={experience.position}>
-                        <h2>
-                           {experience.position} - {experience.company}
-                        </h2>
-                        <h4>
-                           {moment(experience.startDate).format('MMM YYYY')} -{' '}
-                           {moment(experience.endDate).format('MMM YYYY')}
-                        </h4>
-                        <p>{experience.description}</p>
-                     </Card>
-                  ))
-               )}
-            </Box>
+                  {profile.experience.length === 0 ? (
+                     <p>Undetermined experience</p>
+                  ) : (
+                     profile.experience.map((experience) => (
+                        <Card key={experience.position}>
+                           <h2>
+                              {experience.position} - {experience.company}
+                           </h2>
+                           <h4>
+                              {moment(experience.startDate).format('MMM YYYY')}{' '}
+                              - {moment(experience.endDate).format('MMM YYYY')}
+                           </h4>
+                           <p>{experience.description}</p>
+                        </Card>
+                     ))
+                  )}
+               </Box>
+            )}
 
             {/* Education */}
-            <Box>
-               <h2>
-                  <SchoolIcon /> Education
-               </h2>
-               {profile.education.length === 0 ? (
-                  <p>Undetermined education</p>
-               ) : (
-                  profile.education.map((education) => (
-                     <Card key={education.major}>
-                        <h2>
-                           {education.major} - {education.school}
-                        </h2>
-                        <h4>
-                           {moment(education.startDate).format('MMM YYYY')} -{' '}
-                           {moment(education.endDate).format('MMM YYYY')}
-                        </h4>
-                        <p>{education.description}</p>
-                     </Card>
-                  ))
-               )}
-            </Box>
+            {selectedTab === 3 && (
+               <Box>
+                  <h2>
+                     <SchoolIcon /> Education
+                  </h2>
+                  {profile.education.length === 0 ? (
+                     <p>Undetermined education</p>
+                  ) : (
+                     profile.education.map((education) => (
+                        <Card key={education.major}>
+                           <h2>
+                              {education.major} - {education.school}
+                           </h2>
+                           <h4>
+                              {moment(education.startDate).format('MMM YYYY')} -{' '}
+                              {moment(education.endDate).format('MMM YYYY')}
+                           </h4>
+                           <p>{education.description}</p>
+                        </Card>
+                     ))
+                  )}
+               </Box>
+            )}
 
             {/* Languages */}
-            <Box>
-               <h2>
-                  <LanguageIcon /> Languages
-               </h2>
+            {selectedTab === 4 && (
+               <Box>
+                  <h2>
+                     <LanguageIcon /> Languages
+                  </h2>
 
-               {profile.languages.length === 0 ? (
-                  <p>Undetermined languages</p>
-               ) : (
-                  profile.languages.map((language, index) => (
-                     <Chip key={index} label={language}></Chip>
-                  ))
-               )}
-            </Box>
+                  {profile.languages.length === 0 ? (
+                     <p>Undetermined languages</p>
+                  ) : (
+                     profile.languages.map((language, index) => (
+                        <Chip key={index} label={language}></Chip>
+                     ))
+                  )}
+               </Box>
+            )}
 
             {/* Skills */}
-            <Box>
-               <h2>Skills</h2>
-               <h3>
-                  <WorkIcon /> Organizational
-               </h3>
-               <ul>
-                  {profile.skills.organizational.length === 0 ? (
-                     <p>Undetermined organizational skills</p>
-                  ) : (
-                     profile.skills.organizational.map((skill, index) => (
-                        <li key={index}>{skill}</li>
-                     ))
-                  )}
-               </ul>
-               <h3>
-                  <TimerIcon /> Technical
-               </h3>
-               <ul>
-                  {profile.skills.technical.length === 0 ? (
-                     <p>Undetermined technical skills</p>
-                  ) : (
-                     profile.skills.technical.map((skill, index) => (
-                        <li key={index}>{skill}</li>
-                     ))
-                  )}
-               </ul>
-            </Box>
+            {selectedTab === 5 && (
+               <Box>
+                  <h2>Skills</h2>
+                  <h3>
+                     <WorkIcon /> Organizational
+                  </h3>
+                  <ul>
+                     {profile.skills.organizational.length === 0 ? (
+                        <p>Undetermined organizational skills</p>
+                     ) : (
+                        profile.skills.organizational.map((skill, index) => (
+                           <li key={index}>{skill}</li>
+                        ))
+                     )}
+                  </ul>
+                  <h3>
+                     <TimerIcon /> Technical
+                  </h3>
+                  <ul>
+                     {profile.skills.technical.length === 0 ? (
+                        <p>Undetermined technical skills</p>
+                     ) : (
+                        profile.skills.technical.map((skill, index) => (
+                           <li key={index}>{skill}</li>
+                        ))
+                     )}
+                  </ul>
+               </Box>
+            )}
          </Box>
       </Box>
    );
