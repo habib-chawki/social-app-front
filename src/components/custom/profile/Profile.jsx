@@ -19,6 +19,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import CakeIcon from '@material-ui/icons/Cake';
+import WcIcon from '@material-ui/icons/Wc';
 import SchoolIcon from '@material-ui/icons/School';
 import LanguageIcon from '@material-ui/icons/Language';
 import BuildIcon from '@material-ui/icons/Build';
@@ -103,6 +104,10 @@ function Profile() {
 
                   <Typography variant="h5">
                      <CakeIcon /> {profile.birthday}
+                  </Typography>
+
+                  <Typography variant="h5">
+                     <WcIcon /> {profile.gender}
                   </Typography>
                </Box>
             )}
