@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
+
+// components
+import CollapsibleSkills from './skills/CollapsibleSkills';
+
+// router
 import { useParams, useHistory } from 'react-router-dom';
+
+// services
 import { fetchProfile } from '../../../services/profile';
 import { getUser } from '../../../services/storage';
 
 import moment from 'moment';
 
-// components
+// mui components
 import {
    Button,
    Box,
-   Card,
    Chip,
    Divider,
    Paper,
@@ -35,9 +41,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
 
 // styles
 import { makeStyles } from '@material-ui/core/styles';
@@ -278,6 +281,11 @@ function Profile() {
             {/* Skills */}
             {selectedTab === 5 && (
                <List>
+                  <CollapsibleSkills
+                     skills={profile.skills.organizational}
+                     heading="Organizational"
+                  />
+
                   <ListItem button>
                      <ListItemIcon>
                         <TimerIcon />
