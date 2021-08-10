@@ -76,9 +76,6 @@ function Profile() {
    // styling
    const classes = useStyles();
 
-   // collapsable list
-   const [open, setOpen] = useState(true);
-
    const handleTabChange = (event, tabIndex) => {
       setSelectedTab(tabIndex);
    };
@@ -101,10 +98,6 @@ function Profile() {
          pathname: `/user/${userId}/profile-form`,
          state: profile,
       });
-   };
-
-   const handleClick = () => {
-      setOpen(!open);
    };
 
    return (
@@ -285,28 +278,6 @@ function Profile() {
             {/* Skills */}
             {selectedTab === 5 && (
                <List>
-                  <ListItem button onClick={handleClick}>
-                     <ListItemIcon>
-                        <WorkIcon />
-                     </ListItemIcon>
-                     <ListItemText primary="Organizational" />
-                     {open ? <ExpandLess /> : <ExpandMore />}
-                  </ListItem>
-
-                  <Collapse in={open}>
-                     <List>
-                        {profile.skills.organizational.length === 0 ? (
-                           <p>Undetermined organizational skills</p>
-                        ) : (
-                           profile.skills.organizational.map((skill, index) => (
-                              <ListItem key={index}>
-                                 <ListItemText primary={skill} />
-                              </ListItem>
-                           ))
-                        )}
-                     </List>
-                  </Collapse>
-
                   <ListItem button>
                      <ListItemIcon>
                         <TimerIcon />
