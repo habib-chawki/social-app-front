@@ -13,6 +13,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import CakeIcon from '@material-ui/icons/Cake';
 import SchoolIcon from '@material-ui/icons/School';
 import LanguageIcon from '@material-ui/icons/Language';
+import BuildIcon from '@material-ui/icons/Build';
 import WorkIcon from '@material-ui/icons/Work';
 import TimerIcon from '@material-ui/icons/Timer';
 
@@ -71,12 +72,12 @@ function Profile() {
             indicatorColor="secondary"
             textColor="secondary"
          >
-            <Tab label="General" />
-            <Tab label="Bio" />
-            <Tab label="Experience" />
-            <Tab label="Education" />
-            <Tab label="Languages" />
-            <Tab label="Skills" />
+            <Tab label="General" icon={<AccountBoxIcon />} />
+            <Tab label="Bio" icon={<InfoIcon />} />
+            <Tab label="Experience" icon={<WorkIcon />} />
+            <Tab label="Education" icon={<SchoolIcon />} />
+            <Tab label="Languages" icon={<LanguageIcon />} />
+            <Tab label="Skills" icon={<BuildIcon />} />
          </Tabs>
          <Box>
             {
@@ -90,7 +91,6 @@ function Profile() {
             {selectedTab === 0 && (
                <Box>
                   <h1>
-                     <AccountBoxIcon />{' '}
                      {profile.firstName
                         ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
                         : 'Undetermined name'}
@@ -108,9 +108,7 @@ function Profile() {
             {/* Bio */}
             {selectedTab === 1 && (
                <Box>
-                  <h2>
-                     <InfoIcon /> Bio
-                  </h2>
+                  <h2>Bio</h2>
                   <p>{profile.bio || 'Undetermined bio'}</p>
                </Box>
             )}
@@ -118,9 +116,7 @@ function Profile() {
             {/* Experience */}
             {selectedTab === 2 && (
                <Box>
-                  <h2>
-                     <WorkIcon /> Exeperience
-                  </h2>
+                  <h2>Exeperience</h2>
 
                   {profile.experience.length === 0 ? (
                      <p>Undetermined experience</p>
@@ -144,9 +140,7 @@ function Profile() {
             {/* Education */}
             {selectedTab === 3 && (
                <Box>
-                  <h2>
-                     <SchoolIcon /> Education
-                  </h2>
+                  <h2>Education</h2>
                   {profile.education.length === 0 ? (
                      <p>Undetermined education</p>
                   ) : (
@@ -169,9 +163,7 @@ function Profile() {
             {/* Languages */}
             {selectedTab === 4 && (
                <Box>
-                  <h2>
-                     <LanguageIcon /> Languages
-                  </h2>
+                  <h2>Languages</h2>
 
                   {profile.languages.length === 0 ? (
                      <p>Undetermined languages</p>
