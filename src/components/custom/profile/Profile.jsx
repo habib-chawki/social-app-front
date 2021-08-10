@@ -5,7 +5,15 @@ import { getUser } from '../../../services/storage';
 
 import moment from 'moment';
 
-import { Button, Box, Card, Chip, Tabs, Tab } from '@material-ui/core';
+import {
+   Button,
+   Box,
+   Card,
+   Chip,
+   Tabs,
+   Tab,
+   Typography,
+} from '@material-ui/core';
 
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
@@ -83,18 +91,19 @@ function Profile() {
             {/* Basic info */}
             {selectedTab === 0 && (
                <Box>
-                  <h1>
+                  <Typography variant="h4">
                      {profile.firstName
                         ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
                         : 'Undetermined name'}
-                  </h1>
+                  </Typography>
 
-                  <h2>
+                  <Typography variant="h5">
                      <HomeIcon /> {profile.address || 'Undetermined address'}
-                  </h2>
-                  <h3>
+                  </Typography>
+
+                  <Typography variant="h5">
                      <CakeIcon /> {profile.birthday}
-                  </h3>
+                  </Typography>
                </Box>
             )}
 
