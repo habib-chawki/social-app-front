@@ -146,8 +146,9 @@ function Profile() {
                   ) : (
                      profile.experience.map((experience) => (
                         <Paper
+                           className={`${classes.paper} ${classes.paperItem}`}
                            key={experience.position}
-                           className={classes.paper}
+                           elevation="3"
                         >
                            <Box
                               display="flex"
