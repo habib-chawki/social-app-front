@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+// libs
+import moment from 'moment';
+
 // components
 import CollapsibleSkills from './skills/CollapsibleSkills';
 
@@ -9,8 +12,6 @@ import { useParams, useHistory } from 'react-router-dom';
 // services
 import { fetchProfile } from '../../../services/profile';
 import { getUser } from '../../../services/storage';
-
-import moment from 'moment';
 
 // mui components
 import {
