@@ -35,6 +35,13 @@ function Profile() {
       languages: [],
    });
 
+   // tabs state
+   const [selectedTab, setSelectedTab] = useState(0);
+
+   const handleTabChange = (event, tabIndex) => {
+      setSelectedTab(tabIndex);
+   };
+
    useEffect(() => {
       // fetch profile by user id
       fetchProfile(userId)
@@ -58,6 +65,8 @@ function Profile() {
    return (
       <Box>
          <Tabs
+            value={selectedTab}
+            onChange={handleTabChange}
             variant="fullWidth"
             indicatorColor="secondary"
             textColor="secondary"
