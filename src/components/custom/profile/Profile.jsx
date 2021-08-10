@@ -201,16 +201,48 @@ function Profile() {
                      <p>Undetermined education</p>
                   ) : (
                      profile.education.map((education) => (
-                        <Card key={education.major}>
-                           <h2>
-                              {education.major} - {education.school}
-                           </h2>
-                           <h4>
-                              {moment(education.startDate).format('MMM YYYY')} -{' '}
-                              {moment(education.endDate).format('MMM YYYY')}
-                           </h4>
-                           <p>{education.description}</p>
-                        </Card>
+                        <Paper
+                           className={`${classes.paper} ${classes.paperItem}`}
+                           key={education.major}
+                           elevation="3"
+                        >
+                           <Box
+                              display="flex"
+                              justifyContent="space-between"
+                              alignItems="center"
+                           >
+                              <Typography variant="h4">
+                                 {education.school}
+                              </Typography>
+
+                              <Typography
+                                 variant="subtitle1"
+                                 color="textSecondary"
+                              >
+                                 {moment(education.startDate).format(
+                                    'MMMM YYYY'
+                                 )}{' '}
+                                 -{' '}
+                                 {moment(education.endDate).format('MMMM YYYY')}
+                              </Typography>
+                           </Box>
+
+                           <Typography
+                              variant="h5"
+                              className={classes.paperItem}
+                           >
+                              {education.major}
+                           </Typography>
+
+                           <Divider className={classes.paperItem} />
+
+                           <Typography
+                              variant="body1"
+                              className={classes.paperItem}
+                           >
+                              {education.description}
+                           </Typography>
+                        </Paper>
                      ))
                   )}
                </Box>
