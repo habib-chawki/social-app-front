@@ -5,6 +5,7 @@ import { getUser } from '../../../services/storage';
 
 import moment from 'moment';
 
+// components
 import {
    Button,
    Box,
@@ -17,6 +18,7 @@ import {
    Typography,
 } from '@material-ui/core';
 
+// icons
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -28,6 +30,13 @@ import BuildIcon from '@material-ui/icons/Build';
 import WorkIcon from '@material-ui/icons/Work';
 import TimerIcon from '@material-ui/icons/Timer';
 
+// lists
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+// styles
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -265,10 +274,21 @@ function Profile() {
 
             {/* Skills */}
             {selectedTab === 5 && (
-               <Box>
-                  <h3>
-                     <WorkIcon /> Organizational
-                  </h3>
+               <List>
+                  <ListItem button>
+                     <ListItemIcon>
+                        <WorkIcon />
+                     </ListItemIcon>
+                     <ListItemText primary="Organizational" />
+                  </ListItem>
+
+                  <ListItem button>
+                     <ListItemIcon>
+                        <TimerIcon />
+                     </ListItemIcon>
+                     <ListItemText primary="Technical" />
+                  </ListItem>
+
                   <ul>
                      {profile.skills.organizational.length === 0 ? (
                         <p>Undetermined organizational skills</p>
@@ -278,9 +298,7 @@ function Profile() {
                         ))
                      )}
                   </ul>
-                  <h3>
-                     <TimerIcon /> Technical
-                  </h3>
+
                   <ul>
                      {profile.skills.technical.length === 0 ? (
                         <p>Undetermined technical skills</p>
@@ -290,7 +308,7 @@ function Profile() {
                         ))
                      )}
                   </ul>
-               </Box>
+               </List>
             )}
             {
                // determine whether the logged in user can update the profile
