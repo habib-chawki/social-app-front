@@ -9,9 +9,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
-import WorkIcon from '@material-ui/icons/Work';
-
-function CollapsibleSkills({ skills, heading }) {
+function CollapsibleSkills({ skills, heading, icon }) {
    const [open, setOpen] = useState(true);
 
    const handleClick = () => {
@@ -21,9 +19,7 @@ function CollapsibleSkills({ skills, heading }) {
    return (
       <Box>
          <ListItem button onClick={handleClick}>
-            <ListItemIcon>
-               <WorkIcon />
-            </ListItemIcon>
+            <ListItemIcon>{icon}</ListItemIcon>
             <ListItemText primary={heading} />
             {open ? <ExpandLess /> : <ExpandMore />}
          </ListItem>
