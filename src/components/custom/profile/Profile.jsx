@@ -80,13 +80,6 @@ function Profile() {
             <Tab label="Skills" icon={<BuildIcon />} />
          </Tabs>
          <Box>
-            {
-               // determine whether the logged in user can update the profile
-               userId === getUser() && (
-                  <Button onClick={handleUpdateProfile}>Update profile</Button>
-               )
-            }
-
             {/* Basic info */}
             {selectedTab === 0 && (
                <Box>
@@ -108,7 +101,6 @@ function Profile() {
             {/* Bio */}
             {selectedTab === 1 && (
                <Box>
-                  <h2>Bio</h2>
                   <p>{profile.bio || 'Undetermined bio'}</p>
                </Box>
             )}
@@ -116,8 +108,6 @@ function Profile() {
             {/* Experience */}
             {selectedTab === 2 && (
                <Box>
-                  <h2>Exeperience</h2>
-
                   {profile.experience.length === 0 ? (
                      <p>Undetermined experience</p>
                   ) : (
@@ -140,7 +130,6 @@ function Profile() {
             {/* Education */}
             {selectedTab === 3 && (
                <Box>
-                  <h2>Education</h2>
                   {profile.education.length === 0 ? (
                      <p>Undetermined education</p>
                   ) : (
@@ -163,8 +152,6 @@ function Profile() {
             {/* Languages */}
             {selectedTab === 4 && (
                <Box>
-                  <h2>Languages</h2>
-
                   {profile.languages.length === 0 ? (
                      <p>Undetermined languages</p>
                   ) : (
@@ -178,7 +165,6 @@ function Profile() {
             {/* Skills */}
             {selectedTab === 5 && (
                <Box>
-                  <h2>Skills</h2>
                   <h3>
                      <WorkIcon /> Organizational
                   </h3>
@@ -205,6 +191,12 @@ function Profile() {
                   </ul>
                </Box>
             )}
+            {
+               // determine whether the logged in user can update the profile
+               userId === getUser() && (
+                  <Button onClick={handleUpdateProfile}>Update profile</Button>
+               )
+            }
          </Box>
       </Box>
    );
