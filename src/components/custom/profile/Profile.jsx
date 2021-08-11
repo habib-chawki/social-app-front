@@ -199,7 +199,6 @@ function Profile() {
                   textColor="secondary"
                   variant="fullWidth"
                >
-                  <Tab label="General" icon={<AccountBoxIcon />} />
                   <Tab label="Bio" icon={<InfoIcon />} />
                   <Tab label="Experience" icon={<WorkIcon />} />
                   <Tab label="Education" icon={<SchoolIcon />} />
@@ -209,34 +208,8 @@ function Profile() {
             </AppBar>
 
             <Box mt={2}>
-               {/* Basic info */}
-               {selectedTab === 0 && (
-                  <Box>
-                     <Typography variant="h4" gutterBottom>
-                        <AccountCircleIcon />
-                        {profile.firstName
-                           ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
-                           : 'Undetermined name'}
-                     </Typography>
-
-                     <Typography variant="h5" gutterBottom>
-                        <HomeIcon /> {profile.address || 'Undetermined address'}
-                     </Typography>
-
-                     <Typography variant="h5" gutterBottom>
-                        <CakeIcon />{' '}
-                        {moment(profile.birthday).format('MMMM Do YYYY')}
-                     </Typography>
-
-                     <Typography variant="h5" gutterBottom>
-                        <WcIcon /> {profile.gender}
-                     </Typography>
-                  </Box>
-               )}
-
                {/* Bio */}
-
-               {selectedTab === 1 && (
+               {selectedTab === 0 && (
                   <Box>
                      <Typography variant="body1">
                         {profile.bio || 'Undetermined bio'}
@@ -245,7 +218,7 @@ function Profile() {
                )}
 
                {/* Experience */}
-               {selectedTab === 2 && (
+               {selectedTab === 1 && (
                   <Box>
                      {profile.experience.length === 0 ? (
                         <p>Undetermined experience</p>
@@ -301,7 +274,7 @@ function Profile() {
                )}
 
                {/* Education */}
-               {selectedTab === 3 && (
+               {selectedTab === 2 && (
                   <Box>
                      {profile.education.length === 0 ? (
                         <p>Undetermined education</p>
@@ -357,7 +330,7 @@ function Profile() {
                )}
 
                {/* Languages */}
-               {selectedTab === 4 && (
+               {selectedTab === 3 && (
                   <Box>
                      {profile.languages.length === 0 ? (
                         <Typography variant="h4">
@@ -376,7 +349,7 @@ function Profile() {
                )}
 
                {/* Skills */}
-               {selectedTab === 5 && (
+               {selectedTab === 4 && (
                   <List>
                      <CollapsibleSkills
                         skills={profile.skills.organizational}
