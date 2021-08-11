@@ -10,7 +10,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
 function CollapsibleSkills({ skills, heading, icon }) {
-   const [open, setOpen] = useState(true);
+   const [open, setOpen] = useState(false);
 
    const handleClick = () => {
       setOpen(!open);
@@ -31,7 +31,7 @@ function CollapsibleSkills({ skills, heading, icon }) {
                ) : (
                   skills.map((skill, index) => (
                      <ListItem key={index}>
-                        <ListItemText primary={skill} />
+                        <ListItemText primary={skill} inset={true} />
                      </ListItem>
                   ))
                )}
