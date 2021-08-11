@@ -14,6 +14,7 @@ import { fetchProfile } from '../../../services/profile';
 import { getUser } from '../../../services/storage';
 
 // mui components
+import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
@@ -106,7 +107,7 @@ function Profile() {
    };
 
    return (
-      <Box>
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
          <Drawer
             variant="permanent"
             anchor="left"
@@ -122,202 +123,214 @@ function Profile() {
          </Drawer>
 
          {/* tabs */}
-         <Tabs
-            value={selectedTab}
-            onChange={handleTabChange}
-            variant="fullWidth"
-            indicatorColor="secondary"
-            textColor="secondary"
-         >
-            <Tab label="General" icon={<AccountBoxIcon />} />
-            <Tab label="Bio" icon={<InfoIcon />} />
-            <Tab label="Experience" icon={<WorkIcon />} />
-            <Tab label="Education" icon={<SchoolIcon />} />
-            <Tab label="Languages" icon={<LanguageIcon />} />
-            <Tab label="Skills" icon={<BuildIcon />} />
-         </Tabs>
          <Box>
-            {/* Basic info */}
-            {selectedTab === 0 && (
-               <Box>
-                  <Typography variant="h4" gutterBottom>
-                     <AccountCircleIcon />
-                     {profile.firstName
-                        ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
-                        : 'Undetermined name'}
-                  </Typography>
-
-                  <Typography variant="h5" gutterBottom>
-                     <HomeIcon /> {profile.address || 'Undetermined address'}
-                  </Typography>
-
-                  <Typography variant="h5" gutterBottom>
-                     <CakeIcon />{' '}
-                     {moment(profile.birthday).format('MMMM Do YYYY')}
-                  </Typography>
-
-                  <Typography variant="h5" gutterBottom>
-                     <WcIcon /> {profile.gender}
-                  </Typography>
-               </Box>
-            )}
-
-            {/* Bio */}
-            {selectedTab === 1 && (
-               <Box>
-                  <Typography variant="body1">
-                     {profile.bio || 'Undetermined bio'}
-                  </Typography>
-               </Box>
-            )}
-
-            {/* Experience */}
-            {selectedTab === 2 && (
-               <Box>
-                  {profile.experience.length === 0 ? (
-                     <p>Undetermined experience</p>
-                  ) : (
-                     profile.experience.map((experience) => (
-                        <Paper
-                           className={`${classes.paper} ${classes.paperItem}`}
-                           key={experience.position}
-                           elevation="3"
-                        >
-                           <Box
-                              display="flex"
-                              justifyContent="space-between"
-                              alignItems="center"
-                           >
-                              <Typography variant="h4">
-                                 {experience.company}
-                              </Typography>
-
-                              <Typography
-                                 variant="subtitle1"
-                                 color="textSecondary"
-                              >
-                                 {moment(experience.startDate).format(
-                                    'MMMM YYYY'
-                                 )}{' '}
-                                 -{' '}
-                                 {moment(experience.endDate).format(
-                                    'MMMM YYYY'
-                                 )}
-                              </Typography>
-                           </Box>
-
-                           <Typography
-                              variant="h5"
-                              className={classes.paperItem}
-                           >
-                              {experience.position}
-                           </Typography>
-
-                           <Divider className={classes.paperItem} />
-
-                           <Typography
-                              variant="body1"
-                              className={classes.paperItem}
-                           >
-                              {experience.description}
-                           </Typography>
-                        </Paper>
-                     ))
-                  )}
-               </Box>
-            )}
-
-            {/* Education */}
-            {selectedTab === 3 && (
-               <Box>
-                  {profile.education.length === 0 ? (
-                     <p>Undetermined education</p>
-                  ) : (
-                     profile.education.map((education) => (
-                        <Paper
-                           className={`${classes.paper} ${classes.paperItem}`}
-                           key={education.major}
-                           elevation="3"
-                        >
-                           <Box
-                              display="flex"
-                              justifyContent="space-between"
-                              alignItems="center"
-                           >
-                              <Typography variant="h4">
-                                 {education.school}
-                              </Typography>
-
-                              <Typography
-                                 variant="subtitle1"
-                                 color="textSecondary"
-                              >
-                                 {moment(education.startDate).format(
-                                    'MMMM YYYY'
-                                 )}{' '}
-                                 -{' '}
-                                 {moment(education.endDate).format('MMMM YYYY')}
-                              </Typography>
-                           </Box>
-
-                           <Typography
-                              variant="h5"
-                              className={classes.paperItem}
-                           >
-                              {education.major}
-                           </Typography>
-
-                           <Divider className={classes.paperItem} />
-
-                           <Typography
-                              variant="body1"
-                              className={classes.paperItem}
-                           >
-                              {education.description}
-                           </Typography>
-                        </Paper>
-                     ))
-                  )}
-               </Box>
-            )}
-
-            {/* Languages */}
-            {selectedTab === 4 && (
-               <Box>
-                  {profile.languages.length === 0 ? (
-                     <Typography variant="h4">
-                        Undetermined languages
+            <AppBar position="sticky" color="default">
+               <Tabs
+                  value={selectedTab}
+                  onChange={handleTabChange}
+                  indicatorColor="secondary"
+                  textColor="secondary"
+                  variant="fullWidth"
+               >
+                  <Tab label="General" icon={<AccountBoxIcon />} />
+                  <Tab label="Bio" icon={<InfoIcon />} />
+                  <Tab label="Experience" icon={<WorkIcon />} />
+                  <Tab label="Education" icon={<SchoolIcon />} />
+                  <Tab label="Languages" icon={<LanguageIcon />} />
+                  <Tab label="Skills" icon={<BuildIcon />} />
+               </Tabs>
+            </AppBar>
+            <Box>
+               {/* Basic info */}
+               {selectedTab === 0 && (
+                  <Box>
+                     <Typography variant="h4" gutterBottom>
+                        <AccountCircleIcon />
+                        {profile.firstName
+                           ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
+                           : 'Undetermined name'}
                      </Typography>
-                  ) : (
-                     profile.languages.map((language, index) => (
-                        <Chip key={index} label={language} color="secondary" />
-                     ))
-                  )}
-               </Box>
-            )}
 
-            {/* Skills */}
-            {selectedTab === 5 && (
-               <List>
-                  <CollapsibleSkills
-                     skills={profile.skills.organizational}
-                     heading="Organizational"
-                     icon={<WorkIcon />}
-                  />
+                     <Typography variant="h5" gutterBottom>
+                        <HomeIcon /> {profile.address || 'Undetermined address'}
+                     </Typography>
 
-                  <CollapsibleSkills
-                     skills={profile.skills.technical}
-                     heading="Technical"
-                     icon={<TimerIcon />}
-                  />
-               </List>
-            )}
-            {
-               // determine whether the logged in user can update the profile
-               userId === getUser() && (
-                  <Button onClick={handleUpdateProfile}>Update profile</Button>
-               )
-            }
+                     <Typography variant="h5" gutterBottom>
+                        <CakeIcon />{' '}
+                        {moment(profile.birthday).format('MMMM Do YYYY')}
+                     </Typography>
+
+                     <Typography variant="h5" gutterBottom>
+                        <WcIcon /> {profile.gender}
+                     </Typography>
+                  </Box>
+               )}
+
+               {/* Bio */}
+               {selectedTab === 1 && (
+                  <Box>
+                     <Typography variant="body1">
+                        {profile.bio || 'Undetermined bio'}
+                     </Typography>
+                  </Box>
+               )}
+
+               {/* Experience */}
+               {selectedTab === 2 && (
+                  <Box>
+                     {profile.experience.length === 0 ? (
+                        <p>Undetermined experience</p>
+                     ) : (
+                        profile.experience.map((experience) => (
+                           <Paper
+                              className={`${classes.paper} ${classes.paperItem}`}
+                              key={experience.position}
+                              elevation="3"
+                           >
+                              <Box
+                                 display="flex"
+                                 justifyContent="space-between"
+                                 alignItems="center"
+                              >
+                                 <Typography variant="h4">
+                                    {experience.company}
+                                 </Typography>
+
+                                 <Typography
+                                    variant="subtitle1"
+                                    color="textSecondary"
+                                 >
+                                    {moment(experience.startDate).format(
+                                       'MMMM YYYY'
+                                    )}{' '}
+                                    -{' '}
+                                    {moment(experience.endDate).format(
+                                       'MMMM YYYY'
+                                    )}
+                                 </Typography>
+                              </Box>
+
+                              <Typography
+                                 variant="h5"
+                                 className={classes.paperItem}
+                              >
+                                 {experience.position}
+                              </Typography>
+
+                              <Divider className={classes.paperItem} />
+
+                              <Typography
+                                 variant="body1"
+                                 className={classes.paperItem}
+                              >
+                                 {experience.description}
+                              </Typography>
+                           </Paper>
+                        ))
+                     )}
+                  </Box>
+               )}
+
+               {/* Education */}
+               {selectedTab === 3 && (
+                  <Box>
+                     {profile.education.length === 0 ? (
+                        <p>Undetermined education</p>
+                     ) : (
+                        profile.education.map((education) => (
+                           <Paper
+                              className={`${classes.paper} ${classes.paperItem}`}
+                              key={education.major}
+                              elevation="3"
+                           >
+                              <Box
+                                 display="flex"
+                                 justifyContent="space-between"
+                                 alignItems="center"
+                              >
+                                 <Typography variant="h4">
+                                    {education.school}
+                                 </Typography>
+
+                                 <Typography
+                                    variant="subtitle1"
+                                    color="textSecondary"
+                                 >
+                                    {moment(education.startDate).format(
+                                       'MMMM YYYY'
+                                    )}{' '}
+                                    -{' '}
+                                    {moment(education.endDate).format(
+                                       'MMMM YYYY'
+                                    )}
+                                 </Typography>
+                              </Box>
+
+                              <Typography
+                                 variant="h5"
+                                 className={classes.paperItem}
+                              >
+                                 {education.major}
+                              </Typography>
+
+                              <Divider className={classes.paperItem} />
+
+                              <Typography
+                                 variant="body1"
+                                 className={classes.paperItem}
+                              >
+                                 {education.description}
+                              </Typography>
+                           </Paper>
+                        ))
+                     )}
+                  </Box>
+               )}
+
+               {/* Languages */}
+               {selectedTab === 4 && (
+                  <Box>
+                     {profile.languages.length === 0 ? (
+                        <Typography variant="h4">
+                           Undetermined languages
+                        </Typography>
+                     ) : (
+                        profile.languages.map((language, index) => (
+                           <Chip
+                              key={index}
+                              label={language}
+                              color="secondary"
+                           />
+                        ))
+                     )}
+                  </Box>
+               )}
+
+               {/* Skills */}
+               {selectedTab === 5 && (
+                  <List>
+                     <CollapsibleSkills
+                        skills={profile.skills.organizational}
+                        heading="Organizational"
+                        icon={<WorkIcon />}
+                     />
+
+                     <CollapsibleSkills
+                        skills={profile.skills.technical}
+                        heading="Technical"
+                        icon={<TimerIcon />}
+                     />
+                  </List>
+               )}
+               {
+                  // determine whether the logged in user can update the profile
+                  userId === getUser() && (
+                     <Button onClick={handleUpdateProfile}>
+                        Update profile
+                     </Button>
+                  )
+               }
+            </Box>
          </Box>
       </Box>
    );
