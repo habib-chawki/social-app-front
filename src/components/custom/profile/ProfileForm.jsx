@@ -55,7 +55,7 @@ function ProfileForm() {
    const [address, setAddress] = useState(profile.address || '');
    const [bio, setBio] = useState(profile.bio || '');
 
-   const [gender, setGender] = useState(profile.genre || '');
+   const [gender, setGender] = useState(profile.gender || '');
    const [birthday, setBirthday] = useState(profile.birthday || null);
 
    const [languages, setLanguages] = useState(profile.languages || []);
