@@ -17,8 +17,12 @@ import { getUser } from '../../../services/storage';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
+import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -99,6 +103,17 @@ function Profile() {
 
    return (
       <Box>
+         <Drawer variant="permanent" anchor="left">
+            <Divider />
+            <List>
+               <ListItem>
+                  <ListItemIcon></ListItemIcon>
+                  <ListItemText />
+               </ListItem>
+            </List>
+         </Drawer>
+
+         {/* tabs */}
          <Tabs
             value={selectedTab}
             onChange={handleTabChange}
