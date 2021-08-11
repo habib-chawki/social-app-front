@@ -52,6 +52,9 @@ const useStyles = makeStyles({
    paperItem: {
       marginTop: 20,
    },
+   drawer: {
+      width: 300,
+   },
    drawerPaper: {
       width: 300,
    },
@@ -107,8 +110,9 @@ function Profile() {
    };
 
    return (
-      <Box display="flex" flexDirection="row" justifyContent="space-between">
+      <Box display="flex">
          <Drawer
+            className={classes.drawer}
             variant="permanent"
             anchor="left"
             classes={{ paper: classes.drawerPaper }}
@@ -123,7 +127,7 @@ function Profile() {
          </Drawer>
 
          {/* tabs */}
-         <Box>
+         <Box display="flex" flexDirection="column" flexGrow={1}>
             <AppBar position="sticky" color="default">
                <Tabs
                   value={selectedTab}
@@ -167,6 +171,7 @@ function Profile() {
                )}
 
                {/* Bio */}
+
                {selectedTab === 1 && (
                   <Box>
                      <Typography variant="body1">
