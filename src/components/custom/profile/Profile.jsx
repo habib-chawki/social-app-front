@@ -51,6 +51,9 @@ const useStyles = makeStyles({
    paperItem: {
       marginTop: 20,
    },
+   drawerPaper: {
+      width: 300,
+   },
 });
 
 function Profile() {
@@ -104,7 +107,11 @@ function Profile() {
 
    return (
       <Box>
-         {/* <Drawer variant="permanent" anchor="left">
+         <Drawer
+            variant="permanent"
+            anchor="left"
+            classes={{ paper: classes.drawerPaper }}
+         >
             <Divider />
             <List>
                <ListItem>
@@ -112,7 +119,7 @@ function Profile() {
                   <ListItemText />
                </ListItem>
             </List>
-         </Drawer> */}
+         </Drawer>
 
          {/* tabs */}
          <Tabs
