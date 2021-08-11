@@ -14,18 +14,17 @@ import { fetchProfile } from '../../../services/profile';
 import { getUser } from '../../../services/storage';
 
 // mui components
-import {
-   Button,
-   Box,
-   Chip,
-   Divider,
-   Paper,
-   Tabs,
-   Tab,
-   Typography,
-} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Chip from '@material-ui/core/Chip';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 
-// icons
+// mui icons
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -36,9 +35,6 @@ import LanguageIcon from '@material-ui/icons/Language';
 import BuildIcon from '@material-ui/icons/Build';
 import WorkIcon from '@material-ui/icons/Work';
 import TimerIcon from '@material-ui/icons/Timer';
-
-// lists
-import List from '@material-ui/core/List';
 
 // styles
 import { makeStyles } from '@material-ui/core/styles';
