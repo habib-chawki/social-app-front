@@ -137,9 +137,13 @@ function Profile() {
                      </ListItemIcon>
                      <ListItemText
                         primary={
-                           profile.firstName
-                              ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
-                              : 'Undetermined name'
+                           profile.firstName ? (
+                              <Typography variant="h6">
+                                 {`${profile.firstName} ${profile.middleName} ${profile.lastName}`}
+                              </Typography>
+                           ) : (
+                              'Undetermined name'
+                           )
                         }
                      />
                   </ListItem>
@@ -149,7 +153,11 @@ function Profile() {
                         <HomeIcon />
                      </ListItemIcon>
                      <ListItemText
-                        primary={profile.address || 'Undetermined address'}
+                        primary={
+                           <Typography variant="h6">
+                              {profile.address || 'Undetermined address'}{' '}
+                           </Typography>
+                        }
                      />
                   </ListItem>
 
@@ -158,9 +166,11 @@ function Profile() {
                         <CakeIcon />
                      </ListItemIcon>
                      <ListItemText
-                        primary={moment(profile.birthday).format(
-                           'MMMM Do YYYY'
-                        )}
+                        primary={
+                           <Typography variant="h6">
+                              {moment(profile.birthday).format('MMMM Do YYYY')}
+                           </Typography>
+                        }
                      />
                   </ListItem>
 
@@ -168,7 +178,13 @@ function Profile() {
                      <ListItemIcon>
                         <WcIcon />
                      </ListItemIcon>
-                     <ListItemText primary={profile.gender} />
+                     <ListItemText
+                        primary={
+                           <Typography variant="h6">
+                              {profile.gender}
+                           </Typography>
+                        }
+                     />
                   </ListItem>
                </List>
             </Box>
