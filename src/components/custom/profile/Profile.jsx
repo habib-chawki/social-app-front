@@ -125,7 +125,30 @@ function Profile() {
             <Box display="flex" justifyContent="center" my={5}>
                <Avatar className={classes.avatar} variant="circular" />
             </Box>
+
             <Divider />
+
+            <Box>
+               <Typography variant="h4" align="center" gutterBottom>
+                  <AccountCircleIcon />
+                  {profile.firstName
+                     ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
+                     : 'Undetermined name'}
+               </Typography>
+
+               <Typography variant="h5" align="center" gutterBottom>
+                  <HomeIcon /> {profile.address || 'Undetermined address'}
+               </Typography>
+
+               <Typography variant="h5" align="center" gutterBottom>
+                  <CakeIcon /> {moment(profile.birthday).format('MMMM Do YYYY')}
+               </Typography>
+
+               <Typography variant="h5" align="center" gutterBottom>
+                  <WcIcon /> {profile.gender}
+               </Typography>
+            </Box>
+
             <List>
                <ListItem>
                   <ListItemIcon></ListItemIcon>
