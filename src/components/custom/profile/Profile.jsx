@@ -133,7 +133,7 @@ function Profile() {
                <List>
                   <ListItem>
                      <ListItemIcon>
-                        <AccountBoxIcon />
+                        <AccountBoxIcon fontSize="large" color="secondary" />
                      </ListItemIcon>
                      <ListItemText
                         primary={
@@ -150,7 +150,7 @@ function Profile() {
 
                   <ListItem>
                      <ListItemIcon>
-                        <HomeIcon />
+                        <HomeIcon fontSize="large" color="secondary" />
                      </ListItemIcon>
                      <ListItemText
                         primary={
@@ -163,7 +163,7 @@ function Profile() {
 
                   <ListItem>
                      <ListItemIcon>
-                        <CakeIcon />
+                        <CakeIcon fontSize="large" color="secondary" />
                      </ListItemIcon>
                      <ListItemText
                         primary={
@@ -176,7 +176,7 @@ function Profile() {
 
                   <ListItem>
                      <ListItemIcon>
-                        <WcIcon />
+                        <WcIcon fontSize="large" color="secondary" />
                      </ListItemIcon>
                      <ListItemText
                         primary={
