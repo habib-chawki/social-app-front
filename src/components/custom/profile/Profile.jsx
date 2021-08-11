@@ -182,6 +182,8 @@ function Profile() {
                      variant="contained"
                      color="secondary"
                      onClick={handleUpdateProfile}
+                     size="large"
+                     style={{ borderRadius: 0 }}
                   >
                      Update profile
                   </Button>
