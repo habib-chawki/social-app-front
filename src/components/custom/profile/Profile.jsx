@@ -128,7 +128,7 @@ function Profile() {
 
             <Divider />
 
-            <Box>
+            <Box display="flex" flexDirection="column" flexGrow={1}>
                <Typography variant="h4" align="center" gutterBottom>
                   <AccountCircleIcon />
                   {profile.firstName
@@ -148,6 +148,21 @@ function Profile() {
                   <WcIcon /> {profile.gender}
                </Typography>
             </Box>
+
+            <Divider />
+
+            {
+               // determine whether the logged in user can update the profile
+               userId === getUser() && (
+                  <Button
+                     variant="contained"
+                     color="secondary"
+                     onClick={handleUpdateProfile}
+                  >
+                     Update profile
+                  </Button>
+               )
+            }
 
             <List>
                <ListItem>
@@ -360,14 +375,6 @@ function Profile() {
                      />
                   </List>
                )}
-               {
-                  // determine whether the logged in user can update the profile
-                  userId === getUser() && (
-                     <Button onClick={handleUpdateProfile}>
-                        Update profile
-                     </Button>
-                  )
-               }
             </Box>
          </Box>
       </Box>
