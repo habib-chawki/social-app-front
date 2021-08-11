@@ -32,6 +32,7 @@ import Typography from '@material-ui/core/Typography';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import CakeIcon from '@material-ui/icons/Cake';
 import WcIcon from '@material-ui/icons/Wc';
 import SchoolIcon from '@material-ui/icons/School';
@@ -103,7 +104,7 @@ function Profile() {
 
    return (
       <Box>
-         <Drawer variant="permanent" anchor="left">
+         {/* <Drawer variant="permanent" anchor="left">
             <Divider />
             <List>
                <ListItem>
@@ -111,7 +112,7 @@ function Profile() {
                   <ListItemText />
                </ListItem>
             </List>
-         </Drawer>
+         </Drawer> */}
 
          {/* tabs */}
          <Tabs
@@ -133,6 +134,7 @@ function Profile() {
             {selectedTab === 0 && (
                <Box>
                   <Typography variant="h4" gutterBottom>
+                     <AccountCircleIcon />
                      {profile.firstName
                         ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
                         : 'Undetermined name'}
