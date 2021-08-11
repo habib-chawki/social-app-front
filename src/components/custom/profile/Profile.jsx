@@ -129,24 +129,47 @@ function Profile() {
             <Divider />
 
             <Box display="flex" flexDirection="column" flexGrow={1}>
-               <Typography variant="h4" align="center" gutterBottom>
-                  <AccountCircleIcon />
-                  {profile.firstName
-                     ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
-                     : 'Undetermined name'}
-               </Typography>
+               <List>
+                  <ListItem>
+                     <ListItemIcon>
+                        <AccountCircleIcon />
+                     </ListItemIcon>
+                     <ListItemText
+                        primary={
+                           profile.firstName
+                              ? `${profile.firstName} ${profile.middleName} ${profile.lastName}`
+                              : 'Undetermined name'
+                        }
+                     />
+                  </ListItem>
 
-               <Typography variant="h5" align="center" gutterBottom>
-                  <HomeIcon /> {profile.address || 'Undetermined address'}
-               </Typography>
+                  <ListItem>
+                     <ListItemIcon>
+                        <HomeIcon />
+                     </ListItemIcon>
+                     <ListItemText
+                        primary={profile.address || 'Undetermined address'}
+                     />
+                  </ListItem>
 
-               <Typography variant="h5" align="center" gutterBottom>
-                  <CakeIcon /> {moment(profile.birthday).format('MMMM Do YYYY')}
-               </Typography>
+                  <ListItem>
+                     <ListItemIcon>
+                        <CakeIcon />
+                     </ListItemIcon>
+                     <ListItemText
+                        primary={moment(profile.birthday).format(
+                           'MMMM Do YYYY'
+                        )}
+                     />
+                  </ListItem>
 
-               <Typography variant="h5" align="center" gutterBottom>
-                  <WcIcon /> {profile.gender}
-               </Typography>
+                  <ListItem>
+                     <ListItemIcon>
+                        <WcIcon />
+                     </ListItemIcon>
+                     <ListItemText primary={profile.gender} />
+                  </ListItem>
+               </List>
             </Box>
 
             <Divider />
@@ -163,13 +186,6 @@ function Profile() {
                   </Button>
                )
             }
-
-            <List>
-               <ListItem>
-                  <ListItemIcon></ListItemIcon>
-                  <ListItemText />
-               </ListItem>
-            </List>
          </Drawer>
 
          {/* tabs */}
