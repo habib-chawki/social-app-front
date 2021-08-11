@@ -15,6 +15,7 @@ import { getUser } from '../../../services/storage';
 
 // mui components
 import AppBar from '@material-ui/core/AppBar';
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
@@ -46,6 +47,10 @@ import TimerIcon from '@material-ui/icons/Timer';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+   avatar: {
+      height: 150,
+      width: 150,
+   },
    paper: {
       padding: 20,
    },
@@ -117,6 +122,9 @@ function Profile() {
             anchor="left"
             classes={{ paper: classes.drawerPaper }}
          >
+            <Box display="flex" justifyContent="center" my={5}>
+               <Avatar className={classes.avatar} variant="circular" />
+            </Box>
             <Divider />
             <List>
                <ListItem>
