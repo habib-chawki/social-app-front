@@ -127,7 +127,8 @@ function Profile() {
          </Drawer>
 
          {/* tabs */}
-         <Box display="flex" flexDirection="column" flexGrow={1}>
+         <Box display="flex" flexDirection="column" flexGrow={1} ml={2}>
+            {/* app bar */}
             <AppBar position="sticky" color="default">
                <Tabs
                   value={selectedTab}
@@ -144,7 +145,8 @@ function Profile() {
                   <Tab label="Skills" icon={<BuildIcon />} />
                </Tabs>
             </AppBar>
-            <Box>
+
+            <Box mt={2}>
                {/* Basic info */}
                {selectedTab === 0 && (
                   <Box>
