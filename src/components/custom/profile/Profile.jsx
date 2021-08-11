@@ -29,6 +29,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 // mui icons
 import InfoIcon from '@material-ui/icons/Info';
@@ -132,7 +133,7 @@ function Profile() {
                <List>
                   <ListItem>
                      <ListItemIcon>
-                        <AccountCircleIcon />
+                        <AccountBoxIcon />
                      </ListItemIcon>
                      <ListItemText
                         primary={
@@ -189,8 +190,10 @@ function Profile() {
          </Drawer>
 
          {/* tabs */}
-         <Box display="flex" flexDirection="column" flexGrow={1} ml={2}>
+         <Box display="flex" flexDirection="column" flexGrow={1}>
             {/* app bar */}
+            <CssBaseline />
+
             <AppBar position="sticky" color="default">
                <Tabs
                   value={selectedTab}
@@ -207,7 +210,7 @@ function Profile() {
                </Tabs>
             </AppBar>
 
-            <Box mt={2}>
+            <Box m={2}>
                {/* Bio */}
                {selectedTab === 0 && (
                   <Box>
