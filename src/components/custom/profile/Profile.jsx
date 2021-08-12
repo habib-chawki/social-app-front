@@ -5,6 +5,7 @@ import moment from 'moment';
 
 // components
 import CollapsibleSkills from './skills/CollapsibleSkills';
+import EducationCards from './EducationCards';
 
 // router
 import { useParams, useHistory } from 'react-router-dom';
@@ -293,58 +294,7 @@ function Profile() {
 
                {/* Education */}
                {selectedTab === 2 && (
-                  <Box>
-                     {profile.education.length === 0 ? (
-                        <p>Undetermined education</p>
-                     ) : (
-                        profile.education.map((education) => (
-                           <Paper
-                              className={`${classes.paper} ${classes.paperItem}`}
-                              key={education.major}
-                              elevation="3"
-                           >
-                              <Box
-                                 display="flex"
-                                 justifyContent="space-between"
-                                 alignItems="center"
-                              >
-                                 <Typography variant="h4">
-                                    {education.school}
-                                 </Typography>
-
-                                 <Typography
-                                    variant="subtitle1"
-                                    color="textSecondary"
-                                 >
-                                    {moment(education.startDate).format(
-                                       'MMMM YYYY'
-                                    )}{' '}
-                                    -{' '}
-                                    {moment(education.endDate).format(
-                                       'MMMM YYYY'
-                                    )}
-                                 </Typography>
-                              </Box>
-
-                              <Typography
-                                 variant="h5"
-                                 className={classes.paperItem}
-                              >
-                                 {education.major}
-                              </Typography>
-
-                              <Divider className={classes.paperItem} />
-
-                              <Typography
-                                 variant="body1"
-                                 className={classes.paperItem}
-                              >
-                                 {education.description}
-                              </Typography>
-                           </Paper>
-                        ))
-                     )}
-                  </Box>
+                  <EducationCards educations={profile.education} />
                )}
 
                {/* Languages */}
