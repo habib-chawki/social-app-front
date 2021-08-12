@@ -38,8 +38,12 @@ function ProfileDrawer({ children }) {
          <Divider />
 
          <Box display="flex" flexDirection="column" flexGrow={1}>
-            {children}
+            {/* list of items */}
+            {children[0]}
          </Box>
+
+         {/* update profile button */}
+         {children[1]}
       </Drawer>
    );
 }
