@@ -21,7 +21,6 @@ import { getUser } from '../../../services/storage';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import Chip from '@material-ui/core/Chip';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
