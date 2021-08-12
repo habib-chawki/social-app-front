@@ -8,6 +8,7 @@ import CollapsibleSkills from './skills/CollapsibleSkills';
 import EducationCards from './EducationCards';
 import ExperienceCards from './ExperienceCards';
 import ProfileAppBar from './ProfileAppBar';
+import LanguageChips from './LanguageChips';
 
 // router
 import { useParams, useHistory } from 'react-router-dom';
@@ -222,21 +223,7 @@ function Profile() {
 
                {/* Languages */}
                {selectedTab === 3 && (
-                  <Box>
-                     {profile.languages.length === 0 ? (
-                        <Typography variant="h4">
-                           Undetermined languages
-                        </Typography>
-                     ) : (
-                        profile.languages.map((language, index) => (
-                           <Chip
-                              key={index}
-                              label={language}
-                              color="secondary"
-                           />
-                        ))
-                     )}
-                  </Box>
+                  <LanguageChips languages={profile.languages} />
                )}
 
                {/* Skills */}
