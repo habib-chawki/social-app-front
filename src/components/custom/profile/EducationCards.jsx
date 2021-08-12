@@ -29,7 +29,7 @@ function EducationCards({ educations }) {
          {educations === 0 ? (
             <p>Undetermined education</p>
          ) : (
-            profile.education.map((education) => (
+            educations.map((education) => (
                <Paper
                   className={`${classes.paper} ${classes.paperItem}`}
                   key={education.major}
