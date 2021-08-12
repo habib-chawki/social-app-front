@@ -5,6 +5,7 @@ import moment from 'moment';
 
 // components
 import CollapsibleSkills from './skills/CollapsibleSkills';
+import ProfileDrawer from './ProfileDrawer';
 import EducationCards from './EducationCards';
 import ExperienceCards from './ExperienceCards';
 import ProfileAppBar from './ProfileAppBar';
@@ -18,11 +19,8 @@ import { fetchProfile } from '../../../services/profile';
 import { getUser } from '../../../services/storage';
 
 // mui components
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -37,22 +35,6 @@ import CakeIcon from '@material-ui/icons/Cake';
 import WcIcon from '@material-ui/icons/Wc';
 import WorkIcon from '@material-ui/icons/Work';
 import TimerIcon from '@material-ui/icons/Timer';
-
-// styles
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
-   avatar: {
-      height: 150,
-      width: 150,
-   },
-   drawer: {
-      width: 300,
-   },
-   drawerPaper: {
-      width: 300,
-   },
-});
 
 function Profile() {
    // extract user id
@@ -75,9 +57,6 @@ function Profile() {
 
    // tabs state
    const [selectedTab, setSelectedTab] = useState(0);
-
-   // styling
-   const classes = useStyles();
 
    const handleTabChange = (event, tabIndex) => {
       setSelectedTab(tabIndex);
@@ -105,77 +84,62 @@ function Profile() {
 
    return (
       <Box display="flex">
-         <Drawer
-            className={classes.drawer}
-            variant="permanent"
-            anchor="left"
-            classes={{ paper: classes.drawerPaper }}
-         >
-            <Box display="flex" justifyContent="center" my={5}>
-               <Avatar className={classes.avatar} variant="circular" />
-            </Box>
-
-            <Divider />
-
-            <Box display="flex" flexDirection="column" flexGrow={1}>
-               <List>
-                  <ListItem>
-                     <ListItemIcon>
-                        <AccountBoxIcon fontSize="large" color="secondary" />
-                     </ListItemIcon>
-                     <ListItemText
-                        primary={
-                           profile.firstName ? (
-                              <Typography variant="h6">
-                                 {`${profile.firstName} ${profile.middleName} ${profile.lastName}`}
-                              </Typography>
-                           ) : (
-                              'Undetermined name'
-                           )
-                        }
-                     />
-                  </ListItem>
-
-                  <ListItem>
-                     <ListItemIcon>
-                        <HomeIcon fontSize="large" color="secondary" />
-                     </ListItemIcon>
-                     <ListItemText
-                        primary={
+         <ProfileDrawer>
+            <List>
+               <ListItem>
+                  <ListItemIcon>
+                     <AccountBoxIcon fontSize="large" color="secondary" />
+                  </ListItemIcon>
+                  <ListItemText
+                     primary={
+                        profile.firstName ? (
                            <Typography variant="h6">
-                              {profile.address || 'Undetermined address'}{' '}
+                              {`${profile.firstName} ${profile.middleName} ${profile.lastName}`}
                            </Typography>
-                        }
-                     />
-                  </ListItem>
+                        ) : (
+                           'Undetermined name'
+                        )
+                     }
+                  />
+               </ListItem>
 
-                  <ListItem>
-                     <ListItemIcon>
-                        <CakeIcon fontSize="large" color="secondary" />
-                     </ListItemIcon>
-                     <ListItemText
-                        primary={
-                           <Typography variant="h6">
-                              {moment(profile.birthday).format('MMMM Do YYYY')}
-                           </Typography>
-                        }
-                     />
-                  </ListItem>
+               <ListItem>
+                  <ListItemIcon>
+                     <HomeIcon fontSize="large" color="secondary" />
+                  </ListItemIcon>
+                  <ListItemText
+                     primary={
+                        <Typography variant="h6">
+                           {profile.address || 'Undetermined address'}{' '}
+                        </Typography>
+                     }
+                  />
+               </ListItem>
 
-                  <ListItem>
-                     <ListItemIcon>
-                        <WcIcon fontSize="large" color="secondary" />
-                     </ListItemIcon>
-                     <ListItemText
-                        primary={
-                           <Typography variant="h6">
-                              {profile.gender}
-                           </Typography>
-                        }
-                     />
-                  </ListItem>
-               </List>
-            </Box>
+               <ListItem>
+                  <ListItemIcon>
+                     <CakeIcon fontSize="large" color="secondary" />
+                  </ListItemIcon>
+                  <ListItemText
+                     primary={
+                        <Typography variant="h6">
+                           {moment(profile.birthday).format('MMMM Do YYYY')}
+                        </Typography>
+                     }
+                  />
+               </ListItem>
+
+               <ListItem>
+                  <ListItemIcon>
+                     <WcIcon fontSize="large" color="secondary" />
+                  </ListItemIcon>
+                  <ListItemText
+                     primary={
+                        <Typography variant="h6">{profile.gender}</Typography>
+                     }
+                  />
+               </ListItem>
+            </List>
 
             {
                // determine whether the logged in user can update the profile
@@ -191,7 +155,7 @@ function Profile() {
                   </Button>
                )
             }
-         </Drawer>
+         </ProfileDrawer>
 
          {/* tabs */}
          <Box display="flex" flexDirection="column" flexGrow={1}>
