@@ -6,6 +6,7 @@ import moment from 'moment';
 // components
 import CollapsibleSkills from './skills/CollapsibleSkills';
 import EducationCards from './EducationCards';
+import ExperienceCards from './ExperienceCards';
 
 // router
 import { useParams, useHistory } from 'react-router-dom';
@@ -26,7 +27,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -51,12 +51,6 @@ const useStyles = makeStyles({
    avatar: {
       height: 150,
       width: 150,
-   },
-   paper: {
-      padding: 20,
-   },
-   paperItem: {
-      marginTop: 20,
    },
    drawer: {
       width: 300,
