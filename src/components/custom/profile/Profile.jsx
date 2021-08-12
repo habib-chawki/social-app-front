@@ -7,6 +7,7 @@ import moment from 'moment';
 import CollapsibleSkills from './skills/CollapsibleSkills';
 import EducationCards from './EducationCards';
 import ExperienceCards from './ExperienceCards';
+import ProfileAppBar from './ProfileAppBar';
 
 // router
 import { useParams, useHistory } from 'react-router-dom';
@@ -16,7 +17,6 @@ import { fetchProfile } from '../../../services/profile';
 import { getUser } from '../../../services/storage';
 
 // mui components
-import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -27,20 +27,14 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+
 import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 // mui icons
-import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import CakeIcon from '@material-ui/icons/Cake';
 import WcIcon from '@material-ui/icons/Wc';
-import SchoolIcon from '@material-ui/icons/School';
-import LanguageIcon from '@material-ui/icons/Language';
-import BuildIcon from '@material-ui/icons/Build';
 import WorkIcon from '@material-ui/icons/Work';
 import TimerIcon from '@material-ui/icons/Timer';
 
@@ -201,24 +195,10 @@ function Profile() {
 
          {/* tabs */}
          <Box display="flex" flexDirection="column" flexGrow={1}>
-            {/* app bar */}
-            <CssBaseline />
-
-            <AppBar position="sticky" color="default">
-               <Tabs
-                  value={selectedTab}
-                  onChange={handleTabChange}
-                  indicatorColor="secondary"
-                  textColor="secondary"
-                  variant="fullWidth"
-               >
-                  <Tab label="Bio" icon={<InfoIcon />} />
-                  <Tab label="Experience" icon={<WorkIcon />} />
-                  <Tab label="Education" icon={<SchoolIcon />} />
-                  <Tab label="Languages" icon={<LanguageIcon />} />
-                  <Tab label="Skills" icon={<BuildIcon />} />
-               </Tabs>
-            </AppBar>
+            <ProfileAppBar
+               onTabChange={handleTabChange}
+               selectedTab={selectedTab}
+            />
 
             <Box m={2}>
                {/* Bio */}
