@@ -35,7 +35,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import CakeIcon from '@material-ui/icons/Cake';
 import WcIcon from '@material-ui/icons/Wc';
 import SchoolIcon from '@material-ui/icons/School';
@@ -188,8 +187,6 @@ function Profile() {
                   </ListItem>
                </List>
             </Box>
-
-            <Divider />
 
             {
                // determine whether the logged in user can update the profile
