@@ -15,6 +15,12 @@ import {
    Menu,
    MenuItem,
 } from '@material-ui/core';
+
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 function Comment(comment) {
@@ -30,7 +36,7 @@ function Comment(comment) {
    };
 
    return (
-      <li key={comment.id}>
+      <ListItem key={comment.id}>
          <Card>
             <CardHeader
                avatar={<Avatar />}
@@ -70,7 +76,7 @@ function Comment(comment) {
 
             <CardContent>{comment.renderContent()}</CardContent>
          </Card>
-      </li>
+      </ListItem>
    );
 }
 
