@@ -3,7 +3,9 @@ import Comment from './Comment';
 
 import * as commentService from '../../services/comment';
 
-import { TextField, Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import List from '@material-ui/core/List';
 
 // set pagination parameters
 const LIMIT = 5,
@@ -66,7 +68,7 @@ function Comments(post) {
    // render list of comments
    const renderComments = () => {
       return (
-         <ul>
+         <List>
             {comments.map(({ _id, owner, content, createdAt }) => (
                <Comment
                   key={_id}
@@ -78,7 +80,7 @@ function Comments(post) {
                   onUpdate={handleUpdateComment}
                />
             ))}
-         </ul>
+         </List>
       );
    };
 
