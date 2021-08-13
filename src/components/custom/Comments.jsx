@@ -3,6 +3,7 @@ import Comment from './Comment';
 
 import * as commentService from '../../services/comment';
 
+import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
@@ -68,19 +69,22 @@ function Comments(post) {
    // render list of comments
    const renderComments = () => {
       return (
-         <List>
-            {comments.map(({ _id, owner, content, createdAt }) => (
-               <Comment
-                  key={_id}
-                  id={_id}
-                  owner={owner}
-                  content={content}
-                  creationTime={createdAt}
-                  onRemove={handleRemoveComment}
-                  onUpdate={handleUpdateComment}
-               />
-            ))}
-         </List>
+         <>
+            <Divider />
+            <List>
+               {comments.map(({ _id, owner, content, createdAt }) => (
+                  <Comment
+                     key={_id}
+                     id={_id}
+                     owner={owner}
+                     content={content}
+                     creationTime={createdAt}
+                     onRemove={handleRemoveComment}
+                     onUpdate={handleUpdateComment}
+                  />
+               ))}
+            </List>
+         </>
       );
    };
 

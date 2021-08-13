@@ -39,7 +39,7 @@ function Comment(comment) {
    };
 
    return (
-      <ListItem key={comment.id}>
+      <ListItem key={comment.id} divider>
          <ListItemAvatar>
             <Avatar />
          </ListItemAvatar>
