@@ -17,6 +17,7 @@ import {
    MenuItem,
 } from '@material-ui/core';
 
+import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -50,7 +51,14 @@ function Comment(comment) {
                      comment.owner.profile.lastName}
                </Link>
             }
-            secondary={moment(comment.creationTime).format('LLL')}
+            secondary={
+               <>
+                  {moment(comment.creationTime).format('LLL')}
+                  <Typography variant="body2" color="textPrimary">
+                     {comment.renderContent()}
+                  </Typography>
+               </>
+            }
          />
 
          <ListItemSecondaryAction>
@@ -79,8 +87,6 @@ function Comment(comment) {
                )
             }
          </ListItemSecondaryAction>
-
-         {/* {comment.renderContent()} */}
       </ListItem>
    );
 }
