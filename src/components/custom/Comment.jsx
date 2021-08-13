@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import moment from 'moment';
 
@@ -18,6 +18,7 @@ import {
 } from '@material-ui/core';
 
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -45,7 +46,10 @@ function Comment(comment) {
          </ListItemAvatar>
          <ListItemText
             primary={
-               <Link to={`user/${comment.owner._id}/profile`}>
+               <Link
+                  component={RouterLink}
+                  to={`user/${comment.owner._id}/profile`}
+               >
                   {comment.owner.profile.firstName +
                      ' ' +
                      comment.owner.profile.lastName}
