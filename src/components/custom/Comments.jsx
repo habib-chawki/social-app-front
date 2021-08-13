@@ -124,6 +124,9 @@ function Comments(post) {
             value={commentInput}
             onChange={handleCommentInput}
             fullWidth
+            inputProps={{
+               maxLength: 400,
+            }}
          />
          <Button
             variant="contained"
