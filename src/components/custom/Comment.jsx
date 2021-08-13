@@ -45,7 +45,7 @@ function Comment(comment) {
                   to={`user/${comment.owner._id}/profile`}
                   underline="none"
                >
-                  <Box fontWeight="fontWeightBold">
+                  <Box fontWeight="fontWeightBold" component="span">
                      {comment.owner.profile.firstName +
                         ' ' +
                         comment.owner.profile.lastName}
