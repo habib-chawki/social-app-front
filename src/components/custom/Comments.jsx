@@ -7,6 +7,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 // set pagination parameters
 const LIMIT = 5,
@@ -69,22 +70,19 @@ function Comments(post) {
    // render list of comments
    const renderComments = () => {
       return (
-         <>
-            <Divider />
-            <List>
-               {comments.map(({ _id, owner, content, createdAt }) => (
-                  <Comment
-                     key={_id}
-                     id={_id}
-                     owner={owner}
-                     content={content}
-                     creationTime={createdAt}
-                     onRemove={handleRemoveComment}
-                     onUpdate={handleUpdateComment}
-                  />
-               ))}
-            </List>
-         </>
+         <List subheader={<ListSubheader>Comments</ListSubheader>}>
+            {comments.map(({ _id, owner, content, createdAt }) => (
+               <Comment
+                  key={_id}
+                  id={_id}
+                  owner={owner}
+                  content={content}
+                  creationTime={createdAt}
+                  onRemove={handleRemoveComment}
+                  onUpdate={handleUpdateComment}
+               />
+            ))}
+         </List>
       );
    };
 
