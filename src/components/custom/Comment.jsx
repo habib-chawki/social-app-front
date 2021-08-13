@@ -6,21 +6,15 @@ import moment from 'moment';
 import withEdit from '../higher-order/withEdit';
 import UserContext from '../../context/user-context';
 
-import {
-   Box,
-   Card,
-   CardContent,
-   CardHeader,
-   Avatar,
-   IconButton,
-   Menu,
-   MenuItem,
-} from '@material-ui/core';
-
+// mui components
+import Box from '@material-ui/core/Box';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
