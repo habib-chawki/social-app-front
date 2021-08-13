@@ -43,10 +43,13 @@ function Comment(comment) {
                <Link
                   component={RouterLink}
                   to={`user/${comment.owner._id}/profile`}
+                  underline="none"
                >
-                  {comment.owner.profile.firstName +
-                     ' ' +
-                     comment.owner.profile.lastName}
+                  <Box fontWeight="fontWeightBold">
+                     {comment.owner.profile.firstName +
+                        ' ' +
+                        comment.owner.profile.lastName}
+                  </Box>
                </Link>
             }
             secondary={
