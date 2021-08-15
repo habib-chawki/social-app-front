@@ -18,8 +18,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function Comment(comment) {
    const loggedInUser = useContext(UserContext);
@@ -78,10 +81,16 @@ function Comment(comment) {
                         onClose={handleMenuClose}
                      >
                         <MenuItem onClick={() => comment.handleUpdate()}>
-                           Edit
+                           <ListItemIcon>
+                              <EditIcon />
+                           </ListItemIcon>
+                           <ListItemText primary="Edit" />
                         </MenuItem>
                         <MenuItem onClick={() => comment.handleRemove()}>
-                           Delete
+                           <ListItemIcon>
+                              <DeleteIcon />
+                           </ListItemIcon>
+                           <ListItemText primary="Delete" />
                         </MenuItem>
                      </Menu>
                   </Box>
