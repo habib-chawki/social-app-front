@@ -25,9 +25,20 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+   card: {
+      paddingTop: 30,
+      paddingBottom: 30,
+   },
+});
+
 function Post(post) {
    const loggedInUser = useContext(UserContext);
    const [anchorEl, setAnchorEl] = useState(null);
+
+   const classes = useStyles();
 
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -51,7 +62,7 @@ function Post(post) {
    const postOwnerFullName = `${firstName} ${middleName} ${lastName}`;
 
    return (
-      <Card>
+      <Card className={classes.card}>
          <CardHeader
             avatar={<Avatar alt={postOwnerFullName} />}
             title={
