@@ -31,6 +31,7 @@ const useStyles = makeStyles({
    card: {
       paddingTop: 30,
       paddingBottom: 30,
+      margin: 30,
    },
 });
 
