@@ -5,7 +5,7 @@ import Post from './Post';
 
 import * as postService from '../../services/post';
 
-import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -79,25 +79,19 @@ function Posts() {
 
    // render list of posts
    const renderPosts = () => {
-      return (
-         <Grid container direction="column" spacing={5}>
-            {posts.map((post) => (
-               <Grid item>
-                  <Post
-                     key={post._id}
-                     id={post._id}
-                     owner={post.owner}
-                     content={post.content}
-                     comments={post.comments}
-                     creationTime={post.createdAt}
-                     updateTime={post.updatedAt}
-                     onRemove={handleRemovePost}
-                     onUpdate={handleUpdatePost}
-                  />
-               </Grid>
-            ))}
-         </Grid>
-      );
+      return posts.map((post) => (
+         <Post
+            key={post._id}
+            id={post._id}
+            owner={post.owner}
+            content={post.content}
+            comments={post.comments}
+            creationTime={post.createdAt}
+            updateTime={post.updatedAt}
+            onRemove={handleRemovePost}
+            onUpdate={handleUpdatePost}
+         />
+      ));
    };
 
    // load more posts
@@ -126,7 +120,7 @@ function Posts() {
    };
 
    return (
-      <Grid direction="column" spacing={10}>
+      <Box bgcolor="#E7E0C9">
          <Header />
          <TextField
             variant="outlined"
@@ -157,7 +151,7 @@ function Posts() {
                Load more posts
             </Button>
          )}
-      </Grid>
+      </Box>
    );
 }
 
