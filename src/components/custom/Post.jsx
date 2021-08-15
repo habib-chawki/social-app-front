@@ -12,6 +12,7 @@ import {
    CardContent,
    CardHeader,
    Avatar,
+   Divider,
    IconButton,
    Menu,
    MenuItem,
@@ -76,6 +77,8 @@ function Post(post) {
          />
 
          <CardContent>{post.renderContent()}</CardContent>
+
+         <Divider />
 
          <Comments id={post.id} comments={post.comments} />
       </Card>
