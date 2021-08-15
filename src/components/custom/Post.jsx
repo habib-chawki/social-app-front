@@ -17,7 +17,7 @@ import {
    Menu,
    MenuItem,
 } from '@material-ui/core';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 function Post(post) {
    const loggedInUser = useContext(UserContext);
@@ -59,7 +59,7 @@ function Post(post) {
                loggedInUser === post.owner._id && (
                   <div>
                      <IconButton onClick={handleMenuClick}>
-                        <MoreVertIcon />
+                        <MoreHorizIcon />
                      </IconButton>
                      <Menu
                         id="menu"

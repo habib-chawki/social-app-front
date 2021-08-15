@@ -6,7 +6,9 @@ import Post from './Post';
 import * as postService from '../../services/post';
 
 import { TextField, Button } from '@material-ui/core';
+
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 // set pagination params
 const LIMIT = 10,
@@ -138,7 +140,15 @@ function Posts() {
             post
          </Button>
          {renderPosts()}
-         {loadMore && <button onClick={loadMorePosts}>Load more posts</button>}
+         {loadMore && (
+            <Button
+               onClick={loadMorePosts}
+               size="small"
+               startIcon={<RefreshIcon />}
+            >
+               Load more posts
+            </Button>
+         )}
       </div>
    );
 }
