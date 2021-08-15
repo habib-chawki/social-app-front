@@ -3,6 +3,7 @@ import Comment from './Comment';
 
 import * as commentService from '../../services/comment';
 
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
@@ -118,18 +119,20 @@ function Comments(post) {
    };
 
    return (
-      <div>
+      <Box>
          {renderComments()}
 
-         {loadMore && (
-            <Button
-               onClick={loadMoreComments}
-               size="small"
-               startIcon={<RefreshIcon />}
-            >
-               Load more comments
-            </Button>
-         )}
+         <Box display="flex" justifyContent="center">
+            {loadMore && (
+               <Button
+                  onClick={loadMoreComments}
+                  size="small"
+                  startIcon={<RefreshIcon />}
+               >
+                  Load more comments
+               </Button>
+            )}
+         </Box>
          <TextField
             name="comment-field"
             value={commentInput}
@@ -148,7 +151,7 @@ function Comments(post) {
          >
             comment
          </Button>
-      </div>
+      </Box>
    );
 }
 
