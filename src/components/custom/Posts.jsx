@@ -5,7 +5,9 @@ import Post from './Post';
 
 import * as postService from '../../services/post';
 
-import { TextField, Button } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import RefreshIcon from '@material-ui/icons/Refresh';
@@ -77,19 +79,25 @@ function Posts() {
 
    // render list of posts
    const renderPosts = () => {
-      return posts.map((post) => (
-         <Post
-            key={post._id}
-            id={post._id}
-            owner={post.owner}
-            content={post.content}
-            comments={post.comments}
-            creationTime={post.createdAt}
-            updateTime={post.updatedAt}
-            onRemove={handleRemovePost}
-            onUpdate={handleUpdatePost}
-         />
-      ));
+      return (
+         <Grid container direction="column" spacing={5}>
+            {posts.map((post) => (
+               <Grid item>
+                  <Post
+                     key={post._id}
+                     id={post._id}
+                     owner={post.owner}
+                     content={post.content}
+                     comments={post.comments}
+                     creationTime={post.createdAt}
+                     updateTime={post.updatedAt}
+                     onRemove={handleRemovePost}
+                     onUpdate={handleUpdatePost}
+                  />
+               </Grid>
+            ))}
+         </Grid>
+      );
    };
 
    // load more posts
@@ -118,7 +126,7 @@ function Posts() {
    };
 
    return (
-      <div>
+      <Grid direction="column" spacing={10}>
          <Header />
          <TextField
             variant="outlined"
@@ -149,7 +157,7 @@ function Posts() {
                Load more posts
             </Button>
          )}
-      </div>
+      </Grid>
    );
 }
 
