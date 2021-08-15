@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import moment from 'moment';
 
@@ -17,6 +17,10 @@ import {
    Menu,
    MenuItem,
 } from '@material-ui/core';
+
+import Link from '@material-ui/core/Link';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -67,8 +71,12 @@ function Post(post) {
          <CardHeader
             avatar={<Avatar alt={postOwnerFullName} />}
             title={
-               <Link to={`user/${post.owner._id}/profile`}>
-                  {postOwnerFullName}
+               <Link
+                  to={`user/${post.owner._id}/profile`}
+                  component={RouterLink}
+                  underline="none"
+               >
+                  <Typography variant="h5">{postOwnerFullName}</Typography>
                </Link>
             }
             subheader={moment(post.creationTime).format('LLL')}
