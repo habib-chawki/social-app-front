@@ -17,7 +17,13 @@ import {
    Menu,
    MenuItem,
 } from '@material-ui/core';
+
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function Post(post) {
    const loggedInUser = useContext(UserContext);
@@ -68,8 +74,18 @@ function Post(post) {
                         open={Boolean(anchorEl)}
                         onClose={handleMenuClose}
                      >
-                        <MenuItem onClick={handleEditPost}>Edit</MenuItem>
-                        <MenuItem onClick={handleDeletePost}>Delete</MenuItem>
+                        <MenuItem onClick={handleEditPost}>
+                           <ListItemIcon>
+                              <EditIcon />
+                           </ListItemIcon>
+                           <ListItemText primary="Edit" />
+                        </MenuItem>
+                        <MenuItem onClick={handleDeletePost}>
+                           <ListItemIcon>
+                              <DeleteIcon />
+                           </ListItemIcon>
+                           <ListItemText primary="Delete" />
+                        </MenuItem>
                      </Menu>
                   </div>
                )
