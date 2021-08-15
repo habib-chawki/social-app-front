@@ -69,7 +69,7 @@ function Comments(post) {
    // render list of comments
    const renderComments = () => {
       return (
-         <List subheader={<ListSubheader>Comments</ListSubheader>}>
+         <List subheader={<ListSubheader>Comments</ListSubheader>} inset>
             {comments.map(({ _id, owner, content, createdAt }) => (
                <Comment
                   key={_id}
@@ -118,6 +118,11 @@ function Comments(post) {
       <div>
          {renderComments()}
 
+         {loadMore && (
+            <Button onClick={loadMoreComments} size="small">
+               Load more comments
+            </Button>
+         )}
          <TextField
             name="comment-field"
             value={commentInput}
@@ -135,9 +140,6 @@ function Comments(post) {
          >
             comment
          </Button>
-         {loadMore && (
-            <button onClick={loadMoreComments}>Load more comments</button>
-         )}
       </div>
    );
 }
