@@ -85,7 +85,7 @@ function Post(post) {
             action={
                // Determine whether user can edit post
                loggedInUser === post.owner._id && (
-                  <div>
+                  <Box>
                      <IconButton onClick={handleMenuClick}>
                         <MoreHorizIcon />
                      </IconButton>
@@ -109,7 +109,7 @@ function Post(post) {
                            <ListItemText primary="Delete" />
                         </MenuItem>
                      </Menu>
-                  </div>
+                  </Box>
                )
             }
          />

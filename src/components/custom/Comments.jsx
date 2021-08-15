@@ -30,7 +30,11 @@ function Comments(post) {
 
    const handleCreateComment = (event) => {
       // add comment when either the enter key or the comment button are pressed
-      if (commentInput.trim()) {
+      if (
+         commentInput.trim() &&
+         (event.type === 'click' ||
+            (event.type === 'keypress' && event.key === 'Enter'))
+      ) {
          commentService
             .createComment(post.id, commentInput)
             .then((comment) => {
@@ -139,6 +143,7 @@ function Comments(post) {
                name="comment-field"
                value={commentInput}
                onChange={handleCommentInput}
+               onKeyPress={handleCreateComment}
                placeholder="Add comment ..."
                inputProps={{
                   maxLength: 400,
@@ -147,7 +152,6 @@ function Comments(post) {
             <Button
                variant="contained"
                color="primary"
-               name="comment-button"
                onClick={handleCreateComment}
                startIcon={<InsertCommentIcon />}
             >
