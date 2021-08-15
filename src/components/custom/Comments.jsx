@@ -133,24 +133,27 @@ function Comments(post) {
                </Button>
             )}
          </Box>
-         <TextField
-            name="comment-field"
-            value={commentInput}
-            onChange={handleCommentInput}
-            fullWidth
-            inputProps={{
-               maxLength: 400,
-            }}
-         />
-         <Button
-            variant="contained"
-            color="primary"
-            name="comment-button"
-            onClick={handleCreateComment}
-            startIcon={<InsertCommentIcon />}
-         >
-            comment
-         </Button>
+
+         <Box display="flex" m={5}>
+            <TextField
+               name="comment-field"
+               value={commentInput}
+               onChange={handleCommentInput}
+               placeholder="Add comment ..."
+               inputProps={{
+                  maxLength: 400,
+               }}
+            />
+            <Button
+               variant="contained"
+               color="primary"
+               name="comment-button"
+               onClick={handleCreateComment}
+               startIcon={<InsertCommentIcon />}
+            >
+               comment
+            </Button>
+         </Box>
       </Box>
    );
 }
