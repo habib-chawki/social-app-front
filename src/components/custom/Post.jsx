@@ -76,7 +76,9 @@ function Post(post) {
                   component={RouterLink}
                   underline="none"
                >
-                  <Typography variant="h5">{postOwnerFullName}</Typography>
+                  <Typography variant="h5" component="span">
+                     {postOwnerFullName}
+                  </Typography>
                </Link>
             }
             subheader={moment(post.creationTime).format('LLL')}
