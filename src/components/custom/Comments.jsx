@@ -8,6 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
+import RefreshIcon from '@material-ui/icons/Refresh';
+
 // set pagination parameters
 const LIMIT = 5,
    SKIP = 0;
@@ -119,7 +121,11 @@ function Comments(post) {
          {renderComments()}
 
          {loadMore && (
-            <Button onClick={loadMoreComments} size="small">
+            <Button
+               onClick={loadMoreComments}
+               size="small"
+               startIcon={<RefreshIcon />}
+            >
                Load more comments
             </Button>
          )}
