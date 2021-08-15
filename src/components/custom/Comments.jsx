@@ -3,7 +3,6 @@ import Comment from './Comment';
 
 import * as commentService from '../../services/comment';
 
-import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import List from '@material-ui/core/List';
