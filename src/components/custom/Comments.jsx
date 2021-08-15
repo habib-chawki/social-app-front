@@ -9,6 +9,7 @@ import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 import RefreshIcon from '@material-ui/icons/Refresh';
+import InsertCommentIcon from '@material-ui/icons/InsertComment';
 
 // set pagination parameters
 const LIMIT = 5,
@@ -143,6 +144,7 @@ function Comments(post) {
             color="primary"
             name="comment-button"
             onClick={handleCreateComment}
+            startIcon={<InsertCommentIcon />}
          >
             comment
          </Button>
