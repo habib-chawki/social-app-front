@@ -140,13 +140,14 @@ function Comments(post) {
             )}
          </Box>
 
-         <Box display="flex" m={5}>
+         <Box m={5}>
             <OutlinedInput
                name="comment-field"
                value={commentInput}
                onChange={handleCommentInput}
                onKeyPress={handleCreateComment}
                placeholder="Add comment ..."
+               fullWidth
                inputProps={{
                   maxLength: 400,
                }}
