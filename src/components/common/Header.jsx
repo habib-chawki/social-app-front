@@ -5,6 +5,8 @@ import { logUserOut } from '../../services/user';
 import { getUser } from '../../services/storage';
 
 import { IconButton, AppBar, Toolbar, Link } from '@material-ui/core';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 
@@ -25,9 +27,11 @@ function Header() {
                component={RouterLink}
                underline="none"
             >
-               <IconButton variant="text">
-                  <LockIcon />
-               </IconButton>
+               <Tooltip title="Log out">
+                  <IconButton>
+                     <LockIcon />
+                  </IconButton>
+               </Tooltip>
             </Link>
 
             <Link
@@ -35,9 +39,11 @@ function Header() {
                component={RouterLink}
                underline="none"
             >
-               <IconButton>
-                  <AccountCircleIcon />
-               </IconButton>
+               <Tooltip title="View profile">
+                  <IconButton>
+                     <AccountCircleIcon />
+                  </IconButton>
+               </Tooltip>
             </Link>
          </Toolbar>
       </AppBar>
