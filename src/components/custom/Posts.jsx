@@ -22,7 +22,7 @@ function Posts() {
    const [postInput, setPostInput] = useState('');
 
    const [pagination, setPagination] = useState({ limit: LIMIT, skip: SKIP });
-   const [loadMore, setLoadMore] = useState(posts !== 0);
+   const [loadMore, setLoadMore] = useState(posts.length !== 0);
 
    // render posts list when component first mounts
    useEffect(() => {
