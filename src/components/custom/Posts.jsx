@@ -136,15 +136,20 @@ function Posts() {
                value={postInput}
                onChange={handlePostInput}
             />
-            <Button
-               variant="contained"
-               color="secondary"
-               startIcon={<PostAddIcon />}
-               disableElevation
-               onClick={handleCreatePost}
-            >
-               post
-            </Button>
+
+            <Box marginTop={1}>
+               <Button
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<PostAddIcon />}
+                  disableElevation
+                  onClick={handleCreatePost}
+                  fullWidth
+                  size="large"
+               >
+                  post
+               </Button>
+            </Box>
          </Box>
 
          {renderPosts()}
