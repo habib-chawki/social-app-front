@@ -5,7 +5,9 @@ import * as commentService from '../../services/comment';
 
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
@@ -139,7 +141,7 @@ function Comments(post) {
          </Box>
 
          <Box display="flex" m={5}>
-            <TextField
+            <OutlinedInput
                name="comment-field"
                value={commentInput}
                onChange={handleCommentInput}
@@ -148,15 +150,14 @@ function Comments(post) {
                inputProps={{
                   maxLength: 400,
                }}
+               endAdornment={
+                  <InputAdornment position="end">
+                     <IconButton onClick={handleCreateComment}>
+                        <InsertCommentIcon />
+                     </IconButton>
+                  </InputAdornment>
+               }
             />
-            <Button
-               variant="contained"
-               color="primary"
-               onClick={handleCreateComment}
-               startIcon={<InsertCommentIcon />}
-            >
-               comment
-            </Button>
          </Box>
       </Box>
    );
