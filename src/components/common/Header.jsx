@@ -4,7 +4,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import { logUserOut } from '../../services/user';
 import { getUser } from '../../services/storage';
 
-import { Button, AppBar, Toolbar, Link } from '@material-ui/core';
+import { IconButton, AppBar, Toolbar, Link } from '@material-ui/core';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import LockIcon from '@material-ui/icons/Lock';
 
 function Header() {
    const userId = useRef();
@@ -15,7 +17,7 @@ function Header() {
    }, []);
 
    return (
-      <AppBar position="static" color="secondary">
+      <AppBar position="static">
          <Toolbar>
             <Link
                to="/login"
@@ -23,7 +25,9 @@ function Header() {
                component={RouterLink}
                underline="none"
             >
-               <Button variant="text"> Log out </Button>
+               <IconButton variant="text">
+                  <LockIcon />
+               </IconButton>
             </Link>
 
             <Link
@@ -31,7 +35,9 @@ function Header() {
                component={RouterLink}
                underline="none"
             >
-               <Button variant="text"> View profile </Button>
+               <IconButton>
+                  <AccountCircleIcon />
+               </IconButton>
             </Link>
          </Toolbar>
       </AppBar>
