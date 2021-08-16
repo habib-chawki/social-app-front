@@ -121,28 +121,32 @@ function Posts() {
    };
 
    return (
-      <Box bgcolor="#E7E0C9">
+      <Box>
          <CssBaseline />
          <Header />
-         <TextField
-            variant="outlined"
-            color="secondary"
-            multiline
-            rows={5}
-            placeholder="What's on your mind..."
-            fullWidth
-            value={postInput}
-            onChange={handlePostInput}
-         />
-         <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<PostAddIcon />}
-            disableElevation
-            onClick={handleCreatePost}
-         >
-            post
-         </Button>
+
+         <Box margin={4}>
+            <TextField
+               variant="outlined"
+               color="secondary"
+               multiline
+               rows={6}
+               placeholder="What's on your mind..."
+               fullWidth
+               value={postInput}
+               onChange={handlePostInput}
+            />
+            <Button
+               variant="contained"
+               color="secondary"
+               startIcon={<PostAddIcon />}
+               disableElevation
+               onClick={handleCreatePost}
+            >
+               post
+            </Button>
+         </Box>
+
          {renderPosts()}
          {loadMore && (
             <Button
