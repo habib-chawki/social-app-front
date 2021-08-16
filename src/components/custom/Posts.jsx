@@ -148,6 +148,7 @@ function Posts() {
                   onClick={handleCreatePost}
                   fullWidth
                   size="large"
+                  disabled={postInput.trim() === ''}
                >
                   post
                </Button>
