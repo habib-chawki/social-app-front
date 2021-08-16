@@ -39,15 +39,17 @@ function Posts() {
    };
 
    const handleCreatePost = () => {
-      // invoke backend service to create post
-      postService
-         .createPost(postInput)
-         .then((post) => {
-            // update posts list and UI
-            setPosts([post, ...posts]);
-            setPostInput('');
-         })
-         .catch((err) => console.log('Could not create post ' + err));
+      // invoke backend service to create post when the content is not empty
+      if (postInput.trim() !== '') {
+         postService
+            .createPost(postInput)
+            .then((post) => {
+               // update posts list and UI
+               setPosts([post, ...posts]);
+               setPostInput('');
+            })
+            .catch((err) => console.log('Could not create post ' + err));
+      }
    };
 
    const handleUpdatePost = (id, newContent) => {
