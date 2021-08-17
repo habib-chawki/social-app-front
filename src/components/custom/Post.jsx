@@ -46,6 +46,9 @@ const useStyles = makeStyles({
 });
 
 function Post(post) {
+   // updated post content
+   const [updatedContent, setUpdatedContent] = useState(post.content);
+
    // menu
    const loggedInUser = useContext(UserContext);
    const [anchorEl, setAnchorEl] = useState(null);
@@ -55,6 +58,11 @@ function Post(post) {
 
    // styles
    const classes = useStyles();
+
+   // handle update post content change
+   const handleUpdatedContentChange = (event) => {
+      setUpdatedContent(event.target.value);
+   };
 
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -74,6 +82,7 @@ function Post(post) {
 
    const handleUpdatePost = () => {
       // TODO: update post
+      post.onUpdate(post.id, updatedContent);
       handleCloseEditDialog();
    };
 
@@ -148,7 +157,8 @@ function Post(post) {
                               multiline
                               rows={4}
                               fullWidth
-                              value={post.content}
+                              value={updatedContent}
+                              onChange={handleUpdatedContentChange}
                               autoFocus
                            />
                         </DialogContent>
