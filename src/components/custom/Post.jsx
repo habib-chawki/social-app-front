@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import moment from 'moment';
 
 import PostEditDialog from './PostEditDialog';
+import PostActionsMenu from './PostActionsMenu';
 
 import Comments from './Comments';
 import UserContext from '../../context/user-context';
@@ -14,15 +15,12 @@ import {
    CardHeader,
    Avatar,
    Divider,
-   IconButton,
 } from '@material-ui/core';
 
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 
 import Typography from '@material-ui/core/Typography';
-
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -40,15 +38,8 @@ function Post(post) {
    // edit post dialog
    const [openEditDialog, setOpenEditDialog] = useState(false);
 
-   // actions menu
-   const [anchorEl, setAnchorEl] = useState(null);
-
    // styles
    const classes = useStyles();
-
-   const handleMenuClick = (event) => {
-      setAnchorEl(event.currentTarget);
-   };
 
    // open / close edit dialog
    const handleOpenEditDialog = () => {
@@ -68,10 +59,6 @@ function Post(post) {
       // open edit dialog and close actions menu
       handleOpenEditDialog();
       handleCloseActionsMenu();
-   };
-
-   const handleCloseActionsMenu = () => {
-      setAnchorEl(null);
    };
 
    // extract post owner full name
@@ -98,9 +85,7 @@ function Post(post) {
                // Determine whether user can edit post
                loggedInUser === post.owner._id && (
                   <Box>
-                     <IconButton onClick={handleMenuClick}>
-                        <MoreHorizIcon />
-                     </IconButton>
+                     <PostActionsMenu />
 
                      <PostEditDialog
                         postId={post.id}
