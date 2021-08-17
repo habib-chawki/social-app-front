@@ -77,14 +77,13 @@ function Post(post) {
       handleCloseEditDialog();
    };
 
-   const handleEditPost = () => {
-      // TODO: open edit post content dialog
-      // post.handleUpdate();
+   const handleEditMenuAction = () => {
+      // open edit dialog and close actions menu
       setOpenEditDialog(true);
-      handleMenuClose();
+      handleCloseActionsMenu();
    };
 
-   const handleMenuClose = () => {
+   const handleCloseActionsMenu = () => {
       setAnchorEl(null);
    };
 
@@ -120,9 +119,9 @@ function Post(post) {
                         anchorEl={anchorEl}
                         keepMounted
                         open={Boolean(anchorEl)}
-                        onClose={handleMenuClose}
+                        onClose={handleCloseActionsMenu}
                      >
-                        <MenuItem onClick={handleEditPost}>
+                        <MenuItem onClick={handleEditMenuAction}>
                            <ListItemIcon>
                               <EditIcon />
                            </ListItemIcon>
