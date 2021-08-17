@@ -64,6 +64,10 @@ function Post(post) {
       setOpenEditDialog(false);
    };
 
+   const handleOpenEditDialog = () => {
+      setOpenEditDialog(true);
+   };
+
    const handleDeletePost = () => {
       post.handleRemove();
    };
