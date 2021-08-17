@@ -38,6 +38,9 @@ function Post(post) {
    // edit post dialog
    const [openEditDialog, setOpenEditDialog] = useState(false);
 
+   // actions menu
+   const [anchorEl, setAnchorEl] = useState(null);
+
    // styles
    const classes = useStyles();
 
@@ -48,6 +51,15 @@ function Post(post) {
 
    const handleCloseEditDialog = () => {
       setOpenEditDialog(false);
+   };
+
+   // actions menu
+   const handleCloseActionsMenu = () => {
+      setAnchorEl(null);
+   };
+
+   const handleMenuClick = (event) => {
+      setAnchorEl(event.currentTarget);
    };
 
    const handleDeletePost = () => {
@@ -85,7 +97,13 @@ function Post(post) {
                // Determine whether user can edit post
                loggedInUser === post.owner._id && (
                   <Box>
-                     <PostActionsMenu />
+                     <PostActionsMenu
+                        onMenuClick={handleMenuClick}
+                        menuAnchorElement={anchorEl}
+                        onEditAction={handleEditMenuAction}
+                        onDeletePost={handleDeletePost}
+                        closeMenu={handleCloseActionsMenu}
+                     />
 
                      <PostEditDialog
                         postId={post.id}
