@@ -21,7 +21,17 @@ function Header() {
    return (
       <AppBar position="static">
          <Toolbar>
-            <Box display="flex" justifyContent="flex-end">
+            <Box display="flex" justifyContent="flex-end" width="100%">
+               <Tooltip title="View profile">
+                  <IconButton
+                     color="inherit"
+                     component={RouterLink}
+                     to={`/user/${userId.current}/profile`}
+                  >
+                     <AccountCircleIcon />
+                  </IconButton>
+               </Tooltip>
+
                <Tooltip title="Log out">
                   <IconButton
                      color="inherit"
@@ -30,16 +40,6 @@ function Header() {
                      onClick={logUserOut}
                   >
                      <LockIcon />
-                  </IconButton>
-               </Tooltip>
-
-               <Tooltip title="View profile">
-                  <IconButton
-                     color="inherit"
-                     component={RouterLink}
-                     to={`/user/${userId.current}/profile`}
-                  >
-                     <AccountCircleIcon />
                   </IconButton>
                </Tooltip>
             </Box>
