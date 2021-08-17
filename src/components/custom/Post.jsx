@@ -3,8 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import moment from 'moment';
 
-import PostEditDialog from './PostEditDialog';
-import PostActionsMenu from './PostActionsMenu';
+import PostActions from './PostActions';
 
 import Comments from './Comments';
 import UserContext from '../../context/user-context';
@@ -18,7 +17,6 @@ import {
 } from '@material-ui/core';
 
 import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -95,25 +93,7 @@ function Post(post) {
             subheader={moment(post.creationTime).format('LLL')}
             action={
                // Determine whether user can edit post
-               loggedInUser === post.owner._id && (
-                  <Box>
-                     <PostActionsMenu
-                        onMenuClick={handleMenuClick}
-                        menuAnchorElement={anchorEl}
-                        onEditAction={handleEditMenuAction}
-                        onDeletePost={handleDeletePost}
-                        closeMenu={handleCloseActionsMenu}
-                     />
-
-                     <PostEditDialog
-                        postId={post.id}
-                        postContent={post.content}
-                        isDialogOpen={openEditDialog}
-                        closeDialog={handleCloseEditDialog}
-                        onUpdatePost={post.onUpdate}
-                     />
-                  </Box>
-               )
+               loggedInUser === post.owner._id && <PostActions />
             }
          />
 
