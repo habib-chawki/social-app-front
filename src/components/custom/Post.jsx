@@ -81,8 +81,10 @@ function Post(post) {
    };
 
    const handleUpdatePost = () => {
-      // TODO: update post
-      post.onUpdate(post.id, updatedContent);
+      // update post only when content has changed
+      if (updatedContent.trim() !== post.content) {
+         post.onUpdate(post.id, updatedContent);
+      }
       handleCloseEditDialog();
    };
 
