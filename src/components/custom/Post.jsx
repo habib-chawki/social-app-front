@@ -77,7 +77,8 @@ function Post(post) {
    };
 
    const handleDeletePost = () => {
-      post.handleRemove();
+      // remove post by id
+      post.onRemove(post.id);
    };
 
    const handleUpdatePost = () => {
