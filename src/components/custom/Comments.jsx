@@ -79,7 +79,7 @@ function Comments(post) {
    // render list of comments
    const renderComments = () => {
       return (
-         <List subheader={<ListSubheader>Comments</ListSubheader>} inset>
+         <List subheader={<ListSubheader>Comments</ListSubheader>}>
             {comments.map(({ _id, owner, content, createdAt }) => (
                <Comment
                   key={_id}
