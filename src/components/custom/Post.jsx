@@ -129,9 +129,11 @@ function Post(post) {
                      </Menu>
 
                      <PostEditDialog
-                        isOpen={openEditDialog}
-                        openDialog={handleOpenEditDialog}
+                        postId={post.id}
+                        postContent={post.content}
+                        isDialogOpen={openEditDialog}
                         closeDialog={handleCloseEditDialog}
+                        onUpdatePost={post.onUpdate}
                      />
                   </Box>
                )
