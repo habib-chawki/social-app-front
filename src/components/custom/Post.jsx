@@ -33,32 +33,8 @@ const useStyles = makeStyles({
 function Post(post) {
    const loggedInUser = useContext(UserContext);
 
-   // edit post dialog
-   const [openEditDialog, setOpenEditDialog] = useState(false);
-
-   // actions menu
-   const [anchorEl, setAnchorEl] = useState(null);
-
    // styles
    const classes = useStyles();
-
-   // open / close edit dialog
-   const handleOpenEditDialog = () => {
-      setOpenEditDialog(true);
-   };
-
-   const handleCloseEditDialog = () => {
-      setOpenEditDialog(false);
-   };
-
-   // actions menu
-   const handleCloseActionsMenu = () => {
-      setAnchorEl(null);
-   };
-
-   const handleMenuClick = (event) => {
-      setAnchorEl(event.currentTarget);
-   };
 
    const handleDeletePost = () => {
       // remove post by id

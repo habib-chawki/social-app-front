@@ -6,6 +6,30 @@ import PostActionsMenu from './PostActionsMenu';
 import Box from '@material-ui/core/Box';
 
 function PostActions() {
+   // edit post dialog
+   const [openEditDialog, setOpenEditDialog] = useState(false);
+
+   // actions menu
+   const [anchorEl, setAnchorEl] = useState(null);
+
+   // open / close edit dialog
+   const handleOpenEditDialog = () => {
+      setOpenEditDialog(true);
+   };
+
+   const handleCloseEditDialog = () => {
+      setOpenEditDialog(false);
+   };
+
+   // actions menu
+   const handleCloseActionsMenu = () => {
+      setAnchorEl(null);
+   };
+
+   const handleMenuClick = (event) => {
+      setAnchorEl(event.currentTarget);
+   };
+
    return (
       <Box>
          <PostActionsMenu
