@@ -7,9 +7,32 @@ import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-function PostEditDialog() {
+function PostEditDialog({
+   isDialogOpen,
+   closeDialog,
+   postId,
+   postContent,
+   onUpdatePost,
+}) {
+   // updated post content
+   const [updatedContent, setUpdatedContent] = useState(postContent);
+
+   // handle update post content change
+   const handleUpdatedContentChange = (event) => {
+      setUpdatedContent(event.target.value);
+   };
+
+   const handleUpdatePost = () => {
+      // update post only when content has changed
+      if (updatedContent.trim() !== postContent) {
+         onUpdatePost(postId, updatedContent);
+      }
+
+      closeDialog();
+   };
+
    return (
-      <Dialog open={openEditDialog} onClose={handleCloseEditDialog} fullWidth>
+      <Dialog open={isDialogOpen} onClose={closeDialog} fullWidth>
          <DialogTitle>Edit post</DialogTitle>
          <DialogContent>
             <TextField
@@ -27,7 +50,7 @@ function PostEditDialog() {
             <Button color="primary" onClick={handleUpdatePost}>
                Update
             </Button>
-            <Button color="secondary" onClick={handleCloseEditDialog}>
+            <Button color="secondary" onClick={closeDialog}>
                Cancel
             </Button>
          </DialogActions>
