@@ -79,7 +79,7 @@ function Post(post) {
 
    const handleEditMenuAction = () => {
       // open edit dialog and close actions menu
-      setOpenEditDialog(true);
+      handleOpenEditDialog();
       handleCloseActionsMenu();
    };
 
