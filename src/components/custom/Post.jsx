@@ -64,7 +64,12 @@ function Post(post) {
             action={
                // Determine whether user can edit post
                loggedInUser === post.owner._id && (
-                  <PostActions onDeletePost={handleDeletePost} />
+                  <PostActions
+                     onDeletePost={handleDeletePost}
+                     postId={post.id}
+                     postContent={post.content}
+                     onUpdatePost={post.onUpdate}
+                  />
                )
             }
          />
