@@ -42,11 +42,12 @@ const useStyles = makeStyles({
 });
 
 function Post(post) {
-   // dialog
+   const loggedInUser = useContext(UserContext);
+
+   // edit post dialog
    const [openEditDialog, setOpenEditDialog] = useState(false);
 
-   // menu
-   const loggedInUser = useContext(UserContext);
+   // actions menu
    const [anchorEl, setAnchorEl] = useState(null);
 
    // styles
