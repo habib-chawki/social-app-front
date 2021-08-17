@@ -5,7 +5,7 @@ import PostActionsMenu from './PostActionsMenu';
 
 import Box from '@material-ui/core/Box';
 
-function PostActions({ onDeletePost }) {
+function PostActions({ postId, postContent, onUpdatePost, onDeletePost }) {
    // edit post dialog
    const [openEditDialog, setOpenEditDialog] = useState(false);
 
@@ -47,11 +47,11 @@ function PostActions({ onDeletePost }) {
          />
 
          <PostEditDialog
-            postId={post.id}
-            postContent={post.content}
+            postId={postId}
+            postContent={postContent}
             isDialogOpen={openEditDialog}
             closeDialog={handleCloseEditDialog}
-            onUpdatePost={post.onUpdate}
+            onUpdatePost={onUpdatePost}
          />
       </Box>
    );
