@@ -72,6 +72,11 @@ function Post(post) {
       post.handleRemove();
    };
 
+   const handleUpdatePost = () => {
+      // TODO: update post
+      handleCloseEditDialog();
+   };
+
    const handleEditPost = () => {
       // TODO: open edit post content dialog
       // post.handleUpdate();
@@ -149,8 +154,15 @@ function Post(post) {
                            />
                         </DialogContent>
                         <DialogActions>
-                           <Button color="primary">Update</Button>
-                           <Button color="secondary">Cancel</Button>
+                           <Button color="primary" onClick={handleUpdatePost}>
+                              Update
+                           </Button>
+                           <Button
+                              color="secondary"
+                              onClick={handleCloseEditDialog}
+                           >
+                              Cancel
+                           </Button>
                         </DialogActions>
                      </Dialog>
                   </Box>
