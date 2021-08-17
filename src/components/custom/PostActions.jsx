@@ -5,7 +5,7 @@ import PostActionsMenu from './PostActionsMenu';
 
 import Box from '@material-ui/core/Box';
 
-function PostActions() {
+function PostActions({ onDeletePost }) {
    // edit post dialog
    const [openEditDialog, setOpenEditDialog] = useState(false);
 
@@ -30,13 +30,19 @@ function PostActions() {
       setAnchorEl(event.currentTarget);
    };
 
+   const handleEditMenuAction = () => {
+      // open edit dialog and close actions menu
+      handleOpenEditDialog();
+      handleCloseActionsMenu();
+   };
+
    return (
       <Box>
          <PostActionsMenu
             onMenuClick={handleMenuClick}
             menuAnchorElement={anchorEl}
             onEditAction={handleEditMenuAction}
-            onDeletePost={handleDeletePost}
+            onDeletePost={onDeletePost}
             closeMenu={handleCloseActionsMenu}
          />
 

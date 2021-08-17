@@ -41,12 +41,6 @@ function Post(post) {
       post.onRemove(post.id);
    };
 
-   const handleEditMenuAction = () => {
-      // open edit dialog and close actions menu
-      handleOpenEditDialog();
-      handleCloseActionsMenu();
-   };
-
    // extract post owner full name
    const { firstName, middleName, lastName } = post.owner.profile;
    const postOwnerFullName = `${firstName} ${middleName} ${lastName}`;
@@ -69,7 +63,9 @@ function Post(post) {
             subheader={moment(post.creationTime).format('LLL')}
             action={
                // Determine whether user can edit post
-               loggedInUser === post.owner._id && <PostActions />
+               loggedInUser === post.owner._id && (
+                  <PostActions onDeletePost={handleDeletePost} />
+               )
             }
          />
 
