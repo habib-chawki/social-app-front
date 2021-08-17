@@ -15,8 +15,6 @@ import {
    Avatar,
    Divider,
    IconButton,
-   Menu,
-   MenuItem,
 } from '@material-ui/core';
 
 import Link from '@material-ui/core/Link';
@@ -24,12 +22,7 @@ import Box from '@material-ui/core/Box';
 
 import Typography from '@material-ui/core/Typography';
 
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -108,26 +101,6 @@ function Post(post) {
                      <IconButton onClick={handleMenuClick}>
                         <MoreHorizIcon />
                      </IconButton>
-                     <Menu
-                        id="menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleCloseActionsMenu}
-                     >
-                        <MenuItem onClick={handleEditMenuAction}>
-                           <ListItemIcon>
-                              <EditIcon />
-                           </ListItemIcon>
-                           <ListItemText primary="Edit" />
-                        </MenuItem>
-                        <MenuItem onClick={handleDeletePost}>
-                           <ListItemIcon>
-                              <DeleteIcon />
-                           </ListItemIcon>
-                           <ListItemText primary="Delete" />
-                        </MenuItem>
-                     </Menu>
 
                      <PostEditDialog
                         postId={post.id}
