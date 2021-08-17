@@ -19,6 +19,7 @@ import {
 
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
@@ -139,8 +140,14 @@ function Post(post) {
                               multiline
                               rows={4}
                               fullWidth
+                              value={post.content}
+                              autoFocus
                            />
                         </DialogContent>
+                        <DialogActions>
+                           <Button color="primary">Update</Button>
+                           <Button color="secondary">Cancel</Button>
+                        </DialogActions>
                      </Dialog>
                   </Box>
                )
