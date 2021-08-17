@@ -4,7 +4,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import moment from 'moment';
 
 import Comments from './Comments';
-import withEdit from '../higher-order/withEdit';
 import UserContext from '../../context/user-context';
 
 import {
@@ -114,7 +113,9 @@ function Post(post) {
             }
          />
 
-         <CardContent>{post.renderContent()}</CardContent>
+         <CardContent>
+            <Typography>{post.content}</Typography>
+         </CardContent>
 
          <Divider />
 
@@ -123,4 +124,4 @@ function Post(post) {
    );
 }
 
-export default withEdit(Post);
+export default Post;
