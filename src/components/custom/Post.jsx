@@ -24,6 +24,9 @@ import Typography from '@material-ui/core/Typography';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -39,13 +42,22 @@ const useStyles = makeStyles({
 });
 
 function Post(post) {
+   // menu
    const loggedInUser = useContext(UserContext);
    const [anchorEl, setAnchorEl] = useState(null);
 
+   // dialog
+   const [openEditDialog, setOpenEditDialog] = useState(false);
+
+   // styles
    const classes = useStyles();
 
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
+   };
+
+   const handleCloseEditDialog = () => {
+      setOpenEditDialog(false);
    };
 
    const handleDeletePost = () => {
@@ -53,7 +65,9 @@ function Post(post) {
    };
 
    const handleEditPost = () => {
-      post.handleUpdate();
+      // TODO: open edit post content dialog
+      // post.handleUpdate();
+      setOpenEditDialog(true);
       handleMenuClose();
    };
 
@@ -108,6 +122,13 @@ function Post(post) {
                            <ListItemText primary="Delete" />
                         </MenuItem>
                      </Menu>
+
+                     <Dialog
+                        open={openEditDialog}
+                        onClose={handleCloseEditDialog}
+                     >
+                        <DialogTitle>Edit post</DialogTitle>
+                     </Dialog>
                   </Box>
                )
             }
