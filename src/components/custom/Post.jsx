@@ -3,6 +3,8 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import moment from 'moment';
 
+import PostEditDialog from './PostEditDialog';
+
 import Comments from './Comments';
 import UserContext from '../../context/user-context';
 
@@ -40,47 +42,32 @@ const useStyles = makeStyles({
 });
 
 function Post(post) {
-   // updated post content
-   const [updatedContent, setUpdatedContent] = useState(post.content);
+   // dialog
+   const [openEditDialog, setOpenEditDialog] = useState(false);
 
    // menu
    const loggedInUser = useContext(UserContext);
    const [anchorEl, setAnchorEl] = useState(null);
 
-   // dialog
-   const [openEditDialog, setOpenEditDialog] = useState(false);
-
    // styles
    const classes = useStyles();
 
-   // handle update post content change
-   const handleUpdatedContentChange = (event) => {
-      setUpdatedContent(event.target.value);
-   };
-
    const handleMenuClick = (event) => {
       setAnchorEl(event.currentTarget);
+   };
+
+   // open / close edit dialog
+   const handleOpenEditDialog = () => {
+      setOpenEditDialog(true);
    };
 
    const handleCloseEditDialog = () => {
       setOpenEditDialog(false);
    };
 
-   const handleOpenEditDialog = () => {
-      setOpenEditDialog(true);
-   };
-
    const handleDeletePost = () => {
       // remove post by id
       post.onRemove(post.id);
-   };
-
-   const handleUpdatePost = () => {
-      // update post only when content has changed
-      if (updatedContent.trim() !== post.content) {
-         post.onUpdate(post.id, updatedContent);
-      }
-      handleCloseEditDialog();
    };
 
    const handleEditMenuAction = () => {
@@ -141,7 +128,11 @@ function Post(post) {
                         </MenuItem>
                      </Menu>
 
-                     <PostEditDialog />
+                     <PostEditDialog
+                        isOpen={openEditDialog}
+                        openDialog={handleOpenEditDialog}
+                        closeDialog={handleCloseEditDialog}
+                     />
                   </Box>
                )
             }
