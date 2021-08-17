@@ -19,17 +19,11 @@ import {
 
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
 
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import EditIcon from '@material-ui/icons/Edit';
@@ -147,36 +141,7 @@ function Post(post) {
                         </MenuItem>
                      </Menu>
 
-                     <Dialog
-                        open={openEditDialog}
-                        onClose={handleCloseEditDialog}
-                        fullWidth
-                     >
-                        <DialogTitle>Edit post</DialogTitle>
-                        <DialogContent>
-                           <TextField
-                              label="Updated content"
-                              variant="outlined"
-                              multiline
-                              rows={4}
-                              fullWidth
-                              value={updatedContent}
-                              onChange={handleUpdatedContentChange}
-                              autoFocus
-                           />
-                        </DialogContent>
-                        <DialogActions>
-                           <Button color="primary" onClick={handleUpdatePost}>
-                              Update
-                           </Button>
-                           <Button
-                              color="secondary"
-                              onClick={handleCloseEditDialog}
-                           >
-                              Cancel
-                           </Button>
-                        </DialogActions>
-                     </Dialog>
+                     <PostEditDialog />
                   </Box>
                )
             }
