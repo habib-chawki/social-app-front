@@ -29,6 +29,32 @@ function CommentEditDialog({
 
       closeDialog();
    };
+
+   return (
+      <Dialog open={isDialogOpen} onClose={closeDialog} fullWidth>
+         <DialogTitle>Edit comment</DialogTitle>
+         <DialogContent>
+            <TextField
+               label="Updated content"
+               variant="outlined"
+               multiline
+               rows={4}
+               fullWidth
+               value={updatedContent}
+               onChange={handleUpdatedContentChange}
+               autoFocus
+            />
+         </DialogContent>
+         <DialogActions>
+            <Button color="primary" onClick={handleUpdateComment}>
+               Update
+            </Button>
+            <Button color="secondary" onClick={closeDialog}>
+               Cancel
+            </Button>
+         </DialogActions>
+      </Dialog>
+   );
 }
 
 export default CommentEditDialog;
