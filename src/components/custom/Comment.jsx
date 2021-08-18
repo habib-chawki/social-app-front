@@ -59,6 +59,7 @@ function Comment(comment) {
                      commentId={comment.id}
                      commentContent={comment.content}
                      onUpdateComment={comment.onUpdate}
+                     onDeleteComment={comment.onRemove}
                   />
                )
             }
