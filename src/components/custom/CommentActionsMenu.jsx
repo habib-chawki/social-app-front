@@ -11,7 +11,13 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-function CommentActionsMenu({ onMenuClick, menuAnchorElement, closeMenu }) {
+function CommentActionsMenu({
+   onMenuClick,
+   menuAnchorElement,
+   onEditAction,
+   onDeletePost,
+   closeMenu,
+}) {
    return (
       <Box>
          <IconButton onClick={onMenuClick}>
@@ -24,7 +30,7 @@ function CommentActionsMenu({ onMenuClick, menuAnchorElement, closeMenu }) {
             open={Boolean(menuAnchorElement)}
             onClose={closeMenu}
          >
-            <MenuItem onClick="">
+            <MenuItem onClick={onEditAction}>
                <ListItemIcon>
                   <EditIcon />
                </ListItemIcon>
