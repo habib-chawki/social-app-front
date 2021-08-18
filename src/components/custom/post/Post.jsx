@@ -36,11 +36,6 @@ function Post(post) {
    // styles
    const classes = useStyles();
 
-   const handleDeletePost = () => {
-      // remove post by id
-      post.onRemove(post.id);
-   };
-
    // extract post owner full name
    const { firstName, middleName, lastName } = post.owner.profile;
    const postOwnerFullName = `${firstName} ${middleName} ${lastName}`;
@@ -65,10 +60,10 @@ function Post(post) {
                // Determine whether user can edit post
                loggedInUser === post.owner._id && (
                   <PostActions
-                     onDeletePost={handleDeletePost}
                      postId={post.id}
                      postContent={post.content}
                      onUpdatePost={post.onUpdate}
+                     onDeletePost={post.onRemove}
                   />
                )
             }
