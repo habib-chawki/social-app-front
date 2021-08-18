@@ -39,6 +39,7 @@ function PostActions({ postId, postContent, onUpdatePost, onDeletePost }) {
    return (
       <Box>
          <PostActionsMenu
+            postId={postId}
             onMenuClick={handleMenuClick}
             menuAnchorElement={anchorEl}
             onEditAction={handleEditMenuAction}
