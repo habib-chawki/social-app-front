@@ -47,6 +47,7 @@ function CommentActions({
             onMenuClick={handleMenuClick}
             menuAnchorElement={anchorEl}
             onEditAction={handleEditMenuAction}
+            commentId={commentId}
             onDeleteComment={onDeleteComment}
             closeMenu={handleCloseActionsMenu}
          />
