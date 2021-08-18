@@ -13,8 +13,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 function CommentActionsMenu({
    onMenuClick,
-   anchorEl,
-   onMenuClose,
+   menuAnchorElement,
+   closeMenu,
    onUpdateComment,
    onDeleteComment,
 }) {
@@ -25,10 +25,10 @@ function CommentActionsMenu({
          </IconButton>
          <Menu
             id="menu"
-            anchorEl={anchorEl}
+            anchorEl={menuAnchorElement}
             keepMounted
-            open={Boolean(anchorEl)}
-            onClose={onMenuClose}
+            open={Boolean(menuAnchorElement)}
+            onClose={closeMenu}
          >
             <MenuItem onClick={() => onUpdateComment()}>
                <ListItemIcon>
