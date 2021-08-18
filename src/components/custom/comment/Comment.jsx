@@ -44,8 +44,12 @@ function Comment(comment) {
             secondary={
                <>
                   {moment(comment.creationTime).format('LLL')}
-                  <Typography variant="body2" color="textPrimary">
-                     {comment.renderContent()}
+                  <Typography
+                     variant="body2"
+                     color="textPrimary"
+                     component="div"
+                  >
+                     {comment.content}
                   </Typography>
                </>
             }
