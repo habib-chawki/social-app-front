@@ -5,8 +5,8 @@ import moment from 'moment';
 
 import CommentActions from './CommentActions';
 
-import withEdit from '../higher-order/withEdit';
-import UserContext from '../../context/user-context';
+import withEdit from '../../higher-order/withEdit';
+import UserContext from '../../../context/user-context';
 
 // mui components
 import Box from '@material-ui/core/Box';

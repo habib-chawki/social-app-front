@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
 
-import * as commentService from '../../services/comment';
+import * as commentService from '../../../services/comment';
 
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';

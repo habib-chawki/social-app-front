@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import PostActions from './PostActions';
 
-import Comments from '../Comments';
+import Comments from '../comment/Comments';
 import UserContext from '../../../context/user-context';
 
 import {
