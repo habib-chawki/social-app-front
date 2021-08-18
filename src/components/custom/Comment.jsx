@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import moment from 'moment';
 
-import CommentActionsMenu from './CommentActionsMenu';
+import CommentActions from './CommentActions';
 
 import withEdit from '../higher-order/withEdit';
 import UserContext from '../../context/user-context';
@@ -21,15 +21,6 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 function Comment(comment) {
    const loggedInUser = useContext(UserContext);
-   const [anchorEl, setAnchorEl] = useState(null);
-
-   const handleMenuClick = (event) => {
-      setAnchorEl(event.currentTarget);
-   };
-
-   const handleMenuClose = () => {
-      setAnchorEl(null);
-   };
 
    return (
       <ListItem key={comment.id} divider>
@@ -64,10 +55,10 @@ function Comment(comment) {
             {
                // Determine whether user can edit comment
                loggedInUser === comment.owner._id && (
-                  <CommentActionsMenu
-                     onMenuClick={handleMenuClick}
-                     menuAnchorElement={anchorEl}
-                     closeMenu={handleMenuClose}
+                  <CommentActions
+                     commentId={comment.id}
+                     commentContent={comment.content}
+                     onUpdateComment={comment.onUpdate}
                   />
                )
             }
