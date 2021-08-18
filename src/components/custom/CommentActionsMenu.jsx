@@ -12,10 +12,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 function CommentActionsMenu({
+   commentId,
    onMenuClick,
    menuAnchorElement,
    onEditAction,
-   onDeletePost,
+   onDeleteComment,
    closeMenu,
 }) {
    return (
@@ -36,7 +37,7 @@ function CommentActionsMenu({
                </ListItemIcon>
                <ListItemText primary="Edit" />
             </MenuItem>
-            <MenuItem onClick="">
+            <MenuItem onClick={() => onDeleteComment(commentId)}>
                <ListItemIcon>
                   <DeleteIcon />
                </ListItemIcon>
