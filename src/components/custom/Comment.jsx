@@ -63,7 +63,13 @@ function Comment(comment) {
          <ListItemSecondaryAction>
             {
                // Determine whether user can edit comment
-               loggedInUser === comment.owner._id && <CommentActionsMenu />
+               loggedInUser === comment.owner._id && (
+                  <CommentActionsMenu
+                     onMenuClick={handleMenuClick}
+                     menuAnchorElement={anchorEl}
+                     closeMenu={handleMenuClose}
+                  />
+               )
             }
          </ListItemSecondaryAction>
       </ListItem>
