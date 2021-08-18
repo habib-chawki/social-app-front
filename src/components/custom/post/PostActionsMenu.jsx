@@ -12,6 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 function PostActionsMenu({
+   postId,
    onMenuClick,
    menuAnchorElement,
    onEditAction,
@@ -37,7 +38,7 @@ function PostActionsMenu({
                </ListItemIcon>
                <ListItemText primary="Edit" />
             </MenuItem>
-            <MenuItem onClick={onDeletePost}>
+            <MenuItem onClick={() => onDeletePost(postId)}>
                <ListItemIcon>
                   <DeleteIcon />
                </ListItemIcon>
