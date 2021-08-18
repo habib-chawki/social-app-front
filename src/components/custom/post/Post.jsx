@@ -5,8 +5,8 @@ import moment from 'moment';
 
 import PostActions from './PostActions';
 
-import Comments from './Comments';
-import UserContext from '../../context/user-context';
+import Comments from '../Comments';
+import UserContext from '../../../context/user-context';
 
 import {
    Card,

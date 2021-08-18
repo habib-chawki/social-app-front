@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import Header from '../common/Header';
+import Header from '../../common/Header';
 import Post from './Post';
 
-import * as postService from '../../services/post';
+import * as postService from '../../../services/post';
 
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';

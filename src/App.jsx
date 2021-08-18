@@ -5,7 +5,7 @@ import SignUp from './components/custom/SignUp';
 import LogIn from './components/custom/LogIn';
 import Profile from './components/custom/profile/Profile';
 import ProfileForm from './components/custom/profile/ProfileForm';
-import Posts from './components/custom/Posts';
+import Posts from './components/custom/post/Posts';
 import NotFound from './components/common/NotFound';
 
 import UserContext from './context/user-context';
