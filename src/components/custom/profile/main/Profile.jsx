@@ -94,29 +94,29 @@ function Profile() {
                   </ListItemIcon>
                   <ListItemText
                      primary={
-                        profile.firstName ? (
+                        profile.firstName && (
                            <Typography variant="h6">
                               {`${profile.firstName} ${profile.middleName} ${profile.lastName}`}
                            </Typography>
-                        ) : (
-                           'Undetermined name'
                         )
                      }
                   />
                </ListItem>
 
-               <ListItem>
-                  <ListItemIcon>
-                     <HomeIcon fontSize="large" color="secondary" />
-                  </ListItemIcon>
-                  <ListItemText
-                     primary={
-                        <Typography variant="h6">
-                           {profile.address || 'Undetermined address'}{' '}
-                        </Typography>
-                     }
-                  />
-               </ListItem>
+               {profile.address && (
+                  <ListItem>
+                     <ListItemIcon>
+                        <HomeIcon fontSize="large" color="secondary" />
+                     </ListItemIcon>
+                     <ListItemText
+                        primary={
+                           <Typography variant="h6">
+                              {profile.address}
+                           </Typography>
+                        }
+                     />
+                  </ListItem>
+               )}
 
                <ListItem>
                   <ListItemIcon>
