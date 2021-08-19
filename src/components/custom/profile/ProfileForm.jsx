@@ -4,7 +4,7 @@ import { useLocation, useHistory, useParams } from 'react-router-dom';
 import Experience from './experience/Experience';
 import Education from './education/Education';
 
-import Language from './Language';
+import Language from './language/Language';
 import Skills from './Skills';
 
 import { updateProfile } from '../../../services/profile';

@@ -9,7 +9,7 @@ import ProfileDrawer from './ProfileDrawer';
 import EducationCards from './EducationCards';
 import ExperienceCards from './ExperienceCards';
 import ProfileAppBar from './ProfileAppBar';
-import LanguageChips from './LanguageChips';
+import LanguageChips from './language/LanguageChips';
 
 // router
 import { useParams, useHistory } from 'react-router-dom';
