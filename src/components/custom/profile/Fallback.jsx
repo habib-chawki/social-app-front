@@ -12,6 +12,7 @@ function Fallback({ message }) {
          flexDirection="column"
          justifyContent="center"
          alignItems="center"
+         height="100%"
       >
          <ErrorIcon fontSize="medium" color="secondary" />
          <Typography variant="h5">{message}</Typography>
