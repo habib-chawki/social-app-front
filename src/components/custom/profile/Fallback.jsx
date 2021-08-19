@@ -5,11 +5,11 @@ import Box from '@material-ui/core/Box';
 
 import ErrorIcon from '@material-ui/icons/Error';
 
-function Fallback({ output }) {
+function Fallback({ message }) {
    return (
       <Box>
          <ErrorIcon fontSize="medium" />
-         <Typography variant="h5">{output}</Typography>
+         <Typography variant="h5">{message}</Typography>
       </Box>
    );
 }

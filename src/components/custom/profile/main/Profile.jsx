@@ -171,7 +171,7 @@ function Profile() {
                {selectedTab === 0 && (
                   <Box>
                      <Typography variant="body1">
-                        {profile.bio || <Fallback output="Bio not provided" />}
+                        {profile.bio || <Fallback message="Bio not provided" />}
                      </Typography>
                   </Box>
                )}
