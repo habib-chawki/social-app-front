@@ -1,19 +1,20 @@
 import React from 'react';
 
+import Fallback from '../Fallback';
+
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 
 function Languages({ languages }) {
+   if (languages.length === 0) {
+      return <Fallback message="Languages not provided" />;
+   }
+
    return (
       <Box>
-         {languages.length === 0 ? (
-            <Typography variant="h4">Undetermined languages</Typography>
-         ) : (
-            languages.map((language, index) => (
-               <Chip key={index} label={language} color="secondary" />
-            ))
-         )}
+         {languages.map((language, index) => (
+            <Chip key={index} label={language} color="secondary" />
+         ))}
       </Box>
    );
 }
