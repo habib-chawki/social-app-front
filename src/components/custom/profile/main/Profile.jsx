@@ -166,13 +166,13 @@ function Profile() {
          </ProfileDrawer>
 
          {/* tabs */}
-         <Box display="flex" flexDirection="column" flexGrow={1}>
+         <Box display="flex" flexDirection="column" flexGrow={1} height="100vh">
             <ProfileAppBar
                onTabChange={handleTabChange}
                selectedTab={selectedTab}
             />
 
-            <Box m={2}>
+            <Box m={2} height="100%">
                {/* Bio */}
                {selectedTab === 0 && (
                   <Box>
