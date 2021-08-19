@@ -26,15 +26,11 @@ function CollapsibleSkills({ skills, heading, icon }) {
 
          <Collapse in={open}>
             <List>
-               {skills.length === 0 ? (
-                  <p>Undetermined {heading} skills</p>
-               ) : (
-                  skills.map((skill, index) => (
-                     <ListItem key={index}>
-                        <ListItemText primary={skill} inset={true} />
-                     </ListItem>
-                  ))
-               )}
+               {skills.map((skill, index) => (
+                  <ListItem key={index}>
+                     <ListItemText primary={skill} inset={true} />
+                  </ListItem>
+               ))}
             </List>
          </Collapse>
       </Box>

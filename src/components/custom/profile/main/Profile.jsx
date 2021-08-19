@@ -192,21 +192,25 @@ function Profile() {
                )}
 
                {/* Skills */}
-               {selectedTab === 4 && (
-                  <List>
-                     <CollapsibleSkills
-                        skills={profile.skills.organizational}
-                        heading="Organizational"
-                        icon={<WorkIcon />}
-                     />
+               {selectedTab === 4 &&
+                  (profile.skills.organizational.length === 0 &&
+                  profile.skills.technical.length === 0 ? (
+                     <Fallback message="Skills not provided" />
+                  ) : (
+                     <List>
+                        <CollapsibleSkills
+                           skills={profile.skills.organizational}
+                           heading="Organizational"
+                           icon={<WorkIcon />}
+                        />
 
-                     <CollapsibleSkills
-                        skills={profile.skills.technical}
-                        heading="Technical"
-                        icon={<TimerIcon />}
-                     />
-                  </List>
-               )}
+                        <CollapsibleSkills
+                           skills={profile.skills.technical}
+                           heading="Technical"
+                           icon={<TimerIcon />}
+                        />
+                     </List>
+                  ))}
             </Box>
          </Box>
       </Box>
