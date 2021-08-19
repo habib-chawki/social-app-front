@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 
-import Experience from './experience/Experience';
-import Education from './education/Education';
+import Experience from '../experience/Experience';
+import Education from '../education/Education';
 
-import Language from './language/Language';
-import Skills from './skills/Skills';
+import Language from '../language/Language';
+import Skills from '../skills/Skills';
 
-import { updateProfile } from '../../../services/profile';
+import { updateProfile } from '../../../../services/profile';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';

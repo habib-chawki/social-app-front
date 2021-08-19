@@ -3,8 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import SignUp from './components/custom/SignUp';
 import LogIn from './components/custom/LogIn';
-import Profile from './components/custom/profile/Profile';
-import ProfileForm from './components/custom/profile/ProfileForm';
+import Profile from './components/custom/profile/main/Profile';
+import ProfileForm from './components/custom/profile/main/ProfileForm';
 import Posts from './components/custom/post/Posts';
 import NotFound from './components/common/NotFound';
 

@@ -4,19 +4,19 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 // components
-import CollapsibleSkills from './skills/CollapsibleSkills';
+import CollapsibleSkills from '../skills/CollapsibleSkills';
 import ProfileDrawer from './ProfileDrawer';
-import EducationCards from './education/EducationCards';
-import ExperienceCards from './experience/ExperienceCards';
+import EducationCards from '../education/EducationCards';
+import ExperienceCards from '../experience/ExperienceCards';
 import ProfileAppBar from './ProfileAppBar';
-import LanguageChips from './language/LanguageChips';
+import LanguageChips from '../language/LanguageChips';
 
 // router
 import { useParams, useHistory } from 'react-router-dom';
 
 // services
-import { fetchProfile } from '../../../services/profile';
-import { getUser } from '../../../services/storage';
+import { fetchProfile } from '../../../../services/profile';
+import { getUser } from '../../../../services/storage';
 
 // mui components
 import Button from '@material-ui/core/Button';
