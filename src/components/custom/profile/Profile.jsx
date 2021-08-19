@@ -6,8 +6,8 @@ import moment from 'moment';
 // components
 import CollapsibleSkills from './skills/CollapsibleSkills';
 import ProfileDrawer from './ProfileDrawer';
-import EducationCards from './EducationCards';
-import ExperienceCards from './ExperienceCards';
+import EducationCards from './education/EducationCards';
+import ExperienceCards from './experience/ExperienceCards';
 import ProfileAppBar from './ProfileAppBar';
 import LanguageChips from './language/LanguageChips';
 
