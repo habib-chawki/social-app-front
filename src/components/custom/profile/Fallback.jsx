@@ -14,7 +14,7 @@ function Fallback({ message }) {
          alignItems="center"
          height="100%"
       >
-         <ErrorIcon fontSize="medium" color="secondary" />
+         <ErrorIcon fontSize="large" color="secondary" />
          <Typography variant="h5">{message}</Typography>
       </Box>
    );
