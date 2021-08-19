@@ -9,7 +9,7 @@ import ProfileDrawer from './ProfileDrawer';
 import EducationCards from '../education/EducationCards';
 import ExperienceCards from '../experience/ExperienceCards';
 import ProfileAppBar from './ProfileAppBar';
-import LanguageChips from '../language/LanguageChips';
+import Languages from '../language/Languages';
 
 // router
 import { useParams, useHistory } from 'react-router-dom';
@@ -186,7 +186,7 @@ function Profile() {
 
                {/* Languages */}
                {selectedTab === 3 && (
-                  <LanguageChips languages={profile.languages} />
+                  <Languages languages={profile.languages} />
                )}
 
                {/* Skills */}

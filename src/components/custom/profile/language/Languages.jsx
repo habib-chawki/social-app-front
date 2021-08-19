@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 
-function LanguageChips({ languages }) {
+function Languages({ languages }) {
    return (
       <Box>
          {languages.length === 0 ? (
@@ -18,4 +18,4 @@ function LanguageChips({ languages }) {
    );
 }
 
-export default LanguageChips;
+export default Languages;
