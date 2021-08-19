@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Fallback from '../Fallback';
+
 // libs
 import moment from 'moment';
 
@@ -24,42 +26,42 @@ const useStyles = makeStyles({
 function EducationCards({ educations }) {
    const classes = useStyles();
 
+   if (educations.length === 0) {
+      return <Fallback message="Education not provided" />;
+   }
+
    return (
       <Box>
-         {educations === 0 ? (
-            <p>Undetermined education</p>
-         ) : (
-            educations.map((education) => (
-               <Paper
-                  className={`${classes.paper} ${classes.paperItem}`}
-                  key={education.major}
-                  elevation="3"
+         {educations.map((education) => (
+            <Paper
+               className={`${classes.paper} ${classes.paperItem}`}
+               key={education.major}
+               elevation="3"
+            >
+               <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
                >
-                  <Box
-                     display="flex"
-                     justifyContent="space-between"
-                     alignItems="center"
-                  >
-                     <Typography variant="h4">{education.school}</Typography>
+                  <Typography variant="h4">{education.school}</Typography>
 
-                     <Typography variant="subtitle1" color="textSecondary">
-                        {moment(education.startDate).format('MMMM YYYY')} -{' '}
-                        {moment(education.endDate).format('MMMM YYYY')}
-                     </Typography>
-                  </Box>
-
-                  <Typography variant="h5" className={classes.paperItem}>
-                     {education.major}
+                  <Typography variant="subtitle1" color="textSecondary">
+                     {moment(education.startDate).format('MMMM YYYY')} -{' '}
+                     {moment(education.endDate).format('MMMM YYYY')}
                   </Typography>
+               </Box>
 
-                  <Divider className={classes.paperItem} />
+               <Typography variant="h5" className={classes.paperItem}>
+                  {education.major}
+               </Typography>
 
-                  <Typography variant="body1" className={classes.paperItem}>
-                     {education.description}
-                  </Typography>
-               </Paper>
-            ))
-         )}
+               <Divider className={classes.paperItem} />
+
+               <Typography variant="body1" className={classes.paperItem}>
+                  {education.description}
+               </Typography>
+            </Paper>
+         ))}
       </Box>
    );
 }
