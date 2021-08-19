@@ -118,29 +118,35 @@ function Profile() {
                   </ListItem>
                )}
 
-               <ListItem>
-                  <ListItemIcon>
-                     <CakeIcon fontSize="large" color="secondary" />
-                  </ListItemIcon>
-                  <ListItemText
-                     primary={
-                        <Typography variant="h6">
-                           {moment(profile.birthday).format('MMMM Do YYYY')}
-                        </Typography>
-                     }
-                  />
-               </ListItem>
+               {profile.birthday && (
+                  <ListItem>
+                     <ListItemIcon>
+                        <CakeIcon fontSize="large" color="secondary" />
+                     </ListItemIcon>
+                     <ListItemText
+                        primary={
+                           <Typography variant="h6">
+                              {moment(profile.birthday).format('MMMM Do YYYY')}
+                           </Typography>
+                        }
+                     />
+                  </ListItem>
+               )}
 
-               <ListItem>
-                  <ListItemIcon>
-                     <WcIcon fontSize="large" color="secondary" />
-                  </ListItemIcon>
-                  <ListItemText
-                     primary={
-                        <Typography variant="h6">{profile.gender}</Typography>
-                     }
-                  />
-               </ListItem>
+               {profile.gender && (
+                  <ListItem>
+                     <ListItemIcon>
+                        <WcIcon fontSize="large" color="secondary" />
+                     </ListItemIcon>
+                     <ListItemText
+                        primary={
+                           <Typography variant="h6">
+                              {profile.gender}
+                           </Typography>
+                        }
+                     />
+                  </ListItem>
+               )}
             </List>
 
             {
