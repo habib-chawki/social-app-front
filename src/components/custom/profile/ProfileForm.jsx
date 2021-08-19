@@ -5,7 +5,7 @@ import Experience from './experience/Experience';
 import Education from './education/Education';
 
 import Language from './language/Language';
-import Skills from './Skills';
+import Skills from './skills/Skills';
 
 import { updateProfile } from '../../../services/profile';
 
