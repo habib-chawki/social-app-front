@@ -11,6 +11,8 @@ import ExperienceCards from '../experience/ExperienceCards';
 import ProfileAppBar from './ProfileAppBar';
 import Languages from '../language/Languages';
 
+import Fallback from '../Fallback';
+
 // router
 import { useParams, useHistory } from 'react-router-dom';
 
@@ -169,7 +171,7 @@ function Profile() {
                {selectedTab === 0 && (
                   <Box>
                      <Typography variant="body1">
-                        {profile.bio || 'Undetermined bio'}
+                        {profile.bio || <Fallback output="Bio not provided" />}
                      </Typography>
                   </Box>
                )}
