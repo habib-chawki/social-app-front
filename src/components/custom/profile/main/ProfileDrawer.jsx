@@ -47,7 +47,7 @@ function ProfileDrawer({ children }) {
             display="flex"
             flexDirection="column"
             alignItems="center"
-            mt={5}
+            my={5}
             onMouseEnter={toggleAvatarInput}
             onMouseLeave={toggleAvatarInput}
          >
@@ -58,11 +58,13 @@ function ProfileDrawer({ children }) {
                className={classes.fileInput}
                id="file-input"
             />
-            <label htmlFor="file-input">
-               <IconButton color="primary" component="span">
-                  <PhotoCamera />
-               </IconButton>
-            </label>
+            {showAvatarInput && (
+               <label htmlFor="file-input">
+                  <IconButton color="primary" component="span">
+                     <PhotoCamera />
+                  </IconButton>
+               </label>
+            )}
          </Box>
 
          <Divider />
