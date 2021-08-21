@@ -37,19 +37,23 @@ function ProfileDrawer({ children }) {
          anchor="left"
          classes={{ paper: classes.drawerPaper }}
       >
-         <Box display="flex" justifyContent="center" my={5}>
-            <Avatar className={classes.avatar} variant="circular" />
-            <input
-               type="file"
-               accept="image/*"
-               className={classes.fileInput}
-               id="file-input"
-            />
-            <label htmlFor="file-input">
-               <IconButton color="primary" component="span">
-                  <PhotoCamera />
-               </IconButton>
-            </label>
+         <Box display="flex" flexDirection="column" alignItems="center" my={5}>
+            <Box zIndex="modal">
+               <Avatar className={classes.avatar} variant="circular" />
+            </Box>
+            <Box zIndex="tooltip" position="absolute">
+               <input
+                  type="file"
+                  accept="image/*"
+                  className={classes.fileInput}
+                  id="file-input"
+               />
+               <label htmlFor="file-input">
+                  <IconButton color="primary" component="span">
+                     <PhotoCamera />
+                  </IconButton>
+               </label>
+            </Box>
          </Box>
 
          <Divider />
