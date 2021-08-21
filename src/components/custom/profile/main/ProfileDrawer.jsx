@@ -36,6 +36,10 @@ function ProfileDrawer({ children }) {
       setShowAvatarInput(!showAvatarInput);
    };
 
+   const handleAvatarChange = (event) => {
+      console.log(event.target.files[0]);
+   };
+
    return (
       <Drawer
          className={classes.drawer}
@@ -66,6 +70,7 @@ function ProfileDrawer({ children }) {
                         accept="image/*"
                         className={classes.fileInput}
                         id="file-input"
+                        onChange={handleAvatarChange}
                      />
                      <label htmlFor="file-input">
                         <IconButton color="primary" component="span">
