@@ -22,6 +22,9 @@ const useStyles = makeStyles({
    drawerPaper: {
       width: 300,
    },
+   fileInput: {
+      display: 'none',
+   },
 });
 
 function ProfileDrawer({ children }) {
@@ -37,10 +40,10 @@ function ProfileDrawer({ children }) {
          <Box display="flex" justifyContent="center" my={5}>
             <Avatar className={classes.avatar} variant="circular" />
             <input
-               accept="image/*"
-               style={{ display: 'none' }}
-               id="file-input"
                type="file"
+               accept="image/*"
+               className={classes.fileInput}
+               id="file-input"
             />
             <label htmlFor="file-input">
                <IconButton color="primary" component="span">
