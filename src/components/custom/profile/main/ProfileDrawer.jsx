@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Avatar from '@material-ui/core/Avatar';
 import Drawer from '@material-ui/core/Drawer';
@@ -28,10 +28,12 @@ const useStyles = makeStyles({
 });
 
 function ProfileDrawer({ children }) {
+   const [showAvatarInput, setShowAvatarInput] = useState(false);
+
    const classes = useStyles();
 
-   const toggleAvatarInput = () => {
-      console.log('toggle');
+   const toggleAvatarInput = (event) => {
+      setShowAvatarInput(!showAvatarInput);
    };
 
    return (
