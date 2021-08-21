@@ -37,6 +37,7 @@ function ProfileDrawer({ children }) {
    };
 
    const handleAvatarChange = (event) => {
+      // TODO: upload avatar
       console.log(event.target.files[0]);
    };
 

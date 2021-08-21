@@ -30,4 +30,12 @@ async function updateProfile(profile, userId) {
    }
 }
 
-export { fetchProfile, updateProfile };
+async function uploadAvatar() {
+   try {
+      // TODO: upload avatar
+   } catch (e) {
+      console.log('Unable to upload avatar ' + e.message);
+   }
+}
+
+export { fetchProfile, updateProfile, uploadAvatar };
