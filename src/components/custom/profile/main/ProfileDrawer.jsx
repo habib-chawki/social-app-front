@@ -47,6 +47,7 @@ function ProfileDrawer({ children }) {
             alignItems="center"
             mt={5}
             onMouseEnter={toggleAvatarInput}
+            onMouseLeave={toggleAvatarInput}
          >
             <Avatar className={classes.avatar} variant="circular" />
             <input
