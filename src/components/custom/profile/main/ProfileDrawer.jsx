@@ -51,24 +51,30 @@ function ProfileDrawer({ children }) {
             onMouseEnter={toggleAvatarInput}
             onMouseLeave={toggleAvatarInput}
          >
-            <Avatar className={classes.avatar} variant="circular" />
-
-            {showAvatarInput && (
-               <Box position="absolute">
-                  <input
-                     type="file"
-                     accept="image/*"
-                     className={classes.fileInput}
-                     id="file-input"
-                  />
-
-                  <label htmlFor="file-input">
-                     <IconButton color="primary" component="span">
-                        <PhotoCamera />
-                     </IconButton>
-                  </label>
-               </Box>
-            )}
+            <Avatar className={classes.avatar} variant="circular">
+               {showAvatarInput && (
+                  <Box
+                     zIndex={1}
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center"
+                     width="100%"
+                     height="100%"
+                  >
+                     <input
+                        type="file"
+                        accept="image/*"
+                        className={classes.fileInput}
+                        id="file-input"
+                     />
+                     <label htmlFor="file-input">
+                        <IconButton color="primary" component="span">
+                           <PhotoCamera />
+                        </IconButton>
+                     </label>
+                  </Box>
+               )}
+            </Avatar>
          </Box>
 
          <Divider />
