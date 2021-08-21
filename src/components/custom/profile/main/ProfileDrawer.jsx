@@ -5,6 +5,9 @@ import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+
 // styles
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -33,6 +36,17 @@ function ProfileDrawer({ children }) {
       >
          <Box display="flex" justifyContent="center" my={5}>
             <Avatar className={classes.avatar} variant="circular" />
+            <input
+               accept="image/*"
+               style={{ display: 'none' }}
+               id="file-input"
+               type="file"
+            />
+            <label htmlFor="file-input">
+               <IconButton color="primary" component="span">
+                  <PhotoCamera />
+               </IconButton>
+            </label>
          </Box>
 
          <Divider />
