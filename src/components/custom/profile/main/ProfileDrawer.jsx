@@ -30,6 +30,10 @@ const useStyles = makeStyles({
 function ProfileDrawer({ children }) {
    const classes = useStyles();
 
+   const toggleAvatarInput = () => {
+      console.log('toggle');
+   };
+
    return (
       <Drawer
          className={classes.drawer}
@@ -37,7 +41,13 @@ function ProfileDrawer({ children }) {
          anchor="left"
          classes={{ paper: classes.drawerPaper }}
       >
-         <Box display="flex" flexDirection="column" alignItems="center" mt={5}>
+         <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            mt={5}
+            onMouseEnter={toggleAvatarInput}
+         >
             <Avatar className={classes.avatar} variant="circular" />
             <input
                type="file"
