@@ -30,9 +30,15 @@ async function updateProfile(profile, userId) {
    }
 }
 
-async function uploadAvatar() {
+async function uploadAvatar(userId, avatar) {
    try {
-      // TODO: upload avatar
+      const response = await server({
+         url: `${baseUrl}/${userId}/avatar`,
+         method: 'post',
+         data: avatar,
+      });
+
+      return response.data;
    } catch (e) {
       console.log('Unable to upload avatar ' + e.message);
    }

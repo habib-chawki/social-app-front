@@ -42,12 +42,9 @@ function ProfileDrawer({ children }) {
    };
 
    const handleAvatarChange = (event) => {
-      // prepare avatar form data
+      // append avatar to form data
       const data = new FormData();
       data.append('avatar', event.target.files[0]);
-
-      console.log('user ' + userId);
-      console.log('Avatar uploaded ' + event.target.files[0]);
    };
 
    return (
