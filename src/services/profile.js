@@ -33,7 +33,7 @@ async function updateProfile(profile, userId) {
 async function uploadAvatar(userId, avatar) {
    try {
       const response = await server({
-         url: `${baseUrl}/${userId}/avatar`,
+         url: `${baseUrl}/${userId}/profile/avatar`,
          method: 'post',
          data: avatar,
       });
