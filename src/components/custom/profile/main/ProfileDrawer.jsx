@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import UserContext from '../../../../context/user-context';
 
 import Avatar from '@material-ui/core/Avatar';
 import Drawer from '@material-ui/core/Drawer';
@@ -30,6 +32,9 @@ const useStyles = makeStyles({
 function ProfileDrawer({ children }) {
    const [showAvatarInput, setShowAvatarInput] = useState(false);
 
+   // fetch logged-in user id
+   const userId = useContext(UserContext);
+
    const classes = useStyles();
 
    const toggleAvatarInput = (event) => {
@@ -41,6 +46,7 @@ function ProfileDrawer({ children }) {
       const data = new FormData();
       data.append('avatar', event.target.files[0]);
 
+      console.log('user ' + userId);
       console.log('Avatar uploaded ' + event.target.files[0]);
    };
 
