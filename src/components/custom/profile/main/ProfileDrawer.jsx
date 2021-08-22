@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 
+import { uploadAvatar } from '../../../../services/profile';
 import UserContext from '../../../../context/user-context';
 
 import Avatar from '@material-ui/core/Avatar';
@@ -45,6 +46,11 @@ function ProfileDrawer({ children }) {
       // append avatar to form data
       const data = new FormData();
       data.append('avatar', event.target.files[0]);
+
+      // upload avatar
+      uploadAvatar(userId, data)
+         .then((res) => console.log(res))
+         .catch((err) => console.log(err));
    };
 
    return (
