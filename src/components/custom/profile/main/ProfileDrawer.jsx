@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { uploadAvatar } from '../../../../services/profile';
 
@@ -30,13 +30,7 @@ const useStyles = makeStyles({
 });
 
 function ProfileDrawer({ children, userId, avatar }) {
-   const [showAvatarInput, setShowAvatarInput] = useState(false);
-
    const classes = useStyles();
-
-   const toggleAvatarInput = (event) => {
-      setShowAvatarInput(!showAvatarInput);
-   };
 
    const handleAvatarChange = (event) => {
       // append avatar to form data
@@ -56,43 +50,33 @@ function ProfileDrawer({ children, userId, avatar }) {
          anchor="left"
          classes={{ paper: classes.drawerPaper }}
       >
-         <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            my={5}
-            onMouseEnter={toggleAvatarInput}
-            onMouseLeave={toggleAvatarInput}
-         >
+         <Box display="flex" flexDirection="column" alignItems="center" mt={5}>
             <Avatar
                src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${avatar}`}
                className={classes.avatar}
                variant="circular"
+            />
+            <Box
+               zIndex={1}
+               display="flex"
+               justifyContent="center"
+               alignItems="center"
+               width="100%"
+               height="100%"
             >
-               {showAvatarInput && (
-                  <Box
-                     zIndex={1}
-                     display="flex"
-                     justifyContent="center"
-                     alignItems="center"
-                     width="100%"
-                     height="100%"
-                  >
-                     <input
-                        type="file"
-                        accept="image/*"
-                        className={classes.fileInput}
-                        id="file-input"
-                        onChange={handleAvatarChange}
-                     />
-                     <label htmlFor="file-input">
-                        <IconButton color="primary" component="span">
-                           <PhotoCamera />
-                        </IconButton>
-                     </label>
-                  </Box>
-               )}
-            </Avatar>
+               <input
+                  type="file"
+                  accept="image/*"
+                  className={classes.fileInput}
+                  id="file-input"
+                  onChange={handleAvatarChange}
+               />
+               <label htmlFor="file-input">
+                  <IconButton color="primary" component="span">
+                     <PhotoCamera />
+                  </IconButton>
+               </label>
+            </Box>
          </Box>
 
          <Divider />
