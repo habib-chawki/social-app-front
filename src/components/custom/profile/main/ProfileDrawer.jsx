@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { uploadAvatar } from '../../../../services/profile';
 
@@ -32,6 +32,8 @@ const useStyles = makeStyles({
 function ProfileDrawer({ children, userId, avatar }) {
    // handle avatar state
    const [currentAvatar, setCurrentAvatar] = useState(avatar);
+
+   useEffect(() => setCurrentAvatar(avatar), [avatar]);
 
    const classes = useStyles();
 
