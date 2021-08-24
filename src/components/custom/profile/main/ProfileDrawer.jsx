@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 
 import { uploadAvatar } from '../../../../services/profile';
-import UserContext from '../../../../context/user-context';
 
 import Avatar from '@material-ui/core/Avatar';
 import Drawer from '@material-ui/core/Drawer';
@@ -30,11 +29,8 @@ const useStyles = makeStyles({
    },
 });
 
-function ProfileDrawer({ children }) {
+function ProfileDrawer({ children, userId }) {
    const [showAvatarInput, setShowAvatarInput] = useState(false);
-
-   // fetch logged-in user id
-   const userId = useContext(UserContext);
 
    const classes = useStyles();
 
