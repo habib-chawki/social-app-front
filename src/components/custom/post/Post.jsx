@@ -43,7 +43,11 @@ function Post(post) {
    return (
       <Card className={classes.card}>
          <CardHeader
-            avatar={<Avatar alt={postOwnerFullName} />}
+            avatar={
+               <Avatar
+                  src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${post.owner.profile.avatar}`}
+               />
+            }
             title={
                <Link
                   to={`user/${post.owner._id}/profile`}
