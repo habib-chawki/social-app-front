@@ -89,7 +89,7 @@ function Profile() {
       <Box display="flex">
          <ProfileDrawer
             userId={userId}
-            avatar={`http://localhost:3001/avatars/${profile.avatar}`}
+            avatar={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${profile.avatar}`}
          >
             <List>
                <ListItem>
