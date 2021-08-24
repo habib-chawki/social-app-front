@@ -44,6 +44,7 @@ function Profile() {
    const history = useHistory();
 
    const [profile, setProfile] = useState({
+      avatar: '',
       firstName: '',
       middleName: '',
       lastName: '',
@@ -86,7 +87,7 @@ function Profile() {
 
    return (
       <Box display="flex">
-         <ProfileDrawer>
+         <ProfileDrawer userId={userId}>
             <List>
                <ListItem>
                   <ListItemIcon>
