@@ -29,7 +29,7 @@ const useStyles = makeStyles({
    },
 });
 
-function ProfileDrawer({ children, userId }) {
+function ProfileDrawer({ children, userId, avatar }) {
    const [showAvatarInput, setShowAvatarInput] = useState(false);
 
    const classes = useStyles();
@@ -64,7 +64,7 @@ function ProfileDrawer({ children, userId }) {
             onMouseEnter={toggleAvatarInput}
             onMouseLeave={toggleAvatarInput}
          >
-            <Avatar className={classes.avatar} variant="circular">
+            <Avatar src={avatar} className={classes.avatar} variant="circular">
                {showAvatarInput && (
                   <Box
                      zIndex={1}

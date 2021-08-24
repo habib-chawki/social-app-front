@@ -87,7 +87,7 @@ function Profile() {
 
    return (
       <Box display="flex">
-         <ProfileDrawer userId={userId}>
+         <ProfileDrawer userId={userId} avatar={profile.avatar}>
             <List>
                <ListItem>
                   <ListItemIcon>
