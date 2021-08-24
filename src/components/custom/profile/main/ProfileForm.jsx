@@ -130,7 +130,8 @@ function ProfileForm() {
    };
 
    const handleSaveProfile = () => {
-      const profile = {
+      const updatedProfile = {
+         avatar: profile.avatar,
          firstName,
          lastName,
          middleName,
@@ -145,7 +146,7 @@ function ProfileForm() {
       };
 
       // update user profile
-      updateProfile(profile, userId)
+      updateProfile(updatedProfile, userId)
          .then((updatedProfile) => {
             // navigate back to '/profile' upon successful profile update
             history.push(`/user/${userId}/profile`);
