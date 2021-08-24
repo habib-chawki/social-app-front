@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from '../services/storage';
 
 const server = axios.create({
-   baseURL: 'http://localhost:3001',
+   baseURL: process.env.REACT_APP_BACKEND_BASE_URL,
 });
 
 // add auth token to request headers

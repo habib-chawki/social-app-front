@@ -87,7 +87,10 @@ function Profile() {
 
    return (
       <Box display="flex">
-         <ProfileDrawer userId={userId} avatar={profile.avatar}>
+         <ProfileDrawer
+            userId={userId}
+            avatar={`http://localhost:3001/avatars/${profile.avatar}`}
+         >
             <List>
                <ListItem>
                   <ListItemIcon>
