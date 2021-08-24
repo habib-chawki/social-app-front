@@ -87,10 +87,7 @@ function Profile() {
 
    return (
       <Box display="flex">
-         <ProfileDrawer
-            userId={userId}
-            avatar={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${profile.avatar}`}
-         >
+         <ProfileDrawer userId={userId} avatar={profile.avatar}>
             <List>
                <ListItem>
                   <ListItemIcon>

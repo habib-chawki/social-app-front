@@ -64,7 +64,11 @@ function ProfileDrawer({ children, userId, avatar }) {
             onMouseEnter={toggleAvatarInput}
             onMouseLeave={toggleAvatarInput}
          >
-            <Avatar src={avatar} className={classes.avatar} variant="circular">
+            <Avatar
+               src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${avatar}`}
+               className={classes.avatar}
+               variant="circular"
+            >
                {showAvatarInput && (
                   <Box
                      zIndex={1}
