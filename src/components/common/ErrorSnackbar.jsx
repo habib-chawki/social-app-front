@@ -4,7 +4,17 @@ import React, { useState } from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
-function ErrorSnackbar() {
+function ErrorSnackbar({ errorMessage }) {
+   const [open, setOpen] = useState(false);
+
+   const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+         return;
+      }
+
+      setOpen(false);
+   };
+
    return (
       <Snackbar
          anchorOrigin={{
@@ -27,7 +37,7 @@ function ErrorSnackbar() {
             onClose={handleClose}
             severity="error"
          >
-            Invalid form credentials
+            {errorMessage}
          </Alert>
       </Snackbar>
    );
