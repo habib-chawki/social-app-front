@@ -11,8 +11,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 // icons
 import IconButton from '@material-ui/core/IconButton';
@@ -35,17 +33,13 @@ const useStyles = makeStyles({
    fileInput: {
       display: 'none',
    },
-   backdrop: {
-      zIndex: 1,
-   },
 });
 
 function ProfileDrawer({ children, userId, avatar }) {
    // handle avatar state
    const [currentAvatar, setCurrentAvatar] = useState(avatar);
 
-   // handle backdrop and snackbar state
-   const [openBackdrop, setOpenBackdrop] = useState(false);
+   // handle error snackbar state
    const [openErrorSnackbar, setOpenErrorSnackbar] = useState(false);
 
    useEffect(() => setCurrentAvatar(avatar), [avatar]);
@@ -57,21 +51,10 @@ function ProfileDrawer({ children, userId, avatar }) {
       const data = new FormData();
       data.append('avatar', event.target.files[0]);
 
-      // display backdrop
-      setOpenBackdrop(true);
-
       // upload avatar
       uploadAvatar(userId, data)
-         .then((res) => {
-            // update avatar path
-            setCurrentAvatar(`${res.avatar}?${Date.now()}`);
-
-            // remove backdrop
-            setOpenBackdrop(false);
-         })
-         .catch((err) => {
-            setOpenErrorSnackbar(true);
-         });
+         .then((res) => setCurrentAvatar(`${res.avatar}?${Date.now()}`))
+         .catch((err) => setOpenErrorSnackbar(true));
    };
 
    return (
@@ -87,9 +70,6 @@ function ProfileDrawer({ children, userId, avatar }) {
                className={classes.avatar}
                variant="circular"
             />
-            <Backdrop className={classes.backdrop} open={openBackdrop}>
-               <CircularProgress color="secondary" />
-            </Backdrop>
 
             <ErrorSnackbar
                message="ERRROR"
