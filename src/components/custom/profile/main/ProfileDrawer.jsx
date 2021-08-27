@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { uploadAvatar } from '../../../../services/profile';
 
@@ -30,11 +30,6 @@ const useStyles = makeStyles({
 });
 
 function ProfileDrawer({ children, userId, avatar }) {
-   // handle avatar state
-   const [currentAvatar, setCurrentAvatar] = useState(avatar);
-
-   useEffect(() => setCurrentAvatar(avatar), [avatar]);
-
    const classes = useStyles();
 
    const handleAvatarChange = (event) => {
@@ -44,7 +39,7 @@ function ProfileDrawer({ children, userId, avatar }) {
 
       // upload avatar
       uploadAvatar(userId, data)
-         .then((res) => setCurrentAvatar(res.avatar))
+         .then((res) => console.log(res.avatar + ' uploaded!'))
          .catch((err) => console.log(err));
    };
 
@@ -57,7 +52,7 @@ function ProfileDrawer({ children, userId, avatar }) {
       >
          <Box display="flex" flexDirection="column" alignItems="center" mt={5}>
             <Avatar
-               src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${currentAvatar}`}
+               src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${avatar}`}
                className={classes.avatar}
                variant="circular"
             />
