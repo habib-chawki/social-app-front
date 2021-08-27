@@ -52,12 +52,14 @@ function ProfileDrawer({ children, userId, avatar }) {
 
       // upload avatar
       uploadAvatar(userId, data)
-         .then((res) => setCurrentAvatar(`${res.avatar}?${Date.now()}`))
-         .catch((err) => console.log(err));
-   };
+         .then((res) => {
+            // update avatar path
+            setCurrentAvatar(`${res.avatar}?${Date.now()}`);
 
-   const handleCloseBackdrop = () => {
-      setOpenBackdrop(false);
+            // remove backdrop
+            setOpenBackdrop(false);
+         })
+         .catch((err) => console.log(err));
    };
 
    return (
