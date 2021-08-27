@@ -29,6 +29,9 @@ const useStyles = makeStyles({
    fileInput: {
       display: 'none',
    },
+   backdrop: {
+      zIndex: 1,
+   },
 });
 
 function ProfileDrawer({ children, userId, avatar }) {
@@ -75,8 +78,8 @@ function ProfileDrawer({ children, userId, avatar }) {
                className={classes.avatar}
                variant="circular"
             />
-            <Backdrop open={openBackdrop}>
-               <CircularProgress />
+            <Backdrop className={classes.backdrop} open={openBackdrop}>
+               <CircularProgress color="secondary" />
             </Backdrop>
             <Box
                zIndex={1}
