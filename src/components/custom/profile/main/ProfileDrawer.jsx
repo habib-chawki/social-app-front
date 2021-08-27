@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-// components
-import ErrorSnackbar from '../../../common/ErrorSnackbar';
-
 // services
 import { uploadAvatar } from '../../../../services/profile';
 
@@ -37,10 +34,7 @@ const useStyles = makeStyles({
 
 function ProfileDrawer({ children, userId, avatar }) {
    // handle avatar state
-   const [currentAvatar, setCurrentAvatar] = useState(avatar);
-
-   // handle error snackbar state
-   const [openErrorSnackbar, setOpenErrorSnackbar] = useState(false);
+   const [currentAvatar, setCurrentAvatar] = useState();
 
    useEffect(() => setCurrentAvatar(avatar), [avatar]);
 
@@ -54,7 +48,7 @@ function ProfileDrawer({ children, userId, avatar }) {
       // upload avatar
       uploadAvatar(userId, data)
          .then((res) => setCurrentAvatar(`${res.avatar}?${Date.now()}`))
-         .catch((err) => setOpenErrorSnackbar(true));
+         .catch((err) => console.log(err));
    };
 
    return (
@@ -69,12 +63,6 @@ function ProfileDrawer({ children, userId, avatar }) {
                src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${currentAvatar}`}
                className={classes.avatar}
                variant="circular"
-            />
-
-            <ErrorSnackbar
-               message="ERRROR"
-               open={openErrorSnackbar}
-               setOpen={setOpenErrorSnackbar}
             />
 
             <Box
