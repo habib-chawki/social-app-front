@@ -39,8 +39,9 @@ async function uploadAvatar(userId, avatar) {
       });
 
       return response.data;
-   } catch (e) {
-      console.log('Unable to upload avatar ' + e.message);
+   } catch (err) {
+      console.log('Unable to upload avatar');
+      throw err.response.data;
    }
 }
 
