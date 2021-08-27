@@ -6,6 +6,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
@@ -33,6 +35,9 @@ function ProfileDrawer({ children, userId, avatar }) {
    // handle avatar state
    const [currentAvatar, setCurrentAvatar] = useState(avatar);
 
+   // handle backdrop state
+   const [openBackdrop, setOpenBackdrop] = useState(false);
+
    useEffect(() => setCurrentAvatar(avatar), [avatar]);
 
    const classes = useStyles();
@@ -42,10 +47,17 @@ function ProfileDrawer({ children, userId, avatar }) {
       const data = new FormData();
       data.append('avatar', event.target.files[0]);
 
+      // display backdrop
+      setOpenBackdrop(true);
+
       // upload avatar
       uploadAvatar(userId, data)
          .then((res) => setCurrentAvatar(`${res.avatar}?${Date.now()}`))
          .catch((err) => console.log(err));
+   };
+
+   const handleCloseBackdrop = () => {
+      setOpenBackdrop(false);
    };
 
    return (
@@ -61,6 +73,9 @@ function ProfileDrawer({ children, userId, avatar }) {
                className={classes.avatar}
                variant="circular"
             />
+            <Backdrop open={openBackdrop}>
+               <CircularProgress />
+            </Backdrop>
             <Box
                zIndex={1}
                display="flex"
