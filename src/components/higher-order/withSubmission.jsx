@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import Alert from '@material-ui/lab/Alert';
 
 function withSubmission(Component, submit) {
    return (props) => {
