@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // mui
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
-function ErrorSnackbar({ errorMessage }) {
-   const [open, setOpen] = useState(false);
-
+function ErrorSnackbar({ message, open, setOpen }) {
    const handleClose = (event, reason) => {
       if (reason === 'clickaway') {
          return;
@@ -24,7 +24,7 @@ function ErrorSnackbar({ errorMessage }) {
          open={open}
          autoHideDuration={6000}
          onClose={handleClose}
-         message="Invalid form credentials"
+         message={message}
          action={
             <IconButton color="inherit" onClick={handleClose}>
                <CloseIcon fontSize="small" />
@@ -37,7 +37,7 @@ function ErrorSnackbar({ errorMessage }) {
             onClose={handleClose}
             severity="error"
          >
-            {errorMessage}
+            {message}
          </Alert>
       </Snackbar>
    );
