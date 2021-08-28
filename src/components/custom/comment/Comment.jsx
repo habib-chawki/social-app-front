@@ -25,7 +25,9 @@ function Comment(comment) {
    return (
       <ListItem key={comment.id} divider>
          <ListItemAvatar>
-            <Avatar />
+            <Avatar
+               src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${comment.owner.profile.avatar}`}
+            />
          </ListItemAvatar>
          <ListItemText
             primary={
