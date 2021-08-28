@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-import { TextField, Button, Chip, Box } from '@material-ui/core';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import Chip from '@material-ui/core/Chip';
+import Box from '@material-ui/core/Box';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 function Language({ languages, onAddLanguage, onRemoveLanguage }) {
    const [language, setLanguage] = useState('');
@@ -27,14 +32,20 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
 
    return (
       <Box display="flex" flexDirection="column">
-         <TextField
+         <OutlinedInput
             onKeyPress={handleAddLanguage}
             value={language}
             onChange={handleLanguageChange}
-            label="Language"
             variant="outlined"
+            placeholder="Add language ..."
+            endAdornment={
+               <InputAdornment position="end">
+                  <IconButton onClick={handleAddLanguage}>
+                     <AddCircleIcon />
+                  </IconButton>
+               </InputAdornment>
+            }
          />
-         <Button onClick={handleAddLanguage}>Add language</Button>
 
          <Box>
             {languages.map((language, index) => (
