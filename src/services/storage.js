@@ -7,7 +7,7 @@ function getToken() {
 }
 
 // retrieve user id from localStorage
-function getUser() {
+function getAuthenticatedUser() {
    return localStorage.getItem(USER_KEY);
 }
 
@@ -22,4 +22,9 @@ function removeUserInfo() {
    localStorage.clear();
 }
 
-export { storeUserInfo, getToken, getUser, removeUserInfo };
+export {
+   storeUserInfo,
+   getToken,
+   getAuthenticatedUser as getUser,
+   removeUserInfo,
+};
