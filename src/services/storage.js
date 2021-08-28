@@ -22,9 +22,4 @@ function removeUserInfo() {
    localStorage.clear();
 }
 
-export {
-   storeUserInfo,
-   getToken,
-   getAuthenticatedUser as getUser,
-   removeUserInfo,
-};
+export { storeUserInfo, getToken, getAuthenticatedUser, removeUserInfo };

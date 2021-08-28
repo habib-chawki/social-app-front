@@ -10,7 +10,7 @@ import NotFound from './components/common/NotFound';
 
 import UserContext from './context/user-context';
 
-import { getUser } from './services/storage';
+import { getAuthenticatedUser } from './services/storage';
 
 import './index.css';
 
@@ -25,7 +25,7 @@ function App() {
             <LogIn />
          </Route>
 
-         <UserContext.Provider value={getUser()}>
+         <UserContext.Provider value={getAuthenticatedUser()}>
             <Route path="/user/:userId/profile-form">
                <ProfileForm />
             </Route>
