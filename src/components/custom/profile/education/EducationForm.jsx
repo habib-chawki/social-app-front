@@ -136,10 +136,12 @@ function Education({
          </Grid>
 
          <Grid item container justifyContent="flex-end">
-            <Button onClick={addEducation}>
+            <Button onClick={addEducation} color="primary">
                {initialFormValues.major ? 'Update' : 'Add'}
             </Button>
-            <Button onClick={onCloseDialog}>Cancel</Button>
+            <Button onClick={onCloseDialog} color="secondary">
+               Cancel
+            </Button>
          </Grid>
       </Grid>
    );
