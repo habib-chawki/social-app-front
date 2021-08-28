@@ -175,9 +175,12 @@ function Profile() {
 
             <Box m={2} height="100%">
                {/* Bio */}
-               {selectedTab === 0 && (
-                     <Typography variant="body1">profile.bio</Typography>
-                  ) && <Fallback message="Bio not provided" />}
+               {selectedTab === 0 &&
+                  (profile.bio ? (
+                     <Typography variant="body1">{profile.bio}</Typography>
+                  ) : (
+                     <Fallback message="Bio not provided" />
+                  ))}
 
                {/* Experience */}
                {selectedTab === 1 && (
