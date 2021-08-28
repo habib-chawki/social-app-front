@@ -80,13 +80,13 @@ function Comments(post) {
    const renderComments = () => {
       return (
          <List subheader={<ListSubheader>Comments</ListSubheader>}>
-            {comments.map(({ _id, owner, content, createdAt }) => (
+            {comments.map((comment) => (
                <Comment
-                  key={_id}
-                  id={_id}
-                  owner={owner}
-                  content={content}
-                  creationTime={createdAt}
+                  key={comment._id}
+                  id={comment._id}
+                  owner={comment.owner}
+                  content={comment.content}
+                  creationTime={comment.createdAt}
                   onRemove={handleRemoveComment}
                   onUpdate={handleUpdateComment}
                />
