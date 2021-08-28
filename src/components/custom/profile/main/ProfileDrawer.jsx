@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 
 function ProfileDrawer({ children, userId, avatar }) {
    // handle avatar state
-   const [currentAvatar, setCurrentAvatar] = useState();
+   const [currentAvatar, setCurrentAvatar] = useState(avatar || '');
 
    useEffect(() => setCurrentAvatar(avatar), [avatar]);
 
@@ -60,7 +60,11 @@ function ProfileDrawer({ children, userId, avatar }) {
       >
          <Box display="flex" flexDirection="column" alignItems="center" mt={5}>
             <Avatar
-               src={`${process.env.REACT_APP_BACKEND_AVATARS_URL}/${currentAvatar}`}
+               src={
+                  currentAvatar
+                     ? `${process.env.REACT_APP_BACKEND_AVATARS_URL}/${currentAvatar}`
+                     : ''
+               }
                className={classes.avatar}
                variant="circular"
             />
