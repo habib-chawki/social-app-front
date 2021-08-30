@@ -12,8 +12,8 @@ async function signUserUp({ email, password, firstName, lastName }) {
          data: { email, password, firstName, lastName },
       });
 
-      // persist auth token and user id to localStorage
-      storeUserInfo(response.data.token, response.data.id);
+      // store authenticated user id in localStorage
+      storeUserInfo(response.data.id);
    } catch (e) {
       console.log('Unable to signup: ' + e.message);
    }
@@ -28,8 +28,8 @@ async function logUserIn({ email, password }) {
          data: { email, password },
       });
 
-      // persist auth token and user id to localStorage
-      storeUserInfo(response.data.token, response.data.id);
+      // store authenticated user id in localStorage
+      storeUserInfo(response.data.id);
    } catch (e) {
       console.log('Unable to login: ' + e.message);
    }
@@ -43,7 +43,7 @@ async function logUserOut() {
          method: 'post',
       });
 
-      // remove token and user id from localStorage
+      // remove user id from localStorage
       removeUserInfo();
    } catch (e) {
       console.log('Unable to logout: ' + e.message);
