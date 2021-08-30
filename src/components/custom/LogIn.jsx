@@ -31,6 +31,7 @@ const useStyles = makeStyles({
  */
 function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    const classes = useStyles();
+
    return (
       <Form>
          <Grid item>
@@ -83,4 +84,13 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    );
 }
 
-export default withValidation(withSubmission(LogIn, logUserIn));
+const initialCredentials = {
+   email: '',
+   password: '',
+   errors: { email: '', password: '' },
+};
+
+export default withValidation(
+   withSubmission(LogIn, logUserIn),
+   initialCredentials
+);
