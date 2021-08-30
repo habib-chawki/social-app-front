@@ -1,4 +1,4 @@
-import server from '../utils/server';
+import axios from 'axios';
 
 const baseUrl = '/posts';
 
@@ -6,7 +6,7 @@ const baseUrl = '/posts';
 async function createPost(content) {
    try {
       // make api request to persist post in db
-      const response = await server({
+      const response = await axios({
          url: baseUrl,
          method: 'post',
          data: { content },
@@ -22,7 +22,7 @@ async function createPost(content) {
 // get a single post by id
 async function fetchPost(id) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/${id}`,
          method: 'get',
       });
@@ -38,7 +38,7 @@ async function fetchPost(id) {
 async function fetchPosts({ limit, skip }) {
    try {
       // retrieve list of posts
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}?limit=${limit}&skip=${skip}`,
          method: 'get',
       });
@@ -53,7 +53,7 @@ async function fetchPosts({ limit, skip }) {
 // update post by id
 async function updatePost(id, content) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/${id}`,
          method: 'put',
          data: { content },
@@ -69,7 +69,7 @@ async function updatePost(id, content) {
 // delete post by id
 async function removePost(id) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/${id}`,
          method: 'delete',
       });
@@ -83,7 +83,7 @@ async function removePost(id) {
 // delete all posts
 async function removePosts() {
    try {
-      const response = await server({
+      const response = await axios({
          url: baseUrl,
          method: 'delete',
       });
