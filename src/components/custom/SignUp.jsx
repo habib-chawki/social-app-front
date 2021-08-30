@@ -106,4 +106,15 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
    );
 }
 
-export default withValidation(withSubmission(SignUp, signUserUp));
+const initialCredentials = {
+   email: '',
+   password: '',
+   firstName: '',
+   lastName: '',
+   errors: { email: '', password: '', firstName: '', lastName: '' },
+};
+
+export default withValidation(
+   withSubmission(SignUp, signUserUp),
+   initialCredentials
+);
