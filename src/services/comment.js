@@ -1,11 +1,11 @@
-import server from '../utils/server';
+import axios from 'axios';
 
 const baseUrl = '/comments';
 
 // add a new comment
 async function createComment(postId, content) {
    try {
-      const response = await server({
+      const response = await axios({
          url: baseUrl,
          method: 'post',
          data: { content },
@@ -22,7 +22,7 @@ async function createComment(postId, content) {
 // get list of comments
 async function fetchComments({ postId, limit, skip }) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/?post=${postId}&limit=${limit}&skip=${skip}`,
          method: 'get',
       });
@@ -37,7 +37,7 @@ async function fetchComments({ postId, limit, skip }) {
 // update comment by id
 async function updateComment(postId, commentId, content) {
    try {
-      await server({
+      await axios({
          url: `${baseUrl}/${commentId}?post=${postId}`,
          method: 'put',
          data: { content },
@@ -51,7 +51,7 @@ async function updateComment(postId, commentId, content) {
 // delete comment by id
 async function removeComment(postId, commentId) {
    try {
-      await server({
+      await axios({
          url: `${baseUrl}/${commentId}?post=${postId}`,
          method: 'delete',
       });
