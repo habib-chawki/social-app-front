@@ -1,4 +1,4 @@
-import server from '../utils/server';
+import axios from 'axios';
 import { storeUserInfo, removeUserInfo } from './storage';
 
 const baseUrl = '/users';
@@ -6,7 +6,7 @@ const baseUrl = '/users';
 // handle signup
 async function signUserUp({ email, password, firstName, lastName }) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/signup`,
          method: 'post',
          data: { email, password, firstName, lastName },
@@ -22,7 +22,7 @@ async function signUserUp({ email, password, firstName, lastName }) {
 // handle login
 async function logUserIn({ email, password }) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/login`,
          method: 'post',
          data: { email, password },
@@ -38,7 +38,7 @@ async function logUserIn({ email, password }) {
 // handle user logout
 async function logUserOut() {
    try {
-      await server({
+      await axios({
          url: `${baseUrl}/logout`,
          method: 'post',
       });
