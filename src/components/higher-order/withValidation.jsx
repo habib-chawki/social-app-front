@@ -2,16 +2,10 @@ import React, { useState } from 'react';
 
 import isEmail from 'validator/lib/isEmail';
 
-function withValidation(Component) {
+function withValidation(Component, initialCredentials) {
    return (props) => {
       // manage email, password and validation errors state
-      const [credentials, setCredentials] = useState({
-         email: '',
-         password: '',
-         firstName: '',
-         lastName: '',
-         errors: { email: '', password: '', firstName: '', lastName: '' },
-      });
+      const [credentials, setCredentials] = useState(initialCredentials);
 
       // validate input value
       const validateInput = (type, content) => {
