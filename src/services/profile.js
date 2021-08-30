@@ -1,10 +1,10 @@
-import server from '../utils/server';
+import axios from 'axios';
 
 const baseUrl = '/users';
 
 async function fetchProfile(userId) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/${userId}/profile`,
          method: 'get',
       });
@@ -18,7 +18,7 @@ async function fetchProfile(userId) {
 
 async function updateProfile(profile, userId) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/${userId}/profile`,
          method: 'put',
          data: profile,
@@ -32,7 +32,7 @@ async function updateProfile(profile, userId) {
 
 async function uploadAvatar(userId, avatar) {
    try {
-      const response = await server({
+      const response = await axios({
          url: `${baseUrl}/${userId}/profile/avatar`,
          method: 'post',
          data: avatar,
