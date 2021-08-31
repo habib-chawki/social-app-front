@@ -84,13 +84,9 @@ function LogIn({ credentials, onChange, onValidate, onSubmit }) {
    );
 }
 
-const initialCredentials = {
+const formFields = {
    email: '',
    password: '',
-   errors: { email: '', password: '' },
 };
 
-export default withValidation(
-   withSubmission(LogIn, logUserIn),
-   initialCredentials
-);
+export default withValidation(withSubmission(LogIn, logUserIn), formFields);

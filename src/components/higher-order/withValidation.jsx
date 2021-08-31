@@ -5,7 +5,10 @@ import isEmail from 'validator/lib/isEmail';
 function withValidation(Component, initialCredentials) {
    return (props) => {
       // manage email, password and validation errors state
-      const [credentials, setCredentials] = useState(initialCredentials);
+      const [credentials, setCredentials] = useState({
+         ...initialCredentials,
+         errors: { ...initialCredentials },
+      });
 
       // validate input value
       const validateInput = (type, content) => {
