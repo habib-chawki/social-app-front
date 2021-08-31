@@ -16,17 +16,17 @@ function Routes() {
 
    return (
       <Switch>
-         <Route exact path="/">
-            <SignUp />
-         </Route>
-
-         <Route path="/login">
-            <LogIn />
-         </Route>
-
          <UserContext.Provider
             value={{ authenticatedUser, setAuthenticatedUser }}
          >
+            <Route exact path="/">
+               <SignUp />
+            </Route>
+
+            <Route path="/login">
+               <LogIn />
+            </Route>
+
             <Route path="/user/:userId/profile-form">
                <ProfileForm />
             </Route>
