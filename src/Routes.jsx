@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import { getUser } from './services/storage';
+
 import SignUp from './components/custom/SignUp';
 import LogIn from './components/custom/LogIn';
 import Profile from './components/custom/profile/main/Profile';
@@ -12,7 +14,7 @@ import NotFound from './components/common/NotFound';
 import UserContext from './context/user-context';
 
 function Routes() {
-   const [authenticatedUser, setAuthenticatedUser] = useState(null);
+   const [authenticatedUser, setAuthenticatedUser] = useState(getUser());
 
    return (
       <Switch>
