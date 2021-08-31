@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import ProtectedRoute from './ProtectedRoute';
+
 import { getUser } from '../services/storage';
 
 import SignUp from '../components/custom/SignUp';
@@ -25,7 +27,7 @@ function Routes() {
                <SignUp />
             </Route>
 
-            <Route path="/login">
+            <Route exact path="/login">
                <LogIn />
             </Route>
 
@@ -37,9 +39,9 @@ function Routes() {
                <Profile />
             </Route>
 
-            <Route path="/posts">
+            <ProtectedRoute exact path="/posts">
                <Posts />
-            </Route>
+            </ProtectedRoute>
 
             <Route path="/not-found">
                <NotFound />
