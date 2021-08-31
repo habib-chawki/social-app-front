@@ -18,7 +18,7 @@ import { useParams, useHistory } from 'react-router-dom';
 
 // services
 import { fetchProfile } from '../../../../services/profile';
-import { getAuthenticatedUser } from '../../../../services/storage';
+import { getUser } from '../../../../services/storage';
 
 // mui components
 import Button from '@material-ui/core/Button';
@@ -152,7 +152,7 @@ function Profile() {
 
             {
                // determine whether the logged in user can update the profile
-               userId === getAuthenticatedUser() && (
+               userId === getUser() && (
                   <Button
                      variant="contained"
                      color="secondary"

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { logUserOut } from '../../services/user';
-import { getAuthenticatedUser } from '../../services/storage';
+import { getUser } from '../../services/storage';
 
 import { IconButton, AppBar, Toolbar, Box } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -15,7 +15,7 @@ function Header() {
 
    useEffect(() => {
       // extract user id from local storage
-      userId.current = getAuthenticatedUser();
+      userId.current = getUser();
    }, []);
 
    return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -11,9 +11,11 @@ import NotFound from './components/common/NotFound';
 
 import UserContext from './context/user-context';
 
-import { getAuthenticatedUser } from './services/storage';
+import { getUser } from './services/storage';
 
 function Routes() {
+   const [loggedInUser, setLoggedInUser] = useState();
+
    return (
       <Switch>
          <Route exact path="/">
@@ -24,7 +26,7 @@ function Routes() {
             <LogIn />
          </Route>
 
-         <UserContext.Provider value={getAuthenticatedUser()}>
+         <UserContext.Provider value={getUser()}>
             <Route path="/user/:userId/profile-form">
                <ProfileForm />
             </Route>

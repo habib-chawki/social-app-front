@@ -1,7 +1,7 @@
 const USER_KEY = 'User';
 
 // retrieve user id from localStorage
-function getAuthenticatedUser() {
+function getUser() {
    return localStorage.getItem(USER_KEY);
 }
 
@@ -15,4 +15,4 @@ function removeUserInfo() {
    localStorage.clear();
 }
 
-export { storeUserInfo, getAuthenticatedUser, removeUserInfo };
+export { storeUserInfo, getUser, removeUserInfo };
