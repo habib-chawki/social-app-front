@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
+import UserContext from '../../context/user-context';
+
 import { logUserOut } from '../../services/user';
-import { getUser } from '../../services/storage';
 
 import { IconButton, AppBar, Toolbar, Box } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -11,12 +12,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 
 function Header() {
-   const userId = useRef();
-
-   useEffect(() => {
-      // extract user id from local storage
-      userId.current = getUser();
-   }, []);
+   const { authenticatedUser } = useContext(UserContext);
 
    return (
       <AppBar position="static">
@@ -26,7 +22,7 @@ function Header() {
                   <IconButton
                      color="inherit"
                      component={RouterLink}
-                     to={`/user/${userId.current}/profile`}
+                     to={`/user/${authenticatedUser}/profile`}
                   >
                      <AccountCircleIcon />
                   </IconButton>
