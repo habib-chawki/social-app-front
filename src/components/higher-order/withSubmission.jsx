@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import UserContext from '../../context/user-context';
+import { storeUserInfo } from '../../services/storage';
 
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
@@ -8,6 +11,8 @@ import CloseIcon from '@material-ui/icons/Close';
 
 function withSubmission(Component, submit) {
    return (props) => {
+      const { setAuthenticatedUser } = useContext(UserContext);
+
       const [open, setOpen] = useState(false);
       // history object
       const history = useHistory();
@@ -24,7 +29,13 @@ function withSubmission(Component, submit) {
          if (Object.keys(credentials.errors).length === 0) {
             // handle user login / signup
             submit(credentials)
-               .then(() => {
+               .then((userId) => {
+                  // set authenticated user context value
+                  setAuthenticatedUser(userId);
+
+                  // store authenticated user in localStorage
+                  storeUserInfo(userId);
+
                   // navigate user to posts page
                   history.replace('/posts');
                })
