@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { storeUserInfo, removeUserInfo } from './storage';
+import { removeUserInfo } from './storage';
 
 const baseUrl = '/users';
 
@@ -12,8 +12,8 @@ async function signUserUp({ email, password, firstName, lastName }) {
          data: { email, password, firstName, lastName },
       });
 
-      // store authenticated user id in localStorage
-      storeUserInfo(response.data.id);
+      // return authenticated user id
+      return response.data.id;
    } catch (err) {
       console.log('Unable to signup: ' + err.message);
       throw err.response.data;
@@ -29,8 +29,8 @@ async function logUserIn({ email, password }) {
          data: { email, password },
       });
 
-      // store authenticated user id in localStorage
-      storeUserInfo(response.data.id);
+      // return authenticated user id
+      return response.data.id;
    } catch (err) {
       console.log('Unable to login: ' + err.message);
       throw err.response.data;
