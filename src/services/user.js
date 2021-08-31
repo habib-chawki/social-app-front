@@ -14,8 +14,9 @@ async function signUserUp({ email, password, firstName, lastName }) {
 
       // store authenticated user id in localStorage
       storeUserInfo(response.data.id);
-   } catch (e) {
-      console.log('Unable to signup: ' + e.message);
+   } catch (err) {
+      console.log('Unable to signup: ' + err.message);
+      throw err.response.data;
    }
 }
 
@@ -30,8 +31,9 @@ async function logUserIn({ email, password }) {
 
       // store authenticated user id in localStorage
       storeUserInfo(response.data.id);
-   } catch (e) {
-      console.log('Unable to login: ' + e.message);
+   } catch (err) {
+      console.log('Unable to login: ' + err.message);
+      throw err.response.data;
    }
 }
 
