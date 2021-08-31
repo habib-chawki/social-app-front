@@ -31,13 +31,13 @@ function Routes() {
                <LogIn />
             </Route>
 
-            <Route path="/user/:userId/profile-form">
+            <ProtectedRoute path="/user/:userId/profile-form">
                <ProfileForm />
-            </Route>
+            </ProtectedRoute>
 
-            <Route path="/user/:userId/profile/">
+            <ProtectedRoute path="/user/:userId/profile/">
                <Profile />
-            </Route>
+            </ProtectedRoute>
 
             <ProtectedRoute exact path="/posts">
                <Posts />
@@ -47,7 +47,6 @@ function Routes() {
                <NotFound />
             </Route>
          </UserContext.Provider>
-
          <Redirect to="/not-found" />
       </Switch>
    );
