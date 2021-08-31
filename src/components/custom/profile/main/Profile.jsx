@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 // libs
 import moment from 'moment';
@@ -18,7 +18,7 @@ import { useParams, useHistory } from 'react-router-dom';
 
 // services
 import { fetchProfile } from '../../../../services/profile';
-import { getUser } from '../../../../services/storage';
+import UserContext from '../../../../context/user-context';
 
 // mui components
 import Button from '@material-ui/core/Button';
@@ -42,6 +42,9 @@ function Profile() {
    // extract user id
    const { userId } = useParams();
    const history = useHistory();
+
+   // get authenticated user
+   const { authenticatedUser } = useContext(UserContext);
 
    const [profile, setProfile] = useState({
       avatar: '',
@@ -152,7 +155,7 @@ function Profile() {
 
             {
                // determine whether the logged in user can update the profile
-               userId === getUser() && (
+               userId === authenticatedUser && (
                   <Button
                      variant="contained"
                      color="secondary"
