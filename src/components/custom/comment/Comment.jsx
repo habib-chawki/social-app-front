@@ -20,7 +20,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 function Comment(comment) {
-   const loggedInUser = useContext(UserContext);
+   const { authenticatedUser } = useContext(UserContext);
 
    return (
       <ListItem key={comment.id} divider>
@@ -60,7 +60,7 @@ function Comment(comment) {
          <ListItemSecondaryAction>
             {
                // Determine whether user can edit comment
-               loggedInUser === comment.owner._id && (
+               authenticatedUser === comment.owner._id && (
                   <CommentActions
                      commentId={comment.id}
                      commentContent={comment.content}

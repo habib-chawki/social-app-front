@@ -33,8 +33,6 @@ const useStyles = makeStyles({
 function Post(post) {
    const { authenticatedUser } = useContext(UserContext);
 
-   console.log('AUTHENTICATED USER ====>> ' + authenticatedUser);
-
    // styles
    const classes = useStyles();
 
