@@ -11,10 +11,8 @@ import NotFound from './components/common/NotFound';
 
 import UserContext from './context/user-context';
 
-import { getUser } from './services/storage';
-
 function Routes() {
-   const [loggedInUser, setLoggedInUser] = useState();
+   const [authenticatedUser, setAuthenticatedUser] = useState(null);
 
    return (
       <Switch>
@@ -26,7 +24,9 @@ function Routes() {
             <LogIn />
          </Route>
 
-         <UserContext.Provider value={getUser()}>
+         <UserContext.Provider
+            value={{ authenticatedUser, setAuthenticatedUser }}
+         >
             <Route path="/user/:userId/profile-form">
                <ProfileForm />
             </Route>
