@@ -31,7 +31,9 @@ const useStyles = makeStyles({
 });
 
 function Post(post) {
-   const loggedInUser = useContext(UserContext);
+   const { authenticatedUser } = useContext(UserContext);
+
+   console.log('AUTHENTICATED USER ====>> ' + authenticatedUser);
 
    // styles
    const classes = useStyles();
@@ -62,7 +64,7 @@ function Post(post) {
             subheader={moment(post.creationTime).format('LLL')}
             action={
                // Determine whether user can edit post
-               loggedInUser === post.owner._id && (
+               authenticatedUser === post.owner._id && (
                   <PostActions
                      postId={post.id}
                      postContent={post.content}
