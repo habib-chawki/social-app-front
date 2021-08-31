@@ -16,17 +16,21 @@ function withSubmission(Component, submit) {
       const { credentials } = props;
 
       // handle form submission
-      const handleSubmission = async (event) => {
+      const handleSubmission = (event) => {
          // prevent default form submission behavior
          event.preventDefault();
 
          // reject login in case of invalid credentials (errors object is not empty)
          if (Object.keys(credentials.errors).length === 0) {
             // handle user login / signup
-            await submit(credentials);
-
-            // navigate user to posts page
-            history.replace('/posts');
+            submit(credentials)
+               .then(() => {
+                  // navigate user to posts page
+                  history.replace('/posts');
+               })
+               .catch((err) => {
+                  console.log(err);
+               });
          } else {
             console.log('Invalid credentials.');
             setOpen(true);
