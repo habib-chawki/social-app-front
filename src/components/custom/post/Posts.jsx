@@ -8,7 +8,6 @@ import * as postService from '../../../services/post';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import RefreshIcon from '@material-ui/icons/Refresh';
@@ -124,7 +123,6 @@ function Posts() {
 
    return (
       <Box>
-         <CssBaseline />
          <Header />
 
          <Box margin={4}>
