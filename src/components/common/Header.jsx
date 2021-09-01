@@ -23,7 +23,7 @@ function Header() {
          <AppBar position="static">
             <Toolbar>
                <Box display="flex" justifyContent="flex-end" width="100%">
-                  <Tooltip title="View posts feed">
+                  <Tooltip title="Posts feed">
                      <IconButton
                         color="inherit"
                         component={RouterLink}
@@ -33,7 +33,7 @@ function Header() {
                      </IconButton>
                   </Tooltip>
 
-                  <Tooltip title="View profile">
+                  <Tooltip title="Profile">
                      <IconButton
                         color="inherit"
                         component={RouterLink}
