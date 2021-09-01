@@ -13,7 +13,7 @@ import {
    MenuItem,
 } from '@material-ui/core';
 
-import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -68,9 +68,8 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                   <IconButton
                      onClick={() => onRemoveSkill(skillType, index)}
                      edge="end"
-                     aria-label="delete"
                   >
-                     <DeleteIcon />
+                     <DeleteIcon color="secondary" />
                   </IconButton>
                </ListItemSecondaryAction>
             </ListItem>
@@ -83,53 +82,46 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
    };
 
    return (
-      <Grid container direction="column">
-         <Grid container item spacing={4} alignItems="stretch" direction="row">
-            <Grid item className={classes.subItem}>
-               <TextField
-                  className={classes.item}
-                  value={skill}
-                  onChange={handleSkillChange}
-                  onKeyPress={addSkill}
-                  label="Skill"
-                  variant="outlined"
-               />
-            </Grid>
+      <Box>
+         <TextField
+            className={classes.item}
+            value={skill}
+            onChange={handleSkillChange}
+            onKeyPress={addSkill}
+            label="Skill"
+            variant="outlined"
+         />
 
-            <Grid item className={classes.subItem}>
-               <Select
-                  className={classes.item}
-                  value={type}
-                  onChange={handleTypeChange}
-                  variant="outlined"
-               >
-                  <MenuItem value="technical">
-                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <ListItemIcon>
-                           <TimerIcon />
-                        </ListItemIcon>
+         <Select
+            className={classes.item}
+            value={type}
+            onChange={handleTypeChange}
+            variant="outlined"
+         >
+            <MenuItem value="technical">
+               <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <ListItemIcon>
+                     <TimerIcon />
+                  </ListItemIcon>
 
-                        <ListItemText primary="Technical" />
-                     </div>
-                  </MenuItem>
-                  <MenuItem value="organizational">
-                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <ListItemIcon>
-                           <WorkIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Organizational" />
-                     </div>
-                  </MenuItem>
-               </Select>
-            </Grid>
-         </Grid>
-         <Grid item>
-            <Button onClick={addSkill} fullWidth>
-               Add skill
-            </Button>
-            <List>{renderSkills()}</List>
-         </Grid>
-      </Grid>
+                  <ListItemText primary="Technical" />
+               </div>
+            </MenuItem>
+            <MenuItem value="organizational">
+               <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <ListItemIcon>
+                     <WorkIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Organizational" />
+               </div>
+            </MenuItem>
+         </Select>
+
+         <Button onClick={addSkill} fullWidth>
+            Add skill
+         </Button>
+         <List>{renderSkills()}</List>
+      </Box>
    );
 }
 
