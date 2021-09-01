@@ -16,6 +16,7 @@ function ExperienceFallback({ handleOpenDialog }) {
                flexDirection="column"
                justifyContent="center"
                alignItems="center"
+               py={2}
             >
                <Typography gutterBottom variant="h6">
                   Add education
