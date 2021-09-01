@@ -7,6 +7,7 @@ import Education from '../education/Education';
 import Language from '../language/Language';
 import Skills from '../skills/Skills';
 
+import Header from '../../../common/Header';
 import { updateProfile } from '../../../../services/profile';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -158,6 +159,7 @@ function ProfileForm() {
 
    return (
       <Box>
+         <Header />
          <Box display="flex" justifyContent="center">
             <Grid
                container
