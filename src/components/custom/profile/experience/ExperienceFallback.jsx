@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
 function ExperienceFallback({ handleOpenDialog }) {
    return (
@@ -21,7 +21,7 @@ function ExperienceFallback({ handleOpenDialog }) {
                   Add experience
                </Typography>
                <IconButton onClick={handleOpenDialog}>
-                  <NoteAddIcon />
+                  <AddCircleOutlineOutlinedIcon />
                </IconButton>
             </Box>
          </Paper>

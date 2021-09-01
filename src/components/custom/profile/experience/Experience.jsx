@@ -52,37 +52,29 @@ function Experience({ experiences, setExperiences }) {
       );
    };
 
-   if (experiences.length === 0) {
-      return (
-         <Box>
-            <ExperienceFallback handleOpenDialog={handleOpenDialog} />
-            <ExperienceDialog
-               onAddExperience={handleAddExperience}
-               onUpdateExperience={handleUpdateExperience}
-               open={openDialog}
-               closeDialog={closeDialog}
-               initialFormValues={initialFormValues}
-            />
-         </Box>
-      );
-   }
-
    return (
       <Box>
-         <Button onClick={handleOpenDialog} fullWidth>
-            Add experience
-         </Button>
+         {experiences.length === 0 ? (
+            <ExperienceFallback handleOpenDialog={handleOpenDialog} />
+         ) : (
+            <Box>
+               <Button onClick={handleOpenDialog} fullWidth>
+                  Add experience
+               </Button>
+
+               <Experiences
+                  experiences={experiences}
+                  onRemoveExperience={handleRemoveExperience}
+                  onOpenExperienceDialog={handleOpenDialog}
+               />
+            </Box>
+         )}
          <ExperienceDialog
             onAddExperience={handleAddExperience}
             onUpdateExperience={handleUpdateExperience}
             open={openDialog}
             closeDialog={closeDialog}
             initialFormValues={initialFormValues}
-         />
-         <Experiences
-            experiences={experiences}
-            onRemoveExperience={handleRemoveExperience}
-            onOpenExperienceDialog={handleOpenDialog}
          />
       </Box>
    );
