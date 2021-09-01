@@ -20,7 +20,7 @@ function Header() {
       <Box>
          <CssBaseline />
 
-         <AppBar position="static">
+         <AppBar position="fixed">
             <Toolbar>
                <Box display="flex" justifyContent="flex-end" width="100%">
                   <Tooltip title="Posts feed">
@@ -56,6 +56,7 @@ function Header() {
                </Box>
             </Toolbar>
          </AppBar>
+         <Toolbar />
       </Box>
    );
 }
