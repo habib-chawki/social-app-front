@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Educations from './Educations';
 import EducationDialog from './EducationDialog';
+import EducationFallback from './EducationFallback';
 
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -53,20 +54,27 @@ function Education({ educations, setEducations }) {
 
    return (
       <Box>
-         <Button onClick={handleOpenEducationDialog} fullWidth>
-            Add education
-         </Button>
+         {educations.length === 0 ? (
+            <EducationFallback handleOpenDialog={handleOpenEducationDialog} />
+         ) : (
+            <Box>
+               <Button onClick={handleOpenEducationDialog} fullWidth>
+                  Add education
+               </Button>
+
+               <Educations
+                  educations={educations}
+                  onRemoveEducation={handleRemoveEducation}
+                  onOpenEducationDialog={handleOpenEducationDialog}
+               />
+            </Box>
+         )}
          <EducationDialog
             onAddEducation={handleAddEducation}
             onUpdateEducation={handleUpdateEducation}
             open={openDialog}
             closeDialog={closeDialog}
             initialFormValues={initialFormValues}
-         />
-         <Educations
-            educations={educations}
-            onRemoveEducation={handleRemoveEducation}
-            onOpenEducationDialog={handleOpenEducationDialog}
          />
       </Box>
    );
