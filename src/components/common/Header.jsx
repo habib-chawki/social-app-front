@@ -7,6 +7,7 @@ import { logUserOut } from '../../services/user';
 
 import { IconButton, AppBar, Toolbar, Box } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
@@ -15,32 +16,36 @@ function Header() {
    const { authenticatedUser } = useContext(UserContext);
 
    return (
-      <AppBar position="static">
-         <Toolbar>
-            <Box display="flex" justifyContent="flex-end" width="100%">
-               <Tooltip title="View profile">
-                  <IconButton
-                     color="inherit"
-                     component={RouterLink}
-                     to={`/user/${authenticatedUser}/profile`}
-                  >
-                     <AccountCircleIcon />
-                  </IconButton>
-               </Tooltip>
+      <Box>
+         <CssBaseline />
 
-               <Tooltip title="Log out">
-                  <IconButton
-                     color="inherit"
-                     component={RouterLink}
-                     to="/login"
-                     onClick={logUserOut}
-                  >
-                     <LockIcon />
-                  </IconButton>
-               </Tooltip>
-            </Box>
-         </Toolbar>
-      </AppBar>
+         <AppBar position="static">
+            <Toolbar>
+               <Box display="flex" justifyContent="flex-end" width="100%">
+                  <Tooltip title="View profile">
+                     <IconButton
+                        color="inherit"
+                        component={RouterLink}
+                        to={`/user/${authenticatedUser}/profile`}
+                     >
+                        <AccountCircleIcon />
+                     </IconButton>
+                  </Tooltip>
+
+                  <Tooltip title="Log out">
+                     <IconButton
+                        color="inherit"
+                        component={RouterLink}
+                        to="/login"
+                        onClick={logUserOut}
+                     >
+                        <LockIcon />
+                     </IconButton>
+                  </Tooltip>
+               </Box>
+            </Toolbar>
+         </AppBar>
+      </Box>
    );
 }
 
