@@ -5,7 +5,6 @@ import ExperienceDialog from './ExperienceDialog';
 import ExperienceFallback from './ExperienceFallback';
 
 import Box from '@material-ui/core/Box';
-
 import Button from '@material-ui/core/Button';
 
 function Experience({ experiences, setExperiences }) {
@@ -59,7 +58,7 @@ function Experience({ experiences, setExperiences }) {
          ) : (
             <Box>
                <Button onClick={handleOpenDialog} fullWidth>
-                  Add experience
+                  Add more experience
                </Button>
 
                <Experiences

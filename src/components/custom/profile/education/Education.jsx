@@ -59,7 +59,7 @@ function Education({ educations, setEducations }) {
          ) : (
             <Box>
                <Button onClick={handleOpenEducationDialog} fullWidth>
-                  Add education
+                  Add more education
                </Button>
 
                <Educations
