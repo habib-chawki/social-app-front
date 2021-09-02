@@ -12,6 +12,10 @@ const theme = createTheme({
          default: '#f3e5f5',
       },
    },
+   typography: {
+      fontFamily:
+         'Noto Sans JP, Roboto, sans-serif, Helvetica, Arial, sans-serif',
+   },
 });
 
 export default theme;
