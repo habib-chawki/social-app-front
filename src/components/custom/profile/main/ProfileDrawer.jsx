@@ -69,14 +69,7 @@ function ProfileDrawer({ children, userId, avatar }) {
                variant="circular"
             />
 
-            <Box
-               zIndex={1}
-               display="flex"
-               justifyContent="center"
-               alignItems="center"
-               width="100%"
-               height="100%"
-            >
+            <Box>
                <input
                   type="file"
                   accept="image/*"
@@ -86,7 +79,7 @@ function ProfileDrawer({ children, userId, avatar }) {
                />
                <label htmlFor="file-input">
                   <IconButton color="primary" component="span">
-                     <PhotoCamera />
+                     <PhotoCamera color="secondary" />
                   </IconButton>
                </label>
             </Box>
