@@ -36,23 +36,29 @@ function Comment(comment) {
                   to={`user/${comment.owner._id}/profile`}
                   underline="none"
                >
-                  <Box fontWeight="fontWeightBold" component="span">
+                  <Typography
+                     style={{ fontWeight: 600 }}
+                     component="span"
+                     color="secondary"
+                  >
                      {comment.owner.profile.firstName +
                         ' ' +
                         comment.owner.profile.lastName}
-                  </Box>
+                  </Typography>
                </Link>
             }
             secondary={
                <>
                   {moment(comment.creationTime).format('LLL')}
-                  <Typography
-                     variant="body2"
-                     color="textPrimary"
-                     component="div"
-                  >
-                     {comment.content}
-                  </Typography>
+                  <Box mt={1}>
+                     <Typography
+                        variant="body2"
+                        color="textPrimary"
+                        component="div"
+                     >
+                        {comment.content}
+                     </Typography>
+                  </Box>
                </>
             }
          />
