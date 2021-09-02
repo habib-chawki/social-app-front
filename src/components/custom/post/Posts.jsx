@@ -128,7 +128,7 @@ function Posts() {
          <Box margin={4}>
             <TextField
                variant="outlined"
-               color="secondary"
+               color="primary"
                multiline
                rows={6}
                placeholder="What's on your mind..."
@@ -140,7 +140,7 @@ function Posts() {
             <Box marginTop={1}>
                <Button
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   startIcon={<PostAddIcon />}
                   disableElevation
                   onClick={handleCreatePost}
