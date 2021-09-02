@@ -54,7 +54,7 @@ function Post(post) {
                   component={RouterLink}
                   underline="none"
                >
-                  <Typography variant="h5" component="span">
+                  <Typography variant="h5" component="span" color="secondary">
                      {postOwnerFullName}
                   </Typography>
                </Link>

@@ -21,7 +21,7 @@ function PostActionsMenu({
 }) {
    return (
       <Box>
-         <IconButton onClick={onMenuClick}>
+         <IconButton onClick={onMenuClick} color="secondary">
             <MoreHorizIcon />
          </IconButton>
 
@@ -34,13 +34,13 @@ function PostActionsMenu({
          >
             <MenuItem onClick={onEditAction}>
                <ListItemIcon>
-                  <EditIcon />
+                  <EditIcon color="secondary" />
                </ListItemIcon>
                <ListItemText primary="Edit" />
             </MenuItem>
             <MenuItem onClick={() => onDeletePost(postId)}>
                <ListItemIcon>
-                  <DeleteIcon />
+                  <DeleteIcon color="secondary" />
                </ListItemIcon>
                <ListItemText primary="Delete" />
             </MenuItem>

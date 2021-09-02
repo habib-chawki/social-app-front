@@ -22,7 +22,7 @@ function CommentActionsMenu({
    return (
       <Box>
          <IconButton onClick={onMenuClick}>
-            <MoreVertIcon />
+            <MoreVertIcon color="secondary" />
          </IconButton>
          <Menu
             id="menu"
@@ -33,13 +33,13 @@ function CommentActionsMenu({
          >
             <MenuItem onClick={onEditAction}>
                <ListItemIcon>
-                  <EditIcon />
+                  <EditIcon color="secondary" />
                </ListItemIcon>
                <ListItemText primary="Edit" />
             </MenuItem>
             <MenuItem onClick={() => onDeleteComment(commentId)}>
                <ListItemIcon>
-                  <DeleteIcon />
+                  <DeleteIcon color="secondary" />
                </ListItemIcon>
                <ListItemText primary="Delete" />
             </MenuItem>
