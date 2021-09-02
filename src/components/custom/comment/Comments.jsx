@@ -154,7 +154,7 @@ function Comments(post) {
                endAdornment={
                   <InputAdornment position="end">
                      <IconButton onClick={handleCreateComment}>
-                        <InsertCommentIcon />
+                        <InsertCommentIcon color="secondary" />
                      </IconButton>
                   </InputAdornment>
                }
