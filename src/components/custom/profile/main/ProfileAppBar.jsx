@@ -18,12 +18,10 @@ function ProfileAppBar({ selectedTab, onTabChange }) {
       <>
          <CssBaseline />
 
-         <AppBar position="sticky" color="default">
+         <AppBar position="sticky" color="secondary">
             <Tabs
                value={selectedTab}
                onChange={onTabChange}
-               indicatorColor="secondary"
-               textColor="secondary"
                variant="fullWidth"
             >
                <Tab label="Bio" icon={<InfoIcon />} />
