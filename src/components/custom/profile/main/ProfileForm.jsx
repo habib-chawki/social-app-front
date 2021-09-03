@@ -42,9 +42,7 @@ const useStyles = makeStyles((theme) => ({
    formField: {
       width: '100%',
    },
-   formPaper: {
-      padding: theme.spacing(5),
-   },
+
    fab: {
       position: 'fixed',
       bottom: theme.spacing(3),
@@ -264,27 +262,23 @@ function ProfileForm() {
                   />
                </Grid>
 
-               <Grid item>
-                  <Paper className={classes.formPaper}>
-                     <Grid container direction="column" spacing={3}>
-                        <Grid item>
-                           <Language
-                              languages={languages}
-                              onAddLanguage={handleAddLanguage}
-                              onRemoveLanguage={handleRemoveLanguage}
-                           />
-                        </Grid>
+               <ProfileFormSection>
+                  <Grid item>
+                     <Language
+                        languages={languages}
+                        onAddLanguage={handleAddLanguage}
+                        onRemoveLanguage={handleRemoveLanguage}
+                     />
+                  </Grid>
 
-                        <Grid item>
-                           <Skills
-                              skills={skills}
-                              onAddSkill={handleAddSkill}
-                              onRemoveSkill={handleRemoveSkill}
-                           />
-                        </Grid>
-                     </Grid>
-                  </Paper>
-               </Grid>
+                  <Grid item>
+                     <Skills
+                        skills={skills}
+                        onAddSkill={handleAddSkill}
+                        onRemoveSkill={handleRemoveSkill}
+                     />
+                  </Grid>
+               </ProfileFormSection>
             </Grid>
          </Box>
          <Fab
