@@ -35,7 +35,7 @@ import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
    formContainer: {
-      width: '60%',
+      width: '55%',
       margin: theme.spacing(3),
    },
    formField: {
@@ -250,7 +250,7 @@ function ProfileForm() {
                               label="Bio"
                               variant="outlined"
                               multiline
-                              rows={6}
+                              rows={8}
                            />
                         </Grid>
                      </Grid>
