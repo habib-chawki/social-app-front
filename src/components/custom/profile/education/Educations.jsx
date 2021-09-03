@@ -2,11 +2,15 @@ import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import UpdateIcon from '@material-ui/icons/Update';
 
 import moment from 'moment';
 
@@ -60,22 +64,21 @@ function Educations({ educations, onRemoveEducation, onOpenEducationDialog }) {
                      justifyContent="flex-end"
                      className={classes.paperItem}
                   >
-                     <Button
-                        className={classes.updateBtn}
-                        color="primary"
-                        variant="contained"
-                        onClick={() => onOpenEducationDialog(education)}
-                     >
-                        Update
-                     </Button>
+                     <Tooltip title="Update">
+                        <IconButton
+                           onClick={() => onOpenEducationDialog(education)}
+                        >
+                           <UpdateIcon color="secondary" />
+                        </IconButton>
+                     </Tooltip>
 
-                     <Button
-                        color="secondary"
-                        variant="contained"
-                        onClick={() => onRemoveEducation(education)}
-                     >
-                        Remove
-                     </Button>
+                     <Tooltip title="Remove">
+                        <IconButton
+                           onClick={() => onRemoveEducation(education)}
+                        >
+                           <DeleteForeverIcon color="error" />
+                        </IconButton>
+                     </Tooltip>
                   </Box>
                </Paper>
             </Grid>
