@@ -13,6 +13,10 @@ import {
    MenuItem,
 } from '@material-ui/core';
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -123,6 +127,19 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                </div>
             </MenuItem>
          </Select>
+
+         <RadioGroup name="skills" value={type} onChange={handleTypeChange}>
+            <FormControlLabel
+               value="technical"
+               control={<Radio />}
+               label="Technical"
+            />
+            <FormControlLabel
+               value="organizational"
+               control={<Radio />}
+               label="Organizational"
+            />
+         </RadioGroup>
 
          <Button onClick={addSkill} fullWidth>
             Add skill
