@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
-import { Button } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import Input from '../common/Input';
@@ -39,25 +40,28 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
          </Grid>
 
          <Grid item className={classes.item}>
-            <Input
-               id="firstName"
-               type="text"
-               name="First name"
-               credentials={credentials}
-               onChange={onChange}
-               onValidate={onValidate}
-            />
-         </Grid>
-
-         <Grid item className={classes.item}>
-            <Input
-               id="lastName"
-               type="text"
-               name="Last name"
-               credentials={credentials}
-               onChange={onChange}
-               onValidate={onValidate}
-            />
+            <Box display="flex" justifyContent="space-between">
+               <Box mr={0.5}>
+                  <Input
+                     id="firstName"
+                     type="text"
+                     name="First name"
+                     credentials={credentials}
+                     onChange={onChange}
+                     onValidate={onValidate}
+                  />
+               </Box>
+               <Box ml={0.5}>
+                  <Input
+                     id="lastName"
+                     type="text"
+                     name="Last name"
+                     credentials={credentials}
+                     onChange={onChange}
+                     onValidate={onValidate}
+                  />
+               </Box>
+            </Box>
          </Grid>
 
          <Grid item className={classes.item}>
