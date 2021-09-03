@@ -47,9 +47,9 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
             }
          />
 
-         <Box mt={2}>
+         <Box mt={2} display="flex" flexWrap="wrap">
             {languages.map((language, index) => (
-               <Box m={1} component="span">
+               <Box ml={1} mb={1}>
                   <Chip
                      key={index}
                      label={language}
