@@ -6,13 +6,19 @@ import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
+
+import Tooltip from '@material-ui/core/Tooltip';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import UpdateIcon from '@material-ui/icons/Update';
 
 import moment from 'moment';
 
 const useStyles = makeStyles({
    paper: {
       padding: 20,
+      background: '#f2fbff',
    },
    paperItem: {
       marginTop: 20,
@@ -64,21 +70,21 @@ function Experiences({
                      justifyContent="flex-end"
                      className={classes.paperItem}
                   >
-                     <Button
-                        className={classes.updateBtn}
-                        color="primary"
-                        variant="contained"
-                        onClick={() => onOpenExperienceDialog(experience)}
-                     >
-                        Update
-                     </Button>
-                     <Button
-                        color="secondary"
-                        variant="contained"
-                        onClick={() => onRemoveExperience(experience)}
-                     >
-                        Remove
-                     </Button>
+                     <Tooltip title="Update">
+                        <IconButton
+                           onClick={() => onOpenExperienceDialog(experience)}
+                        >
+                           <UpdateIcon color="secondary" />
+                        </IconButton>
+                     </Tooltip>
+
+                     <Tooltip title="Remove">
+                        <IconButton
+                           onClick={() => onRemoveExperience(experience)}
+                        >
+                           <DeleteForeverIcon color="error" />
+                        </IconButton>
+                     </Tooltip>
                   </Box>
                </Paper>
             </Grid>
