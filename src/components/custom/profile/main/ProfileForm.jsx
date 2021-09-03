@@ -7,6 +7,7 @@ import Language from '../language/Language';
 import Skills from '../skills/Skills';
 import Header from '../../../common/Header';
 
+import ProfileFormContainer from './ProfileFormContainer';
 import ProfileFormSection from './ProfileFormSection';
 
 import { updateProfile } from '../../../../services/profile';
@@ -34,10 +35,6 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
-   formContainer: {
-      width: '55%',
-      margin: theme.spacing(3),
-   },
    formField: {
       width: '100%',
    },
@@ -161,124 +158,116 @@ function ProfileForm() {
    return (
       <Box>
          <Header />
-         <Box display="flex" justifyContent="center">
-            {/* sets spacing between papers */}
-            <Grid
-               container
-               className={classes.formContainer}
-               direction="column"
-               spacing={5}
-            >
-               <ProfileFormSection>
-                  <Grid item>
-                     <TextField
-                        className={classes.formField}
-                        value={firstName}
-                        onChange={handleFirstNameChange}
-                        label="First name"
-                        variant="outlined"
-                     />
-                  </Grid>
-
-                  <Grid item>
-                     <TextField
-                        className={classes.formField}
-                        value={middleName}
-                        onChange={handleMiddleNameChange}
-                        label="Middle name"
-                        variant="outlined"
-                     />
-                  </Grid>
-
-                  <Grid item>
-                     <TextField
-                        className={classes.formField}
-                        value={lastName}
-                        onChange={handleLastNameChange}
-                        label="Last name"
-                        variant="outlined"
-                     />
-                  </Grid>
-
-                  <Grid item>
-                     <TextField
-                        className={classes.formField}
-                        value={address}
-                        onChange={handleAddressChange}
-                        label="Address"
-                        variant="outlined"
-                     />
-                  </Grid>
-
-                  <Grid item>
-                     <FormControl className={classes.formField}>
-                        <InputLabel>Gender</InputLabel>
-                        <Select value={gender} onChange={handleGenderChange}>
-                           <MenuItem value="Male">Male</MenuItem>
-                           <MenuItem value="Female">Female</MenuItem>
-                           <MenuItem value="Other">Other</MenuItem>
-                        </Select>
-                     </FormControl>
-                  </Grid>
-
-                  <Grid item>
-                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <KeyboardDatePicker
-                           className={classes.formField}
-                           label="Birthday"
-                           format="dd/MM/yyyy"
-                           value={birthday}
-                           onChange={handleBirthdayChange}
-                        />
-                     </MuiPickersUtilsProvider>
-                  </Grid>
-
-                  <Grid item>
-                     <TextField
-                        className={classes.formField}
-                        value={bio}
-                        onChange={handleBioChange}
-                        label="Bio"
-                        variant="outlined"
-                        multiline
-                        rows={8}
-                     />
-                  </Grid>
-               </ProfileFormSection>
-
+         <ProfileFormContainer>
+            <ProfileFormSection>
                <Grid item>
-                  <Experience
-                     experiences={experiences}
-                     setExperiences={setExperiences}
+                  <TextField
+                     className={classes.formField}
+                     value={firstName}
+                     onChange={handleFirstNameChange}
+                     label="First name"
+                     variant="outlined"
                   />
                </Grid>
 
                <Grid item>
-                  <Education
-                     educations={educations}
-                     setEducations={setEducations}
+                  <TextField
+                     className={classes.formField}
+                     value={middleName}
+                     onChange={handleMiddleNameChange}
+                     label="Middle name"
+                     variant="outlined"
                   />
                </Grid>
 
-               <ProfileFormSection>
-                  <Grid item>
-                     <Language
-                        languages={languages}
-                        onAddLanguage={handleAddLanguage}
-                        onRemoveLanguage={handleRemoveLanguage}
-                     />
-                  </Grid>
+               <Grid item>
+                  <TextField
+                     className={classes.formField}
+                     value={lastName}
+                     onChange={handleLastNameChange}
+                     label="Last name"
+                     variant="outlined"
+                  />
+               </Grid>
 
-                  <Grid item>
-                     <Skills
-                        skills={skills}
-                        onAddSkill={handleAddSkill}
-                        onRemoveSkill={handleRemoveSkill}
+               <Grid item>
+                  <TextField
+                     className={classes.formField}
+                     value={address}
+                     onChange={handleAddressChange}
+                     label="Address"
+                     variant="outlined"
+                  />
+               </Grid>
+
+               <Grid item>
+                  <FormControl className={classes.formField}>
+                     <InputLabel>Gender</InputLabel>
+                     <Select value={gender} onChange={handleGenderChange}>
+                        <MenuItem value="Male">Male</MenuItem>
+                        <MenuItem value="Female">Female</MenuItem>
+                        <MenuItem value="Other">Other</MenuItem>
+                     </Select>
+                  </FormControl>
+               </Grid>
+
+               <Grid item>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                     <KeyboardDatePicker
+                        className={classes.formField}
+                        label="Birthday"
+                        format="dd/MM/yyyy"
+                        value={birthday}
+                        onChange={handleBirthdayChange}
                      />
-                  </Grid>
-               </ProfileFormSection>
+                  </MuiPickersUtilsProvider>
+               </Grid>
+
+               <Grid item>
+                  <TextField
+                     className={classes.formField}
+                     value={bio}
+                     onChange={handleBioChange}
+                     label="Bio"
+                     variant="outlined"
+                     multiline
+                     rows={8}
+                  />
+               </Grid>
+            </ProfileFormSection>
+
+            <Grid item>
+               <Experience
+                  experiences={experiences}
+                  setExperiences={setExperiences}
+               />
             </Grid>
-         </Box>
+
+            <Grid item>
+               <Education
+                  educations={educations}
+                  setEducations={setEducations}
+               />
+            </Grid>
+
+            <ProfileFormSection>
+               <Grid item>
+                  <Language
+                     languages={languages}
+                     onAddLanguage={handleAddLanguage}
+                     onRemoveLanguage={handleRemoveLanguage}
+                  />
+               </Grid>
+
+               <Grid item>
+                  <Skills
+                     skills={skills}
+                     onAddSkill={handleAddSkill}
+                     onRemoveSkill={handleRemoveSkill}
+                  />
+               </Grid>
+            </ProfileFormSection>
+         </ProfileFormContainer>
          <Fab
             color="secondary"
             variant="extended"
