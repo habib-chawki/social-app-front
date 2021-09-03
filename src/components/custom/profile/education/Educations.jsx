@@ -17,6 +17,7 @@ import moment from 'moment';
 const useStyles = makeStyles({
    paper: {
       padding: 20,
+      background: '#f2fbff',
    },
    paperItem: {
       marginTop: 20,
