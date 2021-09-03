@@ -47,13 +47,16 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
             }
          />
 
-         <Box>
+         <Box mt={2}>
             {languages.map((language, index) => (
-               <Chip
-                  key={index}
-                  label={language}
-                  onDelete={() => onRemoveLanguage(language)}
-               ></Chip>
+               <Box m={1} component="span">
+                  <Chip
+                     key={index}
+                     label={language}
+                     onDelete={() => onRemoveLanguage(language)}
+                     color="secondary"
+                  />
+               </Box>
             ))}
          </Box>
       </Box>
