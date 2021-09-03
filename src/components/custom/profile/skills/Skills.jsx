@@ -63,6 +63,13 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
       for (const skillType in skills) {
          const temp = skills[skillType].map((skillContent, index) => (
             <ListItem key={`${skillType}${index}`}>
+               <ListItemIcon>
+                  {skillType === 'organizational' ? (
+                     <WorkIcon color="secondary" />
+                  ) : (
+                     <TimerIcon color="secondary" />
+                  )}
+               </ListItemIcon>
                <ListItemText primary={skillContent} />
                <ListItemSecondaryAction>
                   <IconButton
