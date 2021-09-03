@@ -11,6 +11,7 @@ import Header from '../../../common/Header';
 import { updateProfile } from '../../../../services/profile';
 
 import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Fab from '@material-ui/core/Fab';
@@ -35,10 +36,13 @@ import DateFnsUtils from '@date-io/date-fns';
 const useStyles = makeStyles((theme) => ({
    formContainer: {
       width: '50%',
-      margin: 16,
+      margin: theme.spacing(3),
    },
    formField: {
       width: '100%',
+   },
+   formPaper: {
+      padding: theme.spacing(5),
    },
    fab: {
       position: 'fixed',
@@ -167,80 +171,84 @@ function ProfileForm() {
                spacing={3}
                className={classes.formContainer}
             >
-               <Grid item>
-                  <TextField
-                     className={classes.formField}
-                     value={firstName}
-                     onChange={handleFirstNameChange}
-                     label="First name"
-                     variant="outlined"
-                  />
-               </Grid>
+               <Paper className={classes.formPaper}>
+                  <Grid container direction="column" spacing={3}>
+                     <Grid item>
+                        <TextField
+                           className={classes.formField}
+                           value={firstName}
+                           onChange={handleFirstNameChange}
+                           label="First name"
+                           variant="outlined"
+                        />
+                     </Grid>
 
-               <Grid item>
-                  <TextField
-                     className={classes.formField}
-                     value={middleName}
-                     onChange={handleMiddleNameChange}
-                     label="Middle name"
-                     variant="outlined"
-                  />
-               </Grid>
+                     <Grid item>
+                        <TextField
+                           className={classes.formField}
+                           value={middleName}
+                           onChange={handleMiddleNameChange}
+                           label="Middle name"
+                           variant="outlined"
+                        />
+                     </Grid>
 
-               <Grid item>
-                  <TextField
-                     className={classes.formField}
-                     value={lastName}
-                     onChange={handleLastNameChange}
-                     label="Last name"
-                     variant="outlined"
-                  />
-               </Grid>
+                     <Grid item>
+                        <TextField
+                           className={classes.formField}
+                           value={lastName}
+                           onChange={handleLastNameChange}
+                           label="Last name"
+                           variant="outlined"
+                        />
+                     </Grid>
 
-               <Grid item>
-                  <TextField
-                     className={classes.formField}
-                     value={address}
-                     onChange={handleAddressChange}
-                     label="Address"
-                     variant="outlined"
-                  />
-               </Grid>
+                     <Grid item>
+                        <TextField
+                           className={classes.formField}
+                           value={address}
+                           onChange={handleAddressChange}
+                           label="Address"
+                           variant="outlined"
+                        />
+                     </Grid>
 
-               <Grid item>
-                  <FormControl className={classes.formField}>
-                     <InputLabel>Gender</InputLabel>
-                     <Select value={gender} onChange={handleGenderChange}>
-                        <MenuItem value="Male">Male</MenuItem>
-                        <MenuItem value="Female">Female</MenuItem>
-                        <MenuItem value="Other">Other</MenuItem>
-                     </Select>
-                  </FormControl>
-               </Grid>
+                     <Grid item>
+                        <FormControl className={classes.formField}>
+                           <InputLabel>Gender</InputLabel>
+                           <Select value={gender} onChange={handleGenderChange}>
+                              <MenuItem value="Male">Male</MenuItem>
+                              <MenuItem value="Female">Female</MenuItem>
+                              <MenuItem value="Other">Other</MenuItem>
+                           </Select>
+                        </FormControl>
+                     </Grid>
 
-               <Grid item>
-                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                     <KeyboardDatePicker
-                        className={classes.formField}
-                        label="Birthday"
-                        format="dd/MM/yyyy"
-                        value={birthday}
-                        onChange={handleBirthdayChange}
-                     />
-                  </MuiPickersUtilsProvider>
-               </Grid>
+                     <Grid item>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                           <KeyboardDatePicker
+                              className={classes.formField}
+                              label="Birthday"
+                              format="dd/MM/yyyy"
+                              value={birthday}
+                              onChange={handleBirthdayChange}
+                           />
+                        </MuiPickersUtilsProvider>
+                     </Grid>
 
-               <Grid item>
-                  <TextField
-                     className={classes.formField}
-                     value={bio}
-                     onChange={handleBioChange}
-                     label="Bio"
-                     variant="outlined"
-                     multiline
-                     rows={6}
-                  />
-               </Grid>
+                     <Grid item>
+                        <TextField
+                           className={classes.formField}
+                           value={bio}
+                           onChange={handleBioChange}
+                           label="Bio"
+                           variant="outlined"
+                           multiline
+                           rows={6}
+                        />
+                     </Grid>
+                  </Grid>
+               </Paper>
 
                <Grid item>
                   <Language
