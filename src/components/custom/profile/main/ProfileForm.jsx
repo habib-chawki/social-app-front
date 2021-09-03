@@ -236,19 +236,23 @@ function ProfileForm() {
                </Grid>
             </ProfileFormSection>
 
-            <Grid item>
-               <Experience
-                  experiences={experiences}
-                  setExperiences={setExperiences}
-               />
-            </Grid>
+            <ProfileFormSection>
+               <Grid item>
+                  <Experience
+                     experiences={experiences}
+                     setExperiences={setExperiences}
+                  />
+               </Grid>
+            </ProfileFormSection>
 
-            <Grid item>
-               <Education
-                  educations={educations}
-                  setEducations={setEducations}
-               />
-            </Grid>
+            <ProfileFormSection>
+               <Grid item>
+                  <Education
+                     educations={educations}
+                     setEducations={setEducations}
+                  />
+               </Grid>
+            </ProfileFormSection>
 
             <ProfileFormSection>
                <Grid item>
