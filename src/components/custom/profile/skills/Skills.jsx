@@ -53,7 +53,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
 
       // render list of skills
       for (const skillType in skills) {
-         const temp = skills[skillType].map((skillContent, index) => (
+         const skillsByType = skills[skillType].map((skillContent, index) => (
             <ListItem key={`${skillType}${index}`}>
                <ListItemIcon>
                   {skillType === 'organizational' ? (
@@ -74,7 +74,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
             </ListItem>
          ));
 
-         skillsList = [...skillsList, ...temp];
+         skillsList = [...skillsList, ...skillsByType];
       }
 
       return skillsList;
