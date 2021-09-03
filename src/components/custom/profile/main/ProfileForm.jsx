@@ -35,7 +35,7 @@ import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
    formContainer: {
-      width: '50%',
+      width: '60%',
       margin: theme.spacing(3),
    },
    formField: {
@@ -165,97 +165,96 @@ function ProfileForm() {
       <Box>
          <Header />
          <Box display="flex" justifyContent="center">
+            {/* sets spacing between papers */}
             <Grid
                container
-               direction="column"
-               spacing={3}
                className={classes.formContainer}
+               direction="column"
+               spacing={5}
             >
-               <Paper className={classes.formPaper}>
-                  <Grid container direction="column" spacing={3}>
-                     <Grid item>
-                        <TextField
-                           className={classes.formField}
-                           value={firstName}
-                           onChange={handleFirstNameChange}
-                           label="First name"
-                           variant="outlined"
-                        />
-                     </Grid>
-
-                     <Grid item>
-                        <TextField
-                           className={classes.formField}
-                           value={middleName}
-                           onChange={handleMiddleNameChange}
-                           label="Middle name"
-                           variant="outlined"
-                        />
-                     </Grid>
-
-                     <Grid item>
-                        <TextField
-                           className={classes.formField}
-                           value={lastName}
-                           onChange={handleLastNameChange}
-                           label="Last name"
-                           variant="outlined"
-                        />
-                     </Grid>
-
-                     <Grid item>
-                        <TextField
-                           className={classes.formField}
-                           value={address}
-                           onChange={handleAddressChange}
-                           label="Address"
-                           variant="outlined"
-                        />
-                     </Grid>
-
-                     <Grid item>
-                        <FormControl className={classes.formField}>
-                           <InputLabel>Gender</InputLabel>
-                           <Select value={gender} onChange={handleGenderChange}>
-                              <MenuItem value="Male">Male</MenuItem>
-                              <MenuItem value="Female">Female</MenuItem>
-                              <MenuItem value="Other">Other</MenuItem>
-                           </Select>
-                        </FormControl>
-                     </Grid>
-
-                     <Grid item>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                           <KeyboardDatePicker
-                              className={classes.formField}
-                              label="Birthday"
-                              format="dd/MM/yyyy"
-                              value={birthday}
-                              onChange={handleBirthdayChange}
-                           />
-                        </MuiPickersUtilsProvider>
-                     </Grid>
-
-                     <Grid item>
-                        <TextField
-                           className={classes.formField}
-                           value={bio}
-                           onChange={handleBioChange}
-                           label="Bio"
-                           variant="outlined"
-                           multiline
-                           rows={6}
-                        />
-                     </Grid>
-                  </Grid>
-               </Paper>
-
                <Grid item>
-                  <Language
-                     languages={languages}
-                     onAddLanguage={handleAddLanguage}
-                     onRemoveLanguage={handleRemoveLanguage}
-                  />
+                  <Paper className={classes.formPaper}>
+                     {/* sets spacing between paper elements */}
+                     <Grid container direction="column" spacing={3}>
+                        <Grid item>
+                           <TextField
+                              className={classes.formField}
+                              value={firstName}
+                              onChange={handleFirstNameChange}
+                              label="First name"
+                              variant="outlined"
+                           />
+                        </Grid>
+
+                        <Grid item>
+                           <TextField
+                              className={classes.formField}
+                              value={middleName}
+                              onChange={handleMiddleNameChange}
+                              label="Middle name"
+                              variant="outlined"
+                           />
+                        </Grid>
+
+                        <Grid item>
+                           <TextField
+                              className={classes.formField}
+                              value={lastName}
+                              onChange={handleLastNameChange}
+                              label="Last name"
+                              variant="outlined"
+                           />
+                        </Grid>
+
+                        <Grid item>
+                           <TextField
+                              className={classes.formField}
+                              value={address}
+                              onChange={handleAddressChange}
+                              label="Address"
+                              variant="outlined"
+                           />
+                        </Grid>
+
+                        <Grid item>
+                           <FormControl className={classes.formField}>
+                              <InputLabel>Gender</InputLabel>
+                              <Select
+                                 value={gender}
+                                 onChange={handleGenderChange}
+                              >
+                                 <MenuItem value="Male">Male</MenuItem>
+                                 <MenuItem value="Female">Female</MenuItem>
+                                 <MenuItem value="Other">Other</MenuItem>
+                              </Select>
+                           </FormControl>
+                        </Grid>
+
+                        <Grid item>
+                           <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                              <KeyboardDatePicker
+                                 className={classes.formField}
+                                 label="Birthday"
+                                 format="dd/MM/yyyy"
+                                 value={birthday}
+                                 onChange={handleBirthdayChange}
+                              />
+                           </MuiPickersUtilsProvider>
+                        </Grid>
+
+                        <Grid item>
+                           <TextField
+                              className={classes.formField}
+                              value={bio}
+                              onChange={handleBioChange}
+                              label="Bio"
+                              variant="outlined"
+                              multiline
+                              rows={6}
+                           />
+                        </Grid>
+                     </Grid>
+                  </Paper>
                </Grid>
 
                <Grid item>
@@ -273,11 +272,25 @@ function ProfileForm() {
                </Grid>
 
                <Grid item>
-                  <Skills
-                     skills={skills}
-                     onAddSkill={handleAddSkill}
-                     onRemoveSkill={handleRemoveSkill}
-                  />
+                  <Paper className={classes.formPaper}>
+                     <Grid container direction="column" spacing={3}>
+                        <Grid item>
+                           <Language
+                              languages={languages}
+                              onAddLanguage={handleAddLanguage}
+                              onRemoveLanguage={handleRemoveLanguage}
+                           />
+                        </Grid>
+
+                        <Grid item>
+                           <Skills
+                              skills={skills}
+                              onAddSkill={handleAddSkill}
+                              onRemoveSkill={handleRemoveSkill}
+                           />
+                        </Grid>
+                     </Grid>
+                  </Paper>
                </Grid>
             </Grid>
          </Box>
