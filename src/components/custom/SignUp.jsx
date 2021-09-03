@@ -40,7 +40,7 @@ function SignUp({ credentials, onChange, onValidate, onSubmit }) {
          </Grid>
 
          <Grid item className={classes.item}>
-            <Box display="flex" justifyContent="space-between">
+            <Box display="flex">
                <Box mr={0.5}>
                   <Input
                      id="firstName"
