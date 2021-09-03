@@ -69,7 +69,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
                      onClick={() => onRemoveSkill(skillType, index)}
                      edge="end"
                   >
-                     <DeleteIcon color="secondary" />
+                     <DeleteIcon color="error" />
                   </IconButton>
                </ListItemSecondaryAction>
             </ListItem>
@@ -101,7 +101,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
             <MenuItem value="technical">
                <div style={{ display: 'flex', alignItems: 'center' }}>
                   <ListItemIcon>
-                     <TimerIcon />
+                     <TimerIcon color="secondary" />
                   </ListItemIcon>
 
                   <ListItemText primary="Technical" />
@@ -110,7 +110,7 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
             <MenuItem value="organizational">
                <div style={{ display: 'flex', alignItems: 'center' }}>
                   <ListItemIcon>
-                     <WorkIcon />
+                     <WorkIcon color="secondary" />
                   </ListItemIcon>
                   <ListItemText primary="Organizational" />
                </div>

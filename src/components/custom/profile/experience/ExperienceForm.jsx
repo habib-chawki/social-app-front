@@ -144,9 +144,7 @@ function ExperienceForm({
             <Button onClick={addExperience} color="primary">
                {initialFormValues.position ? 'Update' : 'Add'}
             </Button>
-            <Button onClick={onCloseDialog} color="secondary">
-               Cancel
-            </Button>
+            <Button onClick={onCloseDialog}>Cancel</Button>
          </Grid>
       </Grid>
    );

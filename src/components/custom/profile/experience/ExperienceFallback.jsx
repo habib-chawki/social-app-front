@@ -22,7 +22,7 @@ function ExperienceFallback({ handleOpenDialog }) {
                   Add experience
                </Typography>
                <IconButton onClick={handleOpenDialog}>
-                  <AddCircleOutlineOutlinedIcon />
+                  <AddCircleOutlineOutlinedIcon color="secondary" />
                </IconButton>
             </Box>
          </Paper>

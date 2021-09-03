@@ -41,7 +41,7 @@ function Language({ languages, onAddLanguage, onRemoveLanguage }) {
             endAdornment={
                <InputAdornment position="end">
                   <IconButton onClick={handleAddLanguage}>
-                     <AddCircleIcon />
+                     <AddCircleIcon color="secondary" />
                   </IconButton>
                </InputAdornment>
             }
