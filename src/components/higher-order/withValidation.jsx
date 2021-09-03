@@ -19,17 +19,15 @@ function withValidation(Component, initialCredentials) {
             },
             password: {
                isValid: content.length >= 5,
-               validationError: 'Password should be at least 5 characters long',
+               validationError: 'Should be at least 5 characters long',
             },
             firstName: {
                isValid: content.length >= 5,
-               validationError:
-                  'First name should be at least 5 characters long',
+               validationError: 'Should be at least 5 characters',
             },
             lastName: {
                isValid: content.length >= 5,
-               validationError:
-                  'Last name should be at least 5 characters long',
+               validationError: 'Should be at least 5 characters',
             },
          };
 
