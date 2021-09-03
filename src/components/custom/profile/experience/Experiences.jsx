@@ -17,7 +17,7 @@ import moment from 'moment';
 const useStyles = makeStyles({
    paper: {
       padding: 20,
-      background: '#f2fbff',
+      background: '#f5f5f5',
    },
    paperItem: {
       marginTop: 20,
@@ -35,7 +35,7 @@ function Experiences({
    const classes = useStyles();
 
    return (
-      <Grid container spacing={4} direction="column">
+      <Grid container spacing={2} direction="column">
          {experiences.map((experience) => (
             <Grid item key={experience.position}>
                <Paper className={classes.paper}>

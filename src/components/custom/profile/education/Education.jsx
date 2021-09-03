@@ -58,10 +58,15 @@ function Education({ educations, setEducations }) {
             <EducationFallback handleOpenDialog={handleOpenEducationDialog} />
          ) : (
             <Box>
-               <Button onClick={handleOpenEducationDialog} fullWidth>
-                  Add more education
-               </Button>
-
+               <Box mb={2}>
+                  <Button
+                     onClick={handleOpenEducationDialog}
+                     fullWidth
+                     variant="outlined"
+                  >
+                     Add more education
+                  </Button>
+               </Box>
                <Educations
                   educations={educations}
                   onRemoveEducation={handleRemoveEducation}

@@ -57,10 +57,15 @@ function Experience({ experiences, setExperiences }) {
             <ExperienceFallback handleOpenDialog={handleOpenDialog} />
          ) : (
             <Box>
-               <Button onClick={handleOpenDialog} fullWidth>
-                  Add more experience
-               </Button>
-
+               <Box mb={2}>
+                  <Button
+                     onClick={handleOpenDialog}
+                     fullWidth
+                     variant="outlined"
+                  >
+                     Add more experience
+                  </Button>
+               </Box>
                <Experiences
                   experiences={experiences}
                   onRemoveExperience={handleRemoveExperience}
