@@ -1,41 +1,29 @@
 import React, { useState } from 'react';
 
 import {
-   TextField,
-   Button,
    List,
    ListItem,
    ListItemIcon,
    ListItemText,
    ListItemSecondaryAction,
    IconButton,
-   Select,
-   MenuItem,
 } from '@material-ui/core';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+
 import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import TimerIcon from '@material-ui/icons/Timer';
 import WorkIcon from '@material-ui/icons/Work';
 
-const useStyles = makeStyles({
-   item: {
-      width: '100%',
-   },
-   subItem: {
-      flexGrow: 1,
-   },
-});
-
 function Skills({ onAddSkill, onRemoveSkill, skills }) {
-   const classes = useStyles();
-
    const [skill, setSkill] = useState('');
    const [type, setType] = useState('technical');
 
@@ -94,41 +82,23 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
 
    return (
       <Box>
-         <TextField
-            className={classes.item}
+         <OutlinedInput
             value={skill}
             onChange={handleSkillChange}
             onKeyPress={addSkill}
-            label="Skill"
             variant="outlined"
+            fullWidth
+            placeholder="Add skill ..."
+            endAdornment={
+               <InputAdornment position="end">
+                  <IconButton onClick={addSkill}>
+                     <AddCircleIcon color="secondary" />
+                  </IconButton>
+               </InputAdornment>
+            }
          />
 
-         <Select
-            className={classes.item}
-            value={type}
-            onChange={handleTypeChange}
-            variant="outlined"
-         >
-            <MenuItem value="technical">
-               <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <ListItemIcon>
-                     <TimerIcon color="secondary" />
-                  </ListItemIcon>
-
-                  <ListItemText primary="Technical" />
-               </div>
-            </MenuItem>
-            <MenuItem value="organizational">
-               <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <ListItemIcon>
-                     <WorkIcon color="secondary" />
-                  </ListItemIcon>
-                  <ListItemText primary="Organizational" />
-               </div>
-            </MenuItem>
-         </Select>
-
-         <RadioGroup name="skills" value={type} onChange={handleTypeChange}>
+         <RadioGroup row name="skills" value={type} onChange={handleTypeChange}>
             <FormControlLabel
                value="technical"
                control={<Radio />}
@@ -141,9 +111,6 @@ function Skills({ onAddSkill, onRemoveSkill, skills }) {
             />
          </RadioGroup>
 
-         <Button onClick={addSkill} fullWidth>
-            Add skill
-         </Button>
          <List>{renderSkills()}</List>
       </Box>
    );
