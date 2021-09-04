@@ -6,7 +6,7 @@ import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-export default function useSnackbar({ message }) {
+export default function useSnackbar({ message, severity = 'error' }) {
    const [isSnackbarOpen, setOpen] = useState(false);
 
    const openSnackbar = () => {
@@ -41,7 +41,7 @@ export default function useSnackbar({ message }) {
             elevation={6}
             variant="filled"
             onClose={closeSnackbar}
-            severity="error"
+            severity={severity}
          >
             {message}
          </Alert>
