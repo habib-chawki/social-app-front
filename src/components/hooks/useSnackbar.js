@@ -21,7 +21,7 @@ export default function useSnackbar({ message }) {
       setOpen(false);
    };
 
-   const ErrorSnackbar = (
+   const snackbar = (
       <Snackbar
          anchorOrigin={{
             vertical: 'top',
@@ -48,5 +48,5 @@ export default function useSnackbar({ message }) {
       </Snackbar>
    );
 
-   return { ErrorSnackbar, openSnackbar };
+   return [snackbar, openSnackbar];
 }

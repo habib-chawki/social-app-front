@@ -10,7 +10,7 @@ function withSubmission(Component, submit) {
    return (props) => {
       const { setAuthenticatedUser } = useContext(UserContext);
 
-      const { ErrorSnackbar, openSnackbar } = useSnackbar({
+      const [Snackbar, openSnackbar] = useSnackbar({
          message: 'Invalid credentials',
       });
 
@@ -52,7 +52,7 @@ function withSubmission(Component, submit) {
       return (
          <>
             <Component {...props} onSubmit={handleSubmission} />
-            {ErrorSnackbar}
+            {Snackbar}
          </>
       );
    };
