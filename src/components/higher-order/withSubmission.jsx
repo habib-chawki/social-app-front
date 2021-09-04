@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useSnackbar } from '../common/ErrorSnackbar';
+import useSnackbar from '../hooks/useSnackbar';
 
 import UserContext from '../../context/user-context';
 import { storeUserInfo } from '../../services/storage';
