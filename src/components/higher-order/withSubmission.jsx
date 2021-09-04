@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import ErrorSnackbar from '../common/ErrorSnackbar';
+import { useSnackbar } from '../common/ErrorSnackbar';
 
 import UserContext from '../../context/user-context';
 import { storeUserInfo } from '../../services/storage';
@@ -10,7 +10,10 @@ function withSubmission(Component, submit) {
    return (props) => {
       const { setAuthenticatedUser } = useContext(UserContext);
 
-      const [open, setOpen] = useState(false);
+      const { ErrorSnackbar, openSnackbar } = useSnackbar({
+         message: 'Invalid credentials',
+      });
+
       // history object
       const history = useHistory();
 
@@ -42,15 +45,15 @@ function withSubmission(Component, submit) {
                });
          } else {
             console.log('Invalid credentials.');
-            setOpen(true);
+            openSnackbar();
          }
       };
 
       return (
-         <div>
+         <>
             <Component {...props} onSubmit={handleSubmission} />
-            <ErrorSnackbar open={open} message="Invalid credentials" />
-         </div>
+            {ErrorSnackbar}
+         </>
       );
    };
 }
