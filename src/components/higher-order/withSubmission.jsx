@@ -8,11 +8,10 @@ import { storeUserInfo } from '../../services/storage';
 
 function withSubmission(Component, submit) {
    return (props) => {
+      // fetch authenticated user
       const { setAuthenticatedUser } = useContext(UserContext);
 
-      const [Snackbar, openSnackbar] = useSnackbar({
-         message: 'Invalid credentials',
-      });
+      const [Snackbar, openSnackbar] = useSnackbar();
 
       // history object
       const history = useHistory();
@@ -40,12 +39,10 @@ function withSubmission(Component, submit) {
                   history.replace('/posts');
                })
                .catch((err) => {
-                  // TODO: display error message!
-                  console.log(err);
+                  openSnackbar(err.message);
                });
          } else {
-            console.log('Invalid credentials.');
-            openSnackbar();
+            openSnackbar('Invalid credentials');
          }
       };
 
