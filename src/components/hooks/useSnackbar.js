@@ -6,11 +6,11 @@ import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-export default function useSnackbar({ message, severity = 'error' }) {
-   const [isSnackbarOpen, setOpen] = useState(false);
+export default function useSnackbar(severity = 'error') {
+   const [snackbar, setSnackbar] = useState({ isOpen: false, message: '' });
 
-   const openSnackbar = () => {
-      setOpen(true);
+   const openSnackbar = (message) => {
+      setSnackbar({ isOpen: true, message });
    };
 
    const closeSnackbar = (event, reason) => {
@@ -18,19 +18,19 @@ export default function useSnackbar({ message, severity = 'error' }) {
          return;
       }
 
-      setOpen(false);
+      setSnackbar({ isOpen: false, message: '' });
    };
 
-   const snackbar = (
+   const snackbarComponent = (
       <Snackbar
          anchorOrigin={{
             vertical: 'top',
             horizontal: 'center',
          }}
-         open={isSnackbarOpen}
+         open={snackbar.isOpen}
          autoHideDuration={6000}
          onClose={closeSnackbar}
-         message={message}
+         message={snackbar.message}
          action={
             <IconButton color="inherit" onClick={closeSnackbar}>
                <CloseIcon fontSize="small" />
@@ -43,10 +43,10 @@ export default function useSnackbar({ message, severity = 'error' }) {
             onClose={closeSnackbar}
             severity={severity}
          >
-            {message}
+            {snackbar.message}
          </Alert>
       </Snackbar>
    );
 
-   return [snackbar, openSnackbar];
+   return [snackbarComponent, openSnackbar];
 }
