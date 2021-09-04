@@ -1,13 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import ErrorSnackbar from '../common/ErrorSnackbar';
+
 import UserContext from '../../context/user-context';
 import { storeUserInfo } from '../../services/storage';
-
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 
 function withSubmission(Component, submit) {
    return (props) => {
@@ -40,6 +37,7 @@ function withSubmission(Component, submit) {
                   history.replace('/posts');
                })
                .catch((err) => {
+                  // TODO: display error message!
                   console.log(err);
                });
          } else {
@@ -48,41 +46,10 @@ function withSubmission(Component, submit) {
          }
       };
 
-      const handleClose = (event, reason) => {
-         if (reason === 'clickaway') {
-            return;
-         }
-
-         setOpen(false);
-      };
-
       return (
          <div>
             <Component {...props} onSubmit={handleSubmission} />
-            <Snackbar
-               anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'center',
-               }}
-               open={open}
-               autoHideDuration={6000}
-               onClose={handleClose}
-               message="Invalid form credentials"
-               action={
-                  <IconButton color="inherit" onClick={handleClose}>
-                     <CloseIcon fontSize="small" />
-                  </IconButton>
-               }
-            >
-               <Alert
-                  elevation={6}
-                  variant="filled"
-                  onClose={handleClose}
-                  severity="error"
-               >
-                  Invalid form credentials
-               </Alert>
-            </Snackbar>
+            <ErrorSnackbar open={open} message="Invalid credentials" />
          </div>
       );
    };
