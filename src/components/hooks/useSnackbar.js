@@ -18,7 +18,7 @@ export default function useSnackbar(severity = 'error') {
          return;
       }
 
-      setSnackbar({ isOpen: false, message: '' });
+      setSnackbar({ ...snackbar, isOpen: false });
    };
 
    const snackbarComponent = (
