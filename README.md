@@ -13,6 +13,9 @@ Social and Professional Networking Platform
       -  Position and company
       -  Job description
    -  Education
+      -  Start and end dates
+      -  Major and school
+      -  Description
    -  Skills
    -  Languages
 -  Manage posts
