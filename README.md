@@ -17,6 +17,8 @@ Social and Professional Networking Platform
       -  Major and school
       -  Description
    -  Skills
+      -  Technical
+      -  Organizational
    -  Languages
 -  Manage posts
 -  Manage comments
