@@ -9,6 +9,9 @@ Social and Professional Networking Platform
    -  Full name, address and birthday
    -  Bio
    -  Work experience
+      -  Start and end dates
+      -  Position and company
+      -  Job description
    -  Education
    -  Skills
    -  Languages
