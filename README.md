@@ -1,3 +1,3 @@
-### Social app
+# SpNp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Social and Professional Networking Platform
