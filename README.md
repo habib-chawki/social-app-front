@@ -5,6 +5,7 @@ Social and Professional Networking Platform
 # Key features
 
 -  User signup, login and logout
+-  Avatar file upload
 -  Create and manage user profiles
    -  Include a bio
    -  Add Basic info such as full name, address and birthday
@@ -21,4 +22,3 @@ Social and Professional Networking Platform
 -  Manage comments
    -  Comment on posts
    -  Update or remove comments
--  Upload avatars
