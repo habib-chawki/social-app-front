@@ -4,7 +4,7 @@ Social and Professional Networking Platform
 
 # Key features
 
--  User signup and login
+-  User signup, login and logout
 -  Create and manage user profiles
    -  Include a bio
    -  Add Basic info such as full name, address and birthday
@@ -19,4 +19,6 @@ Social and Professional Networking Platform
    -  Publish new posts
    -  Update or remove already published posts
 -  Manage comments
+   -  Comment on posts
+   -  Update or remove comments
 -  Upload avatars
