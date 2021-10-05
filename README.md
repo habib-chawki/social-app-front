@@ -16,5 +16,7 @@ Social and Professional Networking Platform
    -  Identify technical and organizational skill sets
    -  Enumerate languages
 -  Manage posts
+   -  Publish new posts
+   -  Update or remove already published posts
 -  Manage comments
 -  Upload avatars
