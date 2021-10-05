@@ -10,9 +10,9 @@ Social and Professional Networking Platform
    -  Add Basic info such as full name, address and birthday
    -  Specify work experience and education
       -  State start and end dates
-      -  Add job title and company
-      -  Add major and school
-      -  Add descriptions when applicable
+      -  Add job titles and companies
+      -  Add majors and schools
+      -  Append descriptions when applicable
    -  Skills
       -  Technical
       -  Organizational
