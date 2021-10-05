@@ -6,12 +6,13 @@ Social and Professional Networking Platform
 
 -  User signup and login
 -  Create and manage user profiles
-   -  Add Basic info such as full name, address and birthday
    -  Include a bio
+   -  Add Basic info such as full name, address and birthday
    -  Specify work experience and education
-      -  Start and end dates
-      -  Job title, company and description
-      -  Major, school and description
+      -  State start and end dates
+      -  Add job title and company
+      -  Add major and school
+      -  Add descriptions when applicable
    -  Skills
       -  Technical
       -  Organizational
