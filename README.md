@@ -13,9 +13,7 @@ Social and Professional Networking Platform
       -  Add job titles and companies
       -  Add majors and schools
       -  Append descriptions when applicable
-   -  Skills
-      -  Technical
-      -  Organizational
+   -  Identify technical and organizational skill sets
    -  Languages
 -  Manage posts
 -  Manage comments
