@@ -14,7 +14,7 @@ Social and Professional Networking Platform
       -  Add majors and schools
       -  Append descriptions when applicable
    -  Identify technical and organizational skill sets
-   -  Languages
+   -  Enumerate languages
 -  Manage posts
 -  Manage comments
 -  Upload avatars
