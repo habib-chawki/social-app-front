@@ -48,3 +48,5 @@ Start application
 ```
 npm start
 ```
+
+Access via http://localhost:3000
