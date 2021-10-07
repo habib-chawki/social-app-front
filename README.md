@@ -22,3 +22,11 @@ Social and Professional Networking Platform
    -  Comment on posts
    -  Update or remove comments
 -  Upload Avatars
+
+# Guide
+
+Clone repository
+
+```
+git clone https://github.com/habib-chawki/social-app-front.git
+```
