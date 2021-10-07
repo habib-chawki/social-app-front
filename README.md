@@ -36,3 +36,9 @@ Change working directory
 ```
 cd social-app-front/
 ```
+
+Install dependencies
+
+```
+npm install
+```
