@@ -30,3 +30,9 @@ Clone repository
 ```
 git clone https://github.com/habib-chawki/social-app-front.git
 ```
+
+Change working directory
+
+```
+cd social-app-front/
+```
